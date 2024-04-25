@@ -1,0 +1,30 @@
+<div class="container">
+  <div>
+    <app-image-card [imagePath]=product().filePath>
+    </app-image-card>
+  </div>
+
+
+  <div class="product-details">
+    <span class="product-name">{{ product().name }}</span>
+
+    <div>
+      @for (star of stars; track star; let i = $index) {
+        @if (star === 'filled') {
+          <span class="rating filled">&#9733;</span>
+        } @else {
+          <span class="rating">&#9733;</span>
+
+        }
+      }
+    </div>
+
+    <span class="price">${{ product().price }}</span>
+    <div class="circle">
+      <img class="small-image" src="{{product().filePath}}">
+
+    </div>
+
+  </div>
+
+</div>

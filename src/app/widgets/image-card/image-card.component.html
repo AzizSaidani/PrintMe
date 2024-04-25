@@ -1,0 +1,10 @@
+<app-card>
+  <div class="image-container">
+    @if (imagePath()) {
+      <img class="image" src='{{imagePath()}}' alt="product">
+    } @else {
+      Invalide Image Path
+    }
+  </div>
+</app-card>
+
