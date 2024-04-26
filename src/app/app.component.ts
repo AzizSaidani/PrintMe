@@ -4,11 +4,12 @@ import {CardComponent} from "./widgets/card/card.component";
 import {ImageCardComponent} from "./widgets/image-card/image-card.component";
 import {ProductCardComponent} from "./widgets/product-card/product-card.component";
 import {ProductModel} from "./widgets/models/product.model";
+import {ToolbarComponent} from "./widgets/toolbar/toolbar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent],
+  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
