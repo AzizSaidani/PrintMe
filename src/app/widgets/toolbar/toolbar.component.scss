@@ -7,10 +7,10 @@
     width: 100% !important;
     height: 75px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    background: rgb(255,255,255,0.7);
+    background: rgb(255, 255, 255, 0.7);
     position: fixed;
     top: 0;
-    z-index: 99999!important;
+    z-index: 99999 !important;
 
     .nav-bar {
       width: 80%;
@@ -24,7 +24,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        gap: 20px;
+        gap: 40px;
         align-items: center;
 
         .dropDown {
@@ -35,28 +35,83 @@
           gap: 5px;
           cursor: pointer;
 
-          .cursor {
+          .drop-down-item {
+            height: 77px;
+            align-items: center;
             display: flex;
-            align-items: baseline;
-          }
-
-          .cursor-selected {
-            display: none;
-          }
+            gap: 5px;
 
 
-          &:hover {
-            color: #fb5f1f;
-            transition: color 0.3s;
+            .drop-down-list {
+              position: fixed;
+              display: none;
+              top: 65px;
+              min-width: 120px;
+              background: white;
+              box-shadow: 4px 4px 4px rgba(143, 143, 143, 0.6);
+              transition: top 0.3s;
+
+              .link-item {
+                cursor: pointer;
+                padding: 10px 20px;
+                border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+
+                &:hover {
+                  color: #fb5f1f;
+                  transition: transform 1s ease-out;
+                }
+              }
+            }
+
+            .product-list {
+              padding: 20px;
+              position: fixed;
+              top: 65px;
+              background-color: white;
+              box-shadow: 4px 4px 4px rgba(143, 143, 143, 0.6);
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              gap: 7.5rem;
+
+              .category {
+
+              }
+            }
 
             .cursor {
-              display: none;
-
+              display: flex;
+              align-items: baseline;
             }
 
             .cursor-selected {
-              display: flex;
-              align-items: baseline;
+              display: none;
+            }
+
+          }
+
+          &:hover {
+            .drop-down-item {
+
+              .drop-down-list {
+                display: block;
+                transform: translateY(11px);
+              }
+
+              .hovered {
+                color: #fb5f1f;
+                transition: color 0.3s;
+              }
+
+              .cursor {
+                display: none;
+
+              }
+
+              .cursor-selected {
+                display: flex;
+                align-items: baseline;
+              }
             }
           }
         }
@@ -79,7 +134,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        gap: 20px;
+        gap: 40px;
         align-items: center;
 
         .actions {

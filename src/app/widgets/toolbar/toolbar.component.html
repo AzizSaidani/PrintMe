@@ -2,27 +2,58 @@
   <div class="nav-bar">
     <div class="nav-section">
       <div class="dropDown">
-        <span class="small-title">Home</span>
+        <span class="small-title hovered">Home</span>
+      </div>
+      <div class="dropDown">
+        <div class="drop-down-item">
 
-        <img class="cursor" ngSrc="assets/svg/chevron-down.svg" alt="chevron" height="12" width="12">
-        <img class="cursor-selected" ngSrc="assets/svg/chevron-down-orange.svg" alt="chevron" height="12"
-             width="12">
+          <span class="small-title hovered">Shop </span> <img class="cursor" ngSrc="assets/svg/chevron-down.svg"
+                                                              height="12"
+                                                              width="12" alt="chevron">
+          <img class="cursor-selected " ngSrc="assets/svg/chevron-down-orange.svg" alt="chevron" height="12"
+               width="12">
+
+          <div class="product-list">
+            @for (category of categories; track category) {
+              <div class="category">
+                <span>Signage</span>
+                @for (item of category.product; track item) {
+                  <p>{{ item }}</p>
+                }
+              </div>
+            }
+
+          </div>
+
+        </div>
       </div>
       <div class="dropDown">
-        <span class="small-title">Shop </span> <img class="cursor" ngSrc="assets/svg/chevron-down.svg" height="12"
-                                                    width="12" alt="chevron">
-        <img class="cursor-selected" ngSrc="assets/svg/chevron-down-orange.svg" alt="chevron" height="12"
-             width="12">
+
+        <div class="drop-down-item">
+          <span class="small-title hovered">Pages </span> <img class="cursor" ngSrc="assets/svg/chevron-down.svg"
+                                                               alt="chevron"
+                                                               height="12"
+                                                               width="12">
+          <img class="cursor-selected" ngSrc="assets/svg/chevron-down-orange.svg" height="12" alt="chevron"
+               width="12">
+
+          <div class="drop-down-list">
+
+            <div class="link-item">
+              About
+            </div>
+            <div class="link-item">
+              Services
+            </div>
+            <div class="link-item">
+              FAQ
+            </div>
+
+          </div>
+        </div>
       </div>
       <div class="dropDown">
-        <span class="small-title">Pages </span> <img class="cursor" ngSrc="assets/svg/chevron-down.svg" alt="chevron"
-                                                     height="12"
-                                                     width="12">
-        <img class="cursor-selected" ngSrc="assets/svg/chevron-down-orange.svg" height="12" alt="chevron"
-             width="12">
-      </div>
-      <div class="dropDown">
-        <span class="small-title">Contact </span>
+        <span class="small-title hovered">Contact </span>
       </div>
 
     </div>

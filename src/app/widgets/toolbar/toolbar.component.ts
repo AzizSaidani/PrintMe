@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {ImageCardComponent} from "../image-card/image-card.component";
-import {ProductModel} from "../models/product.model";
 import {ProductCardComponent} from "../product-card/product-card.component";
+import {CategoryModel} from "../models/category.model";
 
 @Component({
   selector: 'app-toolbar',
@@ -17,10 +17,27 @@ import {ProductCardComponent} from "../product-card/product-card.component";
 })
 export class ToolbarComponent {
 
-  product:ProductModel={
-    price:'500',
-    filePath:'assets/images/cup.png',
-    rating:3,
-    name:'Mug'
+  categories: CategoryModel[] = [{
+    category: 'Signage',
+    product: [
+      'Printed Mug',
+      'Printed T-shirt',
+      'Banners',
+      'Reception Cards',
+      'Brochures',
+    ]
+  },
+    {
+    category: 'Signage',
+    product: [
+      'Printed Mug',
+      'Printed T-shirt',
+      'Banners',
+      'Reception Cards',
+      'Brochures',
+    ]
   }
+
+
+  ]
 }
