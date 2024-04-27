@@ -45,10 +45,10 @@
             .drop-down-list {
               position: fixed;
               display: none;
-              top: 65px;
+              top: 75px;
               min-width: 120px;
               background: white;
-              box-shadow: 4px 4px 4px rgba(143, 143, 143, 0.6);
+              box-shadow: 0 -4px 4px rgba(143, 143, 143, 0.6), 4px 4px 4px rgba(143, 143, 143, 0.6);
               transition: top 0.3s;
 
               .link-item {
@@ -66,18 +66,73 @@
             .product-list {
               padding: 20px;
               position: fixed;
-              top: 65px;
-              background-color: white;
-              box-shadow: 4px 4px 4px rgba(143, 143, 143, 0.6);
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
+              display: none;
               gap: 7.5rem;
+              top: 75px;
+              background-color: white;
+              box-shadow: 0 -4px 4px rgba(143, 143, 143, 0.6), 4px 4px 4px rgba(143, 143, 143, 0.6);
 
               .category {
+                display: flex;
+                gap: 10px;
+                flex-direction: column;
+
+
+                .category-name {
+                  font-size: 17px;
+                  font-family: "Kumbh Sans", sans-serif;
+                  font-weight: bold;
+                  padding: 10px;
+                  border-bottom: 2px solid rgba(201, 198, 198, 0.6);
+
+                  a {
+                    color: inherit !important;
+                    text-decoration: none !important;
+                  }
+
+                  &:hover {
+                    color: #fb5f1f;
+                    transition: transform 1s ease-out;
+                  }
+                }
+
+                .category-items {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  font-size: 15px;
+                  font-family: "Kumbh Sans", sans-serif;
+                  font-weight: bold;
+
+                  .item {
+                    padding: 5px;
+
+                    a {
+                      color: inherit;
+                      text-decoration: none !important;
+                    }
+
+                    &:hover {
+                      color: #fb5f1f;
+                      transition: transform 1s ease-out;
+                    }
+                  }
+                }
+              }
+
+              .image-clip {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                  width: 160px;
+                  height: 220px
+                }
 
               }
             }
+
 
             .cursor {
               display: flex;
@@ -95,7 +150,14 @@
 
               .drop-down-list {
                 display: block;
-                transform: translateY(11px);
+              }
+
+              .product-list {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 7.5rem;
+
               }
 
               .hovered {

@@ -2,7 +2,9 @@
   <div class="nav-bar">
     <div class="nav-section">
       <div class="dropDown">
-        <span class="small-title hovered">Home</span>
+        <div class="drop-down-item">
+          <span class="small-title hovered">Home</span>
+        </div>
       </div>
       <div class="dropDown">
         <div class="drop-down-item">
@@ -16,12 +18,24 @@
           <div class="product-list">
             @for (category of categories; track category) {
               <div class="category">
-                <span>Signage</span>
-                @for (item of category.product; track item) {
-                  <p>{{ item }}</p>
-                }
+                <div class="category-name">
+                  <a href="#">
+                    Signage
+                  </a>
+                </div>
+                <div class="category-items">
+                  @for (item of category.product; track item) {
+                    <div class="item">
+                      <a href="#">{{ item }}</a>
+                    </div>
+                  }
+                </div>
               </div>
             }
+
+            <div class="image-clip">
+              <img [src]="currentImagePath" alt="product">
+            </div>
 
           </div>
 
@@ -53,7 +67,10 @@
         </div>
       </div>
       <div class="dropDown">
-        <span class="small-title hovered">Contact </span>
+        <div class="drop-down-item">
+
+          <span class="small-title hovered">Contact </span>
+        </div>
       </div>
 
     </div>
