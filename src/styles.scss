@@ -2,9 +2,20 @@ body {
   margin: 0;
 
 
-  .small-title{
+  .small-title {
     font-family: "Kumbh Sans", sans-serif;
     font-size: 17px;
     font-weight: bold;
+  }
+
+  .green {
+    color: #0cbc9d;
+  }
+  .orange{
+    color: #fb5f1f;
+  }
+
+  .large-title {
+    font-size: 48px;
   }
 }
