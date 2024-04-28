@@ -1,18 +1,21 @@
 :host {
   width: 100% !important;
 
+
   .best-sellings-container {
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
     justify-content: space-between;
     align-items: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 
     .product {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
       .filter {
         width: 80% !important;
         display: flex;

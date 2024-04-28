@@ -6,11 +6,12 @@ import {ProductCardComponent} from "./widgets/product-card/product-card.componen
 import {ProductModel} from "./widgets/models/product.model";
 import {ToolbarComponent} from "./widgets/toolbar/toolbar.component";
 import {BestSellingsComponent} from "./widgets/best-sellings/best-sellings.component";
+import {FooterComponent} from "./widgets/footer/footer.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent, BestSellingsComponent],
+  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent, BestSellingsComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
