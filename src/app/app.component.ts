@@ -9,11 +9,12 @@ import {BestSellingsComponent} from "./widgets/best-sellings/best-sellings.compo
 import {FooterComponent} from "./widgets/footer/footer.component";
 import {ServiceSectionComponent} from "./widgets/service-section/service-section.component";
 import {AboutUsSectionComponent} from "./widgets/about-us-section/about-us-section.component";
+import {WhyUsComponent} from "./widgets/why-us/why-us.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent, BestSellingsComponent, FooterComponent, ServiceSectionComponent, AboutUsSectionComponent],
+  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent, BestSellingsComponent, FooterComponent, ServiceSectionComponent, AboutUsSectionComponent, WhyUsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
