@@ -1,6 +1,26 @@
 body {
   margin: 0;
 
+  .b {
+    font-weight: bold;
+  }
+
+
+  .bg-shade-green {
+    background-color: #37b546;
+  }
+
+  .bg-shade-orange {
+    background-color: #fc843c;
+  }
+
+  .bg-shade-red {
+    background-color: #fc5434;
+  }
+
+  .bg-shade-blue {
+    background-color: #007aff;
+  }
 
   .small-title {
     font-family: "Kumbh Sans", sans-serif;
@@ -11,7 +31,8 @@ body {
   .green {
     color: #0cbc9d;
   }
-  .orange{
+
+  .orange {
     color: #fb5f1f;
   }
 

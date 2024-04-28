@@ -7,11 +7,12 @@ import {ProductModel} from "./widgets/models/product.model";
 import {ToolbarComponent} from "./widgets/toolbar/toolbar.component";
 import {BestSellingsComponent} from "./widgets/best-sellings/best-sellings.component";
 import {FooterComponent} from "./widgets/footer/footer.component";
+import {ServiceSectionComponent} from "./widgets/service-section/service-section.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent, BestSellingsComponent, FooterComponent],
+  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent, BestSellingsComponent, FooterComponent, ServiceSectionComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
