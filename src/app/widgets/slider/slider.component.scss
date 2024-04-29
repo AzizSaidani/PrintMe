@@ -12,13 +12,13 @@
       .background-image {
         height: 100%;
         width: 100%;
-        background-image: url("https://printme-theme.myshopify.com/cdn/shop/files/slider-1.png?v=1641369439");
         background-size: cover;
         background-position: center;
         position: absolute;
         top: 75px;
         left: 0;
         z-index: -1;
+        background-image: url("https://res.cloudinary.com/dwkp2dnfs/image/upload/w6zc5yihf7sw1bpddzjs.jpg");
       }
 
       .slide-content {
@@ -69,13 +69,13 @@
       .background-image {
         height: 100%;
         width: 100%;
-        background-image: url("https://printme-theme.myshopify.com/cdn/shop/files/cus1.png?v=1643272048");
         background-size: cover;
         background-position: center;
         position: absolute;
         top: 75px;
         left: 0;
         z-index: -1;
+        background-image: url("https://res.cloudinary.com/dwkp2dnfs/image/upload/svhdimixcmwlawzvofaj.jpg");
       }
 
       .slide-content {
@@ -86,6 +86,7 @@
         display: flex;
         flex-direction: column;
         text-align: end;
+
         .description {
           display: flex;
           justify-content: flex-end;
@@ -95,7 +96,8 @@
           font-weight: 500;
           padding-top: 2rem;
           text-align: end;
-          .text{
+
+          .text {
             width: 35%;
           }
 
@@ -106,6 +108,7 @@
           align-items: flex-end;
           justify-content: flex-end;
           padding-top: 5rem;
+
           .button {
             width: 125px;
             padding: 20px 20px;
@@ -133,9 +136,9 @@
       justify-content: center;
 
       .background-image {
+        background-image: url("https://res.cloudinary.com/dwkp2dnfs/image/upload/cucgylyc3dm4ehymedfj.jpg");
         height: 100%;
         width: 100%;
-        background-image: url("https://printme-theme.myshopify.com/cdn/shop/files/cus2.png?v=1643272159");
         background-size: cover;
         background-position: center;
         position: absolute;
