@@ -10,11 +10,12 @@ import {FooterComponent} from "./widgets/footer/footer.component";
 import {ServiceSectionComponent} from "./widgets/service-section/service-section.component";
 import {AboutUsSectionComponent} from "./widgets/about-us-section/about-us-section.component";
 import {WhyUsComponent} from "./widgets/why-us/why-us.component";
+import {SliderComponent} from "./widgets/slider/slider.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent, BestSellingsComponent, FooterComponent, ServiceSectionComponent, AboutUsSectionComponent, WhyUsComponent],
+  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent, BestSellingsComponent, FooterComponent, ServiceSectionComponent, AboutUsSectionComponent, WhyUsComponent, SliderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

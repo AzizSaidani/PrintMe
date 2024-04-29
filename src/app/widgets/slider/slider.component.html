@@ -1,0 +1,73 @@
+<div class="slider-container">
+  @if (selectedSlide === 1) {
+
+
+    <div class="slide-1">
+      <div class="background-image"></div>
+      <div class="slide-content">
+        <h3 class="green">DESIGN YOUR T-SHIRT </h3>
+        <div class="extra-large-title  ph-10 color-b b">We Print Best</div>
+        <div class="extra-large-title ph-10 color-b b">Designs</div>
+        <div class="extra-large-title  ph-10 color-b b">You Want</div>
+        <div class="description"> Velit ut tortor pretium viverra suspendisse potenti. Varius morbi enim nunc faucibus
+          a.
+          Sem fringilla ut morbi tincidunt augue interdum velit euismod in uiytr yuionlor thiese cueresee yuerese serse
+        </div>
+        <div class="button-container">
+          <div class="button">READ MORE</div>
+        </div>
+      </div>
+    </div>
+  }
+  @if (selectedSlide === 2) {
+    <div class="slide-2">
+      <div class="background-image"></div>
+      <div class="slide-content">
+        <h3 class="green">DESIGN YOUR T-SHIRT </h3>
+        <div class="extra-large-title  ph-10 color-b b">We Print Best</div>
+        <div class="extra-large-title ph-10 color-b b">Designs</div>
+        <div class="extra-large-title  ph-10 color-b b">You Want</div>
+        <div class="description">
+          <div class="text">Velit ut tortor pretium viverra suspendisse potenti. Varius morbi enim nunc faucibus a.
+            Sem fringilla ut morbi tincidunt augue interdum velit euismod in uiytr yuionlor thiese cueresee yuerese
+            serse
+          </div>
+        </div>
+        <div class="button-container">
+          <div class="button">Shop Now</div>
+        </div>
+      </div>
+    </div>
+  }
+  @if (selectedSlide === 3) {
+    <div class="slide-3">
+      <div class="background-image"></div>
+      <div class="slide-content">
+        <h3 class="green">DESIGN YOUR T-SHIRT </h3>
+        <div class="extra-large-title  ph-10 color-b b">We Print Best</div>
+        <div class="extra-large-title ph-10 color-b b">Designs</div>
+        <div class="extra-large-title  ph-10 color-b b">You Want</div>
+        <div class="description"> Velit ut tortor pretium viverra suspendisse potenti. Varius morbi enim nunc faucibus
+          a.
+          Sem fringilla ut morbi tincidunt augue interdum velit euismod in uiytr yuionlor thiese cueresee yuerese serse
+        </div>
+        <div class="button-container">
+          <div class="button">READ MORE</div>
+        </div>
+      </div>
+    </div>
+  }
+
+
+  <div class="swipe-button-container">
+
+    <div class="swipe-button" (click)="changeSlide(-1)">
+      <img ngSrc="assets/svg/chevron-left-white.svg" height="16" width="16">
+
+    </div>
+    <div class="swipe-button" (click)="changeSlide(1)">
+      <img ngSrc="assets/svg/chevron-right-white.svg" height="16" width="16">
+    </div>
+
+  </div>
+</div>
