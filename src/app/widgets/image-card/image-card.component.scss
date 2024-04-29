@@ -1,42 +1,83 @@
 :host {
   height: 100%;
 
-  .image-container {
+  .container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-content: center;
     align-items: center;
+    position: relative;
+    font-family: "Kumbh Sans", sans-serif;
 
-    .image {
-      max-height: 400px;
-      max-width: 280px;
-      padding: 0 15px;
+    .hover-color {
+      border-radius: 15px;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background-color: #fb5f1f;
+      display: none;
+      opacity: 0.3;
+      top: 0;
+      left: 0;
     }
 
-    .button-container {
-      padding-bottom: 1rem;
+    .image-container {
       display: flex;
-      flex-direction: row;
-      gap: 10px;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
 
-      .button {
-        height: 40px;
-        width: 40px;
-        border-radius: 100%;
+      .image {
+        max-height: 400px;
+        max-width: 280px;
+        padding: 0 15px;
+      }
+
+      .button-container {
+        padding-bottom: 1rem;
         display: flex;
-        align-items: center;
-        background: #fb5f1f;
-        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: space-between;
 
-        &:hover {
-          background: #0cbc9d;
+        .button {
+          height: 40px;
+          width: 40px;
+          border-radius: 100%;
+          display: flex;
+          align-items: center;
+          background: #fb5f1f;
+          justify-content: center;
+          opacity: 0; /* Initially hidden */
+          transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for opacity and transform */
+          transform: translateY(10px);
+
+          &:hover {
+            background: #0cbc9d;
+
+          }
+        }
+      }
+
+
+    }
+
+    &:hover {
+
+      .hover-color{
+        transition: background-color 0.5s;
+        display: block;
+      }
+
+      .image-container {
+        .button-container {
+          .button {
+            opacity: 1; /* Show buttons on hover */
+            transform: translateY(0)
+          }
         }
       }
     }
-
-
   }
 }
 
