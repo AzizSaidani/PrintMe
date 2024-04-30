@@ -20,7 +20,7 @@
         height: 100%;
         width: 25%;
         padding-left: 25%;
-        background-image: url('https://res.cloudinary.com/dwkp2dnfs/image/upload/aixlrqri5jnnwbacby8f.jpg');
+        background-image: url("https://res.cloudinary.com/dwkp2dnfs/image/upload/zsphdvwz9zeqinsxrm3d.jpg");
         background-size: cover;
         background-position: center;
         position: absolute;
@@ -29,11 +29,21 @@
         z-index: -1;
       }
 
+      .background {
+        height: 100%;
+        width: 100%;
+        background-color: #ffc404;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -2;
+      }
+
       .content {
         padding: 4rem 0;
         height: 100%;
         width: 100%;
-        background-color: rgba(157, 164, 162, 0.6);
+        background-color: rgba(157, 164, 162, 0.2);
         background-blend-mode: multiply;
         color: white;
         display: flex;
