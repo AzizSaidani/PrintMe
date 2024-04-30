@@ -12,11 +12,12 @@ import {AboutUsSectionComponent} from "./widgets/about-us-section/about-us-secti
 import {WhyUsComponent} from "./widgets/why-us/why-us.component";
 import {SliderComponent} from "./widgets/slider/slider.component";
 import {RecentWorksComponent} from "./widgets/recent-works/recent-works.component";
+import {ContactComponent} from "./widgets/contact/contact.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent, BestSellingsComponent, FooterComponent, ServiceSectionComponent, AboutUsSectionComponent, WhyUsComponent, SliderComponent, RecentWorksComponent],
+  imports: [RouterOutlet, CardComponent, ImageCardComponent, ProductCardComponent, ToolbarComponent, BestSellingsComponent, FooterComponent, ServiceSectionComponent, AboutUsSectionComponent, WhyUsComponent, SliderComponent, RecentWorksComponent, ContactComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
