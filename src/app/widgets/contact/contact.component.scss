@@ -103,7 +103,6 @@
       gap: 20px;
 
 
-
       .item {
         width: 75%;
         height: 45px;
@@ -122,27 +121,28 @@
 
       }
 
-       .message{
-         width: 75%;
-         height: 300px;
-         border-radius: 45px;
-         border: 1px solid rgba(155, 153, 153, 0.2);
-         padding-left: 3rem;
-         font-size: 16px;
-         transition: border 0.4s;
-         overflow: auto;
-         resize: none;
+      .message {
+        width: 75%;
+        height: 300px;
+        border-radius: 45px;
+        border: 1px solid rgba(155, 153, 153, 0.2);
+        padding-left: 3rem;
+        padding-top: 10px;
+        font-size: 16px;
+        transition: border 0.4s;
+        overflow: auto;
+        resize: none;
 
 
-         &:focus {
-           outline: none;
-           transition: border 0.8s;
-           border: 1px solid #fb5f1f;
+        &:focus {
+          outline: none;
+          transition: border 0.8s;
+          border: 1px solid #fb5f1f;
 
-         }
-       }
+        }
+      }
 
-      .button{
+      .button {
         display: flex;
         align-items: center;
         padding: 0.875rem 4rem;
@@ -154,12 +154,12 @@
         font-weight: 500;
         font-size: 18px;
         transition: background-color 0.6s;
-        &:hover{
+
+        &:hover {
           background-color: #0cbc9d;
           transition: background-color 0.6s;
         }
       }
-
 
 
     }
