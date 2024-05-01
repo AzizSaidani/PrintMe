@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, Signal} from '@angular/core';
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {toSignal} from "../../utils/signals/signal.util";
-import {ProductModel} from "../models/product.model";
+import {ProductModel} from "../../models/product.model";
 import {NgClass} from "@angular/common";
 
 @Component({

@@ -2,7 +2,7 @@ import {Component, OnDestroy} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {ProductCardComponent} from "../product-card/product-card.component";
-import {CategoryModel} from "../models/category.model";
+import {CategoryModel} from "../../models/category.model";
 
 @Component({
   selector: 'app-toolbar',

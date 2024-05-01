@@ -1,7 +1,7 @@
 import {Component, Input, signal, Signal} from '@angular/core';
-import {FilterModel} from "../models/filter.model";
+import {FilterModel} from "../../models/filter.model";
 import {NgClass} from "@angular/common";
-import {ProductModel} from "../models/product.model";
+import {ProductModel} from "../../models/product.model";
 import {toSignal} from "../../utils/signals/signal.util";
 import {ItemsComponent} from "./items/items.component";
 

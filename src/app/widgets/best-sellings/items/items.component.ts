@@ -1,6 +1,6 @@
 import {Component, Input, Signal} from '@angular/core';
 import {toSignal} from "../../../utils/signals/signal.util";
-import {ProductModel} from "../../models/product.model";
+import {ProductModel} from "../../../models/product.model";
 import {ProductCardComponent} from "../../product-card/product-card.component";
 
 @Component({
