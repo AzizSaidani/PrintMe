@@ -13,6 +13,7 @@ import {NgOptimizedImage} from "@angular/common";
 export class SliderComponent {
   selectedSlide = 1
 
+
   changeSlide(index: number) {
     if (this.selectedSlide + index === 4) {
       this.selectedSlide = 1
