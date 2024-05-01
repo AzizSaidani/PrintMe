@@ -39,6 +39,7 @@ body {
   .large-title {
     font-size: 48px;
   }
+
   .medium-title {
     font-size: 24px;
   }
@@ -46,7 +47,8 @@ body {
   .extra-large-title {
     font-size: 66px;
   }
-  .color-b{
+
+  .color-b {
     color: black;
   }
 
@@ -58,25 +60,43 @@ body {
     padding-right: 10px;
   }
 
-  .ph-10{
+  .ph-10 {
     padding: 10px 0;
+  }
+  .pt-5r{
+    padding-top: 5rem;
   }
 
 
   .grey {
     color: grey;
   }
-  .f-18{
+
+  .f-16 {
+    font-size: 16px;
+  }
+
+  .f-18 {
     font-size: 18px;
+    font-family: "Kumbh Sans", sans-serif;
+
   }
-  .f-24{
+
+  .f-24 {
     font-size: 24px;
+    font-family: "Kumbh Sans", sans-serif;
+
   }
-  .fw-500{
+
+  .f-28 {
+    font-size: 28px;
+  }
+
+  .fw-500 {
     font-weight: 500;
   }
 
-  .h-450{
+  .h-450 {
     height: 450px;
   }
 }

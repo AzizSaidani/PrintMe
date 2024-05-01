@@ -48,7 +48,7 @@
           align-items: center;
           background: #fb5f1f;
           justify-content: center;
-          opacity: 0; /* Initially hidden */
+          opacity: 0;
           transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for opacity and transform */
           transform: translateY(10px);
 
@@ -58,8 +58,6 @@
           }
         }
       }
-
-
     }
 
     &:hover {
@@ -72,7 +70,7 @@
       .image-container {
         .button-container {
           .button {
-            opacity: 1; /* Show buttons on hover */
+            opacity: 1;
             transform: translateY(0)
           }
         }
