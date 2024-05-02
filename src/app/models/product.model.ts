@@ -1,6 +1,7 @@
 export interface ProductModel {
-  filePath: string
+  imagePath: string
   price: string
   rating: number
   name: string
+  description?: string
 }

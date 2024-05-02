@@ -1,8 +1,9 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, Input, OnDestroy} from '@angular/core';
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {ProductCardComponent} from "../product-card/product-card.component";
 import {CategoryModel} from "../../models/category.model";
+import {ProductModel} from "../../models/product.model";
 
 @Component({
   selector: 'app-toolbar',
@@ -16,7 +17,45 @@ import {CategoryModel} from "../../models/category.model";
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
-export class ToolbarComponent implements OnDestroy{
+export class ToolbarComponent implements OnDestroy {
+
+  @Input()
+  cartItems: ProductModel[] = [
+
+    {
+      price: '500',
+      imagePath: 'assets/images/cup.png',
+      rating: 3,
+      name: 'Mug'
+    },
+    {
+      price: '500',
+      imagePath: 'assets/images/cup.png',
+      rating: 3,
+      name: 'Mug'
+    }
+    , {
+      price: '500',
+      imagePath: 'assets/images/cup.png',
+      rating: 3,
+      name: 'Mug'
+    }, {
+      price: '500',
+      imagePath: 'assets/images/cup.png',
+      rating: 3,
+      name: 'Mug'
+    }, {
+      price: '500',
+      imagePath: 'assets/images/cup.png',
+      rating: 3,
+      name: 'Mug'
+    }, {
+      price: '500',
+      imagePath: 'assets/images/cup.png',
+      rating: 3,
+      name: 'Mug'
+    }
+  ]
 
   showCart = false;
 
@@ -40,48 +79,47 @@ export class ToolbarComponent implements OnDestroy{
   }
 
 
-
   categories: CategoryModel[] = [
     {
-    category: 'Signage',
-    product: [
-      'Printed Mug',
-      'Printed T-shirt',
-      'Banners',
-      'Reception Cards',
-      'Brochures',
-    ]
-  },
+      category: 'Signage',
+      product: [
+        'Printed Mug',
+        'Printed T-shirt',
+        'Banners',
+        'Reception Cards',
+        'Brochures',
+      ]
+    },
     {
-    category: 'Signage',
-    product: [
-      'Printed Mug',
-      'Printed T-shirt',
-      'Banners',
-      'Reception Cards',
-      'Brochures',
-    ]
-  },
+      category: 'Signage',
+      product: [
+        'Printed Mug',
+        'Printed T-shirt',
+        'Banners',
+        'Reception Cards',
+        'Brochures',
+      ]
+    },
     {
-    category: 'Signage',
-    product: [
-      'Printed Mug',
-      'Printed T-shirt',
-      'Banners',
-      'Reception Cards',
-      'Brochures',
-    ]
-  },
+      category: 'Signage',
+      product: [
+        'Printed Mug',
+        'Printed T-shirt',
+        'Banners',
+        'Reception Cards',
+        'Brochures',
+      ]
+    },
     {
-    category: 'Signage',
-    product: [
-      'Printed Mug',
-      'Printed T-shirt',
-      'Banners',
-      'Reception Cards',
-      'Brochures',
-    ]
-  }
+      category: 'Signage',
+      product: [
+        'Printed Mug',
+        'Printed T-shirt',
+        'Banners',
+        'Reception Cards',
+        'Brochures',
+      ]
+    }
 
 
   ]

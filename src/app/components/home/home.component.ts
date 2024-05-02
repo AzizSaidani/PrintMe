@@ -27,34 +27,34 @@ export class HomeComponent {
 
       {
         price: '500',
-        filePath: 'assets/images/cup.png',
+        imagePath: 'assets/images/cup.png',
         rating: 3,
         name: 'Mug'
       },
       {
         price: '500',
-        filePath: 'assets/images/cup.png',
+        imagePath: 'assets/images/cup.png',
         rating: 3,
         name: 'Mug'
       }
       , {
       price: '500',
-      filePath: 'assets/images/cup.png',
+      imagePath: 'assets/images/cup.png',
       rating: 3,
       name: 'Mug'
     }, {
       price: '500',
-      filePath: 'assets/images/cup.png',
+      imagePath: 'assets/images/cup.png',
       rating: 3,
       name: 'Mug'
     }, {
       price: '500',
-      filePath: 'assets/images/cup.png',
+      imagePath: 'assets/images/cup.png',
       rating: 3,
       name: 'Mug'
     }, {
       price: '500',
-      filePath: 'assets/images/cup.png',
+      imagePath: 'assets/images/cup.png',
       rating: 3,
       name: 'Mug'
     }

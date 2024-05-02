@@ -44,7 +44,7 @@ import {BestSellingsComponent} from "./components/home/best-sellings/best-sellin
 export class AppComponent {
   product: ProductModel = {
     price: '500',
-    filePath: 'assets/images/cup.png',
+    imagePath: 'assets/images/cup.png',
     rating: 3,
     name: 'Mug'
   }
@@ -53,34 +53,34 @@ export class AppComponent {
 
     {
       price: '500',
-      filePath: 'assets/images/cup.png',
+      imagePath: 'assets/images/cup.png',
       rating: 3,
       name: 'Mug'
     },
     {
       price: '500',
-      filePath: 'assets/images/cup.png',
+      imagePath: 'assets/images/cup.png',
       rating: 3,
       name: 'Mug'
     }
     , {
       price: '500',
-      filePath: 'assets/images/cup.png',
+      imagePath: 'assets/images/cup.png',
       rating: 3,
       name: 'Mug'
     }, {
       price: '500',
-      filePath: 'assets/images/cup.png',
+      imagePath: 'assets/images/cup.png',
       rating: 3,
       name: 'Mug'
     }, {
       price: '500',
-      filePath: 'assets/images/cup.png',
+      imagePath: 'assets/images/cup.png',
       rating: 3,
       name: 'Mug'
     }, {
       price: '500',
-      filePath: 'assets/images/cup.png',
+      imagePath: 'assets/images/cup.png',
       rating: 3,
       name: 'Mug'
     }

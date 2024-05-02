@@ -104,11 +104,33 @@
     <div class="cart-content">
       <div class="head">
         <h2>Your Cart</h2>
-        <div class="close">
+        <div class="close" (click)="showCart = false">
           <img alt="close" ngSrc="assets/svg/plus.svg" height="18" width="18">
         </div>
       </div>
-      <div class="cart-item"></div>
+      @if (!cartItems) {
+        <span>Your cart is currently empty.
+        </span>
+      } @else {
+        @for (item of cartItems; track item) {
+          <div class="cart-item">
+            <div class="image"><img src="{{ item.imagePath }}"></div>
+            <div class="description">
+              <span>{{ item.name }}</span>
+              <span>{{ item.description }}</span>
+              <span>{{ item.price }}</span>
+              <div class="dec-inc-btn">
+                <img ngSrc="assets/svg/minus-white.svg" height="16" width="16">
+                <div>
+                  5
+                </div>
+                <img ngSrc="assets/svg/plus-white.svg" height="16" width="16">
+              </div>
+            </div>
+            <div class="delete"></div>
+          </div>
+        }
+      }
       <div class="button">
         <p>Continue Shopping</p>
 
