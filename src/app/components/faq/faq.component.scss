@@ -78,6 +78,7 @@
 
         img {
           transition: transform 0.6s ease, opacity 0.3s ease;
+          cursor: pointer;
 
           &.plus {
             display: flex;
@@ -86,6 +87,7 @@
             &.rotate {
               display: none;
               transform: rotate(180deg);
+
             }
           }
 

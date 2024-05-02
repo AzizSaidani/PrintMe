@@ -1,4 +1,5 @@
 <div class="tool-bar-container">
+  <div class="cart-overlay-bg" (click)="showCart = false" [ngClass]="{ 'show-bg': showCart }"></div>
   <div class="nav-bar">
     <div class="nav-section">
       <div class="dropDown">
@@ -76,7 +77,7 @@
     </div>
     <div class="logo-section">
       <img class="logo"
-           src="https://res.cloudinary.com/dwkp2dnfs/image/upload/egbdfxkunxzcyovarazv.jpg" alt="logo">
+           src="assets/images/logo.png" alt="logo">
     </div>
     <div class="actions-section">
       <div class="actions">
@@ -91,11 +92,26 @@
              width="16">
         <span class="small-title">Search</span>
       </div>
-      <div class="actions">
+      <div class="actions" (click)="showCart = true">
         <img class="cursor" ngSrc="assets/svg/bag.svg" alt="chevron" height="16" width="16">
         <img class="cursor-selected" ngSrc="assets/svg/bag-orange.svg" alt="chevron" height="16"
              width="16">
         <span class="small-title">Your Cart</span>
+      </div>
+    </div>
+  </div>
+  <div class="cart-overlay" [ngClass]="{ 'show-cart': showCart }">
+    <div class="cart-content">
+      <div class="head">
+        <h2>Your Cart</h2>
+        <div class="close">
+          <img alt="close" ngSrc="assets/svg/plus.svg" height="18" width="18">
+        </div>
+      </div>
+      <div class="cart-item"></div>
+      <div class="button">
+        <p>Continue Shopping</p>
+
       </div>
     </div>
   </div>

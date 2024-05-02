@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {NgOptimizedImage} from "@angular/common";
+import {NgClass, NgOptimizedImage} from "@angular/common";
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {ProductCardComponent} from "../product-card/product-card.component";
 import {CategoryModel} from "../../models/category.model";
@@ -10,12 +10,15 @@ import {CategoryModel} from "../../models/category.model";
   imports: [
     NgOptimizedImage,
     ImageCardComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    NgClass
   ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent implements OnDestroy{
+
+  showCart = false;
 
   imagePaths = [
     'assets/images/cup.png',
