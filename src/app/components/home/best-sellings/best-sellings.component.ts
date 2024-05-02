@@ -1,9 +1,9 @@
-import {Component, Input, signal, Signal} from '@angular/core';
-import {FilterModel} from "../../models/filter.model";
+import {Component, Input, signal, Signal} from "@angular/core";
 import {NgClass} from "@angular/common";
-import {ProductModel} from "../../models/product.model";
-import {toSignal} from "../../utils/signals/signal.util";
-import {ItemsComponent} from "./items/items.component";
+import {ItemsComponent} from "../items/items.component";
+import {toSignal} from "../../../utils/signals/signal.util";
+import {ProductModel} from "../../../models/product.model";
+import {FilterModel} from "../../../models/filter.model";
 
 @Component({
   selector: 'app-best-sellings',
@@ -41,7 +41,6 @@ export class BestSellingsComponent {
 
 
     ])
-
 
 
 }
