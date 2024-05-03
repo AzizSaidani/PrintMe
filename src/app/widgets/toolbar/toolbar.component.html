@@ -92,7 +92,7 @@
              width="16">
         <span class="small-title">Search</span>
       </div>
-      <div class="actions" (click)="showCart = true">
+      <div class="actions" (click)="showCart = true;total()">
         <img class="cursor" ngSrc="assets/svg/bag.svg" alt="chevron" height="16" width="16">
         <img class="cursor-selected" ngSrc="assets/svg/bag-orange.svg" alt="chevron" height="16"
              width="16">
@@ -116,25 +116,41 @@
           <div class="cart-item">
             <div class="image"><img src="{{ item.imagePath }}"></div>
             <div class="description">
-              <span>{{ item.name }}</span>
-              <span>{{ item.description }}</span>
-              <span>{{ item.price }}</span>
+              <div class="name">{{ item.name }}</div>
+              <div class="item-description">{{ item.description }}</div>
+              <div>${{ item.price }}</div>
               <div class="dec-inc-btn">
-                <img ngSrc="assets/svg/minus-white.svg" height="16" width="16">
-                <div>
+                <img ngSrc="assets/svg/minus-white.svg" height="14" width="14">
+                <div class="number">
                   5
                 </div>
-                <img ngSrc="assets/svg/plus-white.svg" height="16" width="16">
+                <img ngSrc="assets/svg/plus-white.svg" height="14" width="14">
               </div>
             </div>
             <div class="delete"></div>
           </div>
         }
       }
-      <div class="button">
-        <p>Continue Shopping</p>
-
+      <div class="devider"></div>
+      <div class="total">
+        <div>Total</div>
+        <div>${{ cartItemsTotalPrice }}</div>
       </div>
+      <div class="devider"></div>
+
+      @if (!cartItems) {
+        <div class="button">
+          <p>Continue Shopping</p>
+        </div>
+      } @else {
+        <div class="button">
+          <p>Proceed to Checkout</p>
+        </div>
+        <div class="button">
+          <p>View Cart</p>
+        </div>
+
+      }
     </div>
   </div>
 </div>

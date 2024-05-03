@@ -293,6 +293,7 @@
         .cart-item {
           display: flex;
           flex-direction: row;
+          gap: 1rem;
 
           .image {
             background-color: bisque;
@@ -307,6 +308,67 @@
               height: 50px;
             }
           }
+
+          .description {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            .name {
+              font-weight: bold;
+              font-size: 18px;
+            }
+
+            .item-description {
+              color: gray;
+            }
+          }
+
+
+          .dec-inc-btn {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background: #fb5f1f;
+            width: 120px;
+            height: 30px;
+            border-radius: 45px;
+            padding: 0 .25rem;
+            border: 1px solid rgb(186, 180, 189, 0.9);;
+
+            .number {
+              align-items: center;
+              display: flex;
+              justify-content: center;
+              background: white;
+              height: 30px;
+              width: 60px;
+              text-align: center;
+            }
+
+
+            img {
+              cursor: pointer;
+              padding: 0 .25rem;
+            }
+          }
+        }
+
+        .devider {
+          height: 1px;
+          width: 80%;
+          background-color: rgb(186, 180, 189, 0.4);
+        }
+
+        .total {
+          display: flex;
+          width: 80%;
+          flex-direction: row;
+          justify-content: space-between;
+          font-weight: 500;
+          font-size: 22px;
+          color: gray;
         }
 
         .button {

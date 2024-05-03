@@ -21,43 +21,39 @@ export class ToolbarComponent implements OnDestroy {
 
   @Input()
   cartItems: ProductModel[] = [
+    {
+      price: '500',
+      imagePath: 'assets/images/cup.png',
+      rating: 3,
+      name: 'Mug',
+      description: 'White / Ceramic'
+    }, {
+      price: '500',
+      imagePath: 'assets/images/cup.png',
+      rating: 3,
+      name: 'Mug',
+      description: 'White / Ceramic'
 
-    {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    },
-    {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }
-    , {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
     }, {
       price: '500',
       imagePath: 'assets/images/cup.png',
       rating: 3,
-      name: 'Mug'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
+      name: 'Mug',
+      description: 'White / Ceramic'
+
     }
   ]
 
-  showCart = false;
+  showCart = true;
+  cartItemsTotalPrice = 0
+
+  total() {
+    this.cartItemsTotalPrice = 0
+    for (let i = 0; i <= this.cartItems.length; i++) {
+      this.cartItemsTotalPrice += parseInt(this.cartItems[i].price)
+    }
+
+  }
 
   imagePaths = [
     'assets/images/cup.png',
