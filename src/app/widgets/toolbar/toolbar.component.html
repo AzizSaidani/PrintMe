@@ -114,20 +114,19 @@
       } @else {
         @for (item of cartItems; track item) {
           <div class="cart-item">
-            <div class="image"><img src="{{ item.imagePath }}"></div>
+            <div class="image"><img alt="proudct" src="{{ item.imagePath }}"></div>
             <div class="description">
               <div class="name">{{ item.name }}</div>
               <div class="item-description">{{ item.description }}</div>
               <div>${{ item.price }}</div>
               <div class="dec-inc-btn">
-                <img ngSrc="assets/svg/minus-white.svg" height="14" width="14">
+                <img alt="minus" ngSrc="assets/svg/minus-white.svg" height="14" width="14">
                 <div class="number">
                   5
                 </div>
-                <img ngSrc="assets/svg/plus-white.svg" height="14" width="14">
+                <img alt="plus" ngSrc="assets/svg/plus-white.svg" height="14" width="14">
               </div>
             </div>
-            <div class="delete"></div>
           </div>
         }
       }

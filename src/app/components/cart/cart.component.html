@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="intro">
+    <div class="background-image"></div>
+    <div class="background"></div>
+    <div class="content">
+      <h1>YOUR SHOPPING CART</h1>
+      <h4>Home / Your Shopping Cart</h4>
+    </div>
+  </div>
+
+  <div class="main-section">
+    <div class="left-section">
+      <div class="title">Products</div>
+      @for (item of cartItems; track item) {
+        <div class="item">
+          <div class="image">
+            <div class="image"><img src="{{ item.imagePath }}" alt="product"></div>
+          </div>
+          <div class="description">
+            <div class="name">{{ item.name }}</div>
+            <div class="item-description">{{ item.description }}</div>
+            <div class="price">${{ item.price }}</div>
+            <div class="dec-inc-btn">
+              <img alt="minus" ngSrc="assets/svg/minus-white.svg" height="14" width="14">
+              <div class="number">
+                5
+              </div>
+              <img alt="plus" ngSrc="assets/svg/plus-white.svg" height="14" width="14">
+            </div>
+            <div class="total"> Total: $7500</div>
+          </div>
+          <div class="close"><img alt="plus" ngSrc="assets/svg/plus.svg" height="16" width="16"> </div>
+
+
+        </div>
+      }
+      <div class="button-container">
+        <div class="btn"> Continue shopping</div>
+        <div class="btn">Update Cart</div>
+      </div>
+
+    </div>
+    <div class="right-section">
+      <div class="title">Oder Summary</div>
+      <div class="total">Subtotal: $450.00</div>
+      <div class="text">Shipping, taxes, and discounts will be calculated at checkout.</div>
+      <div class="btn">Proceed to Checkout</div>
+
+
+    </div>
+
+  </div>
+
+
+</div>

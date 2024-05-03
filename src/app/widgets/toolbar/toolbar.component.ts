@@ -44,7 +44,7 @@ export class ToolbarComponent implements OnDestroy {
     }
   ]
 
-  showCart = true;
+  showCart = false;
   cartItemsTotalPrice = 0
 
   total() {
