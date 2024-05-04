@@ -19,6 +19,7 @@ import {FAQModel} from "./models/FAQ.model";
 import {HomeComponent} from "./components/home/home.component";
 import {BestSellingsComponent} from "./components/home/best-sellings/best-sellings.component";
 import {CartComponent} from "./components/cart/cart.component";
+import {OurServiceComponent} from "./components/our-service/our-service.component";
 
 @Component({
   selector: 'app-root',
@@ -38,7 +39,7 @@ import {CartComponent} from "./components/cart/cart.component";
     ContactComponent,
     AboutUsComponent,
     FaqComponent,
-    HomeComponent, CartComponent],
+    HomeComponent, CartComponent, OurServiceComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="intro">
+    <div class="background-image"></div>
+    <div class="background"></div>
+    <div class="content">
+      <h1>SERVICE</h1>
+      <h4>Home / Service</h4>
+    </div>
+
+  </div>
+
+
+  <div class="section-1">
+    @for (product of product(); track product) {
+      <div class="item">
+        <app-hovered-picture-widget [text]="product.text"
+                                    [imagePath]="product.imagePath"></app-hovered-picture-widget>
+      </div>
+    }
+  </div>
+
+  <div class="section-2">
+    <div class="container">
+      <div class="extra-large-title"> TRENDIEST RANGE OF PRODUCTS</div>
+      <div class="text-section">
+        <div class="item">
+          <img src="assets/svg/shopping-bag-white.svg" height="50" width="50" alt="bag">
+          <div class="description">
+            <div class="title"> HOTTEST NEW BRANDED PRINTINGS</div>
+            <p> Nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit. Mauris cursus mattis molestie a iaculis at
+              erat pellentesque adipiscing. Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus.
+              Arcu cursus vitae congue mauris rhoncus aenean vel ran.</p>
+          </div>
+        </div>
+        <div class="item">
+          <img src="assets/svg/archive-white.svg" height="50" width="50" alt="bag">
+          <div class="description">
+            <div class="title"> CHEAPER THAN MARKET</div>
+            <p> Nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit. Mauris cursus mattis molestie a iaculis at
+              erat pellentesque adipiscing. Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus.
+              Arcu cursus vitae congue mauris rhoncus aenean vel ran.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-3">
+    <div class="background-image"></div>
+    <div class="content">
+      <div class="description">
+        <h1>OUR SERVICES</h1>
+        <span>
+          Velit egestas dui id ornare arcu odio ut. Faucibus nisl tincidunt eget nullam non nisi. Sem integer vitae<br>
+          justo eget. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper. Consectetur<br>
+          purus ut faucibus pulvinar elementum integer enim neque. Ultricies leo integer malesuada nunc vel<br>
+          risus commodo. Congue nisi vitae suscipit tellus mauris. At imperdiet dui accumsan sit amet nulla.<br>
+        </span>
+        <div class="services">
+          <div class="service">
+            <h2> Surface Printing</h2>
+            <span>Faucibus pulvinar elementum integer enim nequevolutpat ac. Luctus accumsan tortor posuere ac ut consequat.</span>
+          </div>
+          <div class="service">
+            <h2> Gravure Printing</h2>
+            <span> Kiuese ispuem elementum integer enim nequevolutpat ac. Luctus accumsan tortor posuere acut consequat.</span>
+          </div>
+          <div class="service">
+            <h2> Digital Printing</h2>
+            <span> Ulerese rhues eueslementum integer enim nequevolutpat ac. Luctus accumsan tortor posuere acut consequat.</span>
+          </div>
+          <div class="service">
+            <h2> Screen Printing</h2>
+            <span> KMarwuese yese elementum integer enim nequevolutpat ac. Luctus accumsan tortor posuere acut consequat.</span>
+          </div>
+          <div class="service">
+            <h2> Offset Lithography</h2>
+            <span> KRhuese elehr dmentum integer enim neque
+volutpat ac. Luctus accumsan tortor posuere ac
+ut consequat.</span>
+          </div>
+          <div class="service">
+            <h2> Rotary Screen</h2>
+            <span>Juese maruwes lementum integer enim neque
+volutpat ac. Luctus accumsan tortor posuere ac
+ut consequat.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+  <div class="divider"></div>
+
+
+</div>
