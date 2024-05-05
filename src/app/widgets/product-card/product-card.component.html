@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <app-image-card [imagePath]=product().imagePath>
+    <app-image-card [imageDimentions]="imageDimentions()" [imagePath]=product().imagePath>
     </app-image-card>
   </div>
 
@@ -21,7 +21,7 @@
 
     <span class="price">${{ product().price }}</span>
     <div class="circle">
-      <img class="small-image" src="{{product().imagePath}}">
+      <img class="small-image" src="{{product().imagePath}}" alt="picture">
 
     </div>
 

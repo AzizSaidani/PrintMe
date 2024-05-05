@@ -22,6 +22,7 @@ import {CartComponent} from "./components/cart/cart.component";
 import {OurServiceComponent} from "./components/our-service/our-service.component";
 import {LoginComponent} from "./components/auth_component/login/login.component";
 import {SignupComponent} from "./components/auth_component/signup/signup.component";
+import {ShopComponent} from "./components/shop/shop.component";
 
 @Component({
   selector: 'app-root',
@@ -41,7 +42,7 @@ import {SignupComponent} from "./components/auth_component/signup/signup.compone
     ContactComponent,
     AboutUsComponent,
     FaqComponent,
-    HomeComponent, CartComponent, OurServiceComponent, LoginComponent, SignupComponent],
+    HomeComponent, CartComponent, OurServiceComponent, LoginComponent, SignupComponent, ShopComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

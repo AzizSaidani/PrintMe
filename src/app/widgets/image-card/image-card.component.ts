@@ -17,4 +17,6 @@ export class ImageCardComponent {
   @Input({transform: toSignal})
   imagePath!: Signal<string>
 
+  @Input({transform: toSignal})
+  imageDimentions!: Signal<number[]>
 }

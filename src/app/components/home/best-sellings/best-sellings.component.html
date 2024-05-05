@@ -5,7 +5,7 @@
   <div class="product">
     <div class="filter">
       @for (filter of filter(); track filter) {
-        <div [ngClass]="filter.selected? 'filter-list orange':'filter-list' ">{{ filter.name }}</div>
+        <div [ngClass]="filter.selected? 'filter-list.svg orange':'filter-list.svg' ">{{ filter.name }}</div>
       }
     </div>
 
