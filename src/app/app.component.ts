@@ -20,6 +20,8 @@ import {HomeComponent} from "./components/home/home.component";
 import {BestSellingsComponent} from "./components/home/best-sellings/best-sellings.component";
 import {CartComponent} from "./components/cart/cart.component";
 import {OurServiceComponent} from "./components/our-service/our-service.component";
+import {LoginComponent} from "./components/auth_component/login/login.component";
+import {SignupComponent} from "./components/auth_component/signup/signup.component";
 
 @Component({
   selector: 'app-root',
@@ -39,7 +41,7 @@ import {OurServiceComponent} from "./components/our-service/our-service.componen
     ContactComponent,
     AboutUsComponent,
     FaqComponent,
-    HomeComponent, CartComponent, OurServiceComponent],
+    HomeComponent, CartComponent, OurServiceComponent, LoginComponent, SignupComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
