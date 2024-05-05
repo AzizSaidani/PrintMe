@@ -23,6 +23,7 @@ import {OurServiceComponent} from "./components/our-service/our-service.componen
 import {LoginComponent} from "./components/auth_component/login/login.component";
 import {SignupComponent} from "./components/auth_component/signup/signup.component";
 import {ShopComponent} from "./components/shop/shop.component";
+import {SettingsComponent} from "./components/settings/settings.component";
 
 @Component({
   selector: 'app-root',
@@ -42,7 +43,7 @@ import {ShopComponent} from "./components/shop/shop.component";
     ContactComponent,
     AboutUsComponent,
     FaqComponent,
-    HomeComponent, CartComponent, OurServiceComponent, LoginComponent, SignupComponent, ShopComponent],
+    HomeComponent, CartComponent, OurServiceComponent, LoginComponent, SignupComponent, ShopComponent, SettingsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
