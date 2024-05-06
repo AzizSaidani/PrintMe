@@ -12,7 +12,7 @@ import {WhyUsComponent} from "./components/home/why-us/why-us.component";
 import {SliderComponent} from "./components/home/slider/slider.component";
 import {RecentWorksComponent} from "./components/home/recent-works/recent-works.component";
 import {ContactComponent} from "./components/contact/contact.component";
-import {AboutUsComponent} from "./widgets/about-us/about-us.component";
+import {AboutUsComponent} from "./components/about-us/about-us.component";
 import {HoveredPicutreModel} from "./models/hovered-picutre.model";
 import {FaqComponent} from "./components/faq/faq.component";
 import {FAQModel} from "./models/FAQ.model";

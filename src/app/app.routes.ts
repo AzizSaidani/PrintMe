@@ -9,7 +9,7 @@ import {CartComponent} from "./components/cart/cart.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 import {SignupComponent} from "./components/auth_component/signup/signup.component";
 import {ForgetPasswordComponent} from "./components/auth_component/forget-password/forget-password.component";
-import {AboutUsComponent} from "./widgets/about-us/about-us.component";
+import {AboutUsComponent} from "./components/about-us/about-us.component";
 
 export const routes: Routes = [
   //** Commune **//

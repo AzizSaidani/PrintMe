@@ -1,9 +1,9 @@
 import {Component, Input, Signal} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
-import {HoveredPictureWidgetComponent} from "../hovered-picture-widget/hovered-picture-widget.component";
+import {HoveredPictureWidgetComponent} from "../../widgets/hovered-picture-widget/hovered-picture-widget.component";
 import {toSignal} from "../../utils/signals/signal.util";
 import {HoveredPicutreModel} from "../../models/hovered-picutre.model";
-import {HoveredPictureMemberComponent} from "../hovered-picture-member/hovered-picture-member.component";
+import {HoveredPictureMemberComponent} from "../../widgets/hovered-picture-member/hovered-picture-member.component";
 
 @Component({
   selector: 'app-about-us',
