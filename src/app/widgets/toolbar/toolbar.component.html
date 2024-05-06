@@ -4,15 +4,16 @@
     <div class="nav-section">
       <div class="dropDown">
         <div class="drop-down-item">
-          <span class="small-title hovered">Home</span>
+          <span class="small-title hovered" routerLink="''">Home</span>
         </div>
       </div>
       <div class="dropDown">
         <div class="drop-down-item">
 
-          <span class="small-title hovered">Shop </span> <img class="cursor" ngSrc="assets/svg/chevron-down.svg"
-                                                              height="12"
-                                                              width="12" alt="chevron">
+          <span class="small-title hovered" routerLink="shop">Shop </span> <img class="cursor"
+                                                                                ngSrc="assets/svg/chevron-down.svg"
+                                                                                height="12"
+                                                                                width="12" alt="chevron">
           <img class="cursor-selected " ngSrc="assets/svg/chevron-down-orange.svg" alt="chevron" height="12"
                width="12">
 
@@ -54,13 +55,13 @@
 
           <div class="drop-down-list">
 
-            <div class="link-item">
+            <div class="link-item" routerLink="about">
               About
             </div>
-            <div class="link-item">
+            <div class="link-item" routerLink="ourServices">
               Services
             </div>
-            <div class="link-item">
+            <div class="link-item" routerLink="faq">
               FAQ
             </div>
 
@@ -70,7 +71,7 @@
       <div class="dropDown">
         <div class="drop-down-item">
 
-          <span class="small-title hovered">Contact </span>
+          <span class="small-title hovered" routerLink="contact">Contact </span>
         </div>
       </div>
 
@@ -84,7 +85,7 @@
         <img class="cursor" ngSrc="assets/svg/login.svg" alt="chevron" height="16" width="16">
         <img class="cursor-selected" ngSrc="assets/svg/login-orange.svg" alt="chevron" height="16"
              width="16">
-        <span class="small-title">Account</span>
+        <span class="small-title" routerLink="login">Account</span>
       </div>
       <div class="actions">
         <img class="cursor" ngSrc="assets/svg/magnify.svg" alt="chevron" height="16" width="16">
@@ -108,6 +109,7 @@
           <img alt="close" ngSrc="assets/svg/plus.svg" height="18" width="18">
         </div>
       </div>
+      z
       @if (!cartItems) {
         <span>Your cart is currently empty.
         </span>
@@ -145,7 +147,7 @@
         <div class="button">
           <p>Proceed to Checkout</p>
         </div>
-        <div class="button">
+        <div class="button" routerLink="cart" (click)="showCart = false">
           <p>View Cart</p>
         </div>
 

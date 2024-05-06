@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {CardComponent} from "./widgets/card/card.component";
 import {ImageCardComponent} from "./widgets/image-card/image-card.component";
 import {ProductCardComponent} from "./widgets/product-card/product-card.component";
@@ -25,6 +25,7 @@ import {SignupComponent} from "./components/auth_component/signup/signup.compone
 import {ShopComponent} from "./components/shop/shop.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -47,7 +48,21 @@ import {SettingsComponent} from "./components/settings/settings.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements  OnInit{
+
+  constructor(private router: Router) { }
+
+
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        console.log( event.url);
+        // You can store event.url in a variable to use in your template
+      }
+    });
+  }
+
+
   product: ProductModel = {
     price: '500',
     imagePath: 'assets/images/cup.png',
