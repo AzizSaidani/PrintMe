@@ -13,12 +13,12 @@
 
   <div class="contact-form">
 
-    <input class="item" type="text" placeholder="First Name">
-    <input class="item" type="text" placeholder="Last Name">
-    <input class="item" type="email" placeholder="Email">
-    <input class="item" type="password" placeholder="Password">
+    <input class="item" type="text" placeholder="First Name" [(ngModel)]="firstName">
+    <input class="item" type="text" placeholder="Last Name" [(ngModel)]="lastName">
+    <input class="item" type="email" placeholder="Email" [(ngModel)]="email">
+    <input class="item" type="password" placeholder="Password" [(ngModel)]="password">
 
-    <div class="button">
+    <div class="button" (click)="register()">
       Sign up
     </div>
 
