@@ -25,6 +25,7 @@ import {SignupComponent} from "./components/auth_component/signup/signup.compone
 import {ShopComponent} from "./components/shop/shop.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 import {AuthService} from "./components/auth_component/service/auth.service";
+import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
 
 
 @Component({
@@ -51,13 +52,14 @@ import {AuthService} from "./components/auth_component/service/auth.service";
     LoginComponent,
     SignupComponent,
     ShopComponent,
-    SettingsComponent],
+    SettingsComponent, DashboardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   currentUser: any;
   username = ''
+  userRole = 'client'
 
 
   constructor(private router: Router, private authService: AuthService) {
@@ -72,8 +74,9 @@ export class AppComponent implements OnInit {
     });
     this.authService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
-      this.username = user.user.username;
+      this.username = user.username
     });
+
   }
 
 

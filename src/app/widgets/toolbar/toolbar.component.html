@@ -2,15 +2,15 @@
   <div class="cart-overlay-bg" (click)="showCart = false" [ngClass]="{ 'show-bg': showCart }"></div>
   <div class="nav-bar">
     <div class="nav-section">
-      <div class="dropDown">
+      <div class="dropDown" routerLink="''">
         <div class="drop-down-item">
-          <span class="small-title hovered" routerLink="''">Home</span>
+          <span class="small-title hovered" >Home</span>
         </div>
       </div>
-      <div class="dropDown">
+      <div class="dropDown" routerLink="shop">
         <div class="drop-down-item">
 
-          <span class="small-title hovered" routerLink="shop">Shop </span> <img class="cursor"
+          <span class="small-title hovered" >Shop </span> <img class="cursor"
                                                                                 ngSrc="assets/svg/chevron-down.svg"
                                                                                 height="12"
                                                                                 width="12" alt="chevron">
@@ -68,10 +68,10 @@
           </div>
         </div>
       </div>
-      <div class="dropDown">
-        <div class="drop-down-item">
+      <div class="dropDown" routerLink="contact">
+        <div class="drop-down-item" >
 
-          <span class="small-title hovered" routerLink="contact">Contact </span>
+          <span class="small-title hovered" >Contact </span>
         </div>
       </div>
 
@@ -81,13 +81,13 @@
            src="assets/images/logo.png" alt="logo">
     </div>
     <div class="actions-section">
-      @if (userName().length <= 1) {
+      @if (!userName()) {
 
-        <div class="actions">
+        <div class="actions" routerLink="login">
           <img class="cursor" ngSrc="assets/svg/login.svg" alt="chevron" height="16" width="16">
           <img class="cursor-selected" ngSrc="assets/svg/login-orange.svg" alt="chevron" height="16"
                width="16">
-          <span class="small-title" routerLink="login">Account</span>
+          <span class="small-title" >Account</span>
         </div>
       }
       <div class="actions">
