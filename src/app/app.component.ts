@@ -24,6 +24,7 @@ import {LoginComponent} from "./components/auth_component/login/login.component"
 import {SignupComponent} from "./components/auth_component/signup/signup.component";
 import {ShopComponent} from "./components/shop/shop.component";
 import {SettingsComponent} from "./components/settings/settings.component";
+import {AuthService} from "./components/auth_component/service/auth.service";
 
 
 @Component({
@@ -44,21 +45,34 @@ import {SettingsComponent} from "./components/settings/settings.component";
     ContactComponent,
     AboutUsComponent,
     FaqComponent,
-    HomeComponent, CartComponent, OurServiceComponent, LoginComponent, SignupComponent, ShopComponent, SettingsComponent],
+    HomeComponent,
+    CartComponent,
+    OurServiceComponent,
+    LoginComponent,
+    SignupComponent,
+    ShopComponent,
+    SettingsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements  OnInit{
+export class AppComponent implements OnInit {
+  currentUser: any;
+  username = ''
 
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private authService: AuthService) {
+  }
 
 
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        console.log( event.url);
-        // You can store event.url in a variable to use in your template
+        console.log(event.url);
       }
+    });
+    this.authService.getCurrentUser().subscribe(user => {
+      this.currentUser = user;
+      this.username = user.user.username;
     });
   }
 
@@ -69,7 +83,6 @@ export class AppComponent implements  OnInit{
     rating: 3,
     name: 'Mug'
   }
-
   bestSellingItems: ProductModel[] = [
 
     {
@@ -106,8 +119,6 @@ export class AppComponent implements  OnInit{
       name: 'Mug'
     }
   ]
-
-
   aboutUsProducts: HoveredPicutreModel[] = [
 
     {
@@ -137,7 +148,6 @@ export class AppComponent implements  OnInit{
 
 
   ]
-
   faqs: FAQModel[] = [
     {
       question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',

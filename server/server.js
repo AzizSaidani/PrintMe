@@ -7,12 +7,14 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const authRoutes = require('./routes/auth.routes');
+const visitorRoutes = require('./routes/visitor.routes');
 
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/visitor', visitorRoutes);
 
 
 

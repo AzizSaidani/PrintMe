@@ -13,7 +13,7 @@
   <div class="contact">
     <div class="card">
       <div class="icon">
-        <img alt="phone"  ngSrc="assets/svg/phone-white.svg" height="18" width="18">
+        <img alt="phone" ngSrc="assets/svg/phone-white.svg" height="18" width="18">
 
       </div>
       <div class="f-24">Phone</div>
@@ -63,12 +63,12 @@
   <div class="contact-form">
     <h2> Contact Form</h2>
 
-    <input class="item" type="text" placeholder="Name">
-    <input class="item" type="text" placeholder="Email">
-    <input class="item" type="text" placeholder="Phone">
-    <textarea class="message"></textarea>
+    <input class="item" type="text" [(ngModel)]="name" placeholder="Name">
+    <input class="item" type="text" [(ngModel)]="email" placeholder="Email">
+    <input class="item" type="text" [(ngModel)]="phone" placeholder="Phone">
+    <textarea class="message" [(ngModel)]="description"></textarea>
 
-    <div class="button">
+    <div class="button" (click)="contact()">
       Send
     </div>
 

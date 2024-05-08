@@ -29,7 +29,6 @@ export class SignupComponent {
       password: this.password,
       role: 'client'
     };
-    console.log(userData);
 
     this.authService.register(userData).subscribe(
       (response) => {

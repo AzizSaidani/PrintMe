@@ -1,10 +1,11 @@
-import {Component, Input, OnDestroy} from '@angular/core';
+import {Component, Input, OnDestroy, signal} from '@angular/core';
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {ProductCardComponent} from "../product-card/product-card.component";
 import {CategoryModel} from "../../models/category.model";
 import {ProductModel} from "../../models/product.model";
 import {RouterLink} from "@angular/router";
+import {toSignal} from "../../utils/signals/signal.util";
 
 @Component({
   selector: 'app-toolbar',
@@ -20,6 +21,8 @@ import {RouterLink} from "@angular/router";
   styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent implements OnDestroy {
+  @Input({transform:toSignal})
+  userName = signal('')
 
   @Input()
   cartItems: ProductModel[] = [
