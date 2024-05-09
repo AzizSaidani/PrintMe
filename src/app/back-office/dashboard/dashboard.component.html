@@ -1,0 +1,268 @@
+<div class="container">
+
+  <div class="menu">
+    <img alt="icon" class="logo" src="assets/images/logo.png">
+    <div class="element" (click)="selectedElement='home'" [ngClass]="{'inactive': selectedElement !== 'home'}">
+      @if (selectedElement === 'home') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon"
+        >
+      } @else {
+
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon"
+        >
+      }
+      Dashboard
+
+    </div>
+    <div class="element" (click)="selectedElement='Products'" [ngClass]="{'inactive': selectedElement !== 'Products'}">
+      @if (selectedElement === 'Products') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+      }
+      Products
+
+    </div>
+    <div class="element" (click)="selectedElement='Reclamation'"
+         [ngClass]="{'inactive': selectedElement !== 'Reclamation'}">
+      @if (selectedElement === 'Reclamation') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+      }
+      Reclamation
+
+    </div>
+    <div class="element" (click)="selectedElement='Users'" [ngClass]="{'inactive': selectedElement !== 'Users'}">
+      @if (selectedElement === 'Users') {
+
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+
+      } @else {
+
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+      }
+      Users
+    </div>
+    <div class="element" (click)="selectedElement='Commandes'"
+         [ngClass]="{'inactive': selectedElement !== 'Commandes'}">
+      @if (selectedElement === 'Commandes') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+
+      }
+      Commandes
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <span>{{ selectedElement }}</span>
+      <img ngSrc="assets/svg/bell-empty.svg" height="16" width="16">
+    </div>
+
+
+    <div class="content">
+      @if (selectedElement === 'home') {
+        <div class="dashboard">
+          <div class="stats">
+            <div class="card">
+              <div class="content">
+                <span class="title">
+                Today's Money<br>
+                </span>
+                $50.36
+              </div>
+              <img ngSrc="assets/svg/grid.svg" height="32" width="32">
+            </div>
+            <div class="card">
+              <div class="content">
+                     <span class="title">
+
+                Today's Users<br>
+                </span>
+                $50.36
+              </div>
+              <img ngSrc="assets/svg/grid.svg" height="32" width="32">
+            </div>
+            <div class="card">
+              <div class="content">     <span class="title">
+
+                New Clients
+                </span>
+
+                <br>
+                $50.36
+              </div>
+              <img ngSrc="assets/svg/grid.svg" height="32" width="32">
+            </div>
+            <div class="card">
+              <div class="content">
+                     <span class="title">
+
+                Sales
+                </span>
+                <br>
+                $50.36
+              </div>
+              <img ngSrc="assets/svg/cart.svg" height="22" width="22">
+            </div>
+
+          </div>
+
+          <div class="tables">
+
+
+            <div class="table">
+              <h2>Recent Orders</h2>
+              <table>
+                <tr>
+                  <th>Client</th>
+                  <th>Order ID</th>
+                  <th>Status</th>
+
+                  <th>Date</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td>Manager</td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+
+                  <td>
+                    <span class="button">View</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td>Manager</td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+
+                  <td>
+                    <span class="button">View</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td>Manager</td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+
+                  <td>
+                    <span class="button">View</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td>Manager</td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+
+                  <td>
+                    <span class="button">View</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td>Manager</td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+
+                  <td>
+                    <span class="button">View</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="table" style="width: 400px">
+
+              <table>
+                <h2>Top Sellings</h2>
+
+                <tr>
+                  <th>Product name</th>
+                  <th>Price</th>
+                  <th>Revenue</th>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+                </tr>
+                <tr>
+                  <th>Product name</th>
+                  <th>Price</th>
+                  <th>Revenue</th>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+                </tr>
+                <tr>
+                  <th>Product name</th>
+                  <th>Price</th>
+                  <th>Revenue</th>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+
+        </div>
+      }
+
+
+    </div>
+
+
+  </div>
+
+
+</div>

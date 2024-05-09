@@ -13,10 +13,10 @@
 
   <div class="contact-form">
 
-    <input class="item" type="email" placeholder="Email">
-    <input class="item" type="password" placeholder="Password">
+    <input class="item" type="email" placeholder="Email" [(ngModel)]="email">
+    <input class="item" type="password" placeholder="Password" [(ngModel)]="password">
 
-    <div class="button">
+    <div class="button" (click)="login()">
       Login
     </div>
     <div class="other-option">
