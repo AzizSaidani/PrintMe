@@ -13,6 +13,6 @@ import {NgClass, NgOptimizedImage, NgStyle} from "@angular/common";
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  selectedElement = 'home'
+  selectedElement = 'Products'
 
 }

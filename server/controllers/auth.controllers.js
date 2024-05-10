@@ -24,22 +24,22 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    const {email, password} = req.body;
+    const user = await User.findOne({email});
     if (!user) {
-      return res.status(401).json({ error: 'Invalid email or password' });
+      return res.status(401).json({error: 'Invalid email or password'});
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).json({ error: 'Invalid email or password' });
+      return res.status(401).json({error: 'Invalid email or password'});
     }
     const token = createToken(user._id);
+    const id = user._id
+    const {username, role} = user;
 
-    const { username, role } = user;
-
-    res.status(200).json({ token, username, role });
+    res.status(200).json({token, username, role, id});
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({error: error.message});
   }
 };
 
