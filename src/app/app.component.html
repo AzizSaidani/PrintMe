@@ -1,5 +1,4 @@
 @if (userRole != 'admin') {
-
   <app-toolbar [userName]="username"></app-toolbar>
   <div style="padding-top: 75px">
 <!--        <app-slider></app-slider>-->
@@ -24,7 +23,6 @@
     <!--  <app-settings [wishes]="bestSellingItems"></app-settings>-->
     <router-outlet></router-outlet>
   </div>
-
   <app-footer></app-footer>
 } @else {
   <app-dashboard></app-dashboard>
