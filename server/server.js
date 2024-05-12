@@ -15,7 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/visitor', visitorRoutes);
-app.use('/api', productRoutes); // Use '/api' instead of '/api/product'
+app.use('/api/product', productRoutes);
 
 
 // Connect to MongoDB

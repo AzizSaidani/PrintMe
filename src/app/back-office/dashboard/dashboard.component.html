@@ -60,8 +60,17 @@
   <div class="main">
     <div class="header">
       <span>{{ selectedElement }}</span>
-      <img ngSrc="assets/svg/bell-empty.svg" height="16" width="16">
+      <img alt="notifications" ngSrc="assets/svg/bell-empty.svg" height="16" width="16">
     </div>
+    <ngx-dropzone (change)="onSelect($event)">
+      <ngx-dropzone-label>Ajouter un image</ngx-dropzone-label>
+      @for (file of files; track files) {
+        <ngx-dropzone-preview [removable]="true" (removed)="onRemove(file)">
+          <ngx-dropzone-label>{{ file.name }}</ngx-dropzone-label>
+        </ngx-dropzone-preview>
+      }
+    </ngx-dropzone>
+    <button (click)="addProduct()"> upload</button>
 
 
     <div class="content">
@@ -259,6 +268,7 @@
       }
 
       @if (selectedElement === 'Products') {
+
         <div class="dashboard">
           <div class="product-container pt-2r">
 

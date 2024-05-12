@@ -59,7 +59,7 @@ import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
 export class AppComponent implements OnInit {
   currentUser: any;
   username = ''
-  userRole = 'client'
+  userRole = 'admin'
 
 
   constructor(private router: Router, private authService: AuthService) {
