@@ -3,13 +3,14 @@ const Product = require('../models/product.model');
 exports.addProduct = async (req, res) => {
   try {
     // Extract product details from the request body
-    const {name, price, imagePath, description} = req.body;
+    const {name, price, imagePath, category,description,} = req.body;
 
     // Create a new product instance
     const newProduct = new Product({
       name,
       price,
       imagePath,
+      category,
       description
     });
 

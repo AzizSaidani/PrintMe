@@ -13,7 +13,6 @@ export class AddProductService {
   }
 
   uploadImage(vals: any): Observable<any> {
-
     return this.http.post("https://api.cloudinary.com/v1_1/dwkp2dnfs/upload", vals)
   }
 

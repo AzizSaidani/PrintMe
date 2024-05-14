@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="menu">
-    <img alt="icon" class="logo" src="assets/images/logo.png">
+    <img alt="icon" class="logo" src="assets/logo.png">
     <div class="element" (click)="selectedElement='home'" [ngClass]="{'inactive': selectedElement !== 'home'}">
       @if (selectedElement === 'home') {
         <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon"
@@ -62,15 +62,6 @@
       <span>{{ selectedElement }}</span>
       <img alt="notifications" ngSrc="assets/svg/bell-empty.svg" height="16" width="16">
     </div>
-    <ngx-dropzone (change)="onSelect($event)">
-      <ngx-dropzone-label>Ajouter un image</ngx-dropzone-label>
-      @for (file of files; track files) {
-        <ngx-dropzone-preview [removable]="true" (removed)="onRemove(file)">
-          <ngx-dropzone-label>{{ file.name }}</ngx-dropzone-label>
-        </ngx-dropzone-preview>
-      }
-    </ngx-dropzone>
-    <button (click)="addProduct()"> upload</button>
 
 
     <div class="content">
@@ -271,9 +262,6 @@
 
         <div class="dashboard">
           <div class="product-container pt-2r">
-
-            <h4>Add Product</h4>
-
             <div class="tables ">
 
 
@@ -351,6 +339,33 @@
               </div>
 
 
+            </div>
+
+            <div class="new-prod-container">
+              <div class="new-prod">
+                <div class="form-item">Nom du produit<input [(ngModel)]="newProductName" type="text"></div>
+                <div class="form-item">Prix<input [(ngModel)]="newProductPrice" type="text"></div>
+                <div class="form-item">Catégorie
+                  <select [(ngModel)]="category">
+                    <option selected>Imperssion numerique</option>
+                    <option>Marketing digital</option>
+                    <option>Impression grandformat</option>
+                    <option>Conception graphique</option>
+                  </select></div>
+                <div class="form-item">Description<textarea [(ngModel)]="newProductDescription"></textarea></div>
+                <div class="form-item">
+                  Image du produit
+                  <div class="drop-zone">
+                    <ngx-dropzone (change)="onSelect($event)" class="zone">
+                      {{ fileName }}
+
+                    </ngx-dropzone>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="button" (click)="addProduct()"> Ajouter</div>
             </div>
           </div>
         </div>

@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {NgClass, NgOptimizedImage, NgStyle} from "@angular/common";
 import {NgxDropzoneModule} from "ngx-dropzone";
 import {AddProductService} from "../service/add-product.service";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-dashboard',
@@ -11,11 +13,20 @@ import {AddProductService} from "../service/add-product.service";
     NgStyle,
     NgClass,
     NgxDropzoneModule,
+    MatSelect,
+    MatOption,
+    FormsModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  category = 'Imperssion numerique';
+  newProductPrice = ''
+  newProductName = ''
+  newProductDescription = ''
+
+  fileName = 'Choisir une image'
   selectedElement = 'Products'
   files: File[] = []
 
@@ -29,12 +40,8 @@ export class DashboardComponent {
     if (firstFile) {
       this.files.push(firstFile);
     }
+    this.fileName = this.files[0].name
   }
-
-  onRemove(event: any) {
-    this.files.splice(this.files.indexOf(event), 1)
-  }
-
 
   async addProduct() {
 
@@ -52,10 +59,11 @@ export class DashboardComponent {
       imagePath = res.url
 
       const product = {
-        name: 'product1',
-        price: '2000',
+        name: this.newProductName,
+        price: this.newProductPrice,
         imagePath: imagePath,
-        description: 'seramique'
+        description: this.newProductDescription,
+        category: this.category
       }
       this.service.addProduct(product).subscribe(res => {
           console.log(res)
