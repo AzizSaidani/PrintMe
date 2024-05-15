@@ -10,12 +10,13 @@ import {SettingsComponent} from "./components/settings/settings.component";
 import {SignupComponent} from "./components/auth_component/signup/signup.component";
 import {ForgetPasswordComponent} from "./components/auth_component/forget-password/forget-password.component";
 import {AboutUsComponent} from "./components/about-us/about-us.component";
+import {authGuard} from "./auth/auth.guard";
 
 export const routes: Routes = [
   //** Commune **//
   {path: '', component: HomeComponent},
-  {path: 'faq', component: FaqComponent},
-  {path: 'shop', component: ShopComponent},
+  {path: 'faq', component: FaqComponent,canActivate: [authGuard] },
+  {path: 'shop', component: ShopComponent,canActivate: [authGuard] },
   {path: 'ourServices', component: OurServiceComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'cart', component: CartComponent},

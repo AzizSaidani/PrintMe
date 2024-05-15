@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, signal} from '@angular/core';
+import {Component, Input, OnDestroy, output, signal} from '@angular/core';
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {ProductCardComponent} from "../product-card/product-card.component";
@@ -21,8 +21,10 @@ import {toSignal} from "../../utils/signals/signal.util";
   styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent implements OnDestroy {
-  @Input({transform:toSignal})
+  @Input({transform: toSignal})
   userName = signal('')
+  logout = output<void>();
+
 
   @Input()
   cartItems: ProductModel[] = [
@@ -51,6 +53,10 @@ export class ToolbarComponent implements OnDestroy {
 
   showCart = false;
   cartItemsTotalPrice = 0
+
+  userLogout(){
+    this.logout.emit()
+  }
 
   total() {
     this.cartItemsTotalPrice = 0

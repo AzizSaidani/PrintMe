@@ -1,9 +1,11 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {NgClass, NgOptimizedImage, NgStyle} from "@angular/common";
 import {NgxDropzoneModule} from "ngx-dropzone";
 import {AddProductService} from "../service/add-product.service";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
+import {Reclamation} from "../../models/reclamation.model";
+import {UserModel} from "../../models/user.model";
 
 @Component({
   selector: 'app-dashboard',
@@ -20,17 +22,39 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export class DashboardComponent implements AfterViewInit {
   category = 'Imperssion numerique';
   newProductPrice = ''
   newProductName = ''
   newProductDescription = ''
-
   fileName = 'Choisir une image'
   selectedElement = 'Products'
   files: File[] = []
 
+  reclamation: Reclamation[] = []
+  userlist: UserModel[] = []
+
+
   constructor(private service: AddProductService) {
+  }
+
+  ngAfterViewInit() {
+    this.loadReclamation()
+    this.loadUsers()
+  }
+
+
+  loadReclamation() {
+    this.service.loadReclamation().subscribe(res => {
+      this.reclamation = res
+    })
+  }
+
+  loadUsers() {
+    this.service.loadUsers().subscribe(res => {
+      this.userlist = res
+      console.log(res)
+    })
   }
 
 
@@ -47,8 +71,12 @@ export class DashboardComponent {
 
     let imagePath: string
 
-    if (!this.files[0]) {
-      alert('no files')
+
+    if (!this.newProductDescription || !this.newProductName || !this.newProductPrice || !this.files[0]) {
+      if (!this.files[0]) {
+        alert('Choisir une image ')
+      }
+      alert('données manquantes')
     }
     const file_data = this.files[this.files.length - 1]
     const data = new FormData()

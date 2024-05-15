@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AuthService} from "../service/auth.service";
 import {FormsModule} from "@angular/forms";
+import {UserModel} from "../../../models/user.model";
 
 @Component({
   selector: 'app-signup',
@@ -27,7 +28,8 @@ export class SignupComponent {
       username: this.firstName + this.lastName,
       email: this.email,
       password: this.password,
-      role: 'client'
+      role: 'client',
+      status:'active'
     };
 
     this.authService.register(userData).subscribe(

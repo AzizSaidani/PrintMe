@@ -65,6 +65,10 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) {
   }
 
+  logout(){
+    this.authService.logout()
+  }
+
 
   ngOnInit() {
     this.router.events.subscribe(event => {
@@ -72,10 +76,15 @@ export class AppComponent implements OnInit {
         console.log(event.url);
       }
     });
-    this.authService.getCurrentUser().subscribe(user => {
-      this.currentUser = user;
-      this.username = user.username
-    });
+    const token = localStorage.getItem(this.authService.TOKEN_KEY);
+    if (token) {
+      this.authService.getCurrentUser().subscribe(user => {
+        this.currentUser = user;
+        this.username = user.username;
+        this.userRole = user.role;
+        console.log(this.currentUser);
+      });
+    }
 
   }
 

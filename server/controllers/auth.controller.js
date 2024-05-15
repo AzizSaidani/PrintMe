@@ -1,14 +1,24 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
+const Reclamation = require("../models/reclamation.model");
 
 // create json web token
 const createToken = (id) => {
   return jwt.sign({id}, 'net ninja secret', {
-    expiresIn: '1h'
+    expiresIn: '10h'
   });
 };
 
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+};
 
 exports.register = async (req, res) => {
   try {
