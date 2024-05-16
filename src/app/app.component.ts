@@ -26,6 +26,7 @@ import {ShopComponent} from "./components/shop/shop.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 import {AuthService} from "./components/auth_component/service/auth.service";
 import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
+import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
 
 
 @Component({
@@ -52,7 +53,7 @@ import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
     LoginComponent,
     SignupComponent,
     ShopComponent,
-    SettingsComponent, DashboardComponent],
+    SettingsComponent, DashboardComponent, LoginAdminComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

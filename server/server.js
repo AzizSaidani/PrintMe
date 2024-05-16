@@ -19,7 +19,7 @@ app.use('/api/product', productRoutes);
 
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://azizsaidani123:azizsaidani123@cluster0.mqepi.mongodb.net/', {
+mongoose.connect('mongodb+srv://oumaimaaloui:oumaimaaloui@cluster0.mqepi.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

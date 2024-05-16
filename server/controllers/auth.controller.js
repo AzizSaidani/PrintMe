@@ -6,7 +6,7 @@ const Reclamation = require("../models/reclamation.model");
 // create json web token
 const createToken = (id) => {
   return jwt.sign({id}, 'net ninja secret', {
-    expiresIn: '10h'
+    expiresIn: '1800s'
   });
 };
 

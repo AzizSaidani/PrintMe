@@ -11,6 +11,7 @@ import {SignupComponent} from "./components/auth_component/signup/signup.compone
 import {ForgetPasswordComponent} from "./components/auth_component/forget-password/forget-password.component";
 import {AboutUsComponent} from "./components/about-us/about-us.component";
 import {authGuard} from "./auth/auth.guard";
+import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
 
 export const routes: Routes = [
   //** Commune **//
@@ -27,6 +28,7 @@ export const routes: Routes = [
 
   //** Admin **//
   {path: 'admin', component: HomeComponent},
+  {path: 'admin/login', component: LoginAdminComponent},
 
 
   //** Client **//
