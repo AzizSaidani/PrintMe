@@ -17,6 +17,11 @@ const reclamationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  status: {
+    type: String,
+    required: true
+  },
+
   createdAt: {
     type: Date,
     default: Date.now

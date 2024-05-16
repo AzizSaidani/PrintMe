@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {NavigationExtras, Router, RouterLink} from "@angular/router";
 import {AuthService} from "../service/auth.service";
 import {FormsModule} from "@angular/forms";
 
@@ -20,19 +20,23 @@ export class LoginComponent {
   email = ''
   password = ''
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
 
   login() {
-    const credentials={
+    const credentials = {
       email: this.email,
-      password:this.password
+      password: this.password
     }
 
     this.authService.login(credentials).subscribe(
       (response) => {
         console.log('Login successful:', response);
+        const navigationExtras: NavigationExtras = {
+          queryParams: {registered: 'true'}
+        };
+        this.router.navigate([''], navigationExtras);
       },
       (error) => {
         console.error('Login failed:', error);

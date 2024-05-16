@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AuthService} from "../service/auth.service";
 import {FormsModule} from "@angular/forms";
+import {NavigationExtras, Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -18,21 +19,28 @@ export class SignupComponent {
   email = '';
   password = '';
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
-
 
   register() {
     const userData = {
       username: this.firstName + this.lastName,
       email: this.email,
       password: this.password,
-      role: 'client'
+      role: 'client',
+      status: 'active'
     };
 
     this.authService.register(userData).subscribe(
       (response) => {
         console.log('Registration successful:', response);
+
+        // Navigate to the login page
+        const navigationExtras: NavigationExtras = {
+          queryParams: {registered: 'true'}
+        };
+        this.router.navigate(['/login'], navigationExtras);
+
       },
       (error) => {
         console.error('Registration failed:', error);

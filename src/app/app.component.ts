@@ -26,8 +26,7 @@ import {ShopComponent} from "./components/shop/shop.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 import {AuthService} from "./components/auth_component/service/auth.service";
 import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
-
-
+import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -52,30 +51,41 @@ import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
     LoginComponent,
     SignupComponent,
     ShopComponent,
-    SettingsComponent, DashboardComponent],
+    SettingsComponent, DashboardComponent, LoginAdminComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   currentUser: any;
   username = ''
-  userRole = 'client'
+  userRole = 'c'
+  currentRoute = ''
+  ;
 
 
   constructor(private router: Router, private authService: AuthService) {
+  }
+
+  logout() {
+    this.authService.logout()
   }
 
 
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        console.log(event.url);
+        this.currentRoute = event.urlAfterRedirects;
       }
     });
-    this.authService.getCurrentUser().subscribe(user => {
-      this.currentUser = user;
-      this.username = user.username
-    });
+    const token = localStorage.getItem(this.authService.TOKEN_KEY);
+    if (token) {
+      this.authService.getCurrentUser().subscribe(user => {
+        this.currentUser = user;
+        this.username = user.username;
+        this.userRole = user.role;
+        console.log(this.currentUser);
+      });
+    }
 
   }
 

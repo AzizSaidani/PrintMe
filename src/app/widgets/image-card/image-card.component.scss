@@ -13,7 +13,7 @@
       height: 100%;
       width: 100%;
       position: absolute;
-      background-color: #fb5f1f;
+      background-color: #df0074;
       display: none;
       opacity: 0.3;
       top: 0;
@@ -45,14 +45,14 @@
           border-radius: 100%;
           display: flex;
           align-items: center;
-          background: #fb5f1f;
+          background: #df0074;
           justify-content: center;
           opacity: 0;
           transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for opacity and transform */
           transform: translateY(10px);
 
           &:hover {
-            background: #0cbc9d;
+            background: #46a9df;
 
           }
         }
