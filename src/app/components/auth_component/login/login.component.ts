@@ -23,6 +23,10 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {
   }
 
+  routing(url: string) {
+    window.location.replace(url)
+  }
+
 
   login() {
     const credentials = {

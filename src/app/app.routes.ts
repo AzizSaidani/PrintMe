@@ -17,7 +17,7 @@ export const routes: Routes = [
   //** Commune **//
   {path: '', component: HomeComponent},
   {path: 'faq', component: FaqComponent, canActivate: [authGuard]},
-  {path: 'shop', component: ShopComponent, canActivate: [authGuard]},
+  {path: 'shop', component: ShopComponent,},
   {path: 'ourServices', component: OurServiceComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'cart', component: CartComponent},
