@@ -18,3 +18,20 @@ export const authGuard: CanActivateFn = (route, state) => {
   // If the user is logged in, allow access to the requested route
   return true;
 };
+export const authGuardConnected: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService); // Inject the AuthService
+  const router = inject(Router); // Inject the Router
+
+  // Check if the user is logged in
+  const isLoggedIn = authService.isLoggedIn();
+
+  if (isLoggedIn) {
+    // If the user is not logged in, redirect to the root path
+    router.navigate(['']);
+    return false;
+  }
+
+  // If the user is logged in, allow access to the requested route
+  return true;
+};
+

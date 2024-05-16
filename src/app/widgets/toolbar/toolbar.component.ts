@@ -20,10 +20,18 @@ import {toSignal} from "../../utils/signals/signal.util";
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
-export class ToolbarComponent implements OnDestroy {
+export class ToolbarComponent  {
   @Input({transform: toSignal})
   userName = signal('')
   logout = output<void>();
+
+
+
+
+  logOut() {
+    this.logout.emit()
+    window.location.reload()
+  }
 
 
   @Input()
@@ -54,9 +62,6 @@ export class ToolbarComponent implements OnDestroy {
   showCart = false;
   cartItemsTotalPrice = 0
 
-  userLogout(){
-    this.logout.emit()
-  }
 
   total() {
     this.cartItemsTotalPrice = 0
@@ -71,24 +76,13 @@ export class ToolbarComponent implements OnDestroy {
     'assets/images/shirt.png',
   ];
   currentImagePath = this.imagePaths[0];
-  currentIndex = 0;
-  interval: any;
 
-  constructor() {
-    this.startImageCycle();
-  }
 
-  startImageCycle() {
-    this.interval = setInterval(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.imagePaths.length;
-      this.currentImagePath = this.imagePaths[this.currentIndex];
-    }, 2000);
-  }
 
 
   categories: CategoryModel[] = [
     {
-      category: 'Signage',
+      category: 'conception graphique',
       product: [
         'Printed Mug',
         'Printed T-shirt',
@@ -98,7 +92,7 @@ export class ToolbarComponent implements OnDestroy {
       ]
     },
     {
-      category: 'Signage',
+      category: 'impression grandformat',
       product: [
         'Printed Mug',
         'Printed T-shirt',
@@ -108,7 +102,7 @@ export class ToolbarComponent implements OnDestroy {
       ]
     },
     {
-      category: 'Signage',
+      category: 'marketing digital',
       product: [
         'Printed Mug',
         'Printed T-shirt',
@@ -118,7 +112,7 @@ export class ToolbarComponent implements OnDestroy {
       ]
     },
     {
-      category: 'Signage',
+      category: 'imperssion numerique',
       product: [
         'Printed Mug',
         'Printed T-shirt',
@@ -131,7 +125,5 @@ export class ToolbarComponent implements OnDestroy {
 
   ]
 
-  ngOnDestroy() {
-    clearInterval(this.interval);
-  }
+
 }

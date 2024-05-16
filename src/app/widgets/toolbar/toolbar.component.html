@@ -22,7 +22,7 @@
               <div class="category">
                 <div class="category-name">
                   <a href="#">
-                    Signage
+                    {{category.category}}
                   </a>
                 </div>
                 <div class="category-items">
@@ -36,7 +36,7 @@
             }
 
             <div class="image-clip">
-              <img [src]="currentImagePath" alt="product">
+              <img src="assets/animation%20.gif" alt="product">
             </div>
 
           </div>
@@ -106,6 +106,14 @@
         <div class="actions" routerLink="client/profile">
           <span class="small-title">{{ userName() }}</span>
         </div>
+        <div class="actions" (click)="logOut()">
+          <img class="cursor" ngSrc="assets/svg/logout.svg" alt="chevron" height="16" width="16">
+          <img class="cursor-selected" ngSrc="assets/svg/logout-pink.svg" alt="chevron" height="16"
+               width="16">
+          <span class="small-title">logout</span>
+
+        </div>
+
       }
 
     </div>
