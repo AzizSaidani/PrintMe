@@ -20,12 +20,15 @@ import {toSignal} from "../../utils/signals/signal.util";
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
-export class ToolbarComponent  {
+export class ToolbarComponent {
   @Input({transform: toSignal})
   userName = signal('')
   logout = output<void>();
 
 
+  routing(url: string) {
+    window.location.replace(url)
+  }
 
 
   logOut() {
@@ -76,8 +79,6 @@ export class ToolbarComponent  {
     'assets/images/shirt.png',
   ];
   currentImagePath = this.imagePaths[0];
-
-
 
 
   categories: CategoryModel[] = [

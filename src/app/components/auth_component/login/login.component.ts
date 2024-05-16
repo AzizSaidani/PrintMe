@@ -36,7 +36,8 @@ export class LoginComponent {
         const navigationExtras: NavigationExtras = {
           queryParams: {registered: 'true'}
         };
-        this.router.navigate([''], navigationExtras);
+        // this.router.navigate([''], navigationExtras)
+        window.location.replace('')
       },
       (error) => {
         console.error('Login failed:', error);
