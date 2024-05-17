@@ -1,111 +1,109 @@
-<div class="container">
-  <div class="intro">
-    <div class="background-image"></div>
-    <div class="background"></div>
-    <div class="content">
-      <h1>Shop</h1>
-    </div>
-  </div>
-
-  <div class="shop-item-container">
-
-    <div class="filter-container">
-      <div class="filter">
-        <span class="title">Availability</span>
-        <hr>
-        <div class="filte-text"><input type="radio" name="availability"> In stock (8)</div>
-        <div class="filte-text"><input type="radio" name="availability"> Out of stock (0)</div>
-     <div class="buttons">
-       <div class="btn">Clear</div>
-       <div class="btn">Apply</div>
-     </div>
-
+@if (!selectedItem) {
+  <div class="container">
+    <div class="intro">
+      <div class="background-image"></div>
+      <div class="background"></div>
+      <div class="content">
+        <h1>Shop</h1>
       </div>
-      <div class="filter">
-        <span class="title">Price</span>
-        <hr>
-        <p class="filte-text"> The highest price is $750.00</p>
-        <div class="filte-text">From<br> <input type="text" placeholder="min price"></div>
-        <div class="filte-text"> TO <br><input type="text" placeholder="max price"></div>
-        <div class="buttons">
-          <div class="btn">Clear</div>
-          <div class="btn">Apply</div>
-        </div>
-      </div>
-
-      <div class="filter">
-        <span class="title">Color</span>
-        <hr>
-        <div class="filte-text"><input type="checkbox" name="Black"> Black (2)</div>
-        <div class="filte-text"><input type="checkbox" name="Blue"> Blue (1)</div>
-        <div class="filte-text"><input type="checkbox" name="Grey"> Grey (2)</div>
-        <div class="filte-text"><input type="checkbox" name="Pink"> Pink (2)</div>
-        <div class="filte-text"><input type="checkbox" name="White"> White (2)</div>
-        <div class="buttons">
-          <div class="btn">Clear</div>
-          <div class="btn">Apply</div>
-        </div>
-      </div>
-
-      <div class="filter">
-        <span class="title">Material</span>
-        <hr>
-        <div class="filte-text"><input type="checkbox" name="Ceramic"> Ceramic (1)</div>
-        <div class="filte-text"><input type="checkbox" name="Cotton"> Cotton (2)</div>
-        <div class="filte-text"><input type="checkbox" name="Leather"> Leather (1)</div>
-        <div class="filte-text"><input type="checkbox" name="Paper"> Paper (1)</div>
-
-        <div class="filte-text"><input type="checkbox" name="Plastic"> Plastic (1)</div>
-
-        <div class="buttons">
-          <div class="btn">Clear</div>
-          <div class="btn">Apply</div>
-        </div>   </div>
-
-
     </div>
 
-    <div class="shop-item">
-      <div class="items">
-        <div class="display">
-          <div class="left-side">
-            <img alt='grid'[ngSrc]="'assets/svg/grid.svg'"
-                 [ngStyle]="{'background-color': display === 'grid' ? '#df0074' : 'transparent'}" height="24" width="24"
-                 (click)="display = 'grid'">
-            <img alt="flex" [ngSrc]="'assets/svg/list.svg'"
-                 [ngStyle]="{'background-color': display === 'flex' ? '#df0074' : 'transparent'}" height="24" width="24"
-                 (click)="display ='flex'">
+    <div class="shop-item-container">
 
-          </div>
-          <div class="right-side">
-            Sort By
-            <select>
-              <option>Featured</option>
-              <option>Best Selling</option>
-              <option>Alphabetically A-Z</option>
-              <option>Alphabetically Z-A</option>
-              <option> Price Low to High</option>
-              <option>Price High to Low</option>
-              <option>Date Old to New</option>
-              <option> Date New to Old</option>
-            </select>
+      <div class="filter-container">
+        <div class="filter">
+          <span class="title">Availability</span>
+          <hr>
+          <div class="filte-text"><input type="radio" name="availability"> In stock (8)</div>
+          <div class="filte-text"><input type="radio" name="availability"> Out of stock (0)</div>
+          <div class="buttons">
+            <div class="btn">Clear</div>
+            <div class="btn">Apply</div>
           </div>
 
         </div>
+        <div class="filter">
+          <span class="title">Price</span>
+          <hr>
+          <p class="filte-text"> The highest price is $750.00</p>
+          <div class="filte-text">From<br> <input type="text" placeholder="min price"></div>
+          <div class="filte-text"> TO <br><input type="text" placeholder="max price"></div>
+          <div class="buttons">
+            <div class="btn">Clear</div>
+            <div class="btn">Apply</div>
+          </div>
+        </div>
 
-        <div class="products">
-          @for (item of product; track item) {
-            @if(item.description === filter){
-            <app-product-card [imageDimentions]="[200,200]" [product]="item"></app-product-card>
+        <div class="filter">
+          <span class="title">Color</span>
+          <hr>
+          <div class="filte-text"><input type="checkbox" name="Black"> Black (2)</div>
+          <div class="filte-text"><input type="checkbox" name="Blue"> Blue (1)</div>
+          <div class="filte-text"><input type="checkbox" name="Grey"> Grey (2)</div>
+          <div class="filte-text"><input type="checkbox" name="Pink"> Pink (2)</div>
+          <div class="filte-text"><input type="checkbox" name="White"> White (2)</div>
+          <div class="buttons">
+            <div class="btn">Clear</div>
+            <div class="btn">Apply</div>
+          </div>
+        </div>
+
+        <div class="filter">
+          <span class="title">Material</span>
+          <hr>
+          <div class="filte-text"><input type="checkbox" name="Ceramic"> Ceramic (1)</div>
+          <div class="filte-text"><input type="checkbox" name="Cotton"> Cotton (2)</div>
+          <div class="filte-text"><input type="checkbox" name="Leather"> Leather (1)</div>
+          <div class="filte-text"><input type="checkbox" name="Paper"> Paper (1)</div>
+
+          <div class="filte-text"><input type="checkbox" name="Plastic"> Plastic (1)</div>
+
+          <div class="buttons">
+            <div class="btn">Clear</div>
+            <div class="btn">Apply</div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="shop-item">
+        <div class="items">
+          <div class="display">
+            <div class="left-side">
+            </div>
+            <div class="right-side">
+              Sort By
+              <select>
+                <option>Featured</option>
+                <option>Best Selling</option>
+                <option>Alphabetically A-Z</option>
+                <option>Alphabetically Z-A</option>
+                <option> Price Low to High</option>
+                <option>Price High to Low</option>
+                <option>Date Old to New</option>
+                <option> Date New to Old</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="products">
+            @for (item of product; track item) {
+              <app-product-card [imageDimentions]="[200,200]" [product]="item" (check)="selectedItem=item"
+
+              ></app-product-card>
             }
-          }
 
+          </div>
         </div>
+
       </div>
 
     </div>
 
+
   </div>
-
-
-</div>
+} @else {
+  <app-product-detailed [item]="selectedItem" (setItemUndefined)="selectedItem=undefined"></app-product-detailed>
+}

@@ -118,6 +118,8 @@
 
     </div>
   </div>
+
+
   <div class="cart-overlay" [ngClass]="{ 'show-cart': showCart }">
     <div class="cart-content">
       <div class="head">
@@ -148,18 +150,24 @@
           </div>
         }
       }
-      <div class="devider"></div>
-      <div class="total">
-        <div>Total</div>
-        <div>${{ cartItemsTotalPrice }}</div>
-      </div>
-      <div class="devider"></div>
+
+
 
       @if (!cartItems) {
+
+
+
         <div class="button">
           <p>Continue Shopping</p>
         </div>
       } @else {
+
+        <div class="devider"></div>
+        <div class="total">
+          <div>Total</div>
+          <div>${{ cartItemsTotalPrice }}</div>
+        </div>
+        <div class="devider"></div>
         <div class="button">
           <p>Proceed to Checkout</p>
         </div>

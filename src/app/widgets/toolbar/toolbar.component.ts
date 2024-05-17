@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, output, signal} from '@angular/core';
+import {Component, Input, output, signal} from '@angular/core';
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {ProductCardComponent} from "../product-card/product-card.component";
@@ -38,29 +38,7 @@ export class ToolbarComponent {
 
 
   @Input()
-  cartItems: ProductModel[] = [
-    {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug',
-      description: 'White / Ceramic'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug',
-      description: 'White / Ceramic'
-
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug',
-      description: 'White / Ceramic'
-
-    }
-  ]
+  cartItems!: ProductModel[]
 
   showCart = false;
   cartItemsTotalPrice = 0

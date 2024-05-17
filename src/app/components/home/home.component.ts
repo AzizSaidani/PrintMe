@@ -22,43 +22,7 @@ import {BestSellingsComponent} from "./best-sellings/best-sellings.component";
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  bestSellingItems: ProductModel[] =
-    [
-
-      {
-        price: '500',
-        imagePath: 'assets/images/cup.png',
-        rating: 3,
-        name: 'Mug'
-      },
-      {
-        price: '500',
-        imagePath: 'assets/images/cup.png',
-        rating: 3,
-        name: 'Mug'
-      }
-      , {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }
-    ]
+  bestSellingItems: ProductModel[] = []
 
 
 }

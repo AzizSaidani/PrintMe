@@ -4,6 +4,7 @@ import {ItemsComponent} from "../home/items/items.component";
 import {ProductCardComponent} from "../../widgets/product-card/product-card.component";
 import {ProductModel} from "../../models/product.model";
 import {ShopService} from "./shop.service";
+import {ProductDetailedComponent} from "../product-detailed/product-detailed.component";
 
 @Component({
   selector: 'app-shop',
@@ -12,14 +13,16 @@ import {ShopService} from "./shop.service";
     NgOptimizedImage,
     ItemsComponent,
     ProductCardComponent,
-    NgStyle
+    NgStyle,
+    ProductDetailedComponent
   ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
 })
 export class ShopComponent implements AfterContentInit {
   product!: ProductModel[]
-  filter='ahmed mo7sen'
+  selectedItem: ProductModel | undefined
+  filter = 'ahmed mo7sen'
 
   ngAfterContentInit() {
     this.loadProduct()
@@ -32,10 +35,9 @@ export class ShopComponent implements AfterContentInit {
   loadProduct() {
     this.service.loadProduct().subscribe(res => {
       this.product = res
+      this.selectedItem = res[0]
     })
   }
-
-  display = 'flex'
 
 
 }

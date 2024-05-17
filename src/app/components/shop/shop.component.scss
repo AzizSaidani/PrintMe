@@ -83,16 +83,6 @@
             padding: 1.5rem 2rem;
             border: 1px solid grey;
 
-            .left-side {
-              display: flex;
-              flex-direction: row;
-              border: 1px solid grey;
-
-              img {
-                padding: 2px;
-                cursor: pointer;
-              }
-            }
 
             .right-side {
               display: flex;
@@ -100,6 +90,11 @@
               justify-content: center;
               align-items: center;
               gap: 1rem;
+              font-size: 18px;
+              select{
+                border-radius: 45px;
+                padding: 0.5rem 1rem;
+              }
 
             }
           }
@@ -110,7 +105,7 @@
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
-            gap: 1rem;
+            gap: 3rem;
             flex-wrap: wrap;
 
 
