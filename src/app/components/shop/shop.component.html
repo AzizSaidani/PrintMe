@@ -94,8 +94,10 @@
         </div>
 
         <div class="products">
-          @for (item of product(); track item) {
+          @for (item of product; track item) {
+            @if(item.description === filter){
             <app-product-card [imageDimentions]="[200,200]" [product]="item"></app-product-card>
+            }
           }
 
         </div>
