@@ -14,26 +14,6 @@ import {ProductModel} from "../../models/product.model";
 export class CartComponent {
   @Input()
   cartItems: ProductModel[] = [
-    {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug',
-      description: 'White / Ceramic'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug',
-      description: 'White / Ceramic'
 
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug',
-      description: 'White / Ceramic'
-
-    }
   ]
 }

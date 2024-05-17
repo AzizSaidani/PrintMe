@@ -59,11 +59,12 @@
       align-items: start;
       justify-content: center;
       padding: 5rem;
+      width: 75vw;
 
       .shop-item {
         display: flex;
         justify-content: center;
-        width: 75%;
+        width: 75vw;
         align-items: center;
         flex-direction: row;
 
@@ -75,23 +76,13 @@
           gap: 2rem;
 
           .display {
-            width: 75%;
+            width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             padding: 1.5rem 2rem;
             border: 1px solid grey;
 
-            .left-side {
-              display: flex;
-              flex-direction: row;
-              border: 1px solid grey;
-
-              img {
-                padding: 2px;
-                cursor: pointer;
-              }
-            }
 
             .right-side {
               display: flex;
@@ -99,17 +90,22 @@
               justify-content: center;
               align-items: center;
               gap: 1rem;
+              font-size: 18px;
+              select{
+                border-radius: 45px;
+                padding: 0.5rem 1rem;
+              }
 
             }
           }
 
           .products {
-            width: 75%;
+            width: 50vw;
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
+            justify-content: flex-start;
+            gap: 3rem;
             flex-wrap: wrap;
 
 

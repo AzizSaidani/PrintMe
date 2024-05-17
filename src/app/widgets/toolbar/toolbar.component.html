@@ -2,12 +2,12 @@
   <div class="cart-overlay-bg" (click)="showCart = false" [ngClass]="{ 'show-bg': showCart }"></div>
   <div class="nav-bar">
     <div class="nav-section">
-      <div class="dropDown" routerLink="''">
+      <div class="dropDown" (click)="routing('')">
         <div class="drop-down-item">
           <span class="small-title hovered">Home</span>
         </div>
       </div>
-      <div class="dropDown" routerLink="shop">
+      <div class="dropDown" (click)="routing('shop')">
         <div class="drop-down-item">
 
           <span class="small-title hovered">Shop </span> <img class="cursor"
@@ -22,7 +22,7 @@
               <div class="category">
                 <div class="category-name">
                   <a href="#">
-                    {{category.category}}
+                    {{ category.category }}
                   </a>
                 </div>
                 <div class="category-items">
@@ -55,20 +55,20 @@
 
           <div class="drop-down-list">
 
-            <div class="link-item" routerLink="about">
+            <div class="link-item" (click)="routing('about')">
               About
             </div>
-            <div class="link-item" routerLink="ourServices">
+            <div class="link-item" (click)="routing('ourServices')">
               Services
             </div>
-            <div class="link-item" routerLink="faq">
+            <div class="link-item" (click)="routing('faq')">
               FAQ
             </div>
 
           </div>
         </div>
       </div>
-      <div class="dropDown" routerLink="contact">
+      <div class="dropDown" (click)="routing('contact')">
         <div class="drop-down-item">
 
           <span class="small-title hovered">Contact </span>
@@ -78,12 +78,12 @@
     </div>
     <div class="logo-section">
       <img class="logo"
-           src="assets/images/logo.png" alt="logo">
+           src="assets/logo.png" alt="logo">
     </div>
     <div class="actions-section">
       @if (!userName()) {
 
-        <div class="actions" routerLink="login">
+        <div class="actions" (click)="routing('login')">
           <img class="cursor" ngSrc="assets/svg/login.svg" alt="chevron" height="16" width="16">
           <img class="cursor-selected" ngSrc="assets/svg/login-orange.svg" alt="chevron" height="16"
                width="16">
@@ -103,7 +103,7 @@
         <span class="small-title">Your Cart</span>
       </div>
       @if (userName()) {
-        <div class="actions" routerLink="client/profile">
+        <div class="actions" (click)="routing('client/profile')">
           <span class="small-title">{{ userName() }}</span>
         </div>
         <div class="actions" (click)="logOut()">
@@ -118,6 +118,8 @@
 
     </div>
   </div>
+
+
   <div class="cart-overlay" [ngClass]="{ 'show-cart': showCart }">
     <div class="cart-content">
       <div class="head">
@@ -148,22 +150,28 @@
           </div>
         }
       }
-      <div class="devider"></div>
-      <div class="total">
-        <div>Total</div>
-        <div>${{ cartItemsTotalPrice }}</div>
-      </div>
-      <div class="devider"></div>
+
+
 
       @if (!cartItems) {
+
+
+
         <div class="button">
           <p>Continue Shopping</p>
         </div>
       } @else {
+
+        <div class="devider"></div>
+        <div class="total">
+          <div>Total</div>
+          <div>${{ cartItemsTotalPrice }}</div>
+        </div>
+        <div class="devider"></div>
         <div class="button">
           <p>Proceed to Checkout</p>
         </div>
-        <div class="button" routerLink="cart" (click)="showCart = false">
+        <div class="button" (click)="showCart = false; routing('cart')">
           <p>View Cart</p>
         </div>
 

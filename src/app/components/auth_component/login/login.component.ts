@@ -23,6 +23,10 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {
   }
 
+  routing(url: string) {
+    window.location.replace(url)
+  }
+
 
   login() {
     const credentials = {
@@ -36,7 +40,8 @@ export class LoginComponent {
         const navigationExtras: NavigationExtras = {
           queryParams: {registered: 'true'}
         };
-        this.router.navigate([''], navigationExtras);
+        // this.router.navigate([''], navigationExtras)
+        window.location.replace('')
       },
       (error) => {
         console.error('Login failed:', error);

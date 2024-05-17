@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, output, signal} from '@angular/core';
+import {Component, Input, output, signal} from '@angular/core';
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {ProductCardComponent} from "../product-card/product-card.component";
@@ -20,12 +20,15 @@ import {toSignal} from "../../utils/signals/signal.util";
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
-export class ToolbarComponent  {
+export class ToolbarComponent {
   @Input({transform: toSignal})
   userName = signal('')
   logout = output<void>();
 
 
+  routing(url: string) {
+    window.location.replace(url)
+  }
 
 
   logOut() {
@@ -35,29 +38,7 @@ export class ToolbarComponent  {
 
 
   @Input()
-  cartItems: ProductModel[] = [
-    {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug',
-      description: 'White / Ceramic'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug',
-      description: 'White / Ceramic'
-
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug',
-      description: 'White / Ceramic'
-
-    }
-  ]
+  cartItems!: ProductModel[]
 
   showCart = false;
   cartItemsTotalPrice = 0
@@ -76,8 +57,6 @@ export class ToolbarComponent  {
     'assets/images/shirt.png',
   ];
   currentImagePath = this.imagePaths[0];
-
-
 
 
   categories: CategoryModel[] = [

@@ -3,7 +3,6 @@ import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {CardComponent} from "./widgets/card/card.component";
 import {ImageCardComponent} from "./widgets/image-card/image-card.component";
 import {ProductCardComponent} from "./widgets/product-card/product-card.component";
-import {ProductModel} from "./models/product.model";
 import {ToolbarComponent} from "./widgets/toolbar/toolbar.component";
 import {FooterComponent} from "./widgets/footer/footer.component";
 import {ServiceSectionComponent} from "./components/home/service-section/service-section.component";
@@ -27,6 +26,7 @@ import {SettingsComponent} from "./components/settings/settings.component";
 import {AuthService} from "./components/auth_component/service/auth.service";
 import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
 import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -58,7 +58,7 @@ import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.c
 export class AppComponent implements OnInit {
   currentUser: any;
   username = ''
-  userRole = 'c'
+  userRole!:string
   currentRoute = ''
   ;
 
@@ -89,49 +89,6 @@ export class AppComponent implements OnInit {
 
   }
 
-
-  product: ProductModel = {
-    price: '500',
-    imagePath: 'assets/images/cup.png',
-    rating: 3,
-    name: 'Mug'
-  }
-  bestSellingItems: ProductModel[] = [
-
-    {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    },
-    {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }
-    , {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }, {
-      price: '500',
-      imagePath: 'assets/images/cup.png',
-      rating: 3,
-      name: 'Mug'
-    }
-  ]
   aboutUsProducts: HoveredPicutreModel[] = [
 
     {

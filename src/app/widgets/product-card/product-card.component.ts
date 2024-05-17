@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, signal, Signal} from '@angular/core';
+import {Component, Input, OnInit, output, signal, Signal} from '@angular/core';
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {toSignal} from "../../utils/signals/signal.util";
 import {ProductModel} from "../../models/product.model";
@@ -20,6 +20,8 @@ export class ProductCardComponent implements OnInit {
   @Input({transform: toSignal})
   product!: Signal<ProductModel>
   stars: string[] = [];
+  check = output<void>();
+
 
   ngOnInit() {
     this.renderRating();

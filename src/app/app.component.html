@@ -23,12 +23,13 @@
     <!--        <app-shop [product]="bestSellingItems"></app-shop>-->
     <!--  <app-settings [wishes]="bestSellingItems"></app-settings>-->
     <router-outlet></router-outlet>
+    <!--  <app-login-admin></app-login-admin>-->
+
   </div>
   @if (currentRoute != '/admin/login') {
 
     <app-footer></app-footer>
   }
 } @else {
-  <!--  <app-dashboard></app-dashboard>-->
-  <app-login-admin></app-login-admin>
+    <app-dashboard></app-dashboard>
 }

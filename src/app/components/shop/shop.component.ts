@@ -1,9 +1,10 @@
-import {Component, Input, Signal} from '@angular/core';
+import {AfterContentInit, Component} from '@angular/core';
 import {NgOptimizedImage, NgStyle} from "@angular/common";
 import {ItemsComponent} from "../home/items/items.component";
 import {ProductCardComponent} from "../../widgets/product-card/product-card.component";
 import {ProductModel} from "../../models/product.model";
-import {toSignal} from "../../utils/signals/signal.util";
+import {ShopService} from "./shop.service";
+import {ProductDetailedComponent} from "../product-detailed/product-detailed.component";
 
 @Component({
   selector: 'app-shop',
@@ -12,16 +13,31 @@ import {toSignal} from "../../utils/signals/signal.util";
     NgOptimizedImage,
     ItemsComponent,
     ProductCardComponent,
-    NgStyle
+    NgStyle,
+    ProductDetailedComponent
   ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
 })
-export class ShopComponent {
-  @Input({transform: toSignal})
-  product!: Signal<ProductModel[]>
+export class ShopComponent implements AfterContentInit {
+  product!: ProductModel[]
+  selectedItem: ProductModel | undefined
+  filter = 'ahmed mo7sen'
 
-  display= 'flex'
+  ngAfterContentInit() {
+    this.loadProduct()
+
+  }
+
+  constructor(private service: ShopService) {
+  }
+
+  loadProduct() {
+    this.service.loadProduct().subscribe(res => {
+      this.product = res
+      this.selectedItem = res[0]
+    })
+  }
 
 
 }

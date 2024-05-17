@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <app-image-card [imageDimentions]="imageDimentions()" [imagePath]=product().imagePath>
+    <app-image-card (check)="check.emit()"  [imageDimentions]="imageDimentions()" [imagePath]=product().imagePath>
     </app-image-card>
   </div>
 
