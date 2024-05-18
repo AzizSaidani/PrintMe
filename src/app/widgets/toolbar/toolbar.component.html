@@ -7,21 +7,25 @@
           <span class="small-title hovered">Home</span>
         </div>
       </div>
-      <div class="dropDown" (click)="routing('shop')">
+      <div class="dropDown">
         <div class="drop-down-item">
 
-          <span class="small-title hovered">Shop </span> <img class="cursor"
-                                                              ngSrc="assets/svg/chevron-down.svg"
-                                                              height="12"
-                                                              width="12" alt="chevron">
-          <img class="cursor-selected " ngSrc="assets/svg/chevron-down-orange.svg" alt="chevron" height="12"
+
+          <span class="small-title hovered" (click)="saveCategoryToLocalStorage('shop')">Shop </span>
+          <img
+          class="cursor"
+          ngSrc="assets/svg/chevron-down.svg"
+          height="12"
+          (click)="saveCategoryToLocalStorage('shop')"
+          width="12" alt="chevron">
+          <img class="cursor-selected " (click)="saveCategoryToLocalStorage('shop')" ngSrc="assets/svg/chevron-down-orange.svg" alt="chevron" height="12"
                width="12">
 
           <div class="product-list">
             @for (category of categories; track category) {
               <div class="category">
                 <div class="category-name">
-                  <a href="#">
+                  <a (click)="saveCategoryToLocalStorage(category.category)">
                     {{ category.category }}
                   </a>
                 </div>
@@ -152,9 +156,7 @@
       }
 
 
-
       @if (!cartItems) {
-
 
 
         <div class="button">

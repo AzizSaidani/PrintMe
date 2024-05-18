@@ -1,5 +1,5 @@
-import {Component, Input, output, signal} from '@angular/core';
-import {NgClass, NgOptimizedImage} from "@angular/common";
+import {Component, Inject, Input, output, signal} from '@angular/core';
+import {DOCUMENT, NgClass, NgOptimizedImage} from "@angular/common";
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {ProductCardComponent} from "../product-card/product-card.component";
 import {CategoryModel} from "../../models/category.model";
@@ -25,24 +25,28 @@ export class ToolbarComponent {
   userName = signal('')
   logout = output<void>();
 
-
   routing(url: string) {
     window.location.replace(url)
   }
 
-
   logOut() {
     this.logout.emit()
-    window.location.reload()
+    window.location.replace('login')
   }
 
+  constructor(@Inject(DOCUMENT) private document: Document) {
+  }
+
+  saveCategoryToLocalStorage(item: string) {
+    const category = JSON.stringify(item);
+    this.document.defaultView?.localStorage.setItem('category', category);
+    window.location.replace('shop')
+  }
 
   @Input()
   cartItems!: ProductModel[]
-
   showCart = false;
   cartItemsTotalPrice = 0
-
 
   total() {
     this.cartItemsTotalPrice = 0
@@ -52,56 +56,37 @@ export class ToolbarComponent {
 
   }
 
-  imagePaths = [
-    'assets/images/cup.png',
-    'assets/images/shirt.png',
-  ];
-  currentImagePath = this.imagePaths[0];
-
 
   categories: CategoryModel[] = [
     {
-      category: 'conception graphique',
+      category: 'Impression Grandformat',
       product: [
-        'Printed Mug',
-        'Printed T-shirt',
-        'Banners',
-        'Reception Cards',
-        'Brochures',
+        'Vinyle',
+        'Bache',
+        'Affiche',
+        'Callendrier',
+        'X-Banners',
       ]
     },
     {
-      category: 'impression grandformat',
+      category: 'Conception Graphique',
       product: [
-        'Printed Mug',
-        'Printed T-shirt',
-        'Banners',
-        'Reception Cards',
-        'Brochures',
+        'Création de logo',
+        'Carte visite',
+        'Papier-entête',
+        'Identité graphique',
+        'Conception catalogue',
       ]
     },
     {
-      category: 'marketing digital',
+      category: 'Marketing Digital',
       product: [
-        'Printed Mug',
-        'Printed T-shirt',
-        'Banners',
-        'Reception Cards',
-        'Brochures',
+        'Community management',
+        'Sponsoring',
+        'Création sites E-commerce',
+        'Vitrine',
       ]
     },
-    {
-      category: 'imperssion numerique',
-      product: [
-        'Printed Mug',
-        'Printed T-shirt',
-        'Banners',
-        'Reception Cards',
-        'Brochures',
-      ]
-    }
-
-
   ]
 
 

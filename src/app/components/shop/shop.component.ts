@@ -1,5 +1,5 @@
-import {AfterContentInit, Component} from '@angular/core';
-import {NgOptimizedImage, NgStyle} from "@angular/common";
+import {AfterContentInit, Component, Inject} from '@angular/core';
+import {DOCUMENT, NgOptimizedImage, NgStyle} from "@angular/common";
 import {ItemsComponent} from "../home/items/items.component";
 import {ProductCardComponent} from "../../widgets/product-card/product-card.component";
 import {ProductModel} from "../../models/product.model";
@@ -22,20 +22,39 @@ import {ProductDetailedComponent} from "../product-detailed/product-detailed.com
 export class ShopComponent implements AfterContentInit {
   product!: ProductModel[]
   selectedItem: ProductModel | undefined
+  category = 'shops'
   filter = 'ahmed mo7sen'
+
+
+  comparing(path: string, category: string) {
+    return path.toLowerCase() === category.toLowerCase();
+  }
+
 
   ngAfterContentInit() {
     this.loadProduct()
-
   }
 
-  constructor(private service: ShopService) {
+  constructor(private service: ShopService, @Inject(DOCUMENT) private document: Document) {
+    this.loadCategoryFromLocalStorage()
+  }
+
+  saveSelectedItemToLocalStorage(item: ProductModel) {
+    const selectedItem = JSON.stringify(item);
+    this.document.defaultView?.localStorage.setItem('selectedItem', selectedItem);
+    window.location.replace('details')
+  }
+
+  loadCategoryFromLocalStorage() {
+    const category = this.document.defaultView?.localStorage.getItem('category');
+    if (category) {
+      this.category = JSON.parse(category);
+    }
   }
 
   loadProduct() {
     this.service.loadProduct().subscribe(res => {
       this.product = res
-      this.selectedItem = res[0]
     })
   }
 

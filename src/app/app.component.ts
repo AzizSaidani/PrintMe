@@ -58,7 +58,7 @@ import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.c
 export class AppComponent implements OnInit {
   currentUser: any;
   username = ''
-  userRole!:string
+  userRole!: string
   currentRoute = ''
   ;
 
@@ -117,53 +117,6 @@ export class AppComponent implements OnInit {
     },
 
 
-  ]
-  faqs: FAQModel[] = [
-    {
-      question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',
-      response: 'Eget dolor morbi non arcu risus quis varius quam. Arcu non sodales neque sodales ut etiam sit. Ultrices dui\n' +
-        '        sapien eget mi. Consectetur adipiscing elit ut aliquam purus sit. Fermentum leo vel orci porta non pulvinar.\n' +
-        '        Morbi tristique senectus et netus et malesuada fames ac. Venenatis lectus magna fringilla urna porttitor\n' +
-        '        rhoncus. In cursus turpis massa tincidunt dui. Eget nunc scelerisque viverra mauris in aliquam sem.\n' +
-        ' ',
-      open: false
-    },
-    {
-      question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',
-      response: 'Eget dolor morbi non arcu risus quis varius quam. Arcu non sodales neque sodales ut etiam sit. Ultrices dui\n' +
-        '        sapien eget mi. Consectetur adipiscing elit ut aliquam purus sit. Fermentum leo vel orci porta non pulvinar.\n' +
-        '        Morbi tristique senectus et netus et malesuada fames ac. Venenatis lectus magna fringilla urna porttitor\n' +
-        '        rhoncus. In cursus turpis massa tincidunt dui. Eget nunc scelerisque viverra mauris in aliquam sem.\n' +
-        ' ',
-      open: false
-    },
-    {
-      question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',
-      response: 'Eget dolor morbi non arcu risus quis varius quam. Arcu non sodales neque sodales ut etiam sit. Ultrices dui\n' +
-        '        sapien eget mi. Consectetur adipiscing elit ut aliquam purus sit. Fermentum leo vel orci porta non pulvinar.\n' +
-        '        Morbi tristique senectus et netus et malesuada fames ac. Venenatis lectus magna fringilla urna porttitor\n' +
-        '        rhoncus. In cursus turpis massa tincidunt dui. Eget nunc scelerisque viverra mauris in aliquam sem.\n' +
-        ' ',
-      open: false
-    },
-    {
-      question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',
-      response: 'Eget dolor morbi non arcu risus quis varius quam. Arcu non sodales neque sodales ut etiam sit. Ultrices dui\n' +
-        '        sapien eget mi. Consectetur adipiscing elit ut aliquam purus sit. Fermentum leo vel orci porta non pulvinar.\n' +
-        '        Morbi tristique senectus et netus et malesuada fames ac. Venenatis lectus magna fringilla urna porttitor\n' +
-        '        rhoncus. In cursus turpis massa tincidunt dui. Eget nunc scelerisque viverra mauris in aliquam sem.\n' +
-        ' ',
-      open: false
-    },
-    {
-      question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',
-      response: 'Eget dolor morbi non arcu risus quis varius quam. Arcu non sodales neque sodales ut etiam sit. Ultrices dui\n' +
-        '        sapien eget mi. Consectetur adipiscing elit ut aliquam purus sit. Fermentum leo vel orci porta non pulvinar.\n' +
-        '        Morbi tristique senectus et netus et malesuada fames ac. Venenatis lectus magna fringilla urna porttitor\n' +
-        '        rhoncus. In cursus turpis massa tincidunt dui. Eget nunc scelerisque viverra mauris in aliquam sem.\n' +
-        ' ',
-      open: false
-    },
   ]
 
 }
