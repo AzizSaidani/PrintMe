@@ -4,30 +4,25 @@
     <div class="background"></div>
     <div class="content">
       <h1>CONTACT</h1>
-      <h4>Home / Contact</h4>
+      <h4>Accueil / Contact</h4>
     </div>
-
-
   </div>
-
+  <div class="map">
+    <a href="https://www.google.com/maps/place/36%C2%B046'19.6%22N+10%C2%B014'05.2%22E/@36.772122,10.234767,17z/data=!3m1!4b1!4m4!3m3!8m2!3d36.772122!4d10.234767?entry=ttu">
+      <img ngSrc="assets/Capture%20d'écran%202024-05-18%20201749.png" height="660" width="950">
+    </a>
+  </div>
   <div class="contact">
     <div class="card">
       <div class="icon">
         <img alt="phone" ngSrc="assets/svg/phone-white.svg" height="18" width="18">
-
       </div>
-      <div class="f-24">Phone</div>
+      <div class="f-24">Téléphone</div>
       <div class="description"> <span class="b">
-      Toll-Free:
+      Numéro:
       </span>
-        0000-123-456789
+        +216 95 302 801
       </div>
-      <div class="description"> <span class="b">
-      Fax:
-      </span>
-        0000-123-456789
-      </div>
-
 
     </div>
     <div class="card">
@@ -36,43 +31,42 @@
       </div>
       <div class="f-24">Email</div>
       <div class="description">
-        info&#64;example.com
+        Contact&#64;dobink.com
       </div>
-      <div class="description">
-        support&#64;example.com
-      </div>
-
 
     </div>
     <div class="card">
       <div class="icon">
         <img alt="location" ngSrc="assets/svg/location-white.svg" height="18" width="18">
       </div>
-      <div class="f-24">Address</div>
+      <div class="f-24">Adresse</div>
       <div class="description">
-        No: 58 A, East Madison Street,
+        7 Rue Habib Bou Guatfa Megrine
       </div>
-      <div class="description">
-        Baltimore, MD, USA 4508
-      </div>
-
 
     </div>
   </div>
-
   <div class="contact-form">
-    <h2> Contact Form</h2>
+    <h2>Formulaire de Contact</h2>
 
-    <input class="item" type="text" [(ngModel)]="name" placeholder="Name">
+    <input class="item" type="text" [(ngModel)]="name" placeholder="Nom">
+    @if (name.length <= 0 && clicked) {
+      <div class="alert"><span> Nom requis</span></div>
+    }
     <input class="item" type="text" [(ngModel)]="email" placeholder="Email">
-    <input class="item" type="text" [(ngModel)]="phone" placeholder="Phone">
+    @if (email.length <= 0 && clicked) {
+      <div class="alert"><span> Email requis</span></div>
+    }
+    <input class="item" type="text" [(ngModel)]="phone" placeholder="Téléphone">
+    @if (phone.length <= 0 && clicked) {
+      <div class="alert"><span> Téléphone requis</span></div>
+    }
     <textarea class="message" [(ngModel)]="description"></textarea>
-
+    @if (description.length <= 0 && clicked) {
+      <div class="alert"><span> Description requise</span></div>
+    }
     <div class="button" (click)="contact()">
-      Send
+      Envoyer
     </div>
-
-
   </div>
-
 </div>
