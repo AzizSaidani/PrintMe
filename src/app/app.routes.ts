@@ -18,15 +18,15 @@ export const routes: Routes = [
   //** Commune **//
   {path: '', component: HomeComponent},
   {path: 'faq', component: FaqComponent, canActivate: [authGuard]},
-  {path: 'shop', component: ShopComponent,},
-  {path: 'details', component: ProductDetailedComponent,},
-  {path: 'ourServices', component: OurServiceComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'cart', component: CartComponent},
+  {path: 'shop', component: ShopComponent,  canActivate: [authGuard]},
+  {path: 'details', component: ProductDetailedComponent,  canActivate: [authGuard]},
+  {path: 'ourServices', component: OurServiceComponent,  canActivate: [authGuard]},
+  {path: 'contact', component: ContactComponent, canActivate: [authGuard]},
+  {path: 'cart', component: CartComponent, canActivate: [authGuard]},
   {path: 'login', component: LoginComponent, canActivate: [authGuardConnected]},
   {path: 'signup', component: SignupComponent, canActivate: [authGuardConnected]},
   {path: 'forgetPassword', component: ForgetPasswordComponent, canActivate: [authGuardConnected]},
-  {path: 'about', component: AboutUsComponent},
+  {path: 'about', component: AboutUsComponent, canActivate: [authGuard]},
 
   //** Admin **//
   {path: 'admin', component: HomeComponent},

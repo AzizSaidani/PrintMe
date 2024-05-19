@@ -22,5 +22,6 @@ export class ImageCardComponent {
 
   check = output<void>();
   addTocart = output<void>();
+  addToWishes = output<void>();
 
 }

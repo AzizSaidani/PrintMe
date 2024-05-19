@@ -96,6 +96,7 @@
               <app-product-card [imageDimentions]="[200,200]" [product]="item"
                                 (check)="saveSelectedItemToLocalStorage(item)"
                                 (addTocart)="addtoCartInLocalStorage(item,1)"
+                                (addToWishes)="addtoWishesInLocalStorage(item)"
 
               ></app-product-card>
             }

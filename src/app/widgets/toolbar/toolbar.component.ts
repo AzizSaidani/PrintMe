@@ -81,7 +81,7 @@ export class ToolbarComponent implements AfterViewInit {
 
 
   loadCartItems() {
-    const selectedItemString = this.document.defaultView?.localStorage.getItem('cart');
+    const selectedItemString = localStorage.getItem('cart');
     if (selectedItemString) {
       this.cart = JSON.parse(selectedItemString);
     }

@@ -22,6 +22,7 @@ export class ProductCardComponent implements OnInit {
   stars: string[] = [];
   check = output<void>();
   addTocart = output<void>();
+  addToWishes = output<void>();
 
 
   ngOnInit() {

@@ -83,6 +83,24 @@ export class ShopComponent implements AfterContentInit {
     this.document.defaultView?.localStorage.setItem('cart', updatedCartString);
   }
 
+  addtoWishesInLocalStorage(product: ProductModel) {
+    let cart: ProductModel[] = [];
+    const cartString = this.document.defaultView?.localStorage.getItem('wishes');
+    if (cartString) {
+      cart = JSON.parse(cartString);
+    }
+
+    const existingItemIndex = cart.findIndex(cartItem => cartItem._id === product._id);
+    if (existingItemIndex !== -1) {
+
+    } else {
+      cart.push(product);
+    }
+
+    // Store the updated cart in localStorage
+    const updatedCartString = JSON.stringify(cart);
+    this.document.defaultView?.localStorage.setItem('wishes', updatedCartString);
+  }
 
   loadProduct() {
     this.service.loadProduct().subscribe(res => {
