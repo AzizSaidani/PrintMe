@@ -11,6 +11,8 @@ const productRoutes = require('./routes/product.routes');
 
 
 // Middleware
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
