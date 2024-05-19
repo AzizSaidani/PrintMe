@@ -21,6 +21,7 @@ export class ProductCardComponent implements OnInit {
   product!: Signal<ProductModel>
   stars: string[] = [];
   check = output<void>();
+  addTocart = output<void>();
 
 
   ngOnInit() {

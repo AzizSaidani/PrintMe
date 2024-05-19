@@ -88,7 +88,7 @@
         justify-content: space-between;
 
 
-        .comment{
+        .comment {
           display: flex;
           justify-content: center;
           flex-direction: column;
@@ -112,6 +112,7 @@
 
             }
           }
+
           .btn {
             width: 33%;
             background: #cb0c9f;
@@ -133,7 +134,7 @@
           width: 30vw;
           height: 20vh;
           padding: 20px;
-          background:rgb(118,118,118,0.1);
+          background: rgb(118, 118, 118, 0.1);
           border-radius: 20px;
         }
 
@@ -285,6 +286,30 @@
 
     }
 
+    textarea {
+      width: 30vw;
+      height: 20vh;
+      border-radius: 20px;
+      padding: 20px;
+      transition: border 0.4s;
+      overflow: auto;
+      resize: none;
+
+
+      &:focus {
+        outline: none;
+        transition: border 0.4s;
+        border: 1px solid #df0074;
+
+      }
+    }
+
+    h3 {
+      &:hover {
+        color: #dd1175;
+        cursor: pointer;
+      }
+    }
 
   }
 }

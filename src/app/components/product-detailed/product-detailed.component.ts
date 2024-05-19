@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, Inject, output} from '@angular/core';
+import {AfterContentInit, Component, Inject} from '@angular/core';
 import {ProductCardComponent} from "../../widgets/product-card/product-card.component";
 import {ProductModel} from "../../models/product.model";
 import {DOCUMENT, NgOptimizedImage} from "@angular/common";
@@ -6,6 +6,7 @@ import {NgxDropzoneModule} from "ngx-dropzone";
 import {FormsModule} from "@angular/forms";
 import {CommentModel} from "../../models/comment.model";
 import {ShopService} from "../shop/shop.service";
+import {CartModel} from "../../models/cart.model";
 
 @Component({
   selector: 'app-product-detailed',
@@ -34,6 +35,39 @@ export class ProductDetailedComponent implements AfterContentInit {
     this.loadSelectedItemFromLocalStorage();
   }
 
+  addtoCartInLocalStorage(product: ProductModel, amount?: number) {
+    let cart: CartModel[] = [];
+    const cartString = this.document.defaultView?.localStorage.getItem('cart');
+    if (cartString) {
+      cart = JSON.parse(cartString);
+    }
+
+    const existingItemIndex = cart.findIndex(cartItem => cartItem.product._id === product._id);
+    if (existingItemIndex !== -1) {
+      if (amount === 1) {
+        cart[existingItemIndex].amount += amount;
+        this.amount += amount
+      } else if (amount === -1 && cart[existingItemIndex].amount > 1) {
+        cart[existingItemIndex].amount += amount;
+        if (this.amount > 1) {
+          this.amount += amount
+
+        }
+
+      }
+    } else {
+      const newCartItem: CartModel = {
+        product: product,
+        amount: 1
+      };
+      cart.push(newCartItem);
+    }
+
+    // Store the updated cart in localStorage
+    const updatedCartString = JSON.stringify(cart);
+    this.document.defaultView?.localStorage.setItem('cart', updatedCartString);
+  }
+
   loadSelectedItemFromLocalStorage() {
     const selectedItemString = this.document.defaultView?.localStorage.getItem('selectedItem');
     if (selectedItemString) {
@@ -57,15 +91,6 @@ export class ProductDetailedComponent implements AfterContentInit {
     );
   }
 
-  plus() {
-    this.amount += 1
-  }
-
-  minus() {
-    if (this.amount > 1) {
-      this.amount -= 1
-    }
-  }
 
   addComment() {
     const comment: CommentModel = {
@@ -82,7 +107,6 @@ export class ProductDetailedComponent implements AfterContentInit {
       }
     )
   }
-
 
   onSelect(event: any) {
     this.files = [];

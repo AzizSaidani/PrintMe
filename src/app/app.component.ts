@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
   username = ''
   userRole!: string
   currentRoute = ''
-  ;
+
 
 
   constructor(private router: Router, private authService: AuthService) {
@@ -89,34 +89,5 @@ export class AppComponent implements OnInit {
 
   }
 
-  aboutUsProducts: HoveredPicutreModel[] = [
-
-    {
-      text: 'PILLOW PRINTING',
-      imagePath: 'https://res.cloudinary.com/dwkp2dnfs/image/upload/hvnfuppizowvtnyhoiwo.jpg'
-    },
-    {
-      text: 'T-SHIRT PRINTING',
-      imagePath: 'https://res.cloudinary.com/dwkp2dnfs/image/upload/s87kkvhm9ouryrpaljnj.jpg'
-    },
-    {
-      text: 'DIGITAL PRINTING',
-      imagePath: 'https://res.cloudinary.com/dwkp2dnfs/image/upload/hwimotbgvw9u3rvcpfgx.jpg'
-    },
-    {
-      text: 'SURFACE PRINTING',
-      imagePath: 'https://res.cloudinary.com/dwkp2dnfs/image/upload/z0cmbg6nmlyezlv5cyfp.jpg'
-    },
-    {
-      text: 'SCREEN PRINTING',
-      imagePath: 'https://res.cloudinary.com/dwkp2dnfs/image/upload/t1wbw7ihb8b96c14dlab.jpg'
-    },
-    {
-      text: 'FLEXOGRAPHIC PRINTING',
-      imagePath: 'https://printme-theme.myshopify.com/cdn/shop/files/abo01.jpg?v=1641808073'
-    },
-
-
-  ]
 
 }

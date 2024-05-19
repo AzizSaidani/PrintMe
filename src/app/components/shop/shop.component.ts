@@ -5,6 +5,7 @@ import {ProductCardComponent} from "../../widgets/product-card/product-card.comp
 import {ProductModel} from "../../models/product.model";
 import {ShopService} from "./shop.service";
 import {ProductDetailedComponent} from "../product-detailed/product-detailed.component";
+import {CartModel} from "../../models/cart.model";
 
 @Component({
   selector: 'app-shop',
@@ -51,6 +52,37 @@ export class ShopComponent implements AfterContentInit {
       this.category = JSON.parse(category);
     }
   }
+
+
+  addtoCartInLocalStorage(product: ProductModel, amount?: number) {
+    let cart: CartModel[] = [];
+    const cartString = this.document.defaultView?.localStorage.getItem('cart');
+    if (cartString) {
+      cart = JSON.parse(cartString);
+    }
+
+    const existingItemIndex = cart.findIndex(cartItem => cartItem.product._id === product._id);
+    if (existingItemIndex !== -1) {
+      if (amount === 1) {
+        cart[existingItemIndex].amount += amount;
+      } else if (amount === -1 && cart[existingItemIndex].amount > 1) {
+        cart[existingItemIndex].amount += amount;
+
+
+      }
+    } else {
+      const newCartItem: CartModel = {
+        product: product,
+        amount:1
+      };
+      cart.push(newCartItem);
+    }
+
+    // Store the updated cart in localStorage
+    const updatedCartString = JSON.stringify(cart);
+    this.document.defaultView?.localStorage.setItem('cart', updatedCartString);
+  }
+
 
   loadProduct() {
     this.service.loadProduct().subscribe(res => {
