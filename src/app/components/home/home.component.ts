@@ -6,6 +6,7 @@ import {ServiceSectionComponent} from "./service-section/service-section.compone
 import {WhyUsComponent} from "./why-us/why-us.component";
 import {RecentWorksComponent} from "./recent-works/recent-works.component";
 import {BestSellingsComponent} from "./best-sellings/best-sellings.component";
+import {CompanySpecsComponent} from "./company-specs/company-specs.component";
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,8 @@ import {BestSellingsComponent} from "./best-sellings/best-sellings.component";
     ServiceSectionComponent,
     BestSellingsComponent,
     WhyUsComponent,
-    RecentWorksComponent
+    RecentWorksComponent,
+    CompanySpecsComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

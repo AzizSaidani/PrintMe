@@ -20,6 +20,7 @@ export class ContactComponent {
   email = '';
   phone = '';
   description = '';
+  clicked = false
 
   constructor(private service: ContactService) {
   }
@@ -33,15 +34,22 @@ export class ContactComponent {
       status: 'non lu'
     }
 
+    this.clicked = true
 
-    this.service.contact(contactData).subscribe(
-      () => {
-        console.log('success')
-      },
-      error => {
-        console.log(error)
-      }
-    )
 
+    if (this.name.length > 0 && this.email.length > 0 && this.phone.length > 0 && this.description.length > 0) {
+
+
+      this.service.contact(contactData).subscribe(
+        () => {
+          console.log('success')
+        },
+        error => {
+          console.log(error)
+        }
+      )
+      window.location.replace('')
+
+    }
   }
 }

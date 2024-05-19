@@ -4,24 +4,21 @@
     <div class="nav-section">
       <div class="dropDown" (click)="routing('')">
         <div class="drop-down-item">
-          <span class="small-title hovered">Home</span>
+          <span class="small-title hovered">Accueil</span>
         </div>
       </div>
-      <div class="dropDown" (click)="routing('shop')">
+      <div class="dropDown">
         <div class="drop-down-item">
-
-          <span class="small-title hovered">Shop </span> <img class="cursor"
-                                                              ngSrc="assets/svg/chevron-down.svg"
-                                                              height="12"
-                                                              width="12" alt="chevron">
-          <img class="cursor-selected " ngSrc="assets/svg/chevron-down-orange.svg" alt="chevron" height="12"
-               width="12">
-
+          <span class="small-title hovered" (click)="saveCategoryToLocalStorage('shop')">Boutique </span>
+          <img class="cursor" ngSrc="assets/svg/chevron-down.svg" height="12"
+               (click)="saveCategoryToLocalStorage('shop')" width="12" alt="chevron">
+          <img class="cursor-selected " (click)="saveCategoryToLocalStorage('shop')"
+               ngSrc="assets/svg/chevron-down-orange.svg" alt="chevron" height="12" width="12">
           <div class="product-list">
             @for (category of categories; track category) {
               <div class="category">
                 <div class="category-name">
-                  <a href="#">
+                  <a (click)="saveCategoryToLocalStorage(category.category)">
                     {{ category.category }}
                   </a>
                 </div>
@@ -34,29 +31,20 @@
                 </div>
               </div>
             }
-
             <div class="image-clip">
-              <img src="assets/animation%20.gif" alt="product">
+              <img src="assets/animation%20.gif" alt="produit">
             </div>
-
           </div>
-
         </div>
       </div>
       <div class="dropDown">
-
         <div class="drop-down-item">
           <span class="small-title hovered">Pages </span> <img class="cursor" ngSrc="assets/svg/chevron-down.svg"
-                                                               alt="chevron"
-                                                               height="12"
-                                                               width="12">
-          <img class="cursor-selected" ngSrc="assets/svg/chevron-down-orange.svg" height="12" alt="chevron"
-               width="12">
-
+                                                               alt="chevron" height="12" width="12">
+          <img class="cursor-selected" ngSrc="assets/svg/chevron-down-orange.svg" height="12" alt="chevron" width="12">
           <div class="drop-down-list">
-
             <div class="link-item" (click)="routing('about')">
-              About
+              À propos
             </div>
             <div class="link-item" (click)="routing('ourServices')">
               Services
@@ -64,43 +52,36 @@
             <div class="link-item" (click)="routing('faq')">
               FAQ
             </div>
-
           </div>
         </div>
       </div>
       <div class="dropDown" (click)="routing('contact')">
         <div class="drop-down-item">
-
           <span class="small-title hovered">Contact </span>
         </div>
       </div>
-
     </div>
     <div class="logo-section">
-      <img class="logo"
-           src="assets/logo.png" alt="logo">
+      <img class="logo" src="assets/logo.png" alt="logo">
     </div>
     <div class="actions-section">
       @if (!userName()) {
-
         <div class="actions" (click)="routing('login')">
           <img class="cursor" ngSrc="assets/svg/login.svg" alt="chevron" height="16" width="16">
-          <img class="cursor-selected" ngSrc="assets/svg/login-orange.svg" alt="chevron" height="16"
-               width="16">
-          <span class="small-title">Account</span>
+          <img class="cursor-selected" ngSrc="assets/svg/login-orange.svg" alt="chevron" height="16" width="16">
+          <span class="small-title">Compte</span>
         </div>
       }
-      <div class="actions">
-        <img class="cursor" ngSrc="assets/svg/magnify.svg" alt="chevron" height="16" width="16">
-        <img class="cursor-selected" ngSrc="assets/svg/magnify-orange.svg" alt="chevron" height="16"
-             width="16">
-        <span class="small-title">Search</span>
-      </div>
-      <div class="actions" (click)="showCart = true;total()">
+      <!--      <div class="actions">-->
+      <!--        <img class="cursor" ngSrc="assets/svg/magnify.svg" alt="chevron" height="16" width="16">-->
+      <!--        <img class="cursor-selected" ngSrc="assets/svg/magnify-orange.svg" alt="chevron" height="16"-->
+      <!--             width="16">-->
+      <!--        <span class="small-title">Search</span>-->
+      <!--      </div>-->
+      <div class="actions" (click)="showCart = true;">
         <img class="cursor" ngSrc="assets/svg/bag.svg" alt="chevron" height="16" width="16">
-        <img class="cursor-selected" ngSrc="assets/svg/bag-orange.svg" alt="chevron" height="16"
-             width="16">
-        <span class="small-title">Your Cart</span>
+        <img class="cursor-selected" ngSrc="assets/svg/bag-orange.svg" alt="chevron" height="16" width="16">
+        <span class="small-title">Panier</span>
       </div>
       @if (userName()) {
         <div class="actions" (click)="routing('client/profile')">
@@ -108,14 +89,10 @@
         </div>
         <div class="actions" (click)="logOut()">
           <img class="cursor" ngSrc="assets/svg/logout.svg" alt="chevron" height="16" width="16">
-          <img class="cursor-selected" ngSrc="assets/svg/logout-pink.svg" alt="chevron" height="16"
-               width="16">
-          <span class="small-title">logout</span>
-
+          <img class="cursor-selected" ngSrc="assets/svg/logout-pink.svg" alt="chevron" height="16" width="16">
+          <span class="small-title">Déconnexion</span>
         </div>
-
       }
-
     </div>
   </div>
 
@@ -123,28 +100,29 @@
   <div class="cart-overlay" [ngClass]="{ 'show-cart': showCart }">
     <div class="cart-content">
       <div class="head">
-        <h2>Your Cart</h2>
+        <h2>Votre Panier</h2>
         <div class="close" (click)="showCart = false">
           <img alt="close" ngSrc="assets/svg/plus.svg" height="18" width="18">
         </div>
       </div>
-      @if (!cartItems) {
-        <span>Your cart is currently empty.
-        </span>
+      @if (!cart) {
+        <span>Votre panier est actuellement vide.</span>
       } @else {
-        @for (item of cartItems; track item) {
+        @for (item of cart; track item) {
           <div class="cart-item">
-            <div class="image"><img alt="proudct" src="{{ item.imagePath }}"></div>
+            <div class="image"><img alt="produit" src="{{ item.product.imagePath }}"></div>
             <div class="description">
-              <div class="name">{{ item.name }}</div>
-              <div class="item-description">{{ item.description }}</div>
-              <div>${{ item.price }}</div>
+              <div class="name">{{ item.product.name }}</div>
+              <div class="item-description">{{ item.product.description }}</div>
+              <div>${{ item.product.price }}</div>
               <div class="dec-inc-btn">
-                <img alt="minus" ngSrc="assets/svg/minus-white.svg" height="14" width="14">
+                <img alt="minus" ngSrc="assets/svg/minus-white.svg" height="14" width="14"
+                     (click)="addtoCartInLocalStorage(item.product,-1);loadCartItems()">
                 <div class="number">
-                  5
+                  {{ item.amount }}
                 </div>
-                <img alt="plus" ngSrc="assets/svg/plus-white.svg" height="14" width="14">
+                <img alt="plus" ngSrc="assets/svg/plus-white.svg" height="14" width="14"
+                     (click)="addtoCartInLocalStorage(item.product,1);loadCartItems()">
               </div>
             </div>
           </div>
@@ -152,13 +130,9 @@
       }
 
 
-
-      @if (!cartItems) {
-
-
-
+      @if (!cart) {
         <div class="button">
-          <p>Continue Shopping</p>
+          <p>Continuer vos achats</p>
         </div>
       } @else {
 
@@ -169,10 +143,10 @@
         </div>
         <div class="devider"></div>
         <div class="button">
-          <p>Proceed to Checkout</p>
+          <p>Procéder au paiement</p>
         </div>
         <div class="button" (click)="showCart = false; routing('cart')">
-          <p>View Cart</p>
+          <p>Voir le Panier</p>
         </div>
 
       }

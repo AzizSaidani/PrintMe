@@ -1,64 +1,90 @@
-<div class="container">
-  <div class="intro">
-    <div class="background-image"></div>
-    <div class="background"></div>
-    <div class="content">
-      <h1>Shop</h1>
-      <h4>Shop / {{ item().name }}</h4>
+@if (selectedItem) {
 
-    </div>
-  </div>
-  <div class="upper-section" (click)="setItemUndefined.emit()">
-    <img alt="arrow" ngSrc="assets/svg/arrow.svg" height="30" width="30">
-    <span>Retour</span>
-  </div>
 
-  <div class="shop-item-container">
+  <div class="container">
+    <div class="intro">
+      <div class="background-image"></div>
+      <div class="background"></div>
+      <div class="content">
+        <h1>Shop</h1>
+        <h4>Shop / {{ selectedItem.name }}</h4>
 
-    <div class="product-image">
-      <img src="{{item().imagePath}}" alt="prod-pic">
-
-    </div>
-
-    <div class="product-description">
-
-      <h2>{{ item().name }}</h2>
-      <div class="text"> Prix: <span>{{ item().price }} DT </span></div>
-      <div class="text"> Type: <span>{{ item().category }}</span></div>
-      <div class="customized">
-        <input type="checkbox" [(ngModel)]="isCustomized" name="customized">Personalisé?
       </div>
-      @if (isCustomized) {
-        <div class="drop-zone">
-          <ngx-dropzone (change)="onSelect($event)" class="zone">
-            {{ fileName }}
-          </ngx-dropzone>
-        </div>
-      }
+    </div>
 
-      <div class="plus"> Quantité:
-        <div class="dec-inc-btn">
-          <img alt="minus" ngSrc="assets/svg/minus-white.svg" height="14" width="14" (click)="minus()">
-          <div class="number">
-            {{ amount }}
+
+    <div class="shop-item-container">
+
+      <div class="product-image">
+        <img src="{{selectedItem.imagePath}}" alt="prod-pic">
+
+      </div>
+
+      <div class="product-description">
+
+        <h2>{{ selectedItem.name }}</h2>
+        <div class="text"> Prix: <span>{{ selectedItem.price }} DT </span></div>
+        <div class="text"> Type: <span>{{ selectedItem.category }}</span></div>
+        <div class="customized">
+          <input type="checkbox" [(ngModel)]="isCustomized" name="customized">Personalisé?
+        </div>
+        @if (isCustomized) {
+          <div class="drop-zone">
+            <ngx-dropzone (change)="onSelect($event)" class="zone">
+              {{ fileName }}
+            </ngx-dropzone>
           </div>
-          <img alt="plus" ngSrc="assets/svg/plus-white.svg" height="14" width="14" (click)="plus()">
+        }
+
+        <div class="plus"> Quantité:
+          <div class="dec-inc-btn">
+            <img alt="minus" ngSrc="assets/svg/minus-white.svg" height="14" width="14"
+                 (click)="addtoCartInLocalStorage(selectedItem,-1)">
+            <div class="number">
+              {{ amount }}
+            </div>
+            <img alt="plus" ngSrc="assets/svg/plus-white.svg" height="14" width="14"
+                 (click)="addtoCartInLocalStorage(selectedItem,1)">
+          </div>
         </div>
-      </div>
 
-      <div class="text"> Description: <span style="color: black; font-weight: 500;">{{ item().description }}</span></div>
+        <div class="text"> Description: <span
+          style="color: black; font-weight: 500;">{{ selectedItem.description }}</span>
+        </div>
 
-      <div class="buttons">
-        <div class="btn"> Ajouter au panier</div>
-        <div class="btn"> Achetez-le maintenant</div>
+        <div class="buttons">
+          <div class="btn" (click)="addtoCartInLocalStorage(selectedItem,1)"> Ajouter au panier</div>
+          <div class="btn"> Achetez-le maintenant</div>
+
+        </div>
+
 
       </div>
 
 
     </div>
+    <div class="review">
+      <span>Commentaires</span>
+
+      <div class="content">
+        <div class="comments">
+          {{ comments }}
+        </div>
+        <div class="comment">
+          <textarea [(ngModel)]="comment"></textarea>
+          <div class="btn" (click)="addComment()">Commontez</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <h2>Une demande sur le produit ?</h2>
+
+    <textarea></textarea>
+
+    <h3> Envoyez</h3>
 
 
   </div>
-
-
-</div>
+}

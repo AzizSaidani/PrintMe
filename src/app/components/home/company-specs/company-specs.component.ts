@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 
 @Component({
-  selector: 'app-recent-works',
+  selector: 'app-company-specs',
   standalone: true,
   imports: [
     NgOptimizedImage
   ],
-  templateUrl: './recent-works.component.html',
-  styleUrl: './recent-works.component.scss'
+  templateUrl: './company-specs.component.html',
+  styleUrl: './company-specs.component.scss'
 })
-export class RecentWorksComponent {
+export class CompanySpecsComponent {
 
 }

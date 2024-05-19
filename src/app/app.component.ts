@@ -58,9 +58,9 @@ import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.c
 export class AppComponent implements OnInit {
   currentUser: any;
   username = ''
-  userRole!:string
+  userRole!: string
   currentRoute = ''
-  ;
+
 
 
   constructor(private router: Router, private authService: AuthService) {
@@ -89,81 +89,5 @@ export class AppComponent implements OnInit {
 
   }
 
-  aboutUsProducts: HoveredPicutreModel[] = [
-
-    {
-      text: 'PILLOW PRINTING',
-      imagePath: 'https://res.cloudinary.com/dwkp2dnfs/image/upload/hvnfuppizowvtnyhoiwo.jpg'
-    },
-    {
-      text: 'T-SHIRT PRINTING',
-      imagePath: 'https://res.cloudinary.com/dwkp2dnfs/image/upload/s87kkvhm9ouryrpaljnj.jpg'
-    },
-    {
-      text: 'DIGITAL PRINTING',
-      imagePath: 'https://res.cloudinary.com/dwkp2dnfs/image/upload/hwimotbgvw9u3rvcpfgx.jpg'
-    },
-    {
-      text: 'SURFACE PRINTING',
-      imagePath: 'https://res.cloudinary.com/dwkp2dnfs/image/upload/z0cmbg6nmlyezlv5cyfp.jpg'
-    },
-    {
-      text: 'SCREEN PRINTING',
-      imagePath: 'https://res.cloudinary.com/dwkp2dnfs/image/upload/t1wbw7ihb8b96c14dlab.jpg'
-    },
-    {
-      text: 'FLEXOGRAPHIC PRINTING',
-      imagePath: 'https://printme-theme.myshopify.com/cdn/shop/files/abo01.jpg?v=1641808073'
-    },
-
-
-  ]
-  faqs: FAQModel[] = [
-    {
-      question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',
-      response: 'Eget dolor morbi non arcu risus quis varius quam. Arcu non sodales neque sodales ut etiam sit. Ultrices dui\n' +
-        '        sapien eget mi. Consectetur adipiscing elit ut aliquam purus sit. Fermentum leo vel orci porta non pulvinar.\n' +
-        '        Morbi tristique senectus et netus et malesuada fames ac. Venenatis lectus magna fringilla urna porttitor\n' +
-        '        rhoncus. In cursus turpis massa tincidunt dui. Eget nunc scelerisque viverra mauris in aliquam sem.\n' +
-        ' ',
-      open: false
-    },
-    {
-      question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',
-      response: 'Eget dolor morbi non arcu risus quis varius quam. Arcu non sodales neque sodales ut etiam sit. Ultrices dui\n' +
-        '        sapien eget mi. Consectetur adipiscing elit ut aliquam purus sit. Fermentum leo vel orci porta non pulvinar.\n' +
-        '        Morbi tristique senectus et netus et malesuada fames ac. Venenatis lectus magna fringilla urna porttitor\n' +
-        '        rhoncus. In cursus turpis massa tincidunt dui. Eget nunc scelerisque viverra mauris in aliquam sem.\n' +
-        ' ',
-      open: false
-    },
-    {
-      question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',
-      response: 'Eget dolor morbi non arcu risus quis varius quam. Arcu non sodales neque sodales ut etiam sit. Ultrices dui\n' +
-        '        sapien eget mi. Consectetur adipiscing elit ut aliquam purus sit. Fermentum leo vel orci porta non pulvinar.\n' +
-        '        Morbi tristique senectus et netus et malesuada fames ac. Venenatis lectus magna fringilla urna porttitor\n' +
-        '        rhoncus. In cursus turpis massa tincidunt dui. Eget nunc scelerisque viverra mauris in aliquam sem.\n' +
-        ' ',
-      open: false
-    },
-    {
-      question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',
-      response: 'Eget dolor morbi non arcu risus quis varius quam. Arcu non sodales neque sodales ut etiam sit. Ultrices dui\n' +
-        '        sapien eget mi. Consectetur adipiscing elit ut aliquam purus sit. Fermentum leo vel orci porta non pulvinar.\n' +
-        '        Morbi tristique senectus et netus et malesuada fames ac. Venenatis lectus magna fringilla urna porttitor\n' +
-        '        rhoncus. In cursus turpis massa tincidunt dui. Eget nunc scelerisque viverra mauris in aliquam sem.\n' +
-        ' ',
-      open: false
-    },
-    {
-      question: 'HOW WILL MY ORDER BE DELIVERED TO ME?',
-      response: 'Eget dolor morbi non arcu risus quis varius quam. Arcu non sodales neque sodales ut etiam sit. Ultrices dui\n' +
-        '        sapien eget mi. Consectetur adipiscing elit ut aliquam purus sit. Fermentum leo vel orci porta non pulvinar.\n' +
-        '        Morbi tristique senectus et netus et malesuada fames ac. Venenatis lectus magna fringilla urna porttitor\n' +
-        '        rhoncus. In cursus turpis massa tincidunt dui. Eget nunc scelerisque viverra mauris in aliquam sem.\n' +
-        ' ',
-      open: false
-    },
-  ]
 
 }

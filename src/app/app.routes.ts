@@ -12,12 +12,14 @@ import {ForgetPasswordComponent} from "./components/auth_component/forget-passwo
 import {AboutUsComponent} from "./components/about-us/about-us.component";
 import {authGuard, authGuardConnected} from "./auth/auth.guard";
 import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
+import {ProductDetailedComponent} from "./components/product-detailed/product-detailed.component";
 
 export const routes: Routes = [
   //** Commune **//
   {path: '', component: HomeComponent},
   {path: 'faq', component: FaqComponent, canActivate: [authGuard]},
   {path: 'shop', component: ShopComponent,},
+  {path: 'details', component: ProductDetailedComponent,},
   {path: 'ourServices', component: OurServiceComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'cart', component: CartComponent},

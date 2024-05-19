@@ -21,5 +21,6 @@ export class ImageCardComponent {
   imageDimentions!: Signal<number[]>
 
   check = output<void>();
+  addTocart = output<void>();
 
 }

@@ -67,6 +67,78 @@
       font-size: 22px;
       font-weight: 600;
       cursor: pointer;
+    }
+
+    .review {
+      width: 70vw;
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      text-align: center;
+      gap: 1rem;
+      font-size: 22px;
+      font-weight: 600;
+
+      .content {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+
+
+        .comment {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+
+          textarea {
+            width: 30vw;
+            height: 20vh;
+            border-radius: 20px;
+            padding: 20px;
+            transition: border 0.4s;
+            overflow: auto;
+            resize: none;
+
+
+            &:focus {
+              outline: none;
+              transition: border 0.4s;
+              border: 1px solid #df0074;
+
+            }
+          }
+
+          .btn {
+            width: 33%;
+            background: #cb0c9f;
+            padding: .33rem 1rem;
+            color: white;
+            border-radius: 45px;
+            transition: background 0.3s;
+            cursor: pointer;
+
+            &:hover {
+              transition: background 0.3s;
+              background: #381d90;
+            }
+          }
+
+        }
+
+        .comments {
+          width: 30vw;
+          height: 20vh;
+          padding: 20px;
+          background: rgb(118, 118, 118, 0.1);
+          border-radius: 20px;
+        }
+
+      }
 
 
     }
@@ -76,7 +148,7 @@
       align-items: start;
       justify-content: center;
       flex-direction: row;
-      padding: 5rem;
+      padding: 5rem 5rem 1rem;
       width: 75vw;
       gap: 2rem;
 
@@ -101,7 +173,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        gap: 2rem;
+        gap: 1rem;
 
         .drop-zone {
           display: flex;
@@ -175,7 +247,7 @@
         .text {
           color: grey;
           font-size: 22px;
-          max-width: 20vw;
+          max-width: 25vw;
 
           span {
             color: black;
@@ -193,6 +265,7 @@
           display: flex;
           flex-direction: row;
           gap: 1rem;
+          padding-top: 3rem;
 
           .btn {
             background: #cb0c9f;
@@ -213,6 +286,30 @@
 
     }
 
+    textarea {
+      width: 30vw;
+      height: 20vh;
+      border-radius: 20px;
+      padding: 20px;
+      transition: border 0.4s;
+      overflow: auto;
+      resize: none;
+
+
+      &:focus {
+        outline: none;
+        transition: border 0.4s;
+        border: 1px solid #df0074;
+
+      }
+    }
+
+    h3 {
+      &:hover {
+        color: #dd1175;
+        cursor: pointer;
+      }
+    }
 
   }
 }

@@ -83,52 +83,7 @@
         }
       }
 
-      .section-2 {
-        padding: 5rem 0;
 
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-
-        span {
-          color: gray;
-          font-size: 18px;
-        }
-
-        .client-container {
-          padding-top: 5rem;
-          display: flex;
-          justify-content: space-between;
-          flex-direction: row;
-          gap: 20px;
-
-          span {
-            text-align: start;
-          }
-
-          .client {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-
-            .info {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              gap: 20px;
-
-              .avatar {
-                img {
-                  border-radius: 9999px;
-                }
-
-              }
-            }
-          }
-
-        }
-
-      }
 
     }
 

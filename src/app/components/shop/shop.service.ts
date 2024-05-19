@@ -1,24 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, map, Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {ProductModel} from "../../models/product.model";
+import {CommentModel} from "../../models/comment.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
 
-
-  private selectedProductSubject = new BehaviorSubject<ProductModel | null>(null);
-  selectedProduct$ = this.selectedProductSubject.asObservable();
-
-  setSelectedProduct(product: ProductModel) {
-    this.selectedProductSubject.next(product);
-  }
-
-  clearSelectedProduct() {
-    this.selectedProductSubject.next(null);
-  }
 
   constructor(private http: HttpClient) {
   }
@@ -31,5 +21,16 @@ export class ShopService {
       .pipe(
         map(data => data as ProductModel[])
       );
+  }
+
+  loadComments(): Observable<CommentModel[]> {
+    return this.http.get<CommentModel[]>(`${this.apiUrl}/product/loadComments`)
+      .pipe(
+        map(data => data as CommentModel[])
+      );
+  }
+
+  addComment(data: CommentModel) {
+    return this.http.post(`${this.apiUrl}/product/comment`, data);
   }
 }
