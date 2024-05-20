@@ -54,58 +54,34 @@ export class ShopComponent implements AfterContentInit {
   }
 
 
-  addtoCartInLocalStorage(product: ProductModel, amount?: number) {
-    let cart: CartModel[] = [];
-    const cartString = this.document.defaultView?.localStorage.getItem('cart');
-    if (cartString) {
-      cart = JSON.parse(cartString);
-    }
-
-    const existingItemIndex = cart.findIndex(cartItem => cartItem.product._id === product._id);
-    if (existingItemIndex !== -1) {
-      if (amount === 1) {
-        cart[existingItemIndex].amount += amount;
-      } else if (amount === -1 && cart[existingItemIndex].amount > 1) {
-        cart[existingItemIndex].amount += amount;
-
-
-      }
-    } else {
-      const newCartItem: CartModel = {
-        product: product,
-        amount:1
-      };
-      cart.push(newCartItem);
-    }
-
-    // Store the updated cart in localStorage
-    const updatedCartString = JSON.stringify(cart);
-    this.document.defaultView?.localStorage.setItem('cart', updatedCartString);
-  }
-
-  addtoWishesInLocalStorage(product: ProductModel) {
-    let cart: ProductModel[] = [];
-    const cartString = this.document.defaultView?.localStorage.getItem('wishes');
-    if (cartString) {
-      cart = JSON.parse(cartString);
-    }
-
-    const existingItemIndex = cart.findIndex(cartItem => cartItem._id === product._id);
-    if (existingItemIndex !== -1) {
-
-    } else {
-      cart.push(product);
-    }
-
-    // Store the updated cart in localStorage
-    const updatedCartString = JSON.stringify(cart);
-    this.document.defaultView?.localStorage.setItem('wishes', updatedCartString);
-  }
-
   loadProduct() {
     this.service.loadProduct().subscribe(res => {
       this.product = res
     })
+  }
+
+  addToCart(productId: string | undefined, flag: string) {
+    const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
+    let user = ''
+    if (data) {
+      user = JSON.parse(data).id
+    }
+    if (productId)
+      this.service.addToCart(productId, flag, user).subscribe(() => {
+        alert('item has been addedo')
+      })
+  }
+
+  toggleFavourite(productId: string | undefined) {
+    const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
+    let user = ''
+    if (data) {
+      user = JSON.parse(data).id
+    }
+    if (productId)
+      this.service.toggleFavourite(productId, user).subscribe(() => {
+        alert('item has been added')
+      })
   }
 
 

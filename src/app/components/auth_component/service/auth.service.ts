@@ -42,7 +42,8 @@ export class AuthService {
         const username = response.username;
         const email = credentials.email;
         const role = response.role;
-        const userData = {token, username, role, email};
+        const id = response.id;
+        const userData = {token, username, role, email, id};
         localStorage.setItem(this.TOKEN_KEY, JSON.stringify(userData));
         this.currentUserSubject.next(userData);
       })
@@ -52,6 +53,7 @@ export class AuthService {
   getCurrentUser(): Observable<any> {
     return this.currentUserSubject.asObservable();
   }
+
 
   logout() {
     localStorage.removeItem(this.TOKEN_KEY);

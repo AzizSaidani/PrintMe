@@ -33,4 +33,20 @@ export class ShopService {
   addComment(data: CommentModel) {
     return this.http.post(`${this.apiUrl}/product/comment`, data);
   }
+
+  addToCart(productId: string, flag: string, userId: string | null): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/product/cart`, { productId, flag, userId });
+  }
+
+  getCartItems(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/product/cart/${userId}`);
+  }
+
+  toggleFavourite(productId: string, userId: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/product/favourites/add`, { productId, userId });
+  }
+
+  getFavouriteItems(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/product/favourites/${userId}`);
+  }
 }
