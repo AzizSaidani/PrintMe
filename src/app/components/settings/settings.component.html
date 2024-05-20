@@ -19,9 +19,10 @@
       <div class="shop-item">
         <div class="items">
           <div class="products">
-            @if (wishes()) {
-              @for (item of wishes(); track item) {
-                <app-product-card [imageDimentions]="[200,200]" [product]="item"></app-product-card>
+            @if (wishes) {
+              @for (item of wishes; track item) {
+                <app-product-card (addToWishes)="toggleFavouriteInProfile(item._id)" [imageDimentions]="[200,200]"
+                                  [product]="item"></app-product-card>
               }
             } @else {
               no wishes
@@ -38,22 +39,28 @@
           <hr>
           <div class="details">
             <div class="right">
-              <h4>Informations de contact</h4>
-              <p>Saidani Aziz</p>
-              <p>azizsaidani1999&#64;gmail.com</p>
+              <div class="data">
+
+                <h4>Informations de contact</h4>
+                <p>Saidani Aziz</p>
+                <p>azizsaidani1999&#64;gmail.com</p></div>
               <div class="action">Éditer</div>
             </div>
             <div class="right">
-              <h4>Newsletters</h4>
-              <p>Vous n'êtes pas abonné à notre newsletter.</p>
+              <div class="data">
+
+                <h4>Newsletters</h4>
+                <p>Vous n'êtes pas abonné à notre newsletter.</p>
+              </div>
               <div class="action">Éditer</div>
             </div>
             <div class="right">
-              <h3>Adresse par défaut</h3>
-              <p>center pacha bloc c montplaisir<br>
-                tunis, tunis , 1073<br>
-                Tunisie.</p>
-              <p>tel: 21236653</p>
+              <div class="data">
+                <h4>Adresse par défaut</h4>
+                <p>center pacha bloc c montplaisir<br>
+                  tunis, tunis , 1073<br>
+                  Tunisie.</p>
+                <p>tel: 21236653</p></div>
               <div class="action">Éditer</div>
             </div>
           </div>
@@ -147,7 +154,7 @@
                 <td>30/09/2023</td>
                 <td>51,00 DT</td>
                 <td>En cours de traitement</td>
-                <td ><span class="action">Visualiser</span></td>
+                <td><span class="action">Visualiser</span></td>
               </tr>
             </table>
           </div>

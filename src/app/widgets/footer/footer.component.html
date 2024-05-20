@@ -31,11 +31,11 @@
       </div>
 
       <div class="social">
-<!--        <a class="social-btn">-->
-<!--          <img class="icon1" ngSrc="assets/svg/twitter-orange.svg" height="16" width="16">-->
-<!--          <img class="icon2" ngSrc="assets/svg/twitter-white.svg" height="16" width="16">-->
-<!--        </a>-->
-        <a class="social-btn"   href="https://www.facebook.com/profile.php?id=100088086051530
+        <!--        <a class="social-btn">-->
+        <!--          <img class="icon1" ngSrc="assets/svg/twitter-orange.svg" height="16" width="16">-->
+        <!--          <img class="icon2" ngSrc="assets/svg/twitter-white.svg" height="16" width="16">-->
+        <!--        </a>-->
+        <a class="social-btn" href="https://www.facebook.com/profile.php?id=100088086051530
 ">
           <img class="icon1" ngSrc="assets/svg/facebook-orange.svg" height="16" width="16">
           <img class="icon2" ngSrc="assets/svg/facebook-white.svg" height="16" width="16">
@@ -67,8 +67,8 @@
       <h2> Newsletter</h2>
 
       <div class="newsletter-signup">
-        <input type="email" class="email">
-        <button class="button"> Sign Up</button>
+        <input type="email" class="email" [(ngModel)]="email">
+        <button class="button" (click)="subscribe()"> Sign Up</button>
       </div>
       <p>Sign up with your email address to receive news and updates </p>
 

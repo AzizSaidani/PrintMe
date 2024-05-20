@@ -6,5 +6,4 @@ export interface ProductModel {
   category: string
   name: string
   description?: string
-  amount?:number
 }
