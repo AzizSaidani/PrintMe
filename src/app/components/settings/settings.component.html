@@ -16,13 +16,12 @@
       <p (click)="changeSettingNav('Newsletter')">Abonnements à la newsletter</p>
     </div>
     @if (currentSetting === 'Wishes') {
-
       <div class="shop-item">
         <div class="items">
           <div class="products">
             @if (wishes) {
               @for (item of wishes; track item) {
-                <app-product-card (addToWishes)="addtoWishesInLocalStorage(item)" [imageDimentions]="[200,200]"
+                <app-product-card (addToWishes)="toggleFavouriteInProfile(item._id)" [imageDimentions]="[200,200]"
                                   [product]="item"></app-product-card>
               }
             } @else {

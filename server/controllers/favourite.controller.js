@@ -1,6 +1,7 @@
 const Favourite = require('../models/favourite.model');
 const Product = require('../models/product.model');
 
+
 exports.toggleFavourite = async (req, res) => {
   const { productId, userId } = req.body;
 
@@ -31,6 +32,7 @@ exports.toggleFavourite = async (req, res) => {
     res.status(500).json({ message: 'Internal server error', error: err.message });
   }
 };
+
 
 
 exports.getFavouriteItems = async (req, res) => {
