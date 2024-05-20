@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, tap} from "rxjs";
-import { JwtHelperService } from '@auth0/angular-jwt'; // Install the @auth0/angular-jwt package
+import {JwtHelperService} from '@auth0/angular-jwt'; // Install the @auth0/angular-jwt package
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt'; // Install the @auth0/ang
 export class AuthService {
   private apiUrl = 'http://localhost:3000/api/auth';
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-   readonly TOKEN_KEY = 'auth_token';
+  readonly TOKEN_KEY = 'auth_token';
   private jwtHelper = new JwtHelperService();
 
 
@@ -40,8 +40,9 @@ export class AuthService {
       tap((response: any) => {
         const token = response.token;
         const username = response.username;
+        const email = credentials.email;
         const role = response.role;
-        const userData = { token, username, role };
+        const userData = {token, username, role, email};
         localStorage.setItem(this.TOKEN_KEY, JSON.stringify(userData));
         this.currentUserSubject.next(userData);
       })

@@ -10,7 +10,7 @@ import {SettingsComponent} from "./components/settings/settings.component";
 import {SignupComponent} from "./components/auth_component/signup/signup.component";
 import {ForgetPasswordComponent} from "./components/auth_component/forget-password/forget-password.component";
 import {AboutUsComponent} from "./components/about-us/about-us.component";
-import {authGuard, authGuardConnected} from "./auth/auth.guard";
+import {authGuard, authGuardConnected} from "./auth-guard/auth.guard";
 import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
 import {ProductDetailedComponent} from "./components/product-detailed/product-detailed.component";
 

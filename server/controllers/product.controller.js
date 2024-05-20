@@ -95,7 +95,7 @@ exports.generateBill = async (req, res) => {
     // Table rows
     fetchedProducts.forEach((product) => {
       pdfDoc.text(product.name, columnPositions.name, currentY);
-      pdfDoc.text(`$${product.price}`, columnPositions.price, currentY);
+      pdfDoc.text(`${product.price}dt`, columnPositions.price, currentY);
       pdfDoc.text(product.category, columnPositions.category, currentY);
       pdfDoc.text(product.amount.toString(), columnPositions.amount, currentY);
       total += product.price * product.amount;
@@ -104,7 +104,7 @@ exports.generateBill = async (req, res) => {
 
     // Total
     pdfDoc.moveDown();
-    pdfDoc.fontSize(14).text(`Total: $${total.toFixed(2)}`, { align: 'right' });
+    pdfDoc.fontSize(14).text(`Total: ${total.toFixed(2)}DT²`, { align: 'right' });
 
     pdfDoc.end();
   } catch (error) {

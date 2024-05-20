@@ -83,7 +83,6 @@ export class AppComponent implements OnInit {
         this.currentUser = user;
         this.username = user.username;
         this.userRole = user.role;
-        console.log(this.currentUser);
       });
     }
 
