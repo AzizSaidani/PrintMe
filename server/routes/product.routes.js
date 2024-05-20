@@ -6,4 +6,6 @@ router.post('/add', productController.addProduct);
 router.get('/load', productController.getAllProducts);
 router.post('/comment', commentController.addComment);
 router.get('/loadComments', commentController.getAllComments);
+router.get('/generateBill/:name', productController.generateBill);
+
 module.exports = router;

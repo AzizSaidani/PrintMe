@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 const authRoutes = require('./routes/auth.routes');
@@ -11,8 +10,9 @@ const productRoutes = require('./routes/product.routes');
 
 
 // Middleware
-app.use(express.urlencoded({ extended: true }));
 
+
+app.use(express.urlencoded({extended: true}));
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
