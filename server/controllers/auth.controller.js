@@ -9,11 +9,15 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: 'pfe_2024@outlook.com',
-    pass: 'pfepfe2024', // Ensure this is correct and valid
+    user: 'saidani_aziz@hotmail.com',
+    pass: 'solutiongroupnext1//', // Ensure this is correct and valid
   },
 });
-// solutiongroupnext1// //
+
+// user: 'pfe_2024@outlook.com',
+//   pass: 'pfepfe2024',
+
+
 // create json web token
 const createToken = (id) => {
   return jwt.sign({id}, 'net ninja secret', {
@@ -51,7 +55,7 @@ exports.resetPassword = async (req, res) => {
     // Update the reset link to include '/api/auth'
     const resetLink = `${req.protocol}://${req.get('host')}/api/auth/reset/${resetToken}`;
     const mailOptions = {
-      from: 'pfe_2024@outlook.com',
+      from: 'saidani_aziz@hotmail.com',
       to: email,
       subject: 'Password Reset Request',
       text: `Click the following link to reset your password: ${resetLink}`,
@@ -108,7 +112,6 @@ exports.renderResetPasswordForm = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
 exports.updatePassword = async (req, res) => {
   try {
     const { token } = req.params;
@@ -154,8 +157,100 @@ exports.updatePassword = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+exports.changePassword = async (req, res) => {
+  try {
+    const { email, oldPassword, newPassword } = req.body;
 
+    // Validate inputs
+    if (!email || !oldPassword || !newPassword) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
 
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const isOldPasswordValid = await bcrypt.compare(oldPassword, user.password);
+    if (!isOldPasswordValid) {
+      return res.status(400).json({ error: 'Incorrect old password' });
+    }
+
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedNewPassword;
+    await user.save();
+
+    res.status(200).json({ message: 'Password updated successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+exports.updateUsername = async (req, res) => {
+  try {
+    const { email, newUsername } = req.body;
+
+    // Validate inputs
+    if (!email || !newUsername) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    user.username = newUsername;
+    await user.save();
+
+    res.status(200).json({ message: 'Username updated successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+exports.updateAddress = async (req, res) => {
+  try {
+    const { email, newAddress } = req.body;
+
+    // Validate inputs
+    if (!email || !newAddress) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    user.address = newAddress;
+    await user.save();
+
+    res.status(200).json({ message: 'Address updated successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+exports.updatePhoneNumber = async (req, res) => {
+  try {
+    const { email, newPhoneNumber } = req.body;
+
+    // Validate inputs
+    if (!email || !newPhoneNumber) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    user.phone = newPhoneNumber;
+    await user.save();
+
+    res.status(200).json({ message: 'Phone number updated successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -164,7 +259,6 @@ exports.getAllUsers = async (req, res) => {
     res.status(500).json({error: error.message});
   }
 };
-
 exports.register = async (req, res) => {
   try {
     const {username, email, password, role} = req.body;
@@ -176,7 +270,6 @@ exports.register = async (req, res) => {
     res.status(500).json({error: error.message});
   }
 };
-
 exports.login = async (req, res) => {
   try {
     const {email, password} = req.body;
@@ -198,3 +291,23 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.getUserDetails = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({ error: 'Missing required field: id' });
+    }
+
+    const user = await User.findById(id, { username: 1, phone: 1, address: 1 });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const { username, phone = '', address = '' } = user;
+
+    res.status(200).json({ username, phone, address });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

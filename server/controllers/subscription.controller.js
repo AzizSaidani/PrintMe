@@ -33,3 +33,20 @@ exports.handleSubscription = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+exports.getSubStatus = async (req, res) => {
+  try {
+    const { email } = req.query;
+
+    if (!email) {
+      return res.status(400).json({ message: 'Email is required' });
+    }
+
+    // Check if the email exists in the subscriptions collection
+    const subscription = await Subscription.findOne({ email });
+    const isSubscribed = !!subscription; // convert to boolean
+
+    return res.status(200).json({ isSubscribed });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

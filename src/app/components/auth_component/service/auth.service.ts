@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, tap} from "rxjs";
-import {JwtHelperService} from '@auth0/angular-jwt'; // Install the @auth0/angular-jwt package
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {ProfileModel} from "../../../models/profile.model"; // Install the @auth0/angular-jwt package
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,10 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, userData);
   }
 
+  forgotPassword(email: string) {
+    return this.http.post(`http://localhost:3000/api/auth/reset`, {email});
+  }
+
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap((response: any) => {
@@ -52,6 +57,26 @@ export class AuthService {
 
   getCurrentUser(): Observable<any> {
     return this.currentUserSubject.asObservable();
+  }
+
+  changePassword(oldpass: string, newpass: string, email: string) {
+    return this.http.post(`${this.apiUrl}/change-password`, {email: email, oldpass: oldpass, newpass: newpass})
+  }
+
+  updateUsername(newUsername: string, email: string) {
+    return this.http.post(`${this.apiUrl}/updateUsername`, {email: email, newUsername: newUsername})
+  }
+
+  updateAddress(newAddress: string, email: string) {
+    return this.http.post(`${this.apiUrl}/updateAddress`, {email: email, newAddress: newAddress})
+  }
+
+  updatePhoneNumber(newPhoneNumber: string, email: string) {
+    return this.http.post(`${this.apiUrl}/updatePhoneNumber`, {email: email, newPhoneNumber: newPhoneNumber})
+  }
+
+  getUserDetails(id: string):Observable<ProfileModel> {
+    return this.http.get(`${this.apiUrl}/users/${id}`,)
   }
 
 

@@ -4,4 +4,5 @@ export interface UserModel {
   phone: string,
   status: string,
   role: string
+  address: string
 }
