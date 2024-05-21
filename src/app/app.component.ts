@@ -26,6 +26,7 @@ import {SettingsComponent} from "./components/settings/settings.component";
 import {AuthService} from "./components/auth_component/service/auth.service";
 import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
 import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
+import {PaymentComponent} from "./payment/payment.component";
 
 @Component({
   selector: 'app-root',
@@ -51,7 +52,7 @@ import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.c
     LoginComponent,
     SignupComponent,
     ShopComponent,
-    SettingsComponent, DashboardComponent, LoginAdminComponent],
+    SettingsComponent, DashboardComponent, LoginAdminComponent, PaymentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
