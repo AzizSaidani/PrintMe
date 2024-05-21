@@ -17,10 +17,10 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      gap: 20px;
 
 
       .nav-section {
+        width: 15vh;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -197,6 +197,8 @@
         justify-content: space-between;
         gap: 40px;
         align-items: center;
+        width: 15vh;
+
 
         .actions {
           display: flex;
