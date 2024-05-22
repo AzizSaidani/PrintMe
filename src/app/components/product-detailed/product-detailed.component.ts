@@ -1,7 +1,7 @@
 import {AfterContentInit, Component, Inject} from '@angular/core';
 import {ProductCardComponent} from "../../widgets/product-card/product-card.component";
 import {ProductModel} from "../../models/product.model";
-import {DOCUMENT, NgOptimizedImage} from "@angular/common";
+import {DOCUMENT, NgClass, NgOptimizedImage} from "@angular/common";
 import {NgxDropzoneModule} from "ngx-dropzone";
 import {FormsModule} from "@angular/forms";
 import {CommentModel} from "../../models/comment.model";
@@ -14,7 +14,8 @@ import {ShopService} from "../shop/shop.service";
     ProductCardComponent,
     NgOptimizedImage,
     NgxDropzoneModule,
-    FormsModule
+    FormsModule,
+    NgClass
   ],
   templateUrl: './product-detailed.component.html',
   styleUrl: './product-detailed.component.scss'
@@ -30,6 +31,16 @@ export class ProductDetailedComponent implements AfterContentInit {
   comment = ''
   comments: CommentModel[] = []
 
+  showOverlay: boolean = false;
+
+  toggleOverlay() {
+    this.showOverlay = !this.showOverlay;
+  }
+  handleOverlayClick(event: MouseEvent) {
+    if ((event.target as HTMLElement).classList.contains('overlay')) {
+      this.showOverlay = false;
+    }
+  }
 
   constructor(private service: ShopService, @Inject(DOCUMENT) private document: Document) {
     this.loadSelectedItemFromLocalStorage();
