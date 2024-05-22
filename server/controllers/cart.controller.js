@@ -16,18 +16,25 @@ exports.addToCart = async (req, res) => {
 
     const existingItem = cart.items.find(item => item.productId.toString() === productId);
 
-
-    if (flag === 'del') {
-      cart.items = cart.items.filter(item => item.productId.toString() !== productId);
-    } else if (flag === 'dec') {
+    if (amount !== undefined) {
       if (existingItem) {
-        existingItem.amount = Math.max(existingItem.amount - 1, 1);
-      }
-    } else if (flag === 'inc') {
-      if (existingItem) {
-        existingItem.amount += 1;
+        existingItem.amount = amount;
       } else {
-        cart.items.push({productId, amount: 1});
+        cart.items.push({productId, amount});
+      }
+    } else {
+      if (flag === 'del') {
+        cart.items = cart.items.filter(item => item.productId.toString() !== productId);
+      } else if (flag === 'dec') {
+        if (existingItem) {
+          existingItem.amount = Math.max(existingItem.amount - 1, 1);
+        }
+      } else if (flag === 'inc') {
+        if (existingItem) {
+          existingItem.amount += 1;
+        } else {
+          cart.items.push({productId, amount: 1});
+        }
       }
     }
 

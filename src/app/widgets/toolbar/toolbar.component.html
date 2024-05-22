@@ -78,7 +78,7 @@
       <!--             width="16">-->
       <!--        <span class="small-title">Search</span>-->
       <!--      </div>-->
-      <div class="actions" (click)="showCart = true;">
+      <div class="actions" (click)="showCart = true; loadCartItems()">
         <img class="cursor" ngSrc="assets/svg/bag.svg" alt="chevron" height="16" width="16">
         <img class="cursor-selected" ngSrc="assets/svg/bag-orange.svg" alt="chevron" height="16" width="16">
         <span class="small-title">Panier</span>

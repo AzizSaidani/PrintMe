@@ -6,7 +6,6 @@ import {NgxDropzoneModule} from "ngx-dropzone";
 import {FormsModule} from "@angular/forms";
 import {CommentModel} from "../../models/comment.model";
 import {ShopService} from "../shop/shop.service";
-import {CartModel} from "../../models/cart.model";
 
 @Component({
   selector: 'app-product-detailed',
@@ -36,38 +35,6 @@ export class ProductDetailedComponent implements AfterContentInit {
     this.loadSelectedItemFromLocalStorage();
   }
 
-  addtoCartInLocalStorage(product: ProductModel, amount?: number) {
-    let cart: CartModel[] = [];
-    const cartString = this.document.defaultView?.localStorage.getItem('cart');
-    if (cartString) {
-      cart = JSON.parse(cartString);
-    }
-
-    const existingItemIndex = cart.findIndex(cartItem => cartItem.product._id === product._id);
-    if (existingItemIndex !== -1) {
-      if (amount === 1) {
-        cart[existingItemIndex].amount += amount;
-        this.amount += amount
-      } else if (amount === -1 && cart[existingItemIndex].amount > 1) {
-        cart[existingItemIndex].amount += amount;
-        if (this.amount > 1) {
-          this.amount += amount
-
-        }
-
-      }
-    } else {
-      const newCartItem: CartModel = {
-        product: product,
-        amount: 1
-      };
-      cart.push(newCartItem);
-    }
-
-    // Store the updated cart in localStorage
-    const updatedCartString = JSON.stringify(cart);
-    this.document.defaultView?.localStorage.setItem('cart', updatedCartString);
-  }
 
   loadSelectedItemFromLocalStorage() {
     const selectedItemString = this.document.defaultView?.localStorage.getItem('selectedItem');
@@ -99,8 +66,7 @@ export class ProductDetailedComponent implements AfterContentInit {
       productId: this.selectedItem?._id,
       description: this.comment,
     }
-    this.service.addComment(comment).subscribe((response) => {
-        console.log('Login successful:', response);
+    this.service.addComment(comment).subscribe(() => {
         window.location.reload()
       },
       (error) => {
@@ -136,11 +102,9 @@ export class ProductDetailedComponent implements AfterContentInit {
       user = JSON.parse(data).id
     }
     if (this.selectedItem?._id)
-      for (let i = 0; i <= this.amount; i++) {
-        this.service.addToCart(this.selectedItem?._id, 'inc', user).subscribe(() => {
+      this.service.addToCart(this.selectedItem?._id, 'inc', user, this.amount).subscribe(() => {
+      })
 
-        })
-      }
     window.location.assign('shop')
   }
 
