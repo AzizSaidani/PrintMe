@@ -2,6 +2,7 @@ import {AfterContentInit, Component, Inject} from '@angular/core';
 import {DOCUMENT, NgOptimizedImage} from "@angular/common";
 import {CartModel} from "../../models/cart.model";
 import {ShopService} from "../shop/shop.service";
+import {loadStripe} from "@stripe/stripe-js";
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +18,7 @@ export class CartComponent implements AfterContentInit {
   cartItemsTotalPrice = 0
 
 
-  constructor(@Inject(DOCUMENT) private document: Document,private service: ShopService) {
+  constructor(@Inject(DOCUMENT) private document: Document, private service: ShopService) {
   }
 
 
@@ -25,12 +26,38 @@ export class CartComponent implements AfterContentInit {
     this.loadCartItems()
 
   }
+
   routing(url: string) {
     window.location.replace(url)
   }
 
 
-  stringToInt(string: string){
+
+  async redirectToCheckout(amount: number) {
+    try {
+      const stripe = await loadStripe('pk_test_51Lyzt5GUzUAnKjP7GaetFbAkzNnUTx2ZOdcH1TqLtFhZJEZA59G6wfxp9Q7M70tRhCqjErdZeLN1dYxeyPFkRO9N007IOrrnzD');
+      const response = await this.service.createCheckoutSession(amount).toPromise();
+
+      if (response) {
+        const {sessionId} = response;
+        if (stripe) {
+          await stripe.redirectToCheckout({
+            sessionId,
+          });
+        }
+      } else {
+        console.error('Invalid response from createCheckoutSession');
+      }
+    } catch (error) {
+      console.error('Error creating Stripe Checkout session:', error);
+    }
+  }
+
+
+
+
+
+  stringToInt(string: string) {
     return parseInt(string)
   }
 
@@ -65,4 +92,5 @@ export class CartComponent implements AfterContentInit {
     this.cartItemsTotalPrice = this.cart.reduce((total, cartItem) => {
       return total + (parseInt(cartItem.product.price) * cartItem.amount);
     }, 0);
-  }}
+  }
+}

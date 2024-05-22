@@ -29,9 +29,11 @@
               <img alt="plus" ngSrc="assets/svg/plus-white.svg" height="14" width="14"
                    (click)="addToCartFromCart(item.product._id,'inc')">
             </div>
-            <div class="total"> Total: {{ item.amount * stringToInt(item.product.price) }}DT</div>
+            <div class="total"> Total: ${{ item.amount * stringToInt(item.product.price) }}</div>
           </div>
-          <div class="close" (click)="addToCartFromCart(item.product._id,'del')"><img alt="plus" ngSrc="assets/svg/plus.svg" height="16" width="16"></div>
+          <div class="close" (click)="addToCartFromCart(item.product._id,'del')"><img alt="plus"
+                                                                                      ngSrc="assets/svg/plus.svg"
+                                                                                      height="16" width="16"></div>
 
 
         </div>
@@ -44,14 +46,13 @@
     </div>
     <div class="right-section">
       <div class="title">Oder Summary</div>
-      <div class="total">Subtotal: {{ cartItemsTotalPrice }}DT</div>
+      <div class="total">Subtotal: ${{ cartItemsTotalPrice }}</div>
 
       <div class="text">Shipping, taxes, and discounts will be calculated at checkout.</div>
-      <div class="btn">Proceed to Checkout</div>
+      <div class="btn" (click)="redirectToCheckout(cartItemsTotalPrice)">Proceed to Checkout</div>
 
 
     </div>
-
   </div>
 
 

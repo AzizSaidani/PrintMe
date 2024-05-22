@@ -12,9 +12,7 @@ import {SliderComponent} from "./components/home/slider/slider.component";
 import {RecentWorksComponent} from "./components/home/recent-works/recent-works.component";
 import {ContactComponent} from "./components/contact/contact.component";
 import {AboutUsComponent} from "./components/about-us/about-us.component";
-import {HoveredPicutreModel} from "./models/hovered-picutre.model";
 import {FaqComponent} from "./components/faq/faq.component";
-import {FAQModel} from "./models/FAQ.model";
 import {HomeComponent} from "./components/home/home.component";
 import {BestSellingsComponent} from "./components/home/best-sellings/best-sellings.component";
 import {CartComponent} from "./components/cart/cart.component";
@@ -26,7 +24,6 @@ import {SettingsComponent} from "./components/settings/settings.component";
 import {AuthService} from "./components/auth_component/service/auth.service";
 import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
 import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
-import {PaymentComponent} from "./payment/payment.component";
 
 @Component({
   selector: 'app-root',
@@ -52,7 +49,7 @@ import {PaymentComponent} from "./payment/payment.component";
     LoginComponent,
     SignupComponent,
     ShopComponent,
-    SettingsComponent, DashboardComponent, LoginAdminComponent, PaymentComponent],
+    SettingsComponent, DashboardComponent, LoginAdminComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -61,7 +58,6 @@ export class AppComponent implements OnInit {
   username = ''
   userRole!: string
   currentRoute = ''
-
 
 
   constructor(private router: Router, private authService: AuthService) {

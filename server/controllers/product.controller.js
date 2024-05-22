@@ -1,5 +1,8 @@
 const Product = require('../models/product.model');
 const PDFDocument = require('pdfkit');
+const stripe = require('stripe')('sk_test_51Lyzt5GUzUAnKjP7lyDDM7pIo796ADLQ1tSA4GPYbNy72UxRVrgJiAlR7lpxDY4QgAOytVpOz3bIqogfwAOIzsQE00oqXQuusb');
+
+
 
 exports.addProduct = async (req, res) => {
   try {
@@ -22,8 +25,6 @@ exports.addProduct = async (req, res) => {
     res.status(500).json({message: error.message});
   }
 };
-
-
 exports.getAllProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -32,8 +33,6 @@ exports.getAllProducts = async (req, res) => {
     res.status(500).json({error: error.message});
   }
 };
-
-
 exports.generateBill = async (req, res) => {
   try {
     const { products } = req.body;
@@ -95,7 +94,7 @@ exports.generateBill = async (req, res) => {
     // Table rows
     fetchedProducts.forEach((product) => {
       pdfDoc.text(product.name, columnPositions.name, currentY);
-      pdfDoc.text(`${product.price}dt`, columnPositions.price, currentY);
+      pdfDoc.text(`$${product.price}`, columnPositions.price, currentY);
       pdfDoc.text(product.category, columnPositions.category, currentY);
       pdfDoc.text(product.amount.toString(), columnPositions.amount, currentY);
       total += product.price * product.amount;
@@ -104,9 +103,38 @@ exports.generateBill = async (req, res) => {
 
     // Total
     pdfDoc.moveDown();
-    pdfDoc.fontSize(14).text(`Total: ${total.toFixed(2)}DT²`, { align: 'right' });
+    pdfDoc.fontSize(14).text(`Total: ]${total.toFixed(2)}²`, { align: 'right' });
 
     pdfDoc.end();
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+
+exports.createCheckoutSession = async (req, res) => {
+  try {
+    const { amount } = req.body;
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [{
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Custom Payment',
+          },
+          unit_amount: amount * 100,
+        },
+        quantity: 1,
+      }],
+      mode: 'payment',
+      success_url: `${req.headers.origin}/success`,
+      cancel_url: `${req.headers.origin}/cancel`,
+    });
+
+    res.json({ sessionId: session.id });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {ProductModel} from "../../models/product.model";
 import {CommentModel} from "../../models/comment.model";
+import {CartModel} from "../../models/cart.model";
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +50,16 @@ export class ShopService {
   getFavouriteItems(userId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/product/favourites/${userId}`);
   }
+
+
+
+  createCheckoutSession(amount: number): Observable<{ sessionId: string }> {
+    return this.http.post<{ sessionId: string }>(`${this.apiUrl}/product/create-checkout-session`, { amount });
+  }
+
+  generateBill(cartItems: CartModel[]): Observable<Blob> {
+    const cartItemsJson = JSON.stringify(cartItems);
+    return this.http.get(`${this.apiUrl}/product/generate-bill/${cartItemsJson}`, { responseType: 'blob' });
+  }
+
 }

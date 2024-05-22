@@ -23,7 +23,7 @@
       <div class="product-description">
 
         <h2>{{ selectedItem.name }}</h2>
-        <div class="text"> Prix: <span>{{ selectedItem.price }} DT </span></div>
+        <div class="text"> Prix: <span>${{ selectedItem.price }}  </span></div>
         <div class="text"> Type: <span>{{ selectedItem.category }}</span></div>
         <div class="customized">
           <input type="checkbox" [(ngModel)]="isCustomized" name="customized">Personalisé?
