@@ -31,6 +31,7 @@ export class ProductDetailedComponent implements AfterContentInit {
   comment = ''
   comments: CommentModel[] = []
 
+
   constructor(private service: ShopService, @Inject(DOCUMENT) private document: Document) {
     this.loadSelectedItemFromLocalStorage();
   }
@@ -100,7 +101,7 @@ export class ProductDetailedComponent implements AfterContentInit {
     }
     this.service.addComment(comment).subscribe((response) => {
         console.log('Login successful:', response);
-        window.location.replace('shop')
+        window.location.reload()
       },
       (error) => {
         console.error('Login failed:', error);
@@ -115,6 +116,32 @@ export class ProductDetailedComponent implements AfterContentInit {
       this.files.push(firstFile);
     }
     this.fileName = this.files[0].name
+  }
+
+  scale(flag: boolean) {
+    if (flag) {
+      this.amount += 1
+    } else {
+      if (this.amount > 1) {
+        this.amount -= 1
+      }
+    }
+  }
+
+
+  addToCartFromToolBar() {
+    const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
+    let user = ''
+    if (data) {
+      user = JSON.parse(data).id
+    }
+    if (this.selectedItem?._id)
+      for (let i = 0; i <= this.amount; i++) {
+        this.service.addToCart(this.selectedItem?._id, 'inc', user).subscribe(() => {
+
+        })
+      }
+    window.location.assign('shop')
   }
 
 }

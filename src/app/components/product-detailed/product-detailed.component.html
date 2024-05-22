@@ -39,12 +39,12 @@
         <div class="plus"> Quantité:
           <div class="dec-inc-btn">
             <img alt="minus" ngSrc="assets/svg/minus-white.svg" height="14" width="14"
-                 (click)="addtoCartInLocalStorage(selectedItem,-1)">
+                 (click)="scale(false)">
             <div class="number">
               {{ amount }}
             </div>
             <img alt="plus" ngSrc="assets/svg/plus-white.svg" height="14" width="14"
-                 (click)="addtoCartInLocalStorage(selectedItem,1)">
+                 (click)="scale(true)">
           </div>
         </div>
 
@@ -53,9 +53,7 @@
         </div>
 
         <div class="buttons">
-          <div class="btn" (click)="addtoCartInLocalStorage(selectedItem,1)"> Ajouter au panier</div>
-          <div class="btn"> Achetez-le maintenant</div>
-
+          <div class="btn" (click)="addToCartFromToolBar()"> Ajouter au panier</div>
         </div>
 
 
@@ -68,7 +66,14 @@
 
       <div class="content">
         <div class="comments">
-          {{ comments }}
+          @for (comment of comments; track comment) {
+            <div class="content">
+              <ul style="padding: 10px  20px;margin: 0">
+                <li><span class="name">{{ comment.name }}: </span>
+                  <span class="text"> {{ comment.description }}</span></li>
+              </ul>
+            </div>
+          }
         </div>
         <div class="comment">
           <textarea [(ngModel)]="comment"></textarea>

@@ -2,7 +2,7 @@ const Cart = require('../models/cart.model');
 const Product = require('../models/product.model');
 
 exports.addToCart = async (req, res) => {
-  const {productId, flag, userId = null} = req.body;
+  const {productId, flag, userId = null, amount} = req.body;
 
   try {
     let cart = await Cart.findOne({userId});
@@ -15,6 +15,7 @@ exports.addToCart = async (req, res) => {
     }
 
     const existingItem = cart.items.find(item => item.productId.toString() === productId);
+
 
     if (flag === 'del') {
       cart.items = cart.items.filter(item => item.productId.toString() !== productId);
