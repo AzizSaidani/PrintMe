@@ -134,8 +134,32 @@
           width: 30vw;
           height: 20vh;
           padding: 20px;
-          background: rgb(118, 118, 118, 0.1);
+          background: rgba(201, 201, 201, 0.1);
           border-radius: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          overflow: auto;
+
+          .content {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+
+            .name {
+              font-weight: 600;
+              font-size: 18px;
+            }
+
+            .text {
+              font-weight: 500;
+              font-size: 18px;
+            }
+
+          }
         }
 
       }

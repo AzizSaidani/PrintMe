@@ -1,35 +1,13 @@
 @if (userRole != 'admin') {
-  @if (currentRoute != '/admin/login') {
+  @if (!pathTag()) {
     <app-toolbar [userName]="username" (logout)="logout()"></app-toolbar>
   }
-  <div [style.padding-top]="currentRoute==='/admin/login'?'0' :'75px'">
-    <!--        <app-slider></app-slider>-->
-    <!--        <app-about-us-section></app-about-us-section>-->
-    <!--        <app-service-section></app-service-section>-->
-    <!--      <app-best-sellings [items]="bestSellingItems"></app-best-sellings>-->
-    <!--        <app-why-us></app-why-us>-->
-    <!--        <app-recent-works></app-recent-works>-->
-
-
-    <!--      <app-home></app-home>-->
-    <!--  <app-contact></app-contact>-->
-    <!--          <app-about-us [product]="aboutUsProducts"></app-about-us>-->
-    <!--        <app-faq [faqs]="faqs"></app-faq>-->
-    <!--  <app-cart></app-cart>-->
-
-    <!--  <app-our-service [product]="aboutUsProducts"></app-our-service>-->
-    <!--  <app-login></app-login>-->
-    <!--  <app-signup></app-signup>-->
-    <!--        <app-shop [product]="bestSellingItems"></app-shop>-->
-    <!--  <app-settings [wishes]="bestSellingItems"></app-settings>-->
+  <div [style.padding-top]="pathTag()?'0' :'75px'">
     <router-outlet></router-outlet>
-    <!--  <app-login-admin></app-login-admin>-->
-
   </div>
-  @if (currentRoute != '/admin/login') {
-
+  @if (!pathTag()) {
     <app-footer></app-footer>
   }
 } @else {
-    <app-dashboard></app-dashboard>
+  <app-dashboard></app-dashboard>
 }

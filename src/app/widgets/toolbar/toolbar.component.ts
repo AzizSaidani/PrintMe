@@ -103,6 +103,8 @@ export class ToolbarComponent implements AfterViewInit {
       return total + (parseInt(cartItem.product.price) * cartItem.amount);
     }, 0);
   }
+
+
   addToCartFromToolBar(productId: string | undefined, flag: string) {
     const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
     let user = ''

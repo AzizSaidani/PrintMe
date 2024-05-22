@@ -1,6 +1,8 @@
 import {AfterContentInit, Component, Inject} from '@angular/core';
 import {DOCUMENT, NgOptimizedImage} from "@angular/common";
 import {CartModel} from "../../models/cart.model";
+import {ShopService} from "../shop/shop.service";
+import {loadStripe} from "@stripe/stripe-js";
 
 @Component({
   selector: 'app-cart',
@@ -13,9 +15,10 @@ import {CartModel} from "../../models/cart.model";
 })
 export class CartComponent implements AfterContentInit {
   cart!: CartModel[]
+  cartItemsTotalPrice = 0
 
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  constructor(@Inject(DOCUMENT) private document: Document, private service: ShopService) {
   }
 
 
@@ -23,20 +26,71 @@ export class CartComponent implements AfterContentInit {
     this.loadCartItems()
 
   }
+
   routing(url: string) {
     window.location.replace(url)
   }
 
 
-  stringToInt(string: string){
+
+  async redirectToCheckout(amount: number) {
+    try {
+      const stripe = await loadStripe('pk_test_51Lyzt5GUzUAnKjP7GaetFbAkzNnUTx2ZOdcH1TqLtFhZJEZA59G6wfxp9Q7M70tRhCqjErdZeLN1dYxeyPFkRO9N007IOrrnzD');
+      const response = await this.service.createCheckoutSession(amount).toPromise();
+
+      if (response) {
+        const {sessionId} = response;
+        if (stripe) {
+          await stripe.redirectToCheckout({
+            sessionId,
+          });
+        }
+      } else {
+        console.error('Invalid response from createCheckoutSession');
+      }
+    } catch (error) {
+      console.error('Error creating Stripe Checkout session:', error);
+    }
+  }
+
+
+
+
+
+  stringToInt(string: string) {
     return parseInt(string)
   }
 
 
   loadCartItems() {
-    const selectedItemString = this.document.defaultView?.localStorage.getItem('cart');
-    if (selectedItemString) {
-      this.cart = JSON.parse(selectedItemString);
+    const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
+    let user = ''
+    if (data) {
+      user = JSON.parse(data).id
     }
+    this.service.getCartItems(user).subscribe(data => {
+      this.cart = data
+      this.calculateTotalPrice()
+    })
+    this.cartItemsTotalPrice = 0
+  }
+
+  addToCartFromCart(productId: string | undefined, flag: string) {
+    const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
+    let user = ''
+    if (data) {
+      user = JSON.parse(data).id
+    }
+    if (productId)
+      this.service.addToCart(productId, flag, user).subscribe(() => {
+        this.loadCartItems()
+
+      })
+  }
+
+  calculateTotalPrice() {
+    this.cartItemsTotalPrice = this.cart.reduce((total, cartItem) => {
+      return total + (parseInt(cartItem.product.price) * cartItem.amount);
+    }, 0);
   }
 }

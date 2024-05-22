@@ -35,7 +35,7 @@ export class ShopService {
   }
 
   addToCart(productId: string, flag: string, userId: string | null): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/product/cart`, { productId, flag, userId });
+    return this.http.post<any>(`${this.apiUrl}/product/cart`, {productId, flag, userId});
   }
 
   getCartItems(userId: string): Observable<any> {
@@ -43,10 +43,17 @@ export class ShopService {
   }
 
   toggleFavourite(productId: string, userId: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/product/favourites/add`, { productId, userId });
+    return this.http.post<any>(`${this.apiUrl}/product/favourites/add`, {productId, userId});
   }
 
   getFavouriteItems(userId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/product/favourites/${userId}`);
   }
+
+
+  createCheckoutSession(amount: number): Observable<{ sessionId: string }> {
+    return this.http.post<{ sessionId: string }>(`${this.apiUrl}/product/create-checkout-session`, {amount});
+  }
+
+
 }

@@ -12,9 +12,7 @@ import {SliderComponent} from "./components/home/slider/slider.component";
 import {RecentWorksComponent} from "./components/home/recent-works/recent-works.component";
 import {ContactComponent} from "./components/contact/contact.component";
 import {AboutUsComponent} from "./components/about-us/about-us.component";
-import {HoveredPicutreModel} from "./models/hovered-picutre.model";
 import {FaqComponent} from "./components/faq/faq.component";
-import {FAQModel} from "./models/FAQ.model";
 import {HomeComponent} from "./components/home/home.component";
 import {BestSellingsComponent} from "./components/home/best-sellings/best-sellings.component";
 import {CartComponent} from "./components/cart/cart.component";
@@ -62,12 +60,20 @@ export class AppComponent implements OnInit {
   currentRoute = ''
 
 
-
   constructor(private router: Router, private authService: AuthService) {
   }
 
   logout() {
     this.authService.logout()
+  }
+
+  pathTag() {
+    if (this.currentRoute === '/admin/login') {
+      return true
+    } else if (this.currentRoute === '/bill'){
+      return true
+    } else return false
+
   }
 
 

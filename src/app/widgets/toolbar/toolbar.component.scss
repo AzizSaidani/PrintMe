@@ -13,17 +13,19 @@
     z-index: 99999 !important;
 
     .nav-bar {
-      width: 80%;
+      width: 100%;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
-      gap: 20px;
+      padding: 0 2rem;
+      justify-content: center;
 
 
       .nav-section {
+        width: 35vw;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        padding-left: 3vw;
+        justify-content: flex-start;
         gap: 40px;
         align-items: center;
 
@@ -180,9 +182,10 @@
 
 
       .logo-section {
-
+        width: 24vw;
         display: flex;
         align-items: center;
+        justify-content: center;
 
         .logo {
           width: 200px;
@@ -192,11 +195,14 @@
       }
 
       .actions-section {
+        width: 35vw;
         display: flex;
+        padding-right:  3vw;
         flex-direction: row;
-        justify-content: space-between;
-        gap: 40px;
+        justify-content: flex-end;
         align-items: center;
+        gap: 1rem;
+
 
         .actions {
           display: flex;

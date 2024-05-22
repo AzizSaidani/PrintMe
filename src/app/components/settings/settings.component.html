@@ -69,48 +69,6 @@
       </div>
 
     }
-    @if (currentSetting === 'Information') {
-
-      <div class="account">
-        <div class="info">
-          <h2>Éditer les informations du compte
-          </h2>
-          <hr>
-          <div class="details">
-            <div class="info">
-              <p> First Name:</p>
-              <input type="text" class="input">
-            </div>
-            <div class="info">
-              <p> Last Name:</p>
-              <input type="text" class="input">
-            </div>
-            <div class="info">
-              <p> Email:</p>
-              <input type="email" class="input">
-            </div>
-            <div class="info">
-              <p> Mot de passe actuel:</p>
-              <input type="password" class="input">
-            </div>
-            <div class="info">
-              <p> Nouveau mot de passe:</p>
-              <input type="password" class="input">
-            </div>
-            <div class="info">
-              <p> Confirmer le nouveau mot de passe:</p>
-              <input type="password" class="input">
-            </div>
-          </div>
-
-        </div>
-
-        <div class="button-container">
-          <div class="btn">Update</div>
-        </div>
-      </div>
-    }
-
     @if (currentSetting === 'Newsletter') {
 
       <div class="account">
@@ -121,7 +79,8 @@
           <div class="details">
             <div class="info">
               <p>Options d'abonnement:</p>
-              <div><input type="checkbox">Abonnements
+              <div><input type="checkbox" [checked]="subscribed"
+                          (change)="subscribed=!subscribed">Abonnements
               </div>
             </div>
           </div>
@@ -129,7 +88,7 @@
         </div>
 
         <div class="button-container">
-          <div class="btn">Sauvegarder</div>
+          <div class="btn" (click)="subscribe()">Sauvegarder</div>
         </div>
       </div>
     }
@@ -162,6 +121,46 @@
 
       </div>
     }
+    @if (currentSetting === 'Information') {
+
+      <div class="account">
+        <div class="info">
+          <h2>Éditer les informations du compte
+          </h2>
+          <hr>
+          <div class="details">
+            <div class="info">
+              <p> Nom:</p>
+              <input type="text" class="input" [(ngModel)]="username">
+            </div>
+            <div class="info">
+              <p> Télephone:</p>
+              <input type="tel" class="input" [(ngModel)]="phone">
+            </div>
+
+            <div class="info">
+              <p> Mot de passe actuel:</p>
+              <input type="password" class="input">
+            </div>
+
+            <div class="info">
+              <p> Adresse:</p>
+              <input type="text" class="input" [(ngModel)]="address">
+            </div>
+            <div class="info">
+              <p> Nouveau mot de passe:</p>
+              <input type="password" class="input">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="button-container">
+          <div class="btn" (click)="update()">Update</div>
+        </div>
+      </div>
+    }
+
 
   </div>
 
