@@ -67,6 +67,15 @@ export class AppComponent implements OnInit {
     this.authService.logout()
   }
 
+  pathTag() {
+    if (this.currentRoute === '/admin/login') {
+      return true
+    } else if (this.currentRoute === '/bill'){
+      return true
+    } else return false
+
+  }
+
 
   ngOnInit() {
     this.router.events.subscribe(event => {

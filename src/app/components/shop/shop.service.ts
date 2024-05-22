@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {ProductModel} from "../../models/product.model";
 import {CommentModel} from "../../models/comment.model";
-import {CartModel} from "../../models/cart.model";
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +35,7 @@ export class ShopService {
   }
 
   addToCart(productId: string, flag: string, userId: string | null): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/product/cart`, { productId, flag, userId });
+    return this.http.post<any>(`${this.apiUrl}/product/cart`, {productId, flag, userId});
   }
 
   getCartItems(userId: string): Observable<any> {
@@ -44,7 +43,7 @@ export class ShopService {
   }
 
   toggleFavourite(productId: string, userId: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/product/favourites/add`, { productId, userId });
+    return this.http.post<any>(`${this.apiUrl}/product/favourites/add`, {productId, userId});
   }
 
   getFavouriteItems(userId: string): Observable<any> {
@@ -52,14 +51,9 @@ export class ShopService {
   }
 
 
-
   createCheckoutSession(amount: number): Observable<{ sessionId: string }> {
-    return this.http.post<{ sessionId: string }>(`${this.apiUrl}/product/create-checkout-session`, { amount });
+    return this.http.post<{ sessionId: string }>(`${this.apiUrl}/product/create-checkout-session`, {amount});
   }
 
-  generateBill(cartItems: CartModel[]): Observable<Blob> {
-    const cartItemsJson = JSON.stringify(cartItems);
-    return this.http.get(`${this.apiUrl}/product/generate-bill/${cartItemsJson}`, { responseType: 'blob' });
-  }
 
 }

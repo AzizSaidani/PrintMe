@@ -37,7 +37,6 @@ exports.addToCart = async (req, res) => {
     res.status(500).json({message: 'Internal server error', error: err.message});
   }
 };
-
 exports.getCartItems = async (req, res) => {
   const {userId} = req.params;
 

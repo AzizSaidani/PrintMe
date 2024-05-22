@@ -43,9 +43,9 @@ exports.generateBill = async (req, res) => {
 
     const fetchedProducts = await Promise.all(
       products.map(async (item) => {
-        const product = await Product.findOne({ name: item.name });
+        const product = await Product.findOne({ name: item.product.name });
         if (!product) {
-          throw new Error(`Product ${item.name} not found`);
+          throw new Error(`Product ${item.product.name} not found`);
         }
         return {
           ...product._doc,
@@ -103,16 +103,39 @@ exports.generateBill = async (req, res) => {
 
     // Total
     pdfDoc.moveDown();
-    pdfDoc.fontSize(14).text(`Total: ]${total.toFixed(2)}²`, { align: 'right' });
+    pdfDoc.fontSize(14).text(`Total:$${total.toFixed(2)}`, { align: 'right' });
 
     pdfDoc.end();
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+exports.payment = async (req, res) => {
+  try {
+    const { amount } = req.body;
 
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [{
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Custom Payment',
+          },
+          unit_amount: amount * 100, // Stripe expects the amount in cents
+        },
+        quantity: 1,
+      }],
+      mode: 'payment',
+      success_url: `${req.headers.origin}/success`,
+      cancel_url: `${req.headers.origin}/shop`,
+    });
 
-
+    res.json({ id: session.id });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 exports.createCheckoutSession = async (req, res) => {
   try {
     const { amount } = req.body;
@@ -130,7 +153,7 @@ exports.createCheckoutSession = async (req, res) => {
         quantity: 1,
       }],
       mode: 'payment',
-      success_url: `${req.headers.origin}/success`,
+      success_url: `${req.headers.origin}/bill`,
       cancel_url: `${req.headers.origin}/cancel`,
     });
 
