@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const reclamationSchema = new mongoose.Schema({
+const contactSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -17,10 +17,6 @@ const reclamationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  method: {
-    type: String,
-    required: true
-  },
   status: {
     type: String,
     required: true
@@ -32,6 +28,6 @@ const reclamationSchema = new mongoose.Schema({
   }
 });
 
-const Reclamation = mongoose.model('Reclamation', reclamationSchema);
+const Contact = mongoose.model('Contact', contactSchema);
 
-module.exports = Reclamation;
+module.exports = Contact;

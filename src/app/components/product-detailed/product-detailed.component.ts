@@ -6,6 +6,8 @@ import {NgxDropzoneModule} from "ngx-dropzone";
 import {FormsModule} from "@angular/forms";
 import {CommentModel} from "../../models/comment.model";
 import {ShopService} from "../shop/shop.service";
+import {ContactService} from "../contact/service/contact.service";
+import {Contact} from "../../models/reclamation.model";
 
 @Component({
   selector: 'app-product-detailed',
@@ -30,22 +32,50 @@ export class ProductDetailedComponent implements AfterContentInit {
   username = this.userData.username
   comment = ''
   comments: CommentModel[] = []
-
   showOverlay: boolean = false;
+  name = '';
+  email = '';
+  phone = '';
+  description = '';
+  method = 'email';
+
+
+  constructor(private service: ShopService, private contactService: ContactService, @Inject(DOCUMENT) private document: Document) {
+    this.loadSelectedItemFromLocalStorage();
+  }
+
+  reclamation() {
+    const reclamationData: Contact = {
+      name: this.name,
+      email: this.email,
+      phone: this.phone,
+      description: this.description,
+      status: 'non lu',
+      method: this.method
+    }
+    if (this.name.length > 0 && this.email.length > 0 && this.phone.length > 0 && this.description.length > 0) {
+      this.contactService.reclamation(reclamationData).subscribe(
+        () => {
+          console.log('success')
+          window.location.assign('')
+        },
+        error => {
+          console.log(error)
+        }
+      )
+
+    }
+  }
 
   toggleOverlay() {
     this.showOverlay = !this.showOverlay;
   }
+
   handleOverlayClick(event: MouseEvent) {
     if ((event.target as HTMLElement).classList.contains('overlay')) {
       this.showOverlay = false;
     }
   }
-
-  constructor(private service: ShopService, @Inject(DOCUMENT) private document: Document) {
-    this.loadSelectedItemFromLocalStorage();
-  }
-
 
   loadSelectedItemFromLocalStorage() {
     const selectedItemString = this.document.defaultView?.localStorage.getItem('selectedItem');
@@ -69,7 +99,6 @@ export class ProductDetailedComponent implements AfterContentInit {
       }
     );
   }
-
 
   addComment() {
     const comment: CommentModel = {
@@ -104,7 +133,6 @@ export class ProductDetailedComponent implements AfterContentInit {
       }
     }
   }
-
 
   addToCartFromToolBar() {
     const data = (this.document.defaultView?.localStorage.getItem('auth_token'));

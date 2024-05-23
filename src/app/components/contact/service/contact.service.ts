@@ -14,6 +14,10 @@ export class ContactService {
 
 
   contact(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/createContact`, data)
+  }
+
+  reclamation(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/createReclamation`, data)
   }
 }

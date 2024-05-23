@@ -87,16 +87,16 @@
       <div class="overlay-content" (click)="$event.stopPropagation()">
         <div class="close" (click)="toggleOverlay()"><img ngSrc="assets/svg/plus.svg" height="16" width="16"></div>
         <p>Faites-nous part de votre requête!</p>
-        <input class="data-entry" type="text" id="name" name="name" placeholder="Prénom">
-        <input class="data-entry" type="email" id="email" name="email" placeholder="Email">
-        <input class="data-entry" type="tel" id="tel" name="tel" placeholder="Téléphone">
-        <textarea id="question" name="question" placeholder="Sujet"></textarea>
+        <input [(ngModel)]="name" class="data-entry" type="text" id="name" name="name" placeholder="Prénom">
+        <input [(ngModel)]="email" class="data-entry" type="email" id="email" name="email" placeholder="Email">
+        <input [(ngModel)]="phone" class="data-entry" type="tel" id="tel" name="tel" placeholder="Téléphone">
+        <textarea [(ngModel)]="description" id="question" name="question" placeholder="Sujet"></textarea>
         <div class="radio">
-          <input type="radio" name="choix">E-mail
-          <input type="radio" name="choix">Téléphone
-          <input type="radio" name="choix">Les deux
+          <input (change)="method='email'" type="radio" name="choix" checked>E-mail
+          <input (change)="method='téléphone' " type="radio" name="choix">Téléphone
+          <input type="radio" name="choix" (change)="method='les deux'">Les deux
         </div>
-        <div class="button"> Envoyez</div>
+        <div class="button" (click)="reclamation()"> Envoyez</div>
 
       </div>
     </div>

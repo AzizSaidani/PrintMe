@@ -4,7 +4,7 @@ import {NgxDropzoneModule} from "ngx-dropzone";
 import {AddProductService} from "../service/add-product.service";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
-import {Reclamation} from "../../models/reclamation.model";
+import {Contact} from "../../models/reclamation.model";
 import {UserModel} from "../../models/user.model";
 
 @Component({
@@ -31,7 +31,7 @@ export class DashboardComponent implements AfterViewInit {
   selectedElement = 'Products'
   files: File[] = []
 
-  reclamation: Reclamation[] = []
+  reclamation: Contact[] = []
   userlist: UserModel[] = []
 
 

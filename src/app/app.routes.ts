@@ -13,20 +13,22 @@ import {AboutUsComponent} from "./components/about-us/about-us.component";
 import {authGuard, authGuardConnected} from "./auth-guard/auth.guard";
 import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
 import {ProductDetailedComponent} from "./components/product-detailed/product-detailed.component";
+import {FactureComponent} from "./facture/facture.component";
 
 export const routes: Routes = [
   //** Commune **//
   {path: '', component: HomeComponent},
   {path: 'faq', component: FaqComponent, canActivate: [authGuard]},
-  {path: 'shop', component: ShopComponent,  canActivate: [authGuard]},
-  {path: 'details', component: ProductDetailedComponent,  canActivate: [authGuard]},
-  {path: 'ourServices', component: OurServiceComponent,  canActivate: [authGuard]},
+  {path: 'shop', component: ShopComponent, canActivate: [authGuard]},
+  {path: 'details', component: ProductDetailedComponent, canActivate: [authGuard]},
+  {path: 'ourServices', component: OurServiceComponent, canActivate: [authGuard]},
   {path: 'contact', component: ContactComponent},
   {path: 'cart', component: CartComponent, canActivate: [authGuard]},
   {path: 'login', component: LoginComponent, canActivate: [authGuardConnected]},
   {path: 'signup', component: SignupComponent, canActivate: [authGuardConnected]},
   {path: 'forgetPassword', component: ForgetPasswordComponent, canActivate: [authGuardConnected]},
   {path: 'about', component: AboutUsComponent, canActivate: [authGuard]},
+  {path: 'bill', component: FactureComponent, canActivate: [authGuard]},
 
   //** Admin **//
   {path: 'admin', component: HomeComponent},

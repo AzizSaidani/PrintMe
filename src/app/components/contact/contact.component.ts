@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {ContactService} from "./service/contact.service";
 import {FormsModule} from "@angular/forms";
-import {Reclamation} from "../../models/reclamation.model";
+import {Contact} from "../../models/reclamation.model";
 
 @Component({
   selector: 'app-contact',
@@ -26,7 +26,7 @@ export class ContactComponent {
   }
 
   contact() {
-    const contactData: Reclamation = {
+    const contactData: Contact = {
       name: this.name,
       email: this.email,
       phone: this.phone,
@@ -43,12 +43,13 @@ export class ContactComponent {
       this.service.contact(contactData).subscribe(
         () => {
           console.log('success')
+          window.location.assign('')
+
         },
         error => {
           console.log(error)
         }
       )
-      window.location.replace('')
 
     }
   }

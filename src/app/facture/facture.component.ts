@@ -27,10 +27,7 @@ export class FactureComponent implements AfterViewInit {
 
   generateFacture() {
     this.loadCartItems()
-    console.log(this.cart)
     this.service.generateBill(this.cart).subscribe((blob) => {
-
-
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
@@ -43,9 +40,7 @@ export class FactureComponent implements AfterViewInit {
   }
 
   deletecart() {
-
-    window.location.replace('shop')
-
+    window.location.assign('shop')
   }
 
 

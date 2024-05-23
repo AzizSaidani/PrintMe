@@ -20,8 +20,7 @@ export class LoginComponent {
   email = ''
   password = ''
 
-  constructor(private authService: AuthService) {
-  }
+  constructor(private authService: AuthService) {}
 
   routing(url: string) {
     window.location.replace(url)
