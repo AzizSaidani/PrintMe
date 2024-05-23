@@ -281,6 +281,7 @@ exports.login = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({error: 'Invalid email or password'});
     }
+
     const token = createToken(user._id);
     const id = user._id
     const {username, role} = user;

@@ -67,6 +67,17 @@
       }
       Chat
     </div>
+    <div class="element" (click)="selectedElement='newsLetter'"
+         [ngClass]="{'inactive': selectedElement !== 'newsLetter'}">
+      @if (selectedElement === 'newsLetter') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+
+      }
+      NewsLetter
+    </div>
   </div>
 
   <div class="main">

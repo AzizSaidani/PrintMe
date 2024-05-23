@@ -1,15 +1,37 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthService} from "../../../components/auth_component/service/auth.service";
+import {NavigationExtras} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-login-admin',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   templateUrl: './login-admin.component.html',
   styleUrl: './login-admin.component.scss'
 })
 export class LoginAdminComponent {
+  email = ''
+  password = ''
 
-  login(value: object) {
-    console.log(value);
+  constructor(private authService: AuthService) {
+  }
+
+  login() {
+    const credentials = {
+      email: this.email,
+      password: this.password
+    }
+    this.authService.login(credentials, 'admin').subscribe(
+      (response) => {
+        console.log('Login successful:', response);
+        window.location.replace('')
+      },
+      (error) => {
+        console.error('Login failed:', error);
+      }
+    );
   }
 }

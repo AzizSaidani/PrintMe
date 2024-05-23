@@ -17,7 +17,6 @@ export class AuthService {
   constructor(private http: HttpClient) {
     const userData = JSON.parse(localStorage.getItem(this.TOKEN_KEY) || '{}');
     if (userData.token) {
-      const decodedToken = this.jwtHelper.decodeToken(userData.token);
       const user = {
         token: userData.token,
         username: userData.username,
@@ -40,7 +39,7 @@ export class AuthService {
     return this.http.post(`http://localhost:3000/api/auth/reset`, {email});
   }
 
-  login(credentials: any): Observable<any> {
+  login(credentials: any, expectedRole: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap((response: any) => {
         const token = response.token;
@@ -48,6 +47,9 @@ export class AuthService {
         const email = credentials.email;
         const role = response.role;
         const id = response.id;
+        if (response.role !== expectedRole) {
+          throw new Error('Unauthorized role');
+        }
         const userData = {token, username, role, email, id};
         localStorage.setItem(this.TOKEN_KEY, JSON.stringify(userData));
         this.currentUserSubject.next(userData);
@@ -75,7 +77,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/updatePhoneNumber`, {email: email, newPhoneNumber: newPhoneNumber})
   }
 
-  getUserDetails(id: string):Observable<ProfileModel> {
+  getUserDetails(id: string): Observable<ProfileModel> {
     return this.http.get(`${this.apiUrl}/users/${id}`,)
   }
 

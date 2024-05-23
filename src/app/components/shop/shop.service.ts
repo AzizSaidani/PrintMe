@@ -34,8 +34,8 @@ export class ShopService {
     return this.http.post(`${this.apiUrl}/product/comment`, data);
   }
 
-  addToCart(productId: string, flag: string, userId: string | null): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/product/cart`, {productId, flag, userId});
+  addToCart(productId: string, flag: string, userId: string | null, amount?: number ): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/product/cart`, {productId, flag, userId,amount});
   }
 
   getCartItems(userId: string): Observable<any> {

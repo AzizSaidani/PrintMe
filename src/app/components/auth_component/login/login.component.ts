@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
-import {NavigationExtras, Router, RouterLink} from "@angular/router";
+import {RouterLink} from "@angular/router";
 import {AuthService} from "../service/auth.service";
 import {FormsModule} from "@angular/forms";
 
@@ -20,7 +20,7 @@ export class LoginComponent {
   email = ''
   password = ''
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService) {
   }
 
   routing(url: string) {
@@ -34,13 +34,9 @@ export class LoginComponent {
       password: this.password
     }
 
-    this.authService.login(credentials).subscribe(
+    this.authService.login(credentials, 'client').subscribe(
       (response) => {
         console.log('Login successful:', response);
-        const navigationExtras: NavigationExtras = {
-          queryParams: {registered: 'true'}
-        };
-        // this.router.navigate([''], navigationExtras)
         window.location.replace('')
       },
       (error) => {
