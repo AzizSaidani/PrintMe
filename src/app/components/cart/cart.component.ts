@@ -3,12 +3,14 @@ import {DOCUMENT, NgOptimizedImage} from "@angular/common";
 import {CartModel} from "../../models/cart.model";
 import {ShopService} from "../shop/shop.service";
 import {loadStripe} from "@stripe/stripe-js";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   imports: [
-    NgOptimizedImage
+    NgOptimizedImage,
+    FormsModule
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
@@ -16,6 +18,7 @@ import {loadStripe} from "@stripe/stripe-js";
 export class CartComponent implements AfterContentInit {
   cart!: CartModel[]
   cartItemsTotalPrice = 0
+  mode=true
 
 
   constructor(@Inject(DOCUMENT) private document: Document, private service: ShopService) {

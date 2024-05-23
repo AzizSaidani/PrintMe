@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const commandeSchema = new mongoose.Schema({
   userId: {type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true},
   status: {type: String, default: 'en cours'},
-  payment: {type: String,},
+  payment: {type: String},
 
   items: [
     {

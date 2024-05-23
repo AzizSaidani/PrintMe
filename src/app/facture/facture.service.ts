@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CartModel} from "../models/cart.model";
 import {Observable} from "rxjs";
@@ -14,7 +14,11 @@ export class FactureService {
   private apiUrl = 'http://localhost:3000/api';
 
   generateBill(cartItems: CartModel[]): Observable<Blob> {
-    return this.http.post(`${this.apiUrl}/product/generateBill`, { products: cartItems }, { responseType: 'blob' });
+    return this.http.post(`${this.apiUrl}/product/generateBill`, {products: cartItems}, {responseType: 'blob'});
+  }
+
+  deleteCart(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/cart/:${{id}}`)
   }
 
 }

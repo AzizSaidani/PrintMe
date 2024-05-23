@@ -47,9 +47,22 @@
     <div class="right-section">
       <div class="title">Oder Summary</div>
       <div class="total">Subtotal: ${{ cartItemsTotalPrice }}</div>
-
       <div class="text">Shipping, taxes, and discounts will be calculated at checkout.</div>
-      <div class="btn" (click)="redirectToCheckout(cartItemsTotalPrice)">Proceed to Checkout</div>
+      <span>Mode de paiement </span>
+      <div class="mode">
+        <div>
+          <input type="radio" name="method" (change)="mode=true" checked> Paiement en espèce à la livraison
+        </div>
+        <div><input type="radio" name="method" (change)="mode=false"> Paiement par carte bancaire
+        </div>
+      </div>
+      @if (mode) {
+
+        <div class="btn" (click)="redirectToCheckout(cartItemsTotalPrice)">Proceed to Checkout</div>
+      } @else {
+
+        <div class="btn" (click)="redirectToCheckout(cartItemsTotalPrice)">Passez la commande</div>
+      }
 
 
     </div>

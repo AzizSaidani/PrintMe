@@ -1,41 +1,37 @@
 const Commande = require('../models/Commande.model');
-const Product = require('../models/product.model');
+const Cart = require('../models/cart.model');
+const mongoose = require('mongoose');
 
 
-exports.addToCart = async (req, res) => {
-  const {productId, userId = null, amount,} = req.body;
+exports.createCommande = async (req, res) => {
+  const {userId, method} = req.body;
+
+  if (!userId || !method) {
+    return res.status(400).json({error: 'userId and method are required'});
+  }
 
   try {
-    let commande = await Commande.findOne({userId});
-
-    if (!commande) {
-      if (!userId) {
-        return res.status(400).json({message: 'userId is required'});
-      }
-      commande = new Cart({userId, items: []});
+    // Find the cart for the given userId
+    const cart = await Cart.findOne({userId: mongoose.Types.ObjectId(userId)}).exec();
+    if (!cart) {
+      return res.status(404).json({error: 'Cart not found'});
     }
 
-    const existingItem = commande.items.find(item => item.productId.toString() === productId);
+    // Create a new Commande with items from the cart
+    const newCommande = new Commande({
+      userId: mongoose.Types.ObjectId(userId),
+      status: 'en cours',
+      payment: method,
+      items: cart.items,
+    });
 
+    // Save the new Commande to the database
+    const savedCommande = await newCommande.save();
 
-    if (flag === 'del') {
-      commande.items = commande.items.filter(item => item.productId.toString() !== productId);
-    } else if (flag === 'dec') {
-      if (existingItem) {
-        existingItem.amount = Math.max(existingItem.amount - 1, 1);
-      }
-    } else if (flag === 'inc') {
-      if (existingItem) {
-        existingItem.amount += 1;
-      } else {
-        commande.items.push({productId, amount: 1});
-      }
-    }
-
-    await commande.save();
-    res.status(200).json(commande);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({message: 'Internal server error', error: err.message});
+    return res.status(201).json(savedCommande);
+  } catch (error) {
+    console.error('Error creating commande:', error);
+    return res.status(500).json({error: 'Internal server error'});
   }
 };
+
