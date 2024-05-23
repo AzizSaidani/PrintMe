@@ -8,6 +8,7 @@ import {CommentModel} from "../../models/comment.model";
 import {ShopService} from "../shop/shop.service";
 import {ContactService} from "../contact/service/contact.service";
 import {Contact} from "../../models/reclamation.model";
+import {AddProductService} from "../../back-office/service/add-product.service";
 
 @Component({
   selector: 'app-product-detailed',
@@ -40,9 +41,14 @@ export class ProductDetailedComponent implements AfterContentInit {
   method = 'email';
 
 
-  constructor(private service: ShopService, private contactService: ContactService, @Inject(DOCUMENT) private document: Document) {
+  constructor(private service: ShopService, private addProductService: AddProductService, private contactService: ContactService, @Inject(DOCUMENT) private document: Document) {
     this.loadSelectedItemFromLocalStorage();
   }
+
+  ngAfterContentInit() {
+    this.loadComments()
+  }
+
 
   reclamation() {
     const reclamationData: Contact = {
@@ -84,9 +90,6 @@ export class ProductDetailedComponent implements AfterContentInit {
     }
   }
 
-  ngAfterContentInit() {
-    this.loadComments()
-  }
 
   loadComments() {
     this.service.loadComments().subscribe(
@@ -106,6 +109,8 @@ export class ProductDetailedComponent implements AfterContentInit {
       productId: this.selectedItem?._id,
       description: this.comment,
     }
+
+
     this.service.addComment(comment).subscribe(() => {
         window.location.reload()
       },
@@ -134,17 +139,35 @@ export class ProductDetailedComponent implements AfterContentInit {
     }
   }
 
-  addToCartFromToolBar() {
+  async addToCart() {
     const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
     let user = ''
     if (data) {
       user = JSON.parse(data).id
     }
-    if (this.selectedItem?._id)
-      this.service.addToCart(this.selectedItem?._id, 'inc', user, this.amount).subscribe(() => {
+    const file_data = this.files[this.files.length - 1]
+    const image = new FormData()
+    image.append('file', file_data)
+    image.append('upload_preset', 'pfe_product')
+    image.append('cloud_name', 'dwkp2dnfs')
+    if (this.files[0]) {
+      this.addProductService.uploadImage(image).subscribe(res => {
+        if (this.selectedItem?._id) {
+          this.service.addToCart(this.selectedItem?._id, 'inc', user, this.amount, res.url).subscribe(() => {
+            window.location.assign('shop')
+          })
+        }
       })
+    } else {
+      if (this.selectedItem?._id) {
 
-    window.location.assign('shop')
+        this.service.addToCart(this.selectedItem?._id, 'inc', user, this.amount,).subscribe(() => {
+          window.location.assign('shop')
+
+        })
+      }
+    }
+
   }
 
 }

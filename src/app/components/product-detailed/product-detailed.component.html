@@ -26,10 +26,12 @@
         <div class="customized">
           <input type="checkbox" [(ngModel)]="isCustomized" name="customized">Personalisé?
         </div>
+
         @if (isCustomized) {
+
           <div class="drop-zone">
             <ngx-dropzone (change)="onSelect($event)" class="zone">
-              {{ fileName }}
+              <p>{{ fileName }}</p>
             </ngx-dropzone>
           </div>
         }
@@ -51,7 +53,7 @@
         </div>
 
         <div class="buttons">
-          <div class="btn" (click)="addToCartFromToolBar()"> Ajouter au panier</div>
+          <div class="btn" (click)="addToCart()"> Ajouter au panier</div>
         </div>
 
 
