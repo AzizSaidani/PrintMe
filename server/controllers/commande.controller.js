@@ -23,6 +23,7 @@ exports.createCommande = async (req, res) => {
       status: 'en cours',
       payment: method,
       items: cart.items,
+      cartId: cart._id
     });
 
     // Save the new Commande to the database

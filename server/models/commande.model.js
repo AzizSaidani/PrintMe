@@ -4,6 +4,8 @@ const commandeSchema = new mongoose.Schema({
   userId: {type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true},
   status: {type: String, default: 'en cours'},
   payment: {type: String},
+  valid: {type: Boolean, default: false},
+  cartId:{type: mongoose.Schema.Types.ObjectId, ref: 'Cart', required: true},
 
   items: [
     {

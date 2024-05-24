@@ -2,9 +2,9 @@ import {AfterContentInit, Component, Inject} from '@angular/core';
 import {DOCUMENT, NgOptimizedImage, NgStyle} from "@angular/common";
 import {ProductCardComponent} from "../../widgets/product-card/product-card.component";
 import {ProductModel} from "../../models/product.model";
-import {ShopService} from "../shop/shop.service";
-import {SettingService} from "./setting.service";
-import {AuthService} from "../auth_component/service/auth.service";
+import {ShopService} from "../../services/shop-service/shop.service";
+import {SettingService} from "../../services/settings-service/setting.service";
+import {AuthService} from "../../services/auth-service/auth.service";
 import {ProfileModel} from "../../models/profile.model";
 import {FormsModule} from "@angular/forms";
 

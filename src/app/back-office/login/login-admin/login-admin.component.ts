@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthService} from "../../../components/auth_component/service/auth.service";
+import {AuthService} from "../../../services/auth-service/auth.service";
 import {NavigationExtras} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 
@@ -27,7 +27,7 @@ export class LoginAdminComponent {
     this.authService.login(credentials, 'admin').subscribe(
       (response) => {
         console.log('Login successful:', response);
-        window.location.replace('')
+        window.location.assign('')
       },
       (error) => {
         console.error('Login failed:', error);

@@ -1,9 +1,10 @@
 import {AfterContentInit, Component, Inject} from '@angular/core';
 import {DOCUMENT, NgOptimizedImage} from "@angular/common";
 import {CartModel} from "../../models/cart.model";
-import {ShopService} from "../shop/shop.service";
+import {ShopService} from "../../services/shop-service/shop.service";
 import {loadStripe} from "@stripe/stripe-js";
 import {FormsModule} from "@angular/forms";
+import {CommandeService} from "../../services/commande/commande.service";
 
 @Component({
   selector: 'app-cart',
@@ -18,10 +19,10 @@ import {FormsModule} from "@angular/forms";
 export class CartComponent implements AfterContentInit {
   cart!: CartModel[]
   cartItemsTotalPrice = 0
-  mode=true
+  mode = false
 
 
-  constructor(@Inject(DOCUMENT) private document: Document, private service: ShopService) {
+  constructor(@Inject(DOCUMENT) private document: Document, private service: ShopService, private commande: CommandeService) {
   }
 
 
@@ -31,9 +32,29 @@ export class CartComponent implements AfterContentInit {
   }
 
   routing(url: string) {
-    window.location.replace(url)
+    window.location.assign(url)
   }
 
+
+  createCommande() {
+    if (!this.mode) {
+      const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
+      let user = ''
+      if (data) {
+        user = JSON.parse(data).id
+      }
+      const method = 'Paiement en espèce à la livraison'
+      console.log(user )
+      console.log(method)
+
+      this.commande.addComment(user, method).subscribe(() => {
+        alert('done')
+
+      }, (error) => {
+        console.error('Error generating bill:', error);
+      })
+    }
+  }
 
 
   async redirectToCheckout(amount: number) {
@@ -56,14 +77,9 @@ export class CartComponent implements AfterContentInit {
     }
   }
 
-
-
-
-
   stringToInt(string: string) {
     return parseInt(string)
   }
-
 
   loadCartItems() {
     const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
@@ -96,4 +112,6 @@ export class CartComponent implements AfterContentInit {
       return total + (parseInt(cartItem.product.price) * cartItem.amount);
     }, 0);
   }
+
+
 }

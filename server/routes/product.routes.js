@@ -4,7 +4,7 @@ const productController = require('../controllers/product.controller');
 const commentController = require('../controllers/comment.controller');
 const cartController = require('../controllers/cart.controller');
 const favouriteController = require('../controllers/favourite.controller');
-const commandeController = require('../controllers/commanded.controller');
+const commandeController = require('../controllers/commande.controller');
 
 router.post('/add', productController.addProduct);
 router.get('/load', productController.getAllProducts);

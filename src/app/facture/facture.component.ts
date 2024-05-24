@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Inject} from '@angular/core';
 import {CartModel} from "../models/cart.model";
-import {FactureService} from "./facture.service";
-import {ShopService} from "../components/shop/shop.service";
+import {FactureService} from "../services/facture-service/facture.service";
+import {ShopService} from "../services/shop-service/shop.service";
 import {DOCUMENT, NgOptimizedImage} from "@angular/common";
 
 @Component({
@@ -31,15 +31,15 @@ export class FactureComponent implements AfterViewInit {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = 'bill.pdf';
+      link.download = 'facture.pdf';
       link.click();
-      window.URL.revokeObjectURL(url);
+      window.location.replace('')
     }, (error) => {
       console.error('Error generating bill:', error);
     });
   }
 
-  deletecart() {
+  deleteCart() {
     window.location.assign('shop')
   }
 

@@ -5,8 +5,8 @@ import {DOCUMENT, NgClass, NgOptimizedImage} from "@angular/common";
 import {NgxDropzoneModule} from "ngx-dropzone";
 import {FormsModule} from "@angular/forms";
 import {CommentModel} from "../../models/comment.model";
-import {ShopService} from "../shop/shop.service";
-import {ContactService} from "../contact/service/contact.service";
+import {ShopService} from "../../services/shop-service/shop.service";
+import {ContactService} from "../../services/contact-service/contact.service";
 import {Contact} from "../../models/reclamation.model";
 import {AddProductService} from "../../back-office/service/add-product.service";
 

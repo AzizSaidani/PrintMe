@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthService} from "../service/auth.service";
+import {AuthService} from "../../../services/auth-service/auth.service";
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -19,7 +19,7 @@ export class ForgetPasswordComponent {
 
   forgotPassword(email: string) {
     this.service.forgotPassword(email).subscribe(()=>(
-      window.location.replace('login')
+      window.location.assign('login')
     ))
   }
 }

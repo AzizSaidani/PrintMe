@@ -3,7 +3,7 @@ import {DOCUMENT, NgOptimizedImage, NgStyle} from "@angular/common";
 import {ItemsComponent} from "../home/items/items.component";
 import {ProductCardComponent} from "../../widgets/product-card/product-card.component";
 import {ProductModel} from "../../models/product.model";
-import {ShopService} from "./shop.service";
+import {ShopService} from "../../services/shop-service/shop.service";
 import {ProductDetailedComponent} from "../product-detailed/product-detailed.component";
 import {CartModel} from "../../models/cart.model";
 
@@ -43,7 +43,7 @@ export class ShopComponent implements AfterContentInit {
   saveSelectedItemToLocalStorage(item: ProductModel) {
     const selectedItem = JSON.stringify(item);
     this.document.defaultView?.localStorage.setItem('selectedItem', selectedItem);
-    window.location.replace('details')
+    window.location.assign('details')
   }
 
   loadCategoryFromLocalStorage() {

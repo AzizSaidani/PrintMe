@@ -21,7 +21,7 @@ import {LoginComponent} from "./components/auth_component/login/login.component"
 import {SignupComponent} from "./components/auth_component/signup/signup.component";
 import {ShopComponent} from "./components/shop/shop.component";
 import {SettingsComponent} from "./components/settings/settings.component";
-import {AuthService} from "./components/auth_component/service/auth.service";
+import {AuthService} from "./services/auth-service/auth.service";
 import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
 import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
 

@@ -7,7 +7,7 @@ import {RouterLink} from "@angular/router";
 import {toSignal} from "../../utils/signals/signal.util";
 import {CartModel} from "../../models/cart.model";
 import {ProductModel} from "../../models/product.model";
-import {ShopService} from "../../components/shop/shop.service";
+import {ShopService} from "../../services/shop-service/shop.service";
 
 @Component({
   selector: 'app-toolbar',
@@ -62,7 +62,7 @@ export class ToolbarComponent implements AfterViewInit {
   cart!: CartModel[]
 
   routing(url: string) {
-    window.location.replace(url)
+    window.location.assign(url)
   }
 
   ngAfterViewInit() {
@@ -71,7 +71,7 @@ export class ToolbarComponent implements AfterViewInit {
 
   logOut() {
     this.logout.emit()
-    window.location.replace('login')
+    window.location.assign('login')
   }
 
   constructor(@Inject(DOCUMENT) private document: Document, private service: ShopService) {
@@ -80,7 +80,7 @@ export class ToolbarComponent implements AfterViewInit {
   saveCategoryToLocalStorage(item: string) {
     const category = JSON.stringify(item);
     this.document.defaultView?.localStorage.setItem('category', category);
-    window.location.replace('shop')
+    window.location.assign('shop')
   }
 
 

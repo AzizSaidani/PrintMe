@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {ProfileModel} from "../../../models/profile.model"; // Install the @auth0/angular-jwt package
+import {ProfileModel} from "../../models/profile.model"; // Install the @auth0/angular-jwt package
 
 @Injectable({
   providedIn: 'root'

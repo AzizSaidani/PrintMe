@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {AuthService} from "../service/auth.service";
+import {AuthService} from "../../../services/auth-service/auth.service";
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -23,7 +23,7 @@ export class LoginComponent {
   constructor(private authService: AuthService) {}
 
   routing(url: string) {
-    window.location.replace(url)
+    window.location.assign(url)
   }
 
 
@@ -36,7 +36,7 @@ export class LoginComponent {
     this.authService.login(credentials, 'client').subscribe(
       (response) => {
         console.log('Login successful:', response);
-        window.location.replace('')
+        window.location.assign('')
       },
       (error) => {
         console.error('Login failed:', error);

@@ -220,6 +220,12 @@
           flex-direction: column;
           gap: 5px;
           justify-content: center;
+          .item{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+          }
         }
 
         .title {

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
-import {ContactService} from "./service/contact.service";
+import {ContactService} from "../../services/contact-service/contact.service";
 import {FormsModule} from "@angular/forms";
 import {Contact} from "../../models/reclamation.model";
 
