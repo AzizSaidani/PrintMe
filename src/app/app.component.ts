@@ -22,8 +22,8 @@ import {SignupComponent} from "./components/auth_component/signup/signup.compone
 import {ShopComponent} from "./components/shop/shop.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 import {AuthService} from "./services/auth-service/auth.service";
-import {DashboardComponent} from "./back-office/dashboard/dashboard.component";
 import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
+import {ContainerComponent} from "./back-office/container/container.component";
 
 @Component({
   selector: 'app-root',
@@ -49,7 +49,9 @@ import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.c
     LoginComponent,
     SignupComponent,
     ShopComponent,
-    SettingsComponent, DashboardComponent, LoginAdminComponent],
+    SettingsComponent,
+    LoginAdminComponent,
+    ContainerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -70,7 +72,7 @@ export class AppComponent implements OnInit {
   pathTag() {
     if (this.currentRoute === '/admin/login') {
       return true
-    } else if (this.currentRoute === '/bill'){
+    } else if (this.currentRoute === '/bill') {
       return true
     } else return false
 

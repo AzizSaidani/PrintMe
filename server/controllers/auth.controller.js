@@ -29,15 +29,15 @@ const SECRET_KEY = 'net ninja secret';
 
 exports.resetPassword = async (req, res) => {
   try {
-    const { email } = req.body;
-    const user = await User.findOne({ email });
+    const {email} = req.body;
+    const user = await User.findOne({email});
 
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({error: 'User not found'});
     }
 
     // Generate a new reset token
-    const resetToken = jwt.sign({ userId: user._id }, SECRET_KEY, { expiresIn: '1h' });
+    const resetToken = jwt.sign({userId: user._id}, SECRET_KEY, {expiresIn: '1h'});
 
     // Save the reset token and expiration time to the user document
     user.resetToken = resetToken;
@@ -45,7 +45,7 @@ exports.resetPassword = async (req, res) => {
     await user.save();
 
     // Fetch the user again to verify the save
-    const updatedUser = await User.findOne({ email });
+    const updatedUser = await User.findOne({email});
 
     // Log the token and expiration from the database
     console.log('Generated resetToken:', resetToken);
@@ -64,19 +64,19 @@ exports.resetPassword = async (req, res) => {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log(error);
-        return res.status(500).json({ error: 'Failed to send reset email' });
+        return res.status(500).json({error: 'Failed to send reset email'});
       }
       console.log(`Email sent: ${info.response}`);
-      res.status(200).json({ message: 'Password reset email sent' });
+      res.status(200).json({message: 'Password reset email sent'});
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({error: error.message});
   }
 };
 exports.renderResetPasswordForm = async (req, res) => {
   console.log('renderResetPasswordForm called');
   try {
-    const { token } = req.params;
+    const {token} = req.params;
     console.log('Token received in URL:', token);
 
     const decoded = jwt.verify(token, SECRET_KEY);
@@ -85,7 +85,7 @@ exports.renderResetPasswordForm = async (req, res) => {
     const user = await User.findById(decoded.userId);
     if (!user) {
       console.log('User not found');
-      return res.status(400).json({ error: 'Invalid or expired token' });
+      return res.status(400).json({error: 'Invalid or expired token'});
     }
 
     // Log the token stored in the user document
@@ -93,12 +93,12 @@ exports.renderResetPasswordForm = async (req, res) => {
 
     if (user.resetToken !== token) {
       console.log('Token does not match user record');
-      return res.status(400).json({ error: 'Invalid or expired token' });
+      return res.status(400).json({error: 'Invalid or expired token'});
     }
 
     if (user.resetTokenExpires < Date.now()) {
       console.log('Token has expired');
-      return res.status(400).json({ error: 'Invalid or expired token' });
+      return res.status(400).json({error: 'Invalid or expired token'});
     }
 
     res.send(`
@@ -109,18 +109,18 @@ exports.renderResetPasswordForm = async (req, res) => {
     `);
   } catch (error) {
     console.log('Error during token verification:', error.message);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({error: error.message});
   }
 };
 exports.updatePassword = async (req, res) => {
   try {
-    const { token } = req.params;
-    const { newPassword } = req.body;
+    const {token} = req.params;
+    const {newPassword} = req.body;
     console.log('Request body:', req.body); // Add this line
 
     // Validate newPassword
     if (!newPassword || typeof newPassword !== 'string' || newPassword.trim().length === 0) {
-      return res.status(400).json({ error: 'Invalid password' });
+      return res.status(400).json({error: 'Invalid password'});
     }
 
     console.log('Token received in URL:', token);
@@ -131,17 +131,17 @@ exports.updatePassword = async (req, res) => {
     const user = await User.findById(decoded.userId);
     if (!user) {
       console.log('User not found');
-      return res.status(400).json({ error: 'Invalid or expired token' });
+      return res.status(400).json({error: 'Invalid or expired token'});
     }
 
     if (user.resetToken !== token) {
       console.log('Token does not match user record');
-      return res.status(400).json({ error: 'Invalid or expired token' });
+      return res.status(400).json({error: 'Invalid or expired token'});
     }
 
     if (user.resetTokenExpires < Date.now()) {
       console.log('Token has expired');
-      return res.status(400).json({ error: 'Invalid or expired token' });
+      return res.status(400).json({error: 'Invalid or expired token'});
     }
 
     // Hash the new password
@@ -151,104 +151,104 @@ exports.updatePassword = async (req, res) => {
     user.resetTokenExpires = undefined;
     await user.save();
 
-    res.status(200).json({ message: 'Password has been reset successfully' });
+    res.status(200).json({message: 'Password has been reset successfully'});
   } catch (error) {
     console.log('Error during password update:', error.message);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({error: error.message});
   }
 };
 exports.changePassword = async (req, res) => {
   try {
-    const { email, oldPassword, newPassword } = req.body;
+    const {email, oldPassword, newPassword} = req.body;
 
     // Validate inputs
     if (!email || !oldPassword || !newPassword) {
-      return res.status(400).json({ error: 'Missing required fields' });
+      return res.status(400).json({error: 'Missing required fields'});
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({email});
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({error: 'User not found'});
     }
 
     const isOldPasswordValid = await bcrypt.compare(oldPassword, user.password);
     if (!isOldPasswordValid) {
-      return res.status(400).json({ error: 'Incorrect old password' });
+      return res.status(400).json({error: 'Incorrect old password'});
     }
 
     const hashedNewPassword = await bcrypt.hash(newPassword, 10);
     user.password = hashedNewPassword;
     await user.save();
 
-    res.status(200).json({ message: 'Password updated successfully' });
+    res.status(200).json({message: 'Password updated successfully'});
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({error: error.message});
   }
 };
 exports.updateUsername = async (req, res) => {
   try {
-    const { email, newUsername } = req.body;
+    const {email, newUsername} = req.body;
 
     // Validate inputs
     if (!email || !newUsername) {
-      return res.status(400).json({ error: 'Missing required fields' });
+      return res.status(400).json({error: 'Missing required fields'});
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({email});
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({error: 'User not found'});
     }
 
     user.username = newUsername;
     await user.save();
 
-    res.status(200).json({ message: 'Username updated successfully' });
+    res.status(200).json({message: 'Username updated successfully'});
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({error: error.message});
   }
 };
 exports.updateAddress = async (req, res) => {
   try {
-    const { email, newAddress } = req.body;
+    const {email, newAddress} = req.body;
 
     // Validate inputs
     if (!email || !newAddress) {
-      return res.status(400).json({ error: 'Missing required fields' });
+      return res.status(400).json({error: 'Missing required fields'});
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({email});
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({error: 'User not found'});
     }
 
     user.address = newAddress;
     await user.save();
 
-    res.status(200).json({ message: 'Address updated successfully' });
+    res.status(200).json({message: 'Address updated successfully'});
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({error: error.message});
   }
 };
 exports.updatePhoneNumber = async (req, res) => {
   try {
-    const { email, newPhoneNumber } = req.body;
+    const {email, newPhoneNumber} = req.body;
 
     // Validate inputs
     if (!email || !newPhoneNumber) {
-      return res.status(400).json({ error: 'Missing required fields' });
+      return res.status(400).json({error: 'Missing required fields'});
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({email});
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({error: 'User not found'});
     }
 
     user.phone = newPhoneNumber;
     await user.save();
 
-    res.status(200).json({ message: 'Phone number updated successfully' });
+    res.status(200).json({message: 'Phone number updated successfully'});
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({error: error.message});
   }
 };
 exports.getAllUsers = async (req, res) => {
@@ -293,21 +293,38 @@ exports.login = async (req, res) => {
 };
 exports.getUserDetails = async (req, res) => {
   try {
-    const { id } = req.params;
+    const {id} = req.params;
 
     if (!id) {
-      return res.status(400).json({ error: 'Missing required field: id' });
+      return res.status(400).json({error: 'Missing required field: id'});
     }
 
-    const user = await User.findById(id, { username: 1, phone: 1, address: 1 });
+    const user = await User.findById(id, {username: 1, phone: 1, address: 1});
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({error: 'User not found'});
     }
 
-    const { username, phone = '', address = '' } = user;
+    const {username, phone = '', address = ''} = user;
 
-    res.status(200).json({ username, phone, address });
+    res.status(200).json({username, phone, address});
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({error: error.message});
   }
 };
+exports.updateUserStatus = async (req, res) => {
+  try {
+    const {id, status,role} = req.body;
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({message: 'User not found'});
+    }
+    user.status = status
+    user.role = role
+    await user.save(); // Save the updated user document
+
+    res.status(200).json({message: 'User status updated successfully', user});
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+};
+

@@ -5,6 +5,9 @@ const reclamationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  product: {
+    type: String,
+  },
   email: {
     type: String,
     required: true

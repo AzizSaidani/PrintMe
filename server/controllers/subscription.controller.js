@@ -50,3 +50,11 @@ exports.getSubStatus = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+exports.getAllSubscriptions = async (req, res) => {
+  try {
+    const subscriptions = await Subscription.find();
+    res.status(200).json(subscriptions);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

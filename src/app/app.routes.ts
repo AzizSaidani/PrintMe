@@ -16,7 +16,8 @@ import {ProductDetailedComponent} from "./components/product-detailed/product-de
 import {FactureComponent} from "./facture/facture.component";
 
 export const routes: Routes = [
-  //** Commune **//
+  //** Client **//
+
   {path: '', component: HomeComponent},
   {path: 'faq', component: FaqComponent, canActivate: [authGuard]},
   {path: 'shop', component: ShopComponent, canActivate: [authGuard]},
@@ -29,15 +30,12 @@ export const routes: Routes = [
   {path: 'forgetPassword', component: ForgetPasswordComponent, canActivate: [authGuardConnected]},
   {path: 'about', component: AboutUsComponent, canActivate: [authGuard]},
   {path: 'bill', component: FactureComponent, canActivate: [authGuard]},
+  {path: 'client/profile', component: SettingsComponent},
+
 
   //** Admin **//
   {path: 'admin', component: HomeComponent},
   {path: 'admin/login', component: LoginAdminComponent},
-
-
-  //** Client **//
-  {path: 'client/profile', component: SettingsComponent},
-
 
   //** Redirect **//
   {path: '**', redirectTo: '', pathMatch: 'full'}

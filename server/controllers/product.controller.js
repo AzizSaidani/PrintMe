@@ -176,4 +176,49 @@ exports.generateBill = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+exports.updateProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, price, imagePath, offer, category, description } = req.body;
+
+    // Find the product by ID
+    const product = await Product.findById(id);
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    // Update only the fields that are provided and not empty
+    if (name) product.name = name;
+    if (price) product.price = price;
+    if (imagePath) product.imagePath = imagePath;
+    if (offer) product.offer = offer;
+    if (category) product.category = category;
+    if (description) product.description = description;
+
+    // Save the updated product
+    const updatedProduct = await product.save();
+
+    res.status(200).json(updatedProduct);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+exports.deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Find the product by ID and delete it
+    const deletedProduct = await Product.findByIdAndDelete(id);
+
+    if (!deletedProduct) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    res.status(200).json({ message: 'Product deleted successfully', deletedProduct });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 

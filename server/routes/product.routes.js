@@ -7,6 +7,8 @@ const favouriteController = require('../controllers/favourite.controller');
 const commandeController = require('../controllers/commande.controller');
 
 router.post('/add', productController.addProduct);
+router.put('/update/:id', productController.updateProduct);
+router.delete('/delete/:id', productController.deleteProduct);
 router.get('/load', productController.getAllProducts);
 router.post('/comment', commentController.addComment);
 router.get('/loadComments', commentController.getAllComments);

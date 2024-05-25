@@ -1,0 +1,675 @@
+<div class="container">
+
+  <div class="menu">
+    <img alt="icon" class="logo" src="assets/logo.png">
+    <div class="element" (click)="add='';selectedElement='Products'"
+         [ngClass]="{'inactive': selectedElement !== 'Products'}">
+      @if (selectedElement === 'Products') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+      }
+      Products
+
+    </div>
+    <div class="element" (click)="add='';selectedElement='Reclamation non lu'"
+         [ngClass]="{'inactive': selectedElement !== 'Reclamation non lu'}">
+      @if (selectedElement === 'Reclamation non lu') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+      }
+      Reclamation non lu
+
+    </div>
+    <div class="element" (click)="add='';selectedElement='Reclamation'"
+         [ngClass]="{'inactive': selectedElement !== 'Reclamation'}">
+      @if (selectedElement === 'Reclamation') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+      }
+      Reclamation Lu
+
+    </div>
+    <div class="element" (click)="add='';selectedElement='Users'" [ngClass]="{'inactive': selectedElement !== 'Users'}">
+      @if (selectedElement === 'Users') {
+
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+
+      } @else {
+
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+      }
+      List d'utilisateur
+    </div>
+    <div class="element" (click)="add='';selectedElement='Commandes'"
+         [ngClass]="{'inactive': selectedElement !== 'Commandes'}">
+      @if (selectedElement === 'Commandes') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+
+      }
+      Commandes
+    </div>
+    <div class="element" (click)="add='';selectedElement='Contact'"
+         [ngClass]="{'inactive': selectedElement !== 'Contact'}">
+      @if (selectedElement === 'Contact') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+
+      }
+      Contact
+    </div>
+    <div class="element" (click)="add='';selectedElement='Contact non lu'"
+         [ngClass]="{'inactive': selectedElement !== 'Contact non lu'}">
+      @if (selectedElement === 'Contact non lu') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+
+      }
+      Contact non lu
+    </div>
+    <div class="element" (click)="add='';selectedElement='newsLetter'"
+         [ngClass]="{'inactive': selectedElement !== 'newsLetter'}">
+      @if (selectedElement === 'newsLetter') {
+        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+
+      } @else {
+        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+
+      }
+      NewsLetter
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <!--      <span>{{ selectedElement }}</span>-->
+      <!--      <img alt="notifications" ngSrc="assets/svg/bell-empty.svg" height="16" width="16">-->
+    </div>
+
+
+    <div class="content">
+      @if (selectedElement === 'Products') {
+        <div class="dashboard">
+
+          <div class="tables ">
+            <div class="table ">
+              <h2>Products</h2>
+              <div style="display: flex ; justify-content: flex-end">
+                <h3 style="cursor: pointer" (click)="add='add'">Ajouter un produit</h3>
+
+              </div>
+              <table>
+                <tr>
+                  <th>Produit</th>
+                  <th>Prix</th>
+                  <th>Offre</th>
+                  <th>Categorie</th>
+                  <th></th>
+                </tr>
+                @for (item of product; track item) {
+                  <tr>
+                    <td>
+                      <div class="name"> {{ item.name }}</div>
+                    </td>
+                    <td>{{ item.price }}DT</td>
+                    <td>{{ item.offer }}</td>
+                    <td><span class="online">{{ item.category }}</span></td>
+
+                    <td>
+                      <span class="button" (click)=" selectedProduct= item ;toggleOverlay()">Effacer</span>
+                    </td>
+                    <td>
+                      <span class="button" (click)="add='update'; selectedProduct=item">Editer</span>
+                    </td>
+                  </tr>
+                }
+              </table>
+            </div>
+            <div class="details" [ngClass]="{closed:add===''}">
+              @if (add === 'add') {
+                <h2>Ajouter un produit</h2>
+                <div class="new-prod">
+
+
+                  <div>
+                    <div class="form-item">Nom du produit<input [(ngModel)]="newProductName" type="text"></div>
+                    <div class="form-item">Prix<input [(ngModel)]="newProductPrice" type="text"></div>
+                    <div class="form-item">Catégorie
+
+                      <select [(ngModel)]="category">
+                        <option selected>Imperssion numerique</option>
+                        <option>Marketing digital</option>
+                        <option>Impression grandformat</option>
+                        <option>Conception graphique</option>
+                      </select></div>
+                    <div class="form-item">Description<textarea [(ngModel)]="newProductDescription"></textarea></div>
+
+                    <div class="form-item">
+                      <div class="drop-zone">
+                        <ngx-dropzone (change)="onSelect($event)" class="zone">
+                          {{ fileName }}
+                        </ngx-dropzone>
+                      </div>
+
+                    </div>
+                    <div class="button" (click)="addProduct()"> Ajouter</div>
+                  </div>
+                </div>
+              } @else if (add === 'update') {
+                <h2>Editer un produit</h2>
+                <div class="new-prod">
+
+
+                  <div>
+                    <div class="form-item">Nom du produit<input [(ngModel)]="selectedProduct.name" type="text"></div>
+                    <div class="form-item">Prix<input [(ngModel)]="selectedProduct.price" type="text"></div>
+                    <div class="form-item">Offre<input [(ngModel)]="selectedProduct.offer" type="text"></div>
+                    <div class="form-item">Catégorie
+
+                      <select [(ngModel)]="selectedProduct.category">
+                        <option selected>Imperssion numerique</option>
+                        <option>Marketing digital</option>
+                        <option>Impression grandformat</option>
+                        <option>Conception graphique</option>
+                      </select></div>
+                    <div class="form-item">Description<textarea [(ngModel)]="selectedProduct.description"></textarea>
+                    </div>
+
+                    <div class="form-item">
+                      <div class="drop-zone">
+                        <ngx-dropzone (change)="onSelect($event)" class="zone">
+                          {{ fileName }}
+                        </ngx-dropzone>
+                      </div>
+
+                    </div>
+                    <div class="button" (click)="updateProduct()"> Confirmer</div>
+                  </div>
+                </div>
+              }
+            </div>
+
+          </div>
+        </div>
+      }
+      @if (selectedElement === 'Reclamation non lu') {
+        <div class="dashboard">
+          <div class="tables ">
+            <div class="table ">
+              <h2>Reclamation</h2>
+              <table>
+                <tr>
+                  <th>Client</th>
+                  <th>Produit</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+                @for (item of reclamation; track item) {
+                  @if (item.status === 'non lu') {
+                    <tr>
+                      <td>
+                        <div class="name"> {{ item.name }}</div>
+                      </td>
+                      <td>{{ item.product }}</td>
+                      <td>{{ item.email }}</td>
+                      <td><span class="online">{{ item.status }}</span></td>
+
+                      <td>
+                      <span class="button"
+                            (click)="add='add'; selectedReclamation=item; reclamationStatus=selectedReclamation.status">Editer</span>
+                      </td>
+                    </tr>
+                  }
+                }
+              </table>
+            </div>
+            <div class="details" [ngClass]="{closed:add===''}">
+              @if (add === 'add') {
+                <h2>Gestion du reclamation</h2>
+                <div class="new-prod">
+
+
+                  <div>
+                    <div class="form-item">Status
+                      <select [(ngModel)]="selectedReclamation.status">
+                        <option>non lu</option>
+                        <option>Lu</option>
+                      </select>
+
+                    </div>
+
+                    <div class="form-item">Description
+
+                      <span>{{ selectedReclamation.description }}</span></div>
+
+                    <div class="button" (click)="updateReclamation()"> valider</div>
+                  </div>
+                </div>
+              }
+            </div>
+
+          </div>
+        </div>
+      }
+      @if (selectedElement === 'Reclamation') {
+        <div class="dashboard">
+          <div class="tables ">
+            <div class="table ">
+              <h2>Reclamation</h2>
+              <table>
+                <tr>
+                  <th>Client</th>
+                  <th>Produit</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+                @for (item of reclamation; track item) {
+                  @if (item.status === 'Lu') {
+                    <tr>
+                      <td>
+                        <div class="name"> {{ item.name }}</div>
+                      </td>
+                      <td>{{ item.product }}</td>
+                      <td>{{ item.email }}</td>
+                      <td><span class="online">{{ item.status }}</span></td>
+
+                      <td>
+                      <span class="button"
+                            (click)="add='add'; selectedReclamation=item; reclamationStatus=selectedReclamation.status">Editer</span>
+                      </td>
+                    </tr>
+                  }
+                }
+              </table>
+            </div>
+            <div class="details" [ngClass]="{closed:add===''}">
+              @if (add === 'add') {
+                <h2>Gestion du reclamation</h2>
+                <div class="new-prod">
+
+
+                  <div>
+                    <div class="form-item">Status
+                      <select [(ngModel)]="selectedReclamation.status">
+                        <option>non lu</option>
+                        <option>Lu</option>
+                      </select>
+
+                    </div>
+
+                    <div class="form-item">Description
+
+                      <span>{{ selectedReclamation.description }}</span></div>
+
+                    <div class="button" (click)="updateReclamation()"> valider</div>
+                  </div>
+                </div>
+              }
+            </div>
+
+          </div>
+        </div>
+      }
+      @if (selectedElement === 'Contact non lu') {
+        <div class="dashboard">
+          <div class="tables ">
+            <div class="table ">
+              <h2>Contact non lu</h2>
+              <table>
+                <tr>
+                  <th>Client</th>
+                  <th>Télephone</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+                @for (item of contact; track item) {
+                  @if (item.status === 'non lu') {
+                    <tr>
+                      <td>
+                        <div class="name"> {{ item.name }}</div>
+                      </td>
+                      <td>{{ item.phone }}</td>
+                      <td>{{ item.email }}</td>
+                      <td><span class="online">{{ item.status }}</span></td>
+
+                      <td>
+                      <span class="button"
+                            (click)="add='add'; selectedContact=item; contactStatus=selectedContact.status">Editer</span>
+                      </td>
+                    </tr>
+                  }
+
+
+                }
+              </table>
+            </div>
+            <div class="details" [ngClass]="{closed:add===''}">
+              @if (add === 'add') {
+                <h2>Gestion du contact</h2>
+                <div class="new-prod">
+
+
+                  <div>
+                    <div class="form-item">Status
+                      <select [(ngModel)]="selectedContact.status">
+                        <option>non lu</option>
+                        <option>Lu</option>
+                      </select>
+
+                    </div>
+
+                    <div class="form-item">Description
+
+                      <span>{{ selectedContact.description }}</span></div>
+
+                    <div class="button" (click)="updateContact()"> valider</div>
+                  </div>
+                </div>
+              }
+            </div>
+
+          </div>
+        </div>
+      }
+      @if (selectedElement === 'Contact') {
+        <div class="dashboard">
+          <div class="tables ">
+            <div class="table ">
+              <h2>Contact</h2>
+              <table>
+                <tr>
+                  <th>Client</th>
+                  <th>Télephone</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+                @for (item of contact; track item) {
+                  @if (item.status === 'Lu') {
+                    <tr>
+                      <td>
+                        <div class="name"> {{ item.name }}</div>
+                      </td>
+                      <td>{{ item.phone }}</td>
+                      <td>{{ item.email }}</td>
+                      <td><span class="online">{{ item.status }}</span></td>
+
+                      <td>
+                      <span class="button"
+                            (click)="add='add'; selectedContact=item; contactStatus=selectedContact.status">Editer</span>
+                      </td>
+                    </tr>
+                  }
+
+
+                }
+              </table>
+            </div>
+            <div class="details" [ngClass]="{closed:add===''}">
+              @if (add === 'add') {
+                <h2>Gestion du contact</h2>
+                <div class="new-prod">
+
+
+                  <div>
+                    <div class="form-item">Status
+                      <select [(ngModel)]="selectedContact.status">
+                        <option>non lu</option>
+                        <option>Lu</option>
+                      </select>
+
+                    </div>
+
+                    <div class="form-item">Description
+
+                      <span>{{ selectedContact.description }}</span></div>
+
+                    <div class="button" (click)="updateContact()"> valider</div>
+                  </div>
+                </div>
+              }
+            </div>
+
+          </div>
+        </div>
+      }
+      @if (selectedElement === 'Users') {
+        <div class="dashboard">
+          <div class="tables ">
+            <div class="table ">
+              <h2>List d'utilisateur</h2>
+              <table>
+                <tr>
+                  <th>Nom</th>
+                  <th>E-mail</th>
+                  <th>Téléphone</th>
+                  <th>status</th>
+                  <th>role</th>
+                  <th></th>
+                </tr>
+                @for (user of userlist; track user) {
+                  <tr>
+                    <td>
+                      <div class="name"> {{ user.username }}</div>
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td><span class="online">{{ user.phone }}</span></td>
+                    <td>{{ user.status }}
+
+                    </td>
+                    <td>{{ user.role }}</td>
+
+                    <td>
+                      <span class="button" (click)="add='add';selectedUser=user">Edit</span>
+                    </td>
+                  </tr>
+
+                }
+
+              </table>
+            </div>
+            <div class="details" [ngClass]="{closed:add===''}">
+              @if (add === 'add') {
+                <h2>Gestion d'utilisateur</h2>
+                <div class="new-prod">
+
+
+                  <div>
+                    <div style="width: 100% ; align-items: center ; display: flex;justify-content: center">
+                      <h3>{{ selectedUser.username }}</h3></div>
+                    <div class="form-item">Status
+                      <select [(ngModel)]="selectedUser.status">
+                        <option>active</option>
+                        <option>désactivé</option>
+                      </select>
+
+                    </div>
+                    <div class="form-item">Status
+                      <select [(ngModel)]="selectedUser.role">
+                        <option>client</option>
+                        <option>admin</option>
+                      </select>
+
+                    </div>
+
+
+                    <div class="button" (click)="updateUserStatus()"> valider</div>
+                  </div>
+                </div>
+              }
+            </div>
+
+
+          </div>
+        </div>
+
+      }
+      @if (selectedElement === 'newsLetter') {
+        <div class="dashboard">
+          <div class="tables ">
+            <div class="table" style="width: 30vw">
+              <h2>NewsLetter</h2>
+              <table>
+                <tr>
+                  <th>E-mail</th>
+                </tr>
+                @for (sub of subs; track sub) {
+                  <tr>
+                    <td>
+                      <div class="name"> {{ sub.email }}</div>
+                    </td>
+                  </tr>
+
+                }
+
+              </table>
+            </div>
+
+            <div class="email-sender">
+              <div>
+                <label>Subject</label>
+                <input type="text" [(ngModel)]="emailSubject">
+              </div>
+
+              <div>
+                <label>Message</label>
+                <textarea [(ngModel)]="emailBody"></textarea>
+              </div>
+
+              <div class="send-button" (click)="sendEmailToMultipleRecipients()"> Envoyer</div>
+
+            </div>
+
+          </div>
+        </div>
+
+      }
+      @if (selectedElement === 'Commandes') {
+        <div class="dashboard">
+          <div class="tables ">
+            <div class="table ">
+              <h2>Commandes</h2>
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>E-mail</th>
+                  <th>phone</th>
+                  <th>status</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td>Manager</td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+
+                  <td>
+                    <span class="button">View</span>
+                  </td>
+                  <td>
+                    <span class="button">Edit</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td>Manager</td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+
+                  <td>
+                    <span class="button">View</span>
+                  </td>
+                  <td>
+                    <span class="button">Edit</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td>Manager</td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+
+                  <td>
+                    <span class="button">View</span>
+                  </td>
+                  <td>
+                    <span class="button">Edit</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td>Manager</td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+
+                  <td>
+                    <span class="button">View</span>
+                  </td>
+                  <td>
+                    <span class="button">Edit</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="name"> John Michael</div>
+                  </td>
+                  <td>Manager</td>
+                  <td><span class="online">ONLINE</span></td>
+                  <td>23/04/18</td>
+
+                  <td>
+                    <span class="button">View</span>
+                  </td>
+                  <td>
+                    <span class="button">Edit</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+
+          </div>
+        </div>
+
+      }
+
+    </div>
+
+
+  </div>
+
+
+  <div class="overlay" [ngClass]="{'show': showOverlay}" (click)="handleOverlayClick($event)">
+    <div class="overlay-content" (click)="$event.stopPropagation()">
+      <div class="close" (click)="toggleOverlay()"><img ngSrc="assets/svg/plus.svg" height="16" width="16"></div>
+      <p>Voulez-vous supprimer cet élément ?</p>
+      <div class="buttons">
+        <button class="cancel-button" (click)="toggleOverlay()">Annuler</button>
+        <button class="delete-button" (click)="deleteProduct(selectedProduct)">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>

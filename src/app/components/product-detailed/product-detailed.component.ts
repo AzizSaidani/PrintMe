@@ -57,7 +57,8 @@ export class ProductDetailedComponent implements AfterContentInit {
       phone: this.phone,
       description: this.description,
       status: 'non lu',
-      method: this.method
+      method: this.method,
+      product: this.selectedItem?.name
     }
     if (this.name.length > 0 && this.email.length > 0 && this.phone.length > 0 && this.description.length > 0) {
       this.contactService.reclamation(reclamationData).subscribe(

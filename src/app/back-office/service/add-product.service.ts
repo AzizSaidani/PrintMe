@@ -17,22 +17,47 @@ export class AddProductService {
   uploadImage(vals: any): Observable<any> {
     return this.http.post("https://api.cloudinary.com/v1_1/dwkp2dnfs/upload", vals)
   }
-
-
   addProduct(productData: any) {
     return this.http.post(`${this.apiUrl}/product/add`, productData);
   }
-
+  updateProduct(productId: string, updatedProductData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/product/update/${productId}`, updatedProductData);
+  }
+  updateRecalamtionStatus(data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/visitor/updateReclamation`, data);
+  }
+  updateContactStatus(data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/visitor/updateContact`, data);
+  }
+  deleteProduct(productId: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/product/delete/${productId}`);
+  }
   loadReclamation(): Observable<Contact[]> {
+    return this.http.get<any>(`${this.apiUrl}/visitor/loadReclamation`)
+      .pipe(
+        map(data => data as Contact[])
+      );
+  }
+  loadContact(): Observable<Contact[]> {
     return this.http.get<any>(`${this.apiUrl}/visitor/loadContact`)
       .pipe(
         map(data => data as Contact[])
       );
+  }
+  updateUserStatus(data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/auth/updateStatus`, data);
   }
   loadUsers(): Observable<UserModel[]> {
     return this.http.get<any>(`${this.apiUrl}/auth/loadUsers`)
       .pipe(
         map(data => data as UserModel[])
       );
+  }
+  loadSubscribers(): Observable<{ id: string, email: string }[]> {
+    return this.http.get<any>(`${this.apiUrl}/subscription/load`)
+  }
+
+  sendEmail(emailData: { recipients: string, subject: string, body: string }) {
+    return this.http.post(`${this.apiUrl}/auth/send-email`, emailData);
   }
 }

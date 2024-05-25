@@ -17,7 +17,6 @@ exports.createCommande = async (req, res) => {
       return res.status(404).json({error: 'Cart not found'});
     }
 
-    // Create a new Commande with items from the cart
     const newCommande = new Commande({
       userId: mongoose.Types.ObjectId(userId),
       status: 'en cours',
@@ -26,7 +25,6 @@ exports.createCommande = async (req, res) => {
       cartId: cart._id
     });
 
-    // Save the new Commande to the database
     const savedCommande = await newCommande.save();
 
     return res.status(201).json(savedCommande);
