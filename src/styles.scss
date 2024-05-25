@@ -1,4 +1,15 @@
 body {
+  .snackbar {
+    position: fixed;
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+    .mdc-snackbar__surface {
+      box-shadow: none;
+    }
+
+  }
+
   margin: 0;
 
   .b {

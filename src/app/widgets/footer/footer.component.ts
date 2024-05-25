@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { SubFromFooterService } from './sub-from-footer.service';
-import { FormsModule, NgForm } from '@angular/forms';
+import {Component} from '@angular/core';
+import {SubFromFooterService} from '../../services/footer-service/sub-from-footer.service';
+import {FormsModule} from '@angular/forms';
 import {NgOptimizedImage} from "@angular/common";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
 
 @Component({
   selector: 'app-footer',
@@ -13,32 +14,28 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class FooterComponent {
   email = '';
-  validator=''
+  validator = ''
 
-  constructor(private service: SubFromFooterService, private snackBar: MatSnackBar) {}
+  openSnackBar(message: string, action: string) {
+    this.snackBar.openFromComponent(CustomSnackbarComponent, {
+      data: {message: message, action: action},
+      duration: 3000,
+      horizontalPosition: 'center',
+      panelClass: ['snackbar'],
+    });
+  }
+
+  constructor(private service: SubFromFooterService, private snackBar: MatSnackBar) {
+  }
 
   subscribe() {
-      this.service.subscribe(this.email)
-        .subscribe({
-          next: () => {
-            this.email = ''; // Clear email field on successful subscription
-
-            // Display success snackbar using Material Design
-            this.snackBar.open('You have been subscribed to the newsletter!', '', {
-              duration: 3000, // Display for 3 seconds
-              horizontalPosition: 'center',
-              verticalPosition: 'bottom'
-            });
-          },
-          error: (error) => {
-            // Handle errors gracefully, e.g., display an error message
-            this.snackBar.open('Subscription failed: ' + error.message, '', {
-              duration: 5000, // Display for 5 seconds for user awareness
-              horizontalPosition: 'center',
-              verticalPosition: 'top'
-            });
-          }
-        });
+    this.service.subscribe(this.email)
+      .subscribe({
+        next: () => {
+          this.email = '';
+          this.openSnackBar('le changement a été fait avec succès', 'fermer')
+        }
+      });
 
   }
 }

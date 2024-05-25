@@ -12,7 +12,7 @@ export class CommandeService {
   constructor(private http: HttpClient) {
   }
 
-  addComment(id: string, mode: string) {
+  addCommande(id: string, mode: string) {
     const body = { userId: id, method: mode };
     return this.http.post(`${this.apiUrl}/product/commande`, body);
   }

@@ -7,6 +7,8 @@ import {SettingService} from "../../services/settings-service/setting.service";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {ProfileModel} from "../../models/profile.model";
 import {FormsModule} from "@angular/forms";
+import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-settings',
@@ -26,9 +28,12 @@ export class SettingsComponent implements AfterContentInit {
   userData!: ProfileModel
   address!: string
   phone!: string
+  email!: string
   username!: string
   newpass!: string
   oldpass!: string
+  currentSetting = 'Account'
+
 
   ngAfterContentInit() {
     this.loadWishes()
@@ -38,7 +43,18 @@ export class SettingsComponent implements AfterContentInit {
 
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.openFromComponent(CustomSnackbarComponent, {
+      data: {message: message, action: action},
+      duration: 3000,
+      horizontalPosition: 'center',
+      panelClass: ['snackbar'],
+    });
+  }
+
+
   constructor(@Inject(DOCUMENT) private document: Document,
+              private snackBar: MatSnackBar,
               private service: ShopService,
               private settingService: SettingService,
               private authService: AuthService
@@ -59,7 +75,6 @@ export class SettingsComponent implements AfterContentInit {
       this.setInitialValues()
     }
 
-
   }
 
   getUserDetails() {
@@ -67,6 +82,7 @@ export class SettingsComponent implements AfterContentInit {
     let id = ''
     if (data) {
       id = JSON.parse(data).id
+      this.email=JSON.parse(data).email
     }
     this.authService.getUserDetails(id).subscribe(res => {
       console.log(res);
@@ -97,12 +113,11 @@ export class SettingsComponent implements AfterContentInit {
     }
     if (productId)
       this.service.toggleFavourite(productId, user).subscribe(() => {
-        window.location.reload()
+        this.openSnackBar('Changement a été fait avec succès', 'fermer')
       })
   }
 
 
-  currentSetting = 'Information'
 
   changeSettingNav(nav: string) {
     this.currentSetting = nav
@@ -121,7 +136,7 @@ export class SettingsComponent implements AfterContentInit {
       tag = 'add'
     }
     this.settingService.subscribe(user, tag).subscribe(res => {
-      window.location.reload()
+      this.openSnackBar('Changement a été fait avec succès', 'fermer')
     })
   }
 
@@ -196,6 +211,9 @@ export class SettingsComponent implements AfterContentInit {
     if (this.newpass && this.oldpass) {
       this.changePassword(this.oldpass, this.newpass)
     }
+
+    this.openSnackBar('Mise à jour du profil réussie', 'fermer')
+
 
   }
 

@@ -6,6 +6,8 @@ import {ProductModel} from "../../models/product.model";
 import {ShopService} from "../../services/shop-service/shop.service";
 import {ProductDetailedComponent} from "../product-detailed/product-detailed.component";
 import {CartModel} from "../../models/cart.model";
+import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-shop',
@@ -27,6 +29,16 @@ export class ShopComponent implements AfterContentInit {
   filter = 'ahmed mo7sen'
 
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.openFromComponent(CustomSnackbarComponent, {
+      data: {message: message, action: action},
+      duration: 3000,
+      horizontalPosition: 'center',
+      panelClass: ['snackbar'],
+    });
+  }
+
+
   comparing(path: string, category: string) {
     return path.toLowerCase() === category.toLowerCase();
   }
@@ -36,7 +48,7 @@ export class ShopComponent implements AfterContentInit {
     this.loadProduct()
   }
 
-  constructor(private service: ShopService, @Inject(DOCUMENT) private document: Document) {
+  constructor(private snackBar: MatSnackBar, private service: ShopService, @Inject(DOCUMENT) private document: Document) {
     this.loadCategoryFromLocalStorage()
   }
 
@@ -68,7 +80,7 @@ export class ShopComponent implements AfterContentInit {
     }
     if (productId)
       this.service.addToCart(productId, flag, user).subscribe(() => {
-        alert('item has been addedo')
+        this.openSnackBar('Produit a été ajouter au panier', 'fermer')
       })
   }
 
@@ -80,7 +92,8 @@ export class ShopComponent implements AfterContentInit {
     }
     if (productId)
       this.service.toggleFavourite(productId, user).subscribe(() => {
-        alert('item has been added')
+        this.openSnackBar('Changement a été fait avec succès', 'fermer')
+
       })
   }
 

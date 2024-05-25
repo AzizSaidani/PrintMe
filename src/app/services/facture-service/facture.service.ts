@@ -17,8 +17,6 @@ export class FactureService {
     return this.http.post(`${this.apiUrl}/product/generateBill`, {products: cartItems}, {responseType: 'blob'});
   }
 
-  deleteCart(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/cart/:${{id}}`)
-  }
+
 
 }

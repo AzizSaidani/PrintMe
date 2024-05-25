@@ -3,6 +3,8 @@ import {NgOptimizedImage} from "@angular/common";
 import {ContactService} from "../../services/contact-service/contact.service";
 import {FormsModule} from "@angular/forms";
 import {Contact} from "../../models/reclamation.model";
+import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-contact',
@@ -22,7 +24,18 @@ export class ContactComponent {
   description = '';
   clicked = false
 
-  constructor(private service: ContactService) {
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.openFromComponent(CustomSnackbarComponent, {
+      data: {message: message, action: action},
+      duration: 5000,
+      horizontalPosition: 'center',
+      panelClass: ['snackbar'],
+    });
+  }
+
+  constructor(private snackBar: MatSnackBar
+    , private service: ContactService) {
   }
 
   contact() {
@@ -42,9 +55,12 @@ export class ContactComponent {
 
       this.service.contact(contactData).subscribe(
         () => {
-          console.log('success')
-          window.location.assign('')
-
+          this.openSnackBar('Message Envoyeé avec succée', 'Fermer')
+          this.description = ''
+          this.email = ''
+          this.phone = ''
+          this.name = ''
+          this.clicked = false
         },
         error => {
           console.log(error)

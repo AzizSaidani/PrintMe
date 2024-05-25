@@ -42,26 +42,30 @@
               <div class="data">
 
                 <h4>Informations de contact</h4>
-                <p>Saidani Aziz</p>
-                <p>azizsaidani1999&#64;gmail.com</p></div>
-              <div class="action">Éditer</div>
+                <p>{{ username }}</p>
+                <p>{{ email }}</p></div>
+              <div class="action" (click)="changeSettingNav('Information')">Éditer</div>
             </div>
             <div class="right">
               <div class="data">
 
                 <h4>Newsletters</h4>
-                <p>Vous n'êtes pas abonné à notre newsletter.</p>
+                @if (subscribed) {
+                  <p>Vous êtes abonné à notre newsletter.</p>
+                } @else {
+                  <p>Vous n'êtes pas abonné à notre newsletter.</p>
+                }
+
               </div>
-              <div class="action">Éditer</div>
+              <div class="action" (click)="changeSettingNav('Newsletter')">Éditer</div>
             </div>
             <div class="right">
               <div class="data">
                 <h4>Adresse par défaut</h4>
-                <p>center pacha bloc c montplaisir<br>
-                  tunis, tunis , 1073<br>
-                  Tunisie.</p>
-                <p>tel: 21236653</p></div>
-              <div class="action">Éditer</div>
+                <p style="overflow: auto">{{ address }}
+                </p>
+                <p>Tel: {{ phone }}</p></div>
+              <div class="action" (click)="changeSettingNav('Information')">Éditer</div>
             </div>
           </div>
         </div>

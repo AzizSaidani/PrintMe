@@ -133,7 +133,7 @@
 
 
         @if (!cart) {
-          <div class="button">
+          <div class="button" (click)="routing('shop')">
             <p>Continuer vos achats</p>
           </div>
         } @else {

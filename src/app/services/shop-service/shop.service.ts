@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {catchError, map, Observable, throwError} from "rxjs";
 import {ProductModel} from "../../models/product.model";
 import {CommentModel} from "../../models/comment.model";
 
@@ -14,7 +14,18 @@ export class ShopService {
   }
 
   private apiUrl = 'http://localhost:3000/api';
-  
+
+  deleteCart(userId: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/product/cart/${userId}`)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Delete cart error', error);
+          return throwError(error);
+        })
+      );
+  }
+
+
   loadProduct(): Observable<ProductModel[]> {
     return this.http.get<any>(`${this.apiUrl}/product/load`)
       .pipe(

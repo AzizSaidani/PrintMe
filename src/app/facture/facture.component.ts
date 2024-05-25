@@ -1,8 +1,9 @@
-import {AfterViewInit, Component, Inject} from '@angular/core';
+import {AfterContentInit, Component, Inject} from '@angular/core';
 import {CartModel} from "../models/cart.model";
 import {FactureService} from "../services/facture-service/facture.service";
 import {ShopService} from "../services/shop-service/shop.service";
 import {DOCUMENT, NgOptimizedImage} from "@angular/common";
+import {CommandeService} from "../services/commande/commande.service";
 
 @Component({
   selector: 'app-facture',
@@ -13,17 +14,42 @@ import {DOCUMENT, NgOptimizedImage} from "@angular/common";
   templateUrl: './facture.component.html',
   styleUrl: './facture.component.scss'
 })
-export class FactureComponent implements AfterViewInit {
+export class FactureComponent implements AfterContentInit {
   cart!: CartModel[]
   cartItemsTotalPrice = 0
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.loadCartItems()
+    this.createCommande()
   }
 
 
-  constructor(@Inject(DOCUMENT) private document: Document, private service: FactureService, private shopService: ShopService) {
+  constructor(private commande: CommandeService,
+              @Inject(DOCUMENT) private document: Document,
+              private service: FactureService,
+              private shopService: ShopService,
+  ) {
   }
+
+  createCommande() {
+    const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
+    let user = ''
+    if (data) {
+      user = JSON.parse(data).id
+    }
+    console.log(user)
+    const method = 'Paiement en ligne'
+    this.commande.addCommande(user, method).subscribe(() => {
+      this.shopService.deleteCart(user).subscribe(() => {
+      }, (error) => {
+        console.error('Error ss bill:', error);
+      })
+    }, (error) => {
+      console.error('Error Commande bill:', error);
+    })
+
+  }
+
 
   generateFacture() {
     this.loadCartItems()
@@ -33,7 +59,6 @@ export class FactureComponent implements AfterViewInit {
       link.href = url;
       link.download = 'facture.pdf';
       link.click();
-      window.location.replace('')
     }, (error) => {
       console.error('Error generating bill:', error);
     });
