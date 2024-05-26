@@ -9,6 +9,7 @@ import {ShopService} from "../../services/shop-service/shop.service";
 import {ProductModel} from "../../models/product.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
+import {AuthService} from "../../services/auth-service/auth.service";
 
 @Component({
   selector: 'app-container',
@@ -56,10 +57,15 @@ export class ContainerComponent implements AfterViewInit {
 
 
   constructor(private snackBar: MatSnackBar,
-              private service: AddProductService, private productService: ShopService,) {
+              private service: AddProductService, private productService: ShopService, private authService: AuthService) {
 
   }
 
+
+  logOut() {
+    this.authService.logout()
+    window.location.assign('admin/login')
+  }
 
   openSnackBar(message: string, action: string) {
     this.snackBar.openFromComponent(CustomSnackbarComponent, {
