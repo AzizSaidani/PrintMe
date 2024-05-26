@@ -34,3 +34,28 @@ exports.createCommande = async (req, res) => {
   }
 };
 
+exports.getAllCommande = async (req, res) => {
+  try {
+    const commandes = await Commande.find();
+    res.status(200).json(commandes);
+  } catch (error) {
+    res.status(500).json({message: error.message});
+  }
+};
+
+
+exports.updateCommandeStatus = async (req, res) => {
+  try {
+    const {id, newStatus} = req.body;
+    const commande = await Commande.findById(id);
+    if (!commande) {
+      return res.status(404).json({message: 'commande not found'});
+    }
+    commande.status = newStatus;
+    await commande.save();
+    res.status(200).json({message: 'commande status updated successfully'});
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+};
+

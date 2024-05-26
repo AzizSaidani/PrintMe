@@ -88,14 +88,13 @@
       NewsLetter
     </div>
     <div class="element" (click)="logOut()">
-      déconnectez
+      déconnecter
     </div>
   </div>
 
   <div class="main">
     <div class="header">
-      <!--      <span>{{ selectedElement }}</span>-->
-      <!--      <img alt="notifications" ngSrc="assets/svg/bell-empty.svg" height="16" width="16">-->
+
     </div>
 
 
@@ -475,7 +474,7 @@
                     <td>{{ user.role }}</td>
 
                     <td>
-                      <span class="button" (click)="add='add';selectedUser=user">Edit</span>
+                      <span class="button" (click)="add='add';selectedUser=user">Editer</span>
                     </td>
                   </tr>
 
@@ -562,97 +561,260 @@
       @if (selectedElement === 'Commandes') {
         <div class="dashboard">
           <div class="tables ">
-            <div class="table ">
-              <h2>Commandes</h2>
-              <table>
-                <tr>
-                  <th>Name</th>
-                  <th>E-mail</th>
-                  <th>phone</th>
-                  <th>status</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="name"> John Michael</div>
-                  </td>
-                  <td>Manager</td>
-                  <td><span class="online">ONLINE</span></td>
-                  <td>23/04/18</td>
+            @if (add !== 'add') {
+              <div class="table ">
+                <h2>Commandes</h2>
+                <div class="filter">
+                  <p (click)="selectedFilter='Tous les commandes'" [ngClass]="{
+                  selected:selectedFilter==='Tous les commandes'
+                  }">Tous les commandes</p>
+                  <p (click)="selectedFilter='en cours'" [ngClass]="{
+                  selected:selectedFilter==='en cours'
+                  }">Commandes En cours</p>
+                  <p (click)="selectedFilter='refusée'" [ngClass]="{
+                  selected:selectedFilter==='refusée'
+                  }">Commandes Refusée</p>
+                  <p (click)="selectedFilter='términée'" [ngClass]="{
+                  selected:selectedFilter==='términée'
+                  }">Commandes Términée</p>
 
-                  <td>
-                    <span class="button">View</span>
-                  </td>
-                  <td>
-                    <span class="button">Edit</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="name"> John Michael</div>
-                  </td>
-                  <td>Manager</td>
-                  <td><span class="online">ONLINE</span></td>
-                  <td>23/04/18</td>
+                </div>
 
-                  <td>
-                    <span class="button">View</span>
-                  </td>
-                  <td>
-                    <span class="button">Edit</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="name"> John Michael</div>
-                  </td>
-                  <td>Manager</td>
-                  <td><span class="online">ONLINE</span></td>
-                  <td>23/04/18</td>
+                @if (selectedFilter === 'refusée') {
+                  <table>
+                    <tr>
+                      <th>Nom</th>
+                      <th>E-mail</th>
+                      <th>phone</th>
+                      <th>status</th>
+                      <th>methode</th>
+                      <th>date</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    @for (commande of commandeList; track commande) {
+                      @if (commande.status === 'refusée') {
+                        <tr>
+                          <td>
+                            <div class="name"> {{ getClientNamesFromId(commande.userId) }}</div>
+                          </td>
+                          <td>{{ getClientEmailFromId(commande.userId) }}</td>
+                          <td><span class="online">{{ getClientPhoneFromId(commande.userId) }}</span></td>
 
-                  <td>
-                    <span class="button">View</span>
-                  </td>
-                  <td>
-                    <span class="button">Edit</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="name"> John Michael</div>
-                  </td>
-                  <td>Manager</td>
-                  <td><span class="online">ONLINE</span></td>
-                  <td>23/04/18</td>
+                          <td>
+                        <span
+                          [ngStyle]="{'color': getStatusColor(commande.status)}">{{ commande.status }}</span></td>
+                          <td>
+                            <div class="name"> {{ commande.payment }}</div>
+                          </td>
+                          <td>
+                            <div class="name"> {{ formatDateToDDMMYYYY(commande.createdAt) }}</div>
+                          </td>
+                          <td (click)="add='add';selectedCommande=commande">
+                            <img ngSrc="assets/svg/eye.svg" height="16" width="16">
+                          </td>
 
-                  <td>
-                    <span class="button">View</span>
-                  </td>
-                  <td>
-                    <span class="button">Edit</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="name"> John Michael</div>
-                  </td>
-                  <td>Manager</td>
-                  <td><span class="online">ONLINE</span></td>
-                  <td>23/04/18</td>
+                        </tr>
+                      }
+                    }
 
-                  <td>
-                    <span class="button">View</span>
-                  </td>
-                  <td>
-                    <span class="button">Edit</span>
-                  </td>
-                </tr>
-              </table>
+                  </table>
+                }
+
+                @if (selectedFilter === 'en cours') {
+                  <table>
+                    <tr>
+                      <th>Nom</th>
+                      <th>E-mail</th>
+                      <th>phone</th>
+                      <th>status</th>
+                      <th>methode</th>
+                      <th>date</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    @for (commande of commandeList; track commande) {
+                      @if (commande.status === 'en cours') {
+                        <tr>
+                          <td>
+                            <div class="name"> {{ getClientNamesFromId(commande.userId) }}</div>
+                          </td>
+                          <td>{{ getClientEmailFromId(commande.userId) }}</td>
+                          <td><span class="online">{{ getClientPhoneFromId(commande.userId) }}</span></td>
+
+                          <td>
+                        <span
+                          [ngStyle]="{'color': getStatusColor(commande.status)}">{{ commande.status }}</span></td>
+                          <td>
+                            <div class="name"> {{ commande.payment }}</div>
+                          </td>
+                          <td>
+                            <div class="name"> {{ formatDateToDDMMYYYY(commande.createdAt) }}</div>
+                          </td>
+                          <td (click)="add='add';selectedCommande=commande">
+                            <img ngSrc="assets/svg/eye.svg" height="16" width="16">
+                          </td>
+
+                        </tr>
+                      }
+                    }
+
+                  </table>
+                }
+
+                @if (selectedFilter === 'términée') {
+                  <table>
+                    <tr>
+                      <th>Nom</th>
+                      <th>E-mail</th>
+                      <th>phone</th>
+                      <th>status</th>
+                      <th>methode</th>
+                      <th>date</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    @for (commande of commandeList; track commande) {
+                      @if (commande.status === 'términée') {
+                        <tr>
+                          <td>
+                            <div class="name"> {{ getClientNamesFromId(commande.userId) }}</div>
+                          </td>
+                          <td>{{ getClientEmailFromId(commande.userId) }}</td>
+                          <td><span class="online">{{ getClientPhoneFromId(commande.userId) }}</span></td>
+
+                          <td>
+                        <span
+                          [ngStyle]="{'color': getStatusColor(commande.status)}">{{ commande.status }}</span></td>
+                          <td>
+                            <div class="name"> {{ commande.payment }}</div>
+                          </td>
+                          <td>
+                            <div class="name"> {{ formatDateToDDMMYYYY(commande.createdAt) }}</div>
+                          </td>
+                          <td (click)="add='add';selectedCommande=commande">
+                            <img ngSrc="assets/svg/eye.svg" height="16" width="16">
+                          </td>
+
+                        </tr>
+                      }
+                    }
+
+                  </table>
+                }
+
+                @if (selectedFilter === 'Tous les commandes') {
+                  <table>
+                    <tr>
+                      <th>Nom</th>
+                      <th>E-mail</th>
+                      <th>phone</th>
+                      <th>status</th>
+                      <th>methode</th>
+                      <th>date</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    @for (commande of commandeList; track commande) {
+
+                      <tr>
+                        <td>
+                          <div class="name"> {{ getClientNamesFromId(commande.userId) }}</div>
+                        </td>
+                        <td>{{ getClientEmailFromId(commande.userId) }}</td>
+                        <td><span class="online">{{ getClientPhoneFromId(commande.userId) }}</span></td>
+
+                        <td>
+                        <span
+                          [ngStyle]="{'color': getStatusColor(commande.status)}">{{ commande.status }}</span></td>
+                        <td>
+                          <div class="name"> {{ commande.payment }}</div>
+                        </td>
+                        <td>
+                          <div class="name"> {{ formatDateToDDMMYYYY(commande.createdAt) }}</div>
+                        </td>
+                        <td (click)="add='add';selectedCommande=commande">
+                          <img ngSrc="assets/svg/eye.svg" height="16" width="16">
+                        </td>
+
+                      </tr>
+
+                    }
+
+                  </table>
+                }
+
+
+              </div>
+            }
+            <div class="commande-management" [ngClass]="{closed:add===''}">
+              @if (add === 'add') {
+                <div class="w-100  flex flex-end">
+                  <img style="rotate: 45deg; cursor: pointer" ngSrc="assets/svg/plus.svg" height="16" width="16"
+                       (click)="add=''">
+                </div>
+                <h2>Gestion du Commande</h2>
+                <div class="new-prod">
+                  <div
+                    style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 20px">
+                    <div class="form-item">Status
+                      <select [(ngModel)]="selectedCommande.status">
+                        <option>en cours</option>
+                        <option>refusée</option>
+                        <option>terminée</option>
+                      </select>
+
+                    </div>
+                    <div class="form-item"><span style="visibility: hidden">s</span>
+                      <div class="button" (click)="updateCommande()"> Changer</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="table">
+                  <table>
+                    <tr>
+                      <th>Nom</th>
+                      <th>Personalisée</th>
+                      <th>Prix</th>
+                      <th>Quantité</th>
+                      <th>Offre</th>
+                    </tr>
+                    @for (item of selectedCommande.items; track item) {
+                      <tr>
+                        <td>{{ getProductNamesFromId(item.productId) }}</td>
+                        @if (item.filePath) {
+                          <td>
+                            <a [attr.href]="item.filePath" target="_blank">
+                              <img [src]="item.filePath" style="width: 100px; height: 40px">
+                            </a>
+                          </td>
+                        } @else {
+                          <td>Non</td>
+                        }
+
+
+                        <td>${{ getProductPriceFromId(item.productId) }}</td>
+                        <td>{{ item.amount }}</td>
+                        <td>{{ getProductOffreFromId(item.productId) }}%</td>
+                      </tr>
+                    }
+
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th>Total:${{ total() }}</th>
+                    </tr>
+
+                  </table>
+                </div>
+
+              }
             </div>
 
-
           </div>
+
         </div>
 
       }

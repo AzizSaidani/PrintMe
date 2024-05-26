@@ -10,6 +10,8 @@ import {ProductModel} from "../../models/product.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
 import {AuthService} from "../../services/auth-service/auth.service";
+import {CommandeModel} from "../../models/commande.model";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-container',
@@ -31,6 +33,7 @@ export class ContainerComponent implements AfterViewInit {
   reclamation: Contact[] = []
   contact: Contact[] = []
   userlist: UserModel[] = []
+  commandeList: CommandeModel[] = []
 
   category = 'Imperssion numerique';
   newProductPrice = ''
@@ -40,11 +43,12 @@ export class ContainerComponent implements AfterViewInit {
   reclamationStatus = 'non lu'
   contactStatus = 'non lu'
 
-  selectedElement = 'newsLetter'
+  selectedElement = 'Commandes'
   selectedProduct!: ProductModel
   selectedReclamation!: Contact
   selectedContact!: Contact
   selectedUser!: UserModel
+  selectedCommande!: CommandeModel
   subs!: { id: string, email: string }[]
 
 
@@ -53,6 +57,7 @@ export class ContainerComponent implements AfterViewInit {
 
 
   add = ''
+  selectedFilter='Tous les commandes'
   showOverlay: boolean = false;
 
 
@@ -64,7 +69,7 @@ export class ContainerComponent implements AfterViewInit {
 
   logOut() {
     this.authService.logout()
-    window.location.assign('admin/login')
+    window.location.assign('admin /login')
   }
 
   openSnackBar(message: string, action: string) {
@@ -82,12 +87,21 @@ export class ContainerComponent implements AfterViewInit {
     this.loadContact()
     this.loadUsers()
     this.loadSub()
+    this.loadcommande()
   }
 
 
   loadProduct() {
     this.productService.loadProduct().subscribe(res => {
       this.product = res
+    })
+  }
+
+  loadcommande() {
+    this.service.loadCommande().subscribe(res => {
+      this.commandeList = res
+      console.log(this.commandeList[0])
+
     })
   }
 
@@ -236,6 +250,15 @@ export class ContainerComponent implements AfterViewInit {
     })
   }
 
+  updateCommande() {
+    const data = {
+      id: this.selectedCommande._id,
+      newStatus: this.selectedCommande.status
+    }
+    this.service.updateCommandeStatus(data).subscribe(() => {
+    })
+  }
+
   updateUserStatus() {
     const data = {
       id: this.selectedUser._id,
@@ -268,4 +291,117 @@ export class ContainerComponent implements AfterViewInit {
 
   }
 
+
+  //// local functions
+  //client data
+  getClientNamesFromId(id: string) {
+    for (let i = 0; i < this.userlist.length; i++) {
+      if (this.userlist[i]._id === id) {
+        return this.userlist[i].username
+      }
+
+    }
+    return undefined
+
+  }
+
+  getClientEmailFromId(id: string) {
+    for (let i = 0; i < this.userlist.length; i++) {
+      if (this.userlist[i]._id === id) {
+        return this.userlist[i].email
+      }
+
+    }
+    return undefined
+
+  }
+
+  getClientPhoneFromId(id: string) {
+    for (let i = 0; i < this.userlist.length; i++) {
+      if (this.userlist[i]._id === id) {
+        return this.userlist[i].phone
+
+      }
+
+    }
+    return undefined
+
+  }
+
+  //product
+
+  getProductNamesFromId(id: string) {
+    for (let i = 0; i < this.product.length; i++) {
+      if (this.product[i]._id === id) {
+        return this.product[i].name
+      }
+
+    }
+    return undefined
+
+  }
+
+  getProductPriceFromId(id: string): string {
+    for (let i = 0; i < this.product.length; i++) {
+      if (this.product[i]._id === id) {
+        return this.product[i].price
+      }
+
+    }
+    return '0'
+
+  }
+
+  getProductOffreFromId(id: string): string {
+    for (let i = 0; i < this.product.length; i++) {
+      if (this.product[i]._id === id) {
+
+        return this.product[i].offer;
+      }
+    }
+    return '0';
+  }
+
+
+  formatDateToDDMMYYYY(dateString: Date): string {
+    const DateString = dateString.toString()
+    const date = new Date(DateString);
+
+    const day = date.getUTCDate().toString().padStart(2, '0');
+    const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+    const year = date.getUTCFullYear().toString();
+
+    return `${day}/${month}/${year}`;
+  }
+
+
+  total() {
+    let total = 0;
+    for (let i = 0; i < this.selectedCommande.items.length; i++) {
+      const item = this.selectedCommande.items[i]
+      if (item.productId) {
+      }
+
+      total += parseInt(item.amount)
+        * parseInt(this.getProductPriceFromId(item.productId))
+        * (1 - parseInt(this.getProductOffreFromId(item.productId)) / 100);
+
+    }
+    return total
+
+  }
+
+  getStatusColor(status: string): string {
+    switch (status) {
+      case 'en cours':
+        return '#c4c400';
+      case 'refusée':
+        return 'red';
+      default:
+        return 'green';
+    }
+  }
+
+
+  protected readonly filter = filter;
 }

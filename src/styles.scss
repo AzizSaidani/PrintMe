@@ -119,4 +119,15 @@ body {
   .h-450 {
     height: 450px;
   }
+  .w-100{
+    width: 100%;
+  }
+
+  .flex{
+    display: flex;
+  }
+
+  .flex-end{
+    justify-content: flex-end;
+  }
 }

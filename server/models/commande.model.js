@@ -5,15 +5,19 @@ const commandeSchema = new mongoose.Schema({
   status: {type: String, default: 'en cours'},
   payment: {type: String},
   valid: {type: Boolean, default: false},
-  cartId:{type: mongoose.Schema.Types.ObjectId, ref: 'Cart', required: true},
+  cartId:{type: mongoose.Schema.Types.ObjectId, ref: 'Cart'},
 
   items: [
     {
       productId: {type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true},
       amount: {type: Number, required: true, default: 1},
-      imagePath: {type: String},
+      filePath: {type: String},
     }
-  ]
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 
 
 });

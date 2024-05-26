@@ -5,6 +5,7 @@ const commentController = require('../controllers/comment.controller');
 const cartController = require('../controllers/cart.controller');
 const favouriteController = require('../controllers/favourite.controller');
 const commandeController = require('../controllers/commande.controller');
+const contactController = require("../controllers/contact.controller");
 
 router.post('/add', productController.addProduct);
 router.put('/update/:id', productController.updateProduct);
@@ -21,6 +22,8 @@ router.get('/favourites/:userId', favouriteController.getFavouriteItems);
 router.post('/create-checkout-session', productController.createCheckoutSession);
 router.delete('/cart/:userId', cartController.deleteCart);
 router.post('/commande', commandeController.createCommande);
+router.get('/loadCommande', commandeController.getAllCommande);
+router.put('/updateCommande', commandeController.updateCommandeStatus);
 
 
 module.exports = router;
