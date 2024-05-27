@@ -3,7 +3,6 @@ import {ImageCardComponent} from "../image-card/image-card.component";
 import {toSignal} from "../../utils/signals/signal.util";
 import {ProductModel} from "../../models/product.model";
 import {NgClass} from "@angular/common";
-import {of} from "rxjs";
 
 @Component({
   selector: 'app-product-card',
@@ -29,8 +28,10 @@ export class ProductCardComponent {
   }
 
   newPrice(price: string, offre: string): number {
-
-    return parseInt(price) - parseInt(price) * parseInt(offre) / 100
+    const originalPrice = parseFloat(price);
+    const offerPercentage = parseFloat(offre);
+    const discountedPrice = originalPrice - (originalPrice * offerPercentage / 100);
+    return Math.round(discountedPrice * 100) / 100;
   }
 
 
