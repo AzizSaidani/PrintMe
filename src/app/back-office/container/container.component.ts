@@ -70,7 +70,7 @@ export class ContainerComponent implements AfterViewInit {
 
   logOut() {
     this.authService.logout()
-    window.location.assign('admin /login')
+    window.location.assign('admin/login')
   }
 
   openSnackBar(message: string, action: string) {
@@ -461,6 +461,5 @@ export class ContainerComponent implements AfterViewInit {
   }
 
 
-  protected readonly parent = parent;
   protected readonly parseInt = parseInt;
 }

@@ -4,39 +4,29 @@
     <div class="information">
       <h2> Informations</h2>
       <div class="links">
-        <p>Help</p>
-        <p>Order Status</p>
-        <p>Delivery Choices</p>
-        <p>Payment Options</p>
-        <p>Returns</p>
-        <p>Price Promise</p>
+        <p>Aide</p>
+        <p>Suivi de commande</p>
+        <p>Options de paiement</p>
+        <p>Retours</p>
       </div>
 
     </div>
     <div class="contact">
-      <h2> Contact Us</h2>
+      <h2> Contactez-nous</h2>
       <div class="info-section">
         <div class="info">
-          <img alt="home" ngSrc="assets/svg/home.svg" height="16"
-               width="16"><span>7 Rue Habib Bou Guatfa Megrine</span>
+          <img alt="home" ngSrc="assets/svg/home.svg" height="16" width="16"><span>7 Rue Habib Bou Guatfa Megrine</span>
         </div>
         <div class="info">
-          <img alt="home" ngSrc="assets/svg/phone.svg" height="16"
-               width="16"><span> +216 95 302 801</span>
+          <img alt="phone" ngSrc="assets/svg/phone.svg" height="16" width="16"><span> +216 95 302 801</span>
         </div>
         <div class="info">
-          <img alt="home" ngSrc="assets/svg/envelope.svg" height="16"
-               width="16"><span> Contact&#64;dobink.com</span>
+          <img alt="email" ngSrc="assets/svg/envelope.svg" height="16" width="16"><span> Contact&#64;dobink.com</span>
         </div>
       </div>
 
       <div class="social">
-        <!--        <a class="social-btn">-->
-        <!--          <img class="icon1" ngSrc="assets/svg/twitter-orange.svg" height="16" width="16">-->
-        <!--          <img class="icon2" ngSrc="assets/svg/twitter-white.svg" height="16" width="16">-->
-        <!--        </a>-->
-        <a class="social-btn" href="https://www.facebook.com/profile.php?id=100088086051530
-">
+        <a class="social-btn" href="https://www.facebook.com/profile.php?id=100088086051530">
           <img class="icon1" ngSrc="assets/svg/facebook-orange.svg" height="16" width="16">
           <img class="icon2" ngSrc="assets/svg/facebook-white.svg" height="16" width="16">
         </a>
@@ -54,12 +44,9 @@
     <div class="information">
       <h2> Service</h2>
       <div class="links">
-        <p>Queries</p>
-        <p>Map</p>
-        <p>Store</p>
-        <p>Afiliate</p>
-        <p>Check order</p>
-        <p>Privacy</p>
+        <p>Questions</p>
+        <p>Carte</p>
+        <p>Magasin</p>
       </div>
 
     </div>
@@ -68,9 +55,19 @@
 
       <div class="newsletter-signup">
         <input type="email" class="email" [(ngModel)]="email">
-        <button class="button" (click)="subscribe()"> Sign Up</button>
+        <button class="button" (click)="subscribe()"> S'inscrire</button>
+        <br>
+
       </div>
-      <p>Sign up with your email address to receive news and updates </p>
+      <div style="display: flex; justify-content: center ; align-items: center; width: 75%;padding: 5px">
+
+        @if (!validateEmail(email) && email.length > 0 && clicked) {
+          <span style="color: red">
+          l'adresse n'est pas valide.
+        </span>
+        }
+      </div>
+      <p>Inscrivez-vous avec votre adresse e-mail pour recevoir des nouvelles et mises à jour </p>
 
     </div>
   </div>

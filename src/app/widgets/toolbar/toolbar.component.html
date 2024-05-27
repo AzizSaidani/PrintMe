@@ -132,7 +132,7 @@
         }
 
 
-        @if (!cart) {
+        @if (!cart || cartItemsTotalPrice===0) {
           <div class="button" (click)="routing('shop')">
             <p>Continuer vos achats</p>
           </div>

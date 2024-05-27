@@ -261,9 +261,9 @@ exports.getAllUsers = async (req, res) => {
 };
 exports.register = async (req, res) => {
   try {
-    const {username, email, password, role} = req.body;
+    const {username, email, password, role, address, phone} = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({username, email, password: hashedPassword, role});
+    const user = new User({username, email, password: hashedPassword, role, address, phone});
     await user.save();
     res.status(201).json({message: 'User registered successfully'});
   } catch (error) {
@@ -313,7 +313,7 @@ exports.getUserDetails = async (req, res) => {
 };
 exports.updateUserStatus = async (req, res) => {
   try {
-    const {id, status,role} = req.body;
+    const {id, status, role} = req.body;
     const user = await User.findById(id);
     if (!user) {
       return res.status(404).json({message: 'User not found'});

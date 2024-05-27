@@ -66,6 +66,10 @@
       gap: 20px;
       background-color: rgba(114, 114, 114, 0.1);
 
+      span {
+        color: red;
+      }
+
 
       .item {
         width: 75%;
@@ -147,5 +151,17 @@
 
     }
 
+  }
+
+  /* For WebKit-based browsers (Chrome, Safari, Opera) */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* For Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
   }
 }

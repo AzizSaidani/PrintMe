@@ -18,6 +18,23 @@ export class SignupComponent {
   lastName = '';
   email = '';
   password = '';
+  address = '';
+  phone = '';
+
+  clicked = false
+
+  firstNameError = 'Ce champ est obligatoire'
+  lastNameError = 'Ce champ est obligatoire'
+  emailError = 'Cette adresse email est invalide'
+  addressError = 'Ce champ est obligatoire'
+  phoneError = "Ce numéro de téléphone n'est pas valide"
+  passwordError = 'Mot de passe trop court'
+
+  validateEmail(email: string): boolean {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return emailPattern.test(email);
+  }
+
 
   constructor(private authService: AuthService, private router: Router) {
   }
@@ -28,24 +45,31 @@ export class SignupComponent {
       email: this.email,
       password: this.password,
       role: 'client',
-      status: 'active'
+      status: 'active',
+      address: this.address,
+      phone: this.phone
     };
+    if (this.firstName.length <= 0 && this.lastName.length <= 0 && this.validateEmail(this.email) && this.address.length <= 0
+      && (this.phone.length < 8 || this.phone.length > 8) && this.password.length < 8)
 
-    this.authService.register(userData).subscribe(
-      (response) => {
-        console.log('Registration successful:', response);
+      this.authService.register(userData).subscribe(
+        (response) => {
+          console.log('Registration successful:', response);
 
-        // Navigate to the login page
-        const navigationExtras: NavigationExtras = {
-          queryParams: {registered: 'true'}
-        };
-        this.router.navigate(['/login'], navigationExtras);
+          // Navigate to the login page
+          const navigationExtras: NavigationExtras = {
+            queryParams: {registered: 'true'}
+          };
+          this.router.navigate(['/login'], navigationExtras);
 
-      },
-      (error) => {
-        console.error('Registration failed:', error);
-      }
-    );
+        },
+        (error) => {
+          console.error('Registration failed:', error);
+          this.clicked = false
+
+        }
+      );
+    this.clicked = true
   }
 
 }

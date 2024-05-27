@@ -3,28 +3,21 @@
     <div class="background-image"></div>
     <div class="background"></div>
     <div class="content">
-      <h1>Login</h1>
-      <h4>Home / Login</h4>
+      <h1>Connexion</h1>
     </div>
-
-
   </div>
-
 
   <div class="contact-form">
-
     <input class="item" type="email" placeholder="Email" [(ngModel)]="email">
-    <input class="item" type="password" placeholder="Password" [(ngModel)]="password">
+    <input class="item" type="password" placeholder="Mot de passe" [(ngModel)]="password">
 
     <div class="button" (click)="login()">
-      Login
+      Connexion
     </div>
     <div class="other-option">
-      <span routerLink="/forgetPassword" (click)="routing('/forgetPassword')" >Forgot your password?</span>
-      <span routerLink="/signup" (click)="routing('/signup')">Create account</span>
-      <span routerLink="/shop" (click)="routing('/shop')">Return to Store</span>
+      <span routerLink="/forgetPassword" (click)="routing('/forgetPassword')">Mot de passe oublié ?</span>
+      <span routerLink="/signup" (click)="routing('/signup')">Créer un compte</span>
+      <span routerLink="/shop" (click)="routing('/shop')">Retour à la boutique</span>
     </div>
-
   </div>
-
 </div>
