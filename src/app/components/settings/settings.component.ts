@@ -153,7 +153,7 @@ export class SettingsComponent implements AfterContentInit {
     } else {
       tag = 'add'
     }
-    this.settingService.subscribe(user, tag).subscribe(res => {
+    this.settingService.subscribe(user, tag).subscribe(() => {
       this.openSnackBar('Changement a été fait avec succès', 'fermer')
     })
   }
@@ -302,7 +302,7 @@ export class SettingsComponent implements AfterContentInit {
         return this.product[i].offer;
       }
     }
-    return '0';
+    return '00';
   }
 
   getStatusColor(status: string): string {
