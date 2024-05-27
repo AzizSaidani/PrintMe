@@ -11,7 +11,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {CommandeModel} from "../../models/commande.model";
-import {filter} from "rxjs";
 
 @Component({
   selector: 'app-container',
@@ -42,8 +41,10 @@ export class ContainerComponent implements AfterViewInit {
   fileName = 'Choisir une image'
   reclamationStatus = 'non lu'
   contactStatus = 'non lu'
+  clicked = false
 
-  selectedElement = 'Commandes'
+
+  selectedElement = 'Reclamation non lu'
   selectedProduct!: ProductModel
   selectedReclamation!: Contact
   selectedContact!: Contact
@@ -57,7 +58,7 @@ export class ContainerComponent implements AfterViewInit {
 
 
   add = ''
-  selectedFilter='Tous les commandes'
+  selectedFilter = 'Tous les commandes'
   showOverlay: boolean = false;
 
 
@@ -116,29 +117,37 @@ export class ContainerComponent implements AfterViewInit {
   }
 
   updateProduct() {
+    let offre = parseInt(this.selectedProduct.offer)
+
     const updatedProductData = {
       price: this.selectedProduct.price,
       name: this.selectedProduct.name,
       category: this.selectedProduct.category,
       description: this.selectedProduct.description,
       imagePath: this.selectedProduct.imagePath,
-      offer: this.selectedProduct.offer// Assuming you want to update imagePath with fileName
+      offer: this.selectedProduct.offer
     };
-    if (this.selectedProduct._id)
-      this.service.updateProduct(this.selectedProduct._id, updatedProductData).subscribe(
-        (res) => {
-          // Handle success response if needed
-          console.log('Product updated successfully:', res);
-          this.loadProduct()
-          this.openSnackBar('le produit a été modifier', 'fermer')
-          this.add = ''
+    if (offre >= 0 && offre <= 100) {
+      if (this.selectedProduct._id) {
+        this.service.updateProduct(this.selectedProduct._id, updatedProductData).subscribe(
+          (res) => {
+            // Handle success response if needed
+            console.log('Product updated successfully:', res);
+            this.loadProduct()
+            this.openSnackBar('le produit a été modifier', 'fermer')
+            this.add = ''
 
-        },
-        (error) => {
-          // Handle error response if needed
-          console.error('Error updating product:', error);
-        }
-      )
+          },
+          (error) => {
+            console.error('Error updating product:', error);
+            this.clicked = false
+          }
+        )
+      }
+    } else {
+      this.clicked = true
+
+    }
   }
 
   deleteProduct(product: ProductModel) {
@@ -215,7 +224,7 @@ export class ContainerComponent implements AfterViewInit {
         description: this.newProductDescription,
         category: this.category
       }
-      this.service.addProduct(product).subscribe(res => {
+      this.service.addProduct(product).subscribe(() => {
           this.openSnackBar('le produit a été ajouter', 'fermer')
 
           this.loadProduct()
@@ -238,6 +247,10 @@ export class ContainerComponent implements AfterViewInit {
       newStatus: this.selectedReclamation.status
     }
     this.service.updateRecalamtionStatus(data).subscribe(() => {
+      this.openSnackBar('la reclamation a été modifier', 'fermer')
+      this.loadReclamation()
+      this.add = ''
+
     })
   }
 
@@ -247,6 +260,10 @@ export class ContainerComponent implements AfterViewInit {
       newStatus: this.selectedContact.status
     }
     this.service.updateContactStatus(data).subscribe(() => {
+      this.openSnackBar('le contact a été modifier', 'fermer')
+      this.loadContact()
+      this.add = ''
+
     })
   }
 
@@ -256,6 +273,10 @@ export class ContainerComponent implements AfterViewInit {
       newStatus: this.selectedCommande.status
     }
     this.service.updateCommandeStatus(data).subscribe(() => {
+      this.openSnackBar('la commande a été modifier', 'fermer')
+      this.loadcommande()
+      this.add = ''
+
     })
   }
 
@@ -265,7 +286,11 @@ export class ContainerComponent implements AfterViewInit {
       status: this.selectedUser.status,
       role: this.selectedUser.role
     }
-    this.service.updateUserStatus(data).subscribe(() => console.log(this.selectedUser._id))
+    this.service.updateUserStatus(data).subscribe(() => {
+      this.openSnackBar("l'utilisateur a été modifier", 'fermer')
+      this.add = ''
+
+    })
   }
 
 
@@ -281,12 +306,47 @@ export class ContainerComponent implements AfterViewInit {
       this.service.sendEmail(emailData).subscribe(
         (response) => {
           console.log('Email sent successfully:', response);
+
         },
         (error) => {
           console.error('Error sending email:', error);
         }
       );
     }
+
+    this.openSnackBar("Email a été envoyer", 'fermer')
+
+    this.emailSubject = ''
+    this.emailBody = ''
+
+
+  }
+
+
+  sendEmail(email: string) {
+
+    const emailData = {
+
+      recipients: email,
+      subject: this.emailSubject,
+      body: this.emailBody
+    };
+    if (email && this.emailBody && this.emailSubject) {
+      this.service.sendEmail(emailData).subscribe(
+        (response) => {
+          console.log('Email sent successfully:', response);
+
+
+        },
+        (error) => {
+          console.error('Error sending email:', error);
+        }
+      );
+    }
+    this.openSnackBar("Email a été envoyer", 'fermer')
+    this.emailSubject = ''
+    this.emailBody = ''
+    this.add = ''
 
 
   }
@@ -362,7 +422,6 @@ export class ContainerComponent implements AfterViewInit {
     return '0';
   }
 
-
   formatDateToDDMMYYYY(dateString: Date): string {
     const DateString = dateString.toString()
     const date = new Date(DateString);
@@ -373,7 +432,6 @@ export class ContainerComponent implements AfterViewInit {
 
     return `${day}/${month}/${year}`;
   }
-
 
   total() {
     let total = 0;
@@ -403,5 +461,6 @@ export class ContainerComponent implements AfterViewInit {
   }
 
 
-  protected readonly filter = filter;
+  protected readonly parent = parent;
+  protected readonly parseInt = parseInt;
 }

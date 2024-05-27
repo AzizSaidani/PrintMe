@@ -63,7 +63,7 @@
         <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
 
       }
-      Contact
+      Contact Lu
     </div>
     <div class="element" (click)="add='';selectedElement='Contact non lu'"
          [ngClass]="{'inactive': selectedElement !== 'Contact non lu'}">
@@ -123,7 +123,7 @@
                       <div class="name"> {{ item.name }}</div>
                     </td>
                     <td>{{ item.price }}DT</td>
-                    <td>{{ item.offer }}</td>
+                    <td>{{ item.offer }}%</td>
                     <td><span class="online">{{ item.category }}</span></td>
 
                     <td>
@@ -174,9 +174,13 @@
                   <div>
                     <div class="form-item">Nom du produit<input [(ngModel)]="selectedProduct.name" type="text"></div>
                     <div class="form-item">Prix<input [(ngModel)]="selectedProduct.price" type="text"></div>
-                    <div class="form-item">Offre<input [(ngModel)]="selectedProduct.offer" type="text"></div>
-                    <div class="form-item">Catégorie
+                    <div class="form-item">Offre<input [(ngModel)]="selectedProduct.offer" type="text">
+                      @if ((parseInt(selectedProduct.offer)) < 0 && parseInt(selectedProduct.offer ) < 100 || clicked) {
+                        <span style="color: red"> choisir un numéro entre 0-100</span>
+                      }
 
+                    </div>
+                    <div class="form-item">Catégorie
                       <select [(ngModel)]="selectedProduct.category">
                         <option selected>Imperssion numerique</option>
                         <option>Marketing digital</option>
@@ -194,7 +198,7 @@
                       </div>
 
                     </div>
-                    <div class="button" (click)="updateProduct()"> Confirmer</div>
+                    <div class="button" (click)="updateProduct()">Confirmer</div>
                   </div>
                 </div>
               }
@@ -215,6 +219,7 @@
                   <th>Email</th>
                   <th>Status</th>
                   <th></th>
+                  <th></th>
                 </tr>
                 @for (item of reclamation; track item) {
                   @if (item.status === 'non lu') {
@@ -228,10 +233,16 @@
 
                       <td>
                       <span class="button"
+                            (click)="add='reply'; selectedReclamation=item; reclamationStatus=selectedReclamation.status">Rependre</span>
+                      </td>
+                      <td>
+                      <span class="button"
                             (click)="add='add'; selectedReclamation=item; reclamationStatus=selectedReclamation.status">Editer</span>
                       </td>
                     </tr>
                   }
+
+
                 }
               </table>
             </div>
@@ -254,7 +265,20 @@
 
                       <span>{{ selectedReclamation.description }}</span></div>
 
+
                     <div class="button" (click)="updateReclamation()"> valider</div>
+                  </div>
+                </div>
+              } @else if (add === 'reply') {
+                <h2>Gestion du reclamation</h2>
+                <h3>{{ selectedReclamation.name }}</h3>
+                <div class="new-prod">
+
+                  <div>
+                    <div class="form-item">Sujet<input [(ngModel)]="emailSubject" type="text"></div>
+                    <div class="form-item">Description<textarea [(ngModel)]="emailBody"></textarea></div>
+
+                    <div class="button" (click)="sendEmail(selectedReclamation.email)"> Envoyer</div>
                   </div>
                 </div>
               }
@@ -407,7 +431,9 @@
                       <td>{{ item.phone }}</td>
                       <td>{{ item.email }}</td>
                       <td><span class="online">{{ item.status }}</span></td>
-
+                      <td> <span class="button"
+                                 (click)="add='reply'; selectedReclamation=item; reclamationStatus=selectedReclamation.status">Rependre</span>
+                      </td>
                       <td>
                       <span class="button"
                             (click)="add='add'; selectedContact=item; contactStatus=selectedContact.status">Editer</span>
@@ -439,6 +465,18 @@
                       <span>{{ selectedContact.description }}</span></div>
 
                     <div class="button" (click)="updateContact()"> valider</div>
+                  </div>
+                </div>
+              } @else if (add === 'reply') {
+                <h2>Gestion du reclamation</h2>
+                <h3>{{ selectedContact.name }}</h3>
+                <div class="new-prod">
+
+                  <div>
+                    <div class="form-item">Sujet<input [(ngModel)]="emailSubject" type="text"></div>
+                    <div class="form-item">Description<textarea [(ngModel)]="emailBody"></textarea></div>
+
+                    <div class="button" (click)="sendEmail(selectedContact.email)"> Envoyer</div>
                   </div>
                 </div>
               }
@@ -574,8 +612,8 @@
                   <p (click)="selectedFilter='refusée'" [ngClass]="{
                   selected:selectedFilter==='refusée'
                   }">Commandes Refusée</p>
-                  <p (click)="selectedFilter='términée'" [ngClass]="{
-                  selected:selectedFilter==='términée'
+                  <p (click)="selectedFilter='terminée'" [ngClass]="{
+                  selected:selectedFilter==='terminée'
                   }">Commandes Términée</p>
 
                 </div>
@@ -662,7 +700,7 @@
                   </table>
                 }
 
-                @if (selectedFilter === 'términée') {
+                @if (selectedFilter === 'terminée') {
                   <table>
                     <tr>
                       <th>Nom</th>
@@ -675,7 +713,7 @@
                       <th></th>
                     </tr>
                     @for (commande of commandeList; track commande) {
-                      @if (commande.status === 'términée') {
+                      @if (commande.status === 'terminée') {
                         <tr>
                           <td>
                             <div class="name"> {{ getClientNamesFromId(commande.userId) }}</div>
