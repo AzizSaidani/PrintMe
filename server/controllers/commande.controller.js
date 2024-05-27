@@ -59,3 +59,18 @@ exports.updateCommandeStatus = async (req, res) => {
   }
 };
 
+exports.getCommandeByUserId = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const commandes = await Commande.find({ userId: mongoose.Types.ObjectId(userId) });
+
+    if (!commandes || commandes.length === 0) {
+      return res.status(404).json({ message: 'No commandes found for the given user ID' });
+    }
+
+    res.status(200).json(commandes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+

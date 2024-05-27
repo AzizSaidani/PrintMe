@@ -24,6 +24,7 @@ router.delete('/cart/:userId', cartController.deleteCart);
 router.post('/commande', commandeController.createCommande);
 router.get('/loadCommande', commandeController.getAllCommande);
 router.put('/updateCommande', commandeController.updateCommandeStatus);
+router.get('/loadCommande/:id', commandeController.getCommandeByUserId);
 
 
 module.exports = router;

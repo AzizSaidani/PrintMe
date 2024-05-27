@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, output, signal, Signal} from '@angular/core';
+import {Component, Input, output, signal, Signal} from '@angular/core';
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {toSignal} from "../../utils/signals/signal.util";
 import {ProductModel} from "../../models/product.model";
@@ -14,7 +14,7 @@ import {NgClass} from "@angular/common";
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent {
   @Input({transform: toSignal})
   imageDimentions: Signal<number[]> = signal([360, 280])
   @Input({transform: toSignal})
@@ -23,23 +23,6 @@ export class ProductCardComponent implements OnInit {
   check = output<void>();
   addTocart = output<void>();
   addToWishes = output<void>();
-
-
-  ngOnInit() {
-    this.renderRating();
-  }
-
-  renderRating() {
-    this.stars = [];
-
-    for (let i = 1; i <= 5; i++) {
-      if (i <= Math.floor(this.product().rating)) {
-        this.stars.push('filled');
-      } else {
-        this.stars.push('empty');
-      }
-    }
-  }
 
 
 }

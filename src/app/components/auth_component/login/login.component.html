@@ -14,6 +14,11 @@
     <div class="button" (click)="login()">
       Connexion
     </div>
+    @if (error) {
+
+      <div style="color: red; font-weight: 600;">{{ error }}</div>
+    }
+
     <div class="other-option">
       <span routerLink="/forgetPassword" (click)="routing('/forgetPassword')">Mot de passe oublié ?</span>
       <span routerLink="/signup" (click)="routing('/signup')">Créer un compte</span>

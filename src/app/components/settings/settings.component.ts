@@ -9,6 +9,8 @@ import {ProfileModel} from "../../models/profile.model";
 import {FormsModule} from "@angular/forms";
 import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {CommandeService} from "../../services/commande/commande.service";
+import {CommandeModel} from "../../models/commande.model";
 
 @Component({
   selector: 'app-settings',
@@ -24,6 +26,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class SettingsComponent implements AfterContentInit {
   wishes!: ProductModel[]
+  commande!: CommandeModel[]
   subscribed = false
   userData!: ProfileModel
   address!: string
@@ -39,8 +42,7 @@ export class SettingsComponent implements AfterContentInit {
     this.loadWishes()
     this.getStatus()
     this.getUserDetails()
-
-
+    this.loadCommande()
   }
 
   openSnackBar(message: string, action: string) {
@@ -57,9 +59,24 @@ export class SettingsComponent implements AfterContentInit {
               private snackBar: MatSnackBar,
               private service: ShopService,
               private settingService: SettingService,
-              private authService: AuthService
+              private authService: AuthService,
+              private commandeService: CommandeService
   ) {
   }
+
+  loadCommande() {
+    const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
+    let user = ''
+    if (data) {
+      user = JSON.parse(data).id
+    }
+    this.commandeService.getCommandeByUserId(user).subscribe((res) => {
+      this.commande = res
+
+    })
+
+  }
+
 
   setInitialValues() {
     if (this.userData.phone) {
@@ -72,7 +89,6 @@ export class SettingsComponent implements AfterContentInit {
 
     if (this.userData.username) {
       this.username = this.userData.username
-      this.setInitialValues()
     }
 
   }
@@ -82,10 +98,9 @@ export class SettingsComponent implements AfterContentInit {
     let id = ''
     if (data) {
       id = JSON.parse(data).id
-      this.email=JSON.parse(data).email
+      this.email = JSON.parse(data).email
     }
     this.authService.getUserDetails(id).subscribe(res => {
-      console.log(res);
       this.userData = res
       this.setInitialValues()
     })
@@ -116,7 +131,6 @@ export class SettingsComponent implements AfterContentInit {
         this.openSnackBar('Changement a été fait avec succès', 'fermer')
       })
   }
-
 
 
   changeSettingNav(nav: string) {

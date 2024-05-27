@@ -277,6 +277,9 @@ exports.login = async (req, res) => {
     if (!user) {
       return res.status(401).json({error: 'Invalid email or password'});
     }
+    if (user.status !== 'active') {
+      return res.status(403).json({ error: 'Votre compte est verrouillé' });
+    }
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({error: 'Invalid email or password'});

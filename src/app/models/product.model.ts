@@ -3,7 +3,6 @@ export interface ProductModel {
   imagePath: string
   price: string
   offer: string
-  rating: number
   category: string
   name: string
   description?: string

@@ -19,8 +19,11 @@ export class LoginComponent {
 
   email = ''
   password = ''
+  error = '';
 
-  constructor(private authService: AuthService) {}
+
+  constructor(private authService: AuthService) {
+  }
 
   routing(url: string) {
     window.location.assign(url)
@@ -40,6 +43,7 @@ export class LoginComponent {
       },
       (error) => {
         console.error('Login failed:', error);
+        this.error = error.error.error || 'Une erreur s\'est produite lors de la connexion.';
       }
     );
   }
