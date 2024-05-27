@@ -437,9 +437,6 @@ export class ContainerComponent implements AfterViewInit {
     let total = 0;
     for (let i = 0; i < this.selectedCommande.items.length; i++) {
       const item = this.selectedCommande.items[i]
-      if (item.productId) {
-      }
-
       total += parseInt(item.amount)
         * parseInt(this.getProductPriceFromId(item.productId))
         * (1 - parseInt(this.getProductOffreFromId(item.productId)) / 100);

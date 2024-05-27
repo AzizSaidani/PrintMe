@@ -46,9 +46,14 @@
       }
 
       .price {
-        font-size: 18px;
+        font-size: 22px;
         font-weight: 600;
         color: #df0074;
+
+      }
+      .strike {
+        text-decoration: line-through;
+        color: red;
       }
 
       .circle {

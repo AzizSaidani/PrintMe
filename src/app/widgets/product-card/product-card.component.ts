@@ -3,6 +3,7 @@ import {ImageCardComponent} from "../image-card/image-card.component";
 import {toSignal} from "../../utils/signals/signal.util";
 import {ProductModel} from "../../models/product.model";
 import {NgClass} from "@angular/common";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-product-card',
@@ -19,10 +20,18 @@ export class ProductCardComponent {
   imageDimentions: Signal<number[]> = signal([360, 280])
   @Input({transform: toSignal})
   product!: Signal<ProductModel>
-  stars: string[] = [];
   check = output<void>();
   addTocart = output<void>();
   addToWishes = output<void>();
+
+  hasOffer(): boolean {
+    return parseInt(this.product().offer) > 0;
+  }
+
+  newPrice(price: string, offre: string): number {
+
+    return parseInt(price) - parseInt(price) * parseInt(offre) / 100
+  }
 
 
 }

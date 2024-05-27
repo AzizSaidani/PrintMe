@@ -103,7 +103,7 @@
           <h2>Mes commandes
           </h2>
           <hr>
-          <div class="array">
+          <div class="table">
             <table>
               <tr>
                 <th>Commande n°</th>
@@ -112,13 +112,16 @@
                 <th>Statut</th>
                 <th>Action</th>
               </tr>
-              <tr>
-                <td>002417268</td>
-                <td>30/09/2023</td>
-                <td>51,00 DT</td>
-                <td>En cours de traitement</td>
-                <td><span class="action">Visualiser</span></td>
-              </tr>
+              @for (commande of commande; track commande) {
+
+                <tr>
+                  <td>{{ commande._id }}</td>
+                  <td>{{ formatDateToDDMMYYYY(commande.createdAt) }}</td>
+                  <td>{{ total(commande) }}</td>
+                  <td  [ngStyle]="{'color': getStatusColor(commande.status)}">{{ commande.status }}</td>
+                  <td><span (click)="toggleOverlay(); selectedCommande = commande" class="action">Visualiser</span></td>
+                </tr>
+              }
             </table>
           </div>
         </div>
@@ -167,6 +170,33 @@
 
 
   </div>
+  <div class="overlay" [ngClass]="{'show': showOverlay}" (click)="handleOverlayClick($event)">
+    <div class="overlay-content" (click)="$event.stopPropagation()">
+      <div class="close" (click)="toggleOverlay()"><img ngSrc="assets/svg/plus.svg" height="16" width="16"></div>
+      <p>List de produit de cet commande</p>
+      @if (selectedCommande) {
+        <div class="table" style="height: auto;    -ms-overflow-style: none;
+    scrollbar-width: none;">
+          <table>
+            <tr>
+              <th>Product</th>
+              <th>Image</th>
+              <th>Prix</th>
+              <th>Quantité</th>
+            </tr>
+            @for (item of selectedCommande.items; track commande) {
 
+              <tr>
+                <td>{{ getProductNameFromId(item.productId) }}</td>
+                <td><img src="{{getProductImageFromId(item.productId)}}"></td>
+                <td>${{ getProductPriceFromId(item.productId) }}</td>
+                <td>{{ item.amount }}</td>
+              </tr>
+            }
+          </table>
+        </div>
+      }
+    </div>
+  </div>
 
 </div>
