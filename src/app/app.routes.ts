@@ -35,7 +35,7 @@ export const routes: Routes = [
 
   //** Admin **//
   {path: 'admin', component: HomeComponent},
-  {path: 'admin/login', component: LoginAdminComponent},
+  {path: 'admin/login', component: LoginAdminComponent, canActivate: [authGuardConnected]},
 
   //** Redirect **//
   {path: '**', redirectTo: '', pathMatch: 'full'}

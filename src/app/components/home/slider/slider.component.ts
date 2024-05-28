@@ -11,17 +11,11 @@ import {NgOptimizedImage} from "@angular/common";
   styleUrl: './slider.component.scss'
 })
 export class SliderComponent {
-  selectedSlide = 1
+  selectedSlide = true
 
 
-  changeSlide(index: number) {
-    if (this.selectedSlide + index === 4) {
-      this.selectedSlide = 1
-    } else if (this.selectedSlide + index === 0) {
-      this.selectedSlide = 3
-    } else {
-      this.selectedSlide += index
-    }
+  navigate(){
+    window.location.assign('shop')
   }
 
 

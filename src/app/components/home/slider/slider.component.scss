@@ -18,7 +18,7 @@
         top: 75px;
         left: 0;
         z-index: -1;
-        background-image: url("https://res.cloudinary.com/dwkp2dnfs/image/upload/w6zc5yihf7sw1bpddzjs.jpg");
+        background-image: url("../../../../assets/banner-t-shirt.jpg");
       }
 
       .slide-content {
@@ -75,7 +75,7 @@
         top: 75px;
         left: 0;
         z-index: -1;
-        background-image: url("https://res.cloudinary.com/dwkp2dnfs/image/upload/svhdimixcmwlawzvofaj.jpg");
+        background-image: url("../../../../assets/banner-mug.jpg");
       }
 
       .slide-content {
@@ -110,7 +110,7 @@
           padding-top: 5rem;
 
           .button {
-            width: 125px;
+            width: 200px;
             padding: 20px 20px;
             background-color: #df0074;
             color: white;
@@ -131,62 +131,6 @@
       }
     }
 
-    .slide-3 {
-      display: flex;
-      justify-content: center;
-
-      .background-image {
-        background-image: url("https://res.cloudinary.com/dwkp2dnfs/image/upload/cucgylyc3dm4ehymedfj.jpg");
-        height: 100%;
-        width: 100%;
-        background-size: cover;
-        background-position: center;
-        position: absolute;
-        top: 75px;
-        left: 0;
-        z-index: -1;
-      }
-
-      .slide-content {
-        padding: 5rem 0;
-        background-blend-mode: multiply;
-        color: white;
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column;
-
-        .description {
-          width: 35%;
-          color: gray;
-          font-size: 18px;
-          font-weight: 500;
-          padding-top: 2rem;
-        }
-
-        .button-container {
-          padding-top: 5rem;
-
-          .button {
-            width: 125px;
-            padding: 20px 20px;
-            background-color: #df0074;
-            color: white;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            border-radius: 45px;
-            cursor: pointer;
-
-
-            &:hover {
-              background-color: #46a9df;
-              transition: background-color 0.3s;
-
-            }
-          }
-        }
-      }
-    }
 
     .swipe-button-container {
       display: flex;

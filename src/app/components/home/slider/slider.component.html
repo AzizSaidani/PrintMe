@@ -1,73 +1,47 @@
 <div class="slider-container">
-  @if (selectedSlide === 1) {
-
-
+  @if (selectedSlide) {
     <div class="slide-1">
       <div class="background-image"></div>
       <div class="slide-content">
-        <h3 class="green">DESIGN YOUR T-SHIRT </h3>
-        <div class="extra-large-title  ph-10 color-b b">We Print Best</div>
-        <div class="extra-large-title ph-10 color-b b">Designs</div>
-        <div class="extra-large-title  ph-10 color-b b">You Want</div>
-        <div class="description"> Velit ut tortor pretium viverra suspendisse potenti. Varius morbi enim nunc faucibus
-          a.
-          Sem fringilla ut morbi tincidunt augue interdum velit euismod in uiytr yuionlor thiese cueresee yuerese serse
+        <h3 class="green">CRÉEZ VOTRE T-SHIRT</h3>
+        <div class="extra-large-title ph-10 color-w b">Nous Imprimons Les</div>
+        <div class="extra-large-title ph-10 color-w b">Meilleurs Designs</div>
+        <div class="extra-large-title ph-10 color-w b">Que Vous Voulez</div>
+        <div class="description"> Profitez de nos services de haute qualité pour créer des t-shirts uniques. Nous vous
+          offrons des impressions de la meilleure qualité avec des designs que vous aimez.
         </div>
         <div class="button-container">
-          <div class="button">READ MORE</div>
+          <div class="button" (click)="navigate()">VOIR PLUS</div>
         </div>
       </div>
     </div>
   }
-  @if (selectedSlide === 2) {
+  @if (!selectedSlide) {
     <div class="slide-2">
       <div class="background-image"></div>
       <div class="slide-content">
-        <h3 class="green">DESIGN YOUR T-SHIRT </h3>
-        <div class="extra-large-title  ph-10 color-b b">We Print Best</div>
-        <div class="extra-large-title ph-10 color-b b">Designs</div>
-        <div class="extra-large-title  ph-10 color-b b">You Want</div>
+        <h3 class="green">CRÉEZ VOTRE T-SHIRT</h3>
+        <div class="extra-large-title ph-10 color-w b">Nous Imprimons Les</div>
+        <div class="extra-large-title ph-10 color-w b">Meilleurs Designs</div>
+        <div class="extra-large-title ph-10 color-w b">Que Vous Voulez</div>
         <div class="description">
-          <div class="text">Velit ut tortor pretium viverra suspendisse potenti. Varius morbi enim nunc faucibus a.
-            Sem fringilla ut morbi tincidunt augue interdum velit euismod in uiytr yuionlor thiese cueresee yuerese
-            serse
+          <div class="text">Transformez vos idées en réalité avec notre service d'impression de t-shirts. Nous
+            garantissons une qualité exceptionnelle et des designs qui répondent à vos attentes.
           </div>
         </div>
         <div class="button-container">
-          <div class="button">Shop Now</div>
+          <div class="button" (click)="navigate()">ACHETEZ MAINTENANT</div>
         </div>
       </div>
     </div>
   }
-  @if (selectedSlide === 3) {
-    <div class="slide-3">
-      <div class="background-image"></div>
-      <div class="slide-content">
-        <h3 class="green">DESIGN YOUR T-SHIRT </h3>
-        <div class="extra-large-title  ph-10 color-b b">We Print Best</div>
-        <div class="extra-large-title ph-10 color-b b">Designs</div>
-        <div class="extra-large-title  ph-10 color-b b">You Want</div>
-        <div class="description"> Velit ut tortor pretium viverra suspendisse potenti. Varius morbi enim nunc faucibus
-          a.
-          Sem fringilla ut morbi tincidunt augue interdum velit euismod in uiytr yuionlor thiese cueresee yuerese serse
-        </div>
-        <div class="button-container">
-          <div class="button">READ MORE</div>
-        </div>
-      </div>
-    </div>
-  }
-
 
   <div class="swipe-button-container">
-
-    <div class="swipe-button" (click)="changeSlide(-1)">
+    <div class="swipe-button" (click)="selectedSlide=!selectedSlide">
       <img ngSrc="assets/svg/chevron-left-white.svg" height="16" width="16" alt="chevron">
-
     </div>
-    <div class="swipe-button" (click)="changeSlide(1)">
+    <div class="swipe-button" (click)="selectedSlide=!selectedSlide">
       <img ngSrc="assets/svg/chevron-right-white.svg" height="16" width="16" alt="chevron">
     </div>
-
   </div>
 </div>
