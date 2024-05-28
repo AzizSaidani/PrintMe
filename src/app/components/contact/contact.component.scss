@@ -30,9 +30,8 @@
 
       .background-image {
         height: 100%;
-        width: 25%;
-        padding-left: 25%;
-        background-image: url("https://res.cloudinary.com/dwkp2dnfs/image/upload/zsphdvwz9zeqinsxrm3d.jpg");
+        width: 100%;
+        background-image: url("../../.././assets/shirt.jpg");
         background-size: cover;
         background-position: center;
         position: absolute;
@@ -41,15 +40,7 @@
         z-index: -1;
       }
 
-      .background {
-        height: 100%;
-        width: 100%;
-        background-color: #ffc404;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -2;
-      }
+
 
       .content {
         padding: 4rem 0;
