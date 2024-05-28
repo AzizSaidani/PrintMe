@@ -1,8 +1,7 @@
-import {Component, Input, Signal} from '@angular/core';
+import {Component} from '@angular/core';
 import {HoveredPictureMemberComponent} from "../../widgets/hovered-picture-member/hovered-picture-member.component";
 import {HoveredPictureWidgetComponent} from "../../widgets/hovered-picture-widget/hovered-picture-widget.component";
 import {NgOptimizedImage} from "@angular/common";
-import {toSignal} from "../../utils/signals/signal.util";
 import {HoveredPicutreModel} from "../../models/hovered-picutre.model";
 
 @Component({

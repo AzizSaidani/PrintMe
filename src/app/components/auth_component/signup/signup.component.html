@@ -21,16 +21,18 @@
       <span>{{ lastNameError }}</span>
     }
     <input class="item" type="email" placeholder="Email" [(ngModel)]="email">
-    @if ((validateEmail(email) || email.length <= 0) && clicked) {
+    @if ((!validateEmail(email) || email.length <= 0) && clicked) {
       <span>{{ emailError }}</span>
     }
     <input class="item" type="text" placeholder="Adresse" [(ngModel)]="address">
     @if (address.length <= 0 && clicked) {
       <span>{{ addressError }}</span>
     }
-    <input class="item" type="number" placeholder="Télephone" [(ngModel)]="phone">
-    @if ((phone.length < 8 || phone.length > 8) && clicked) {
+    <input class="item" type="tel" placeholder="Télephone" [(ngModel)]="phone">
+
+    @if ((phone.length !== 8 && validatePhone(phone)) && clicked) {
       <span>{{ phoneError }}</span>
+      <span>{{ phone }}</span>
     }
     <input class="item" type="password" placeholder="Password" [(ngModel)]="password">
     @if (password.length < 8 && clicked) {
@@ -40,6 +42,7 @@
     <div class="button" (click)="register()">
       S'inscrire
     </div>
+
 
   </div>
 

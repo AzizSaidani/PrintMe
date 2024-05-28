@@ -5,9 +5,9 @@
       <h2> Informations</h2>
       <div class="links">
         <p>Aide</p>
-        <p>Suivi de commande</p>
-        <p>Options de paiement</p>
-        <p>Retours</p>
+        <p (click)="routing('client/profile')">Suivi de commande</p>
+        <p (click)="routing('cart')">Options de paiement</p>
+        <p (click)="routing('')">Retours</p>
       </div>
 
     </div>
@@ -44,9 +44,9 @@
     <div class="information">
       <h2> Service</h2>
       <div class="links">
-        <p>Questions</p>
-        <p>Carte</p>
-        <p>Magasin</p>
+        <p  (click)="routing('faq')">Questions</p>
+        <p (click)="routing('cart')">Carte</p>
+        <p (click)="routing('shop')">Magasin</p>
       </div>
 
     </div>

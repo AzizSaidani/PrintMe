@@ -17,6 +17,10 @@ export class FooterComponent {
   validator = ''
   clicked = false
 
+  routing(url: string) {
+    window.location.assign(url)
+  }
+
   openSnackBar(message: string, action: string) {
     this.snackBar.openFromComponent(CustomSnackbarComponent, {
       data: {message: message, action: action},

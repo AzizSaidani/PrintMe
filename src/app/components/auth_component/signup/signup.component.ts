@@ -21,6 +21,7 @@ export class SignupComponent {
   address = '';
   phone = '';
 
+
   clicked = false
 
   firstNameError = 'Ce champ est obligatoire'
@@ -34,6 +35,17 @@ export class SignupComponent {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return emailPattern.test(email);
   }
+
+  validatePhone(phone:string) {
+    for (let i = 0; i < phone.length; i++) {
+      if (phone[i] < '0' || phone[i] > '9') {
+        return false;
+      }
+    }
+    return true;
+  }
+
+
 
 
   constructor(private authService: AuthService, private router: Router) {
@@ -49,8 +61,9 @@ export class SignupComponent {
       address: this.address,
       phone: this.phone
     };
-    if (this.firstName.length <= 0 && this.lastName.length <= 0 && this.validateEmail(this.email) && this.address.length <= 0
-      && (this.phone.length < 8 || this.phone.length > 8) && this.password.length < 8)
+    if (this.firstName.length >= 0 && this.lastName.length >= 0 && this.validateEmail(this.email)
+      &&  this.phone.length === 8 && this.password.length >= 8) {
+
 
       this.authService.register(userData).subscribe(
         (response) => {
@@ -69,6 +82,7 @@ export class SignupComponent {
 
         }
       );
+    }
     this.clicked = true
   }
 

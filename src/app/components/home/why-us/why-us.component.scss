@@ -5,26 +5,25 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    background: #ffc107;
+    background-image: url("../../../../assets/shirt.jpeg");
+    background-size: cover;
+
 
 
     .container {
       padding: 5rem 0;
       width: 75%;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 5rem;
+display: flex;
+      justify-content: flex-end;
 
-      .left-section {
-        display: flex;
-        justify-content: flex-end;
-      }
 
       .right-section {
         display: flex;
         flex-direction: column;
         color: white;
         justify-content: flex-start;
+        width: 40vw;
+        padding:5rem 0 ;
 
         .quality {
           padding-top: 3rem;
