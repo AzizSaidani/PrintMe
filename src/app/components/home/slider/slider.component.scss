@@ -3,7 +3,6 @@
   width: 100%;
 
   .slider-container {
-    padding-top: 5rem;
 
     .slide-1 {
       display: flex;
@@ -22,7 +21,8 @@
       }
 
       .slide-content {
-        padding: 5rem 0;
+        padding-bottom: 2rem;
+        height: 80vh;
         background-blend-mode: multiply;
         color: white;
         display: flex;
@@ -79,7 +79,8 @@
       }
 
       .slide-content {
-        padding: 5rem 0;
+        padding-bottom: 2rem;
+        height: 80vh;
         width: 75%;
         background-blend-mode: multiply;
         color: white;
