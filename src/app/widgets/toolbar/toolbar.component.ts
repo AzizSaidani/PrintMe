@@ -57,7 +57,9 @@ export class ToolbarComponent implements AfterViewInit {
         'Création sites E-commerce',
         'Vitrine',
       ]
-    },
+    }, {
+      category: 'Imperssion numerique', product: []
+    }
   ]
   cart!: CartModel[]
 
@@ -82,7 +84,6 @@ export class ToolbarComponent implements AfterViewInit {
     this.document.defaultView?.localStorage.setItem('category', category);
     window.location.assign('shop')
   }
-
 
 
   loadCartItems() {
