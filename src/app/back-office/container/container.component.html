@@ -175,7 +175,7 @@
                     <div class="form-item">Nom du produit<input [(ngModel)]="selectedProduct.name" type="text"></div>
                     <div class="form-item">Prix<input [(ngModel)]="selectedProduct.price" type="text"></div>
                     <div class="form-item">Offre<input [(ngModel)]="selectedProduct.offer" type="text">
-                      @if ((parseInt(selectedProduct.offer)) < 0 && parseInt(selectedProduct.offer ) < 100 || clicked) {
+                      @if ((parseInt(selectedProduct.offer)) < 0 && parseInt(selectedProduct.offer) < 100 || clicked) {
                         <span style="color: red"> choisir un numéro entre 0-100</span>
                       }
 
@@ -218,6 +218,7 @@
                   <th>Produit</th>
                   <th>Email</th>
                   <th>Status</th>
+                  <th>Metode</th>
                   <th></th>
                   <th></th>
                 </tr>
@@ -230,6 +231,7 @@
                       <td>{{ item.product }}</td>
                       <td>{{ item.email }}</td>
                       <td><span class="online">{{ item.status }}</span></td>
+                      <td><span class="name" >{{ item.method }}</span></td>
 
                       <td>
                       <span class="button"
@@ -298,6 +300,7 @@
                   <th>Produit</th>
                   <th>Email</th>
                   <th>Status</th>
+                  <th>Metode</th>
                   <th></th>
                 </tr>
                 @for (item of reclamation; track item) {
@@ -309,6 +312,9 @@
                       <td>{{ item.product }}</td>
                       <td>{{ item.email }}</td>
                       <td><span class="online">{{ item.status }}</span></td>
+                      <td><span class="name" >{{ item.method }}</span></td>
+
+
 
                       <td>
                       <span class="button"

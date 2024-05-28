@@ -44,7 +44,7 @@ export class ContainerComponent implements AfterViewInit {
   clicked = false
 
 
-  selectedElement = 'Reclamation non lu'
+  selectedElement = 'Products'
   selectedProduct!: ProductModel
   selectedReclamation!: Contact
   selectedContact!: Contact
