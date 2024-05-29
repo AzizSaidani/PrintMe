@@ -5,9 +5,9 @@
     <div class="element" (click)="add='';selectedElement='Products'"
          [ngClass]="{'inactive': selectedElement !== 'Products'}">
       @if (selectedElement === 'Products') {
-        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/box-white.svg" height="14" width="14" class="icon">
       } @else {
-        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/box.svg" height="14" width="14" class="icon">
       }
       Products
 
@@ -15,9 +15,9 @@
     <div class="element" (click)="add='';selectedElement='Reclamation non lu'"
          [ngClass]="{'inactive': selectedElement !== 'Reclamation non lu'}">
       @if (selectedElement === 'Reclamation non lu') {
-        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/envelope-white.svg" height="14" width="14" class="icon">
       } @else {
-        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/envelope.svg" height="14" width="14" class="icon">
       }
       Reclamation non lu
 
@@ -25,9 +25,9 @@
     <div class="element" (click)="add='';selectedElement='Reclamation'"
          [ngClass]="{'inactive': selectedElement !== 'Reclamation'}">
       @if (selectedElement === 'Reclamation') {
-        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/envelope-open-white.svg" height="14" width="14" class="icon">
       } @else {
-        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/envelope-open.svg" height="14" width="14" class="icon">
       }
       Reclamation Lu
 
@@ -35,21 +35,21 @@
     <div class="element" (click)="add='';selectedElement='Users'" [ngClass]="{'inactive': selectedElement !== 'Users'}">
       @if (selectedElement === 'Users') {
 
-        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/users-white.svg" height="14" width="14" class="icon">
 
       } @else {
 
-        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/users.svg" height="14" width="14" class="icon">
       }
       List d'utilisateur
     </div>
     <div class="element" (click)="add='';selectedElement='Commandes'"
          [ngClass]="{'inactive': selectedElement !== 'Commandes'}">
       @if (selectedElement === 'Commandes') {
-        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/delivery-white.svg" height="14" width="14" class="icon">
 
       } @else {
-        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/delivery.svg" height="14" width="14" class="icon">
 
       }
       Commandes
@@ -57,10 +57,10 @@
     <div class="element" (click)="add='';selectedElement='Contact'"
          [ngClass]="{'inactive': selectedElement !== 'Contact'}">
       @if (selectedElement === 'Contact') {
-        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/comment-read-white.svg" height="14" width="14" class="icon">
 
       } @else {
-        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/comment-read.svg" height="14" width="14" class="icon">
 
       }
       Contact Lu
@@ -68,10 +68,10 @@
     <div class="element" (click)="add='';selectedElement='Contact non lu'"
          [ngClass]="{'inactive': selectedElement !== 'Contact non lu'}">
       @if (selectedElement === 'Contact non lu') {
-        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/comment-white.svg" height="14" width="14" class="icon">
 
       } @else {
-        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/comment.svg" height="14" width="14" class="icon">
 
       }
       Contact non lu
@@ -79,16 +79,17 @@
     <div class="element" (click)="add='';selectedElement='newsLetter'"
          [ngClass]="{'inactive': selectedElement !== 'newsLetter'}">
       @if (selectedElement === 'newsLetter') {
-        <img alt="icon" ngSrc="assets/svg/back-office/home.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/news-white.svg" height="14" width="14" class="icon">
 
       } @else {
-        <img alt="icon" ngSrc="assets/svg/back-office/home-grey.svg" height="14" width="14" class="icon">
+        <img alt="icon" ngSrc="assets/svg/back-office/news.svg" height="14" width="14" class="icon">
 
       }
       NewsLetter
     </div>
     <div class="element" (click)="logOut()">
-      déconnecter
+      Déconnecter
+
     </div>
   </div>
 
@@ -231,7 +232,7 @@
                       <td>{{ item.product }}</td>
                       <td>{{ item.email }}</td>
                       <td><span class="online">{{ item.status }}</span></td>
-                      <td><span class="name" >{{ item.method }}</span></td>
+                      <td><span class="name">{{ item.method }}</span></td>
 
                       <td>
                       <span class="button"
@@ -312,8 +313,7 @@
                       <td>{{ item.product }}</td>
                       <td>{{ item.email }}</td>
                       <td><span class="online">{{ item.status }}</span></td>
-                      <td><span class="name" >{{ item.method }}</span></td>
-
+                      <td><span class="name">{{ item.method }}</span></td>
 
 
                       <td>
