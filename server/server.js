@@ -8,6 +8,7 @@ const authRoutes = require('./routes/auth.routes');
 const visitorRoutes = require('./routes/visitor.routes');
 const productRoutes = require('./routes/product.routes');
 const subscriptionRoutes = require('./routes/subscription.routes');
+require('dotenv').config();
 
 
 // Middleware
@@ -23,7 +24,7 @@ app.use('/api/subscription', subscriptionRoutes);
 
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://oumaimaaloui:oumaimaaloui@cluster0.mqepi.mongodb.net/', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

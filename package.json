@@ -23,6 +23,7 @@
     "@ngx-dropzone/cdk": "^17.3.0",
     "@stripe/stripe-js": "^3.4.1",
     "cloudinary": "^2.2.0",
+    "dotenv": "^16.4.7",
     "express": "^4.19.2",
     "jwt-decode": "^4.0.0",
     "mongoose": "^8.3.4",

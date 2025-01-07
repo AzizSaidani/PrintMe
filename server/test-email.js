@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 // Configure your email transport options here
 const transporter = nodemailer.createTransport({
@@ -6,15 +7,15 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: 'pfe_2024@outlook.com',
-    pass: 'pfepfe2024', // Ensure this is correct and valid
+    user: process.env.DESTINATION_MAIL,
+    pass: process.env.TRANSPORTER_PASSWORD, // Ensure this is correct and valid
   },
 });
 
 // Define the email options
 const mailOptions = {
-  from: 'saidani_aziz@hotmail.com',
-  to: 'azizsaidani1999@gmail.com', // You can test by sending it to your own email
+  from: process.env.DESTINATION_MAIL,
+  to: process.env.DESTINATION_MAIL2, // You can test by sending it to your own email
   subject: 'Test Email',
   text: 'This is a test email sent using Nodemailer',
 };
