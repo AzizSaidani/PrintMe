@@ -1,4 +1,4 @@
-# PrintHub - Custom Printing E-commerce Platform
+# PrinMe ( dobink) - Custom Printing E-commerce Platform
 ## Complete Setup and Usage Documentation
 
 ## Overview
