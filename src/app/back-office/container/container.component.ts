@@ -11,7 +11,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {CommandeModel} from "../../models/commande.model";
-import {environment} from "../../../enviroments/enviroment";
+import {environment} from "../../../environment/environment";
 
 @Component({
   selector: 'app-container',
