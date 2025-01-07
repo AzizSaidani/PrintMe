@@ -1,27 +1,41 @@
-# PrintMe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
+# Application Setup and Usage Guide
 
-## Development server
+## Frontend Setup
+1. Open a terminal.
+3. Run the following commands:
+   ```bash
+   npm install
+   ng serve
+   ```
+4. The frontend will be available at [http://localhost:4200](http://localhost:4200).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Backend Setup
+1. Open another terminal.
+2. Navigate to  server directory (cd server).
+3. Run the following commands:
+   ```bash
+   npm install
+   node server.js
+   ```
+4. The backend will start running, ready to handle requests.
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Routing Information
+- **Authentication Required:**  
+  Most routes require you to be logged in to access them.
 
-## Build
+- **Admin Route:**  
+  Access the admin login page at:  
+  [http://localhost:4200/admin/login](http://localhost:4200/admin/login)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## Creating an Admin Account
+1. First, register a **client account** via the frontend.
+2. Update the role of the created account to `admin` in the database (MongoDB).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Feel free to customize further or add additional instructions as needed.
