@@ -18,8 +18,7 @@ The application is built using:
 - Frontend: Angular framework
 - Backend: Node.js with Express
 - Database: MongoDB
-- File Storage: AWS S3 (for customer uploads)
-
+- File Storage: Cloudinary
 ## Frontend Setup
 1. Open a terminal
 2. Clone the repository
