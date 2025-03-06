@@ -1,196 +1,448 @@
 :host {
   width: 100%;
+  min-height: 100vh;
+}
 
-  .container {
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  .intro {
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
+    position: relative;
+    font-family: "Kumbh Sans", sans-serif;
+    width: 100%;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 
+    .background-image {
+      height: 100%;
+      width: 100%;
+      background-image: url("../../.././assets/shirt.jpg");
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
 
-    .intro {
+    .content {
+      padding: 4rem 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      background-blend-mode: multiply;
+      color: white;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      position: relative;
-      font-family: "Kumbh Sans", sans-serif;
-      width: 100%;
 
-      .background-image {
-        height: 100%;
-        width: 100%;
-        background-image: url("../../.././assets/shirt.jpg");
-        background-size: cover;
-        background-position: center;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-      }
-
-
-      .content {
-        padding: 4rem 0;
-        height: 100%;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        background-blend-mode: multiply;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
       }
     }
+  }
 
+  .divider {
+    height: 2rem;
+    width: 100%;
+    background-color: #f0f0f0; /* Optional: Add a subtle background for visibility */
+  }
 
-    .section-1 {
-      padding: 2.5rem 0;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      row-gap: 40px;
-      gap: 40px;
+  .section-1 {
+    padding: 2.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 40px;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
 
-      .item {
-        width: 600px;
-        height: 400px;
+    .item {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      margin: 0 auto;
+
+      app-hovered-picture-widget {
+        width: 100%;
+        height: 100%;
       }
     }
+  }
 
-    .section-2 {
-      width: 100%;
-      height: 100%;
-      background-color: #1e1e1e;
+  .section-2 {
+    width: 100%;
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+
+    .container {
+      width: 75%;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      color: white;
+      padding: 5rem 0;
+      gap: 2rem;
 
+      .extra-large-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
 
-      .container {
-        width: 75%;
+      .text-section {
         display: flex;
-        color: white;
-        padding: 5rem 0;
+        flex-direction: row;
         gap: 2rem;
+        align-items: flex-start;
+        justify-content: space-between;
+        text-align: start;
 
-        .text-section {
+        .item {
           display: flex;
           flex-direction: row;
-
-          gap: 1rem;
-          align-items: start;
+          align-items: flex-start;
           justify-content: flex-start;
-          text-align: start;
+          gap: 1rem;
+          width: 100%;
+          max-width: 500px;
 
-          .item {
+          img {
+            width: 50px;
+            height: 50px;
+          }
+
+          .description {
             display: flex;
-            flex-direction: row;
-            align-items: start;
+            flex-direction: column;
             justify-content: flex-start;
             text-align: start;
+            align-items: flex-start;
+            gap: 10px;
+
+            .title {
+              font-size: 1.75rem;
+              font-weight: bold;
+            }
+
+            p {
+              font-size: 1rem;
+              color: #ccc;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .section-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-family: "Kumbh Sans", sans-serif;
+    width: 100%;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    .background-image {
+      height: 100%;
+      width: 100%;
+      background-image: url("https://res.cloudinary.com/dwkp2dnfs/image/upload/um11qbj2ptkoymgnvik4.jpg");
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .content {
+      padding: 4rem 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      background-blend-mode: multiply;
+      color: white;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      .description {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        h1 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+
+        span {
+          font-size: 1.125rem;
+          line-height: 1.6;
+          margin-bottom: 2rem;
+          overflow-wrap: break-word;
+          max-width: 100%;
+        }
+
+        .services {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+
+          .service {
+            display: flex;
+            flex-direction: column;
             gap: 1rem;
+            width: 100%;
+
+            h2 {
+              font-size: 1.5rem;
+              font-weight: bold;
+            }
+
+            span {
+              font-size: 1rem;
+              color: #ddd;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .container {
+    .section-1 {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      padding: 2rem 0;
+      max-width: 100%;
+    }
+
+    .section-2 .container {
+      width: 85%;
+      padding: 4rem 0;
+      gap: 1.5rem;
+
+      .extra-large-title {
+        font-size: 2rem;
+      }
+
+      .text-section .item .description .title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .section-3 .content .description {
+      width: 85%;
+
+      .services {
+        gap: 1.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 0.5rem;
+
+      .intro .content {
+        padding: 3rem 0;
+
+        h1 {
+          font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+      }
+
+      .section-1 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 1.5rem 0;
+
+        .item {
+          max-width: 100%;
+          height: 350px;
+        }
+      }
+
+      .section-2 .container {
+        width: 90%;
+        padding: 3rem 0;
+        gap: 1rem;
+
+        .extra-large-title {
+          font-size: 1.8rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .text-section {
+          flex-direction: column;
+          gap: 1.5rem;
+
+          .item {
+            max-width: 100%;
+
+            img {
+              width: 40px;
+              height: 40px;
+            }
 
             .description {
-              display: flex;
-              flex-direction: column;
-              justify-content: flex-start;
-              text-align: start;
-              align-items: flex-start;
-              gap: 10px;
-
               .title {
-                font-size: 28px;
-                font-weight: bold;
+                font-size: 1.25rem;
+              }
 
+              p {
+                font-size: 0.9rem;
               }
             }
           }
         }
       }
-    }
 
-    .divider {
-      height: 2rem;
-      width: 100%;
-    }
-
-    .section-3 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      font-family: "Kumbh Sans", sans-serif;
-      width: 100%;
-
-      .background-image {
-        height: 100%;
-        width: 100%;
-        background-image: url("https://res.cloudinary.com/dwkp2dnfs/image/upload/um11qbj2ptkoymgnvik4.jpg");
-        background-size: cover;
-        background-position: center;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-      }
-
-      .content {
-        padding: 4rem 0;
-        height: 100%;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        background-blend-mode: multiply;
-        color: white;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+      .section-3 .content {
+        padding: 3rem 0;
 
         .description {
-          width: 75%;
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
+          width: 90%;
+          gap: 15px;
 
-
-          .services {
-            width: 60%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-
-            .service {
-              display: flex;
-              flex-direction: column;
-              gap: 1rem;
-              width: 80%;
-            }
-
+          h1 {
+            font-size: 2rem;
           }
 
+          span {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .services {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+
+            .service {
+              h2 {
+                font-size: 1.25rem;
+              }
+
+              span {
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+      }
+
+      .divider {
+        height: 1.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      .intro .content {
+        padding: 2rem 0;
+      }
+
+      .section-1 {
+        padding: 1rem 0;
+
+        .item {
+          height: 250px;
+        }
+      }
+
+      .section-2 .container {
+        width: 95%;
+        padding: 2rem 0;
+
+        .extra-large-title {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
         }
 
+        .text-section .item {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+
+          img {
+            width: 30px;
+            height: 30px;
+          }
+
+          .description {
+            align-items: center;
+            text-align: center;
+
+            .title {
+              font-size: 1.125rem;
+            }
+
+            p {
+              font-size: 0.875rem;
+            }
+          }
+        }
       }
 
+      .section-3 .content {
+        padding: 2rem 0;
 
-    }
+        .description {
+          width: 95%;
+          gap: 10px;
 
-    .section-5 {
-      padding-bottom: 5rem;
-      padding-top: 2.5rem;
-      width: 75%;
-      row-gap: 40px;
-      gap: 40px;
-      display: flex;
-      flex-direction: row;
+          h1 {
+            font-size: 1.5rem;
+          }
 
-      .item {
-        width: 100%;
-        height: 400px;
+          span {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+          }
+
+          .services .service {
+            h2 {
+              font-size: 1.125rem;
+            }
+
+            span {
+              font-size: 0.875rem;
+            }
+          }
+        }
       }
 
-
+      .divider {
+        height: 1rem;
+      }
     }
-
-
   }
 }
