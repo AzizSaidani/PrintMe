@@ -13,7 +13,7 @@ export class ShopService {
   constructor(private http: HttpClient) {
   }
 
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'https://printme-back.vercel.app/api/';
 
   deleteCart(userId: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/product/cart/${userId}`)

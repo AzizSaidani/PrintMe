@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ContactService {
-  private apiUrl = 'http://localhost:3000/api/visitor';
+  private apiUrl = 'https://printme-back.vercel.app/api/visitor';
 
 
   constructor(private http: HttpClient) {

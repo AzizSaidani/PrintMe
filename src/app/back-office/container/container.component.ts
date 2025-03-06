@@ -4,7 +4,7 @@ import {NgxDropzoneModule} from "ngx-dropzone";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Contact} from "../../models/reclamation.model";
 import {UserModel} from "../../models/user.model";
-import {AddProductService} from "../service/add-product.service";
+import {BackOfficeService} from "../service/back-office.service";
 import {ShopService} from "../../services/shop-service/shop.service";
 import {ProductModel} from "../../models/product.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -63,7 +63,7 @@ export class ContainerComponent implements AfterViewInit {
 
 
   constructor(private snackBar: MatSnackBar,
-              private service: AddProductService, private productService: ShopService, private authService: AuthService) {
+              private service: BackOfficeService, private productService: ShopService, private authService: AuthService) {
 
   }
 

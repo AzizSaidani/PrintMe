@@ -8,7 +8,7 @@ import {ProfileModel} from "../../models/profile.model"; // Install the @auth0/a
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = 'https://printme-back.vercel.app/api/auth';
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   readonly TOKEN_KEY = 'auth_token';
   private jwtHelper = new JwtHelperService();
@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   forgotPassword(email: string) {
-    return this.http.post(`http://localhost:3000/api/auth/reset`, {email});
+    return this.http.post(`https://printme-back.vercel.app/api/auth/reset`, {email});
   }
 
   login(credentials: any, expectedRole: string): Observable<any> {

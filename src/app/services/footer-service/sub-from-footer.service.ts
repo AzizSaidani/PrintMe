@@ -9,7 +9,7 @@ export class SubFromFooterService {
   constructor(private http: HttpClient) {
   }
 
-  private apiUrl = 'http://localhost:3000/api/subscription/subscribe';
+  private apiUrl = 'https://printme-back.vercel.app/api/subscription/subscribe';
 
 
   subscribe(email: string) {

@@ -8,7 +8,7 @@ import {CommentModel} from "../../models/comment.model";
 import {ShopService} from "../../services/shop-service/shop.service";
 import {ContactService} from "../../services/contact-service/contact.service";
 import {Contact} from "../../models/reclamation.model";
-import {AddProductService} from "../../back-office/service/add-product.service";
+import {BackOfficeService} from "../../back-office/service/back-office.service";
 
 @Component({
   selector: 'app-product-detailed',
@@ -41,7 +41,7 @@ export class ProductDetailedComponent implements AfterContentInit {
   method = 'email';
 
 
-  constructor(private service: ShopService, private addProductService: AddProductService, private contactService: ContactService, @Inject(DOCUMENT) private document: Document) {
+  constructor(private service: ShopService, private addProductService: BackOfficeService, private contactService: ContactService, @Inject(DOCUMENT) private document: Document) {
     this.loadSelectedItemFromLocalStorage();
   }
 

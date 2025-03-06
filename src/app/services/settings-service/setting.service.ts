@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class SettingService {
-  private apiUrl = 'http://localhost:3000/api/subscription';
+  private apiUrl = 'https://printme-back.vercel.app/api/subscription';
 
   constructor(private http: HttpClient) {
   }
