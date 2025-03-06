@@ -24,7 +24,7 @@ app.use('/api/subscription', subscriptionRoutes);
 
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect('mongodb+srv://sinnerman:sinnerman@cluster0.mqepi.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

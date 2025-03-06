@@ -11,7 +11,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {CommandeModel} from "../../models/commande.model";
-import {environment} from "../../../environment/environment";
 
 @Component({
   selector: 'app-container',
@@ -213,8 +212,8 @@ export class ContainerComponent implements AfterViewInit {
     const file_data = this.files[this.files.length - 1]
     const data = new FormData()
     data.append('file', file_data)
-    data.append('upload_preset', environment.CLOUDINARY_UPLOAD_PRESET);
-    data.append('cloud_name', environment.CLOUDINARY_CLOUD_NAME);
+    data.append('upload_preset', 'pfe_product')
+    data.append('cloud_name', 'dwkp2dnfs')
 
 
     this.service.uploadImage(data).subscribe((res) => {
