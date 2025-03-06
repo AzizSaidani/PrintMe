@@ -5,7 +5,6 @@ import {AboutUsSectionComponent} from "./about-us-section/about-us-section.compo
 import {ServiceSectionComponent} from "./service-section/service-section.component";
 import {WhyUsComponent} from "./why-us/why-us.component";
 import {RecentWorksComponent} from "./recent-works/recent-works.component";
-import {BestSellingsComponent} from "./best-sellings/best-sellings.component";
 import {CompanySpecsComponent} from "./company-specs/company-specs.component";
 
 @Component({
@@ -15,7 +14,6 @@ import {CompanySpecsComponent} from "./company-specs/company-specs.component";
     SliderComponent,
     AboutUsSectionComponent,
     ServiceSectionComponent,
-    BestSellingsComponent,
     WhyUsComponent,
     RecentWorksComponent,
     CompanySpecsComponent

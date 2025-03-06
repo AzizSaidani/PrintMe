@@ -27,6 +27,7 @@ export class ToolbarComponent implements AfterViewInit {
   userName = signal('')
   logout = output<void>();
   showCart = false;
+  showMobileMenu = false;
   cartItemsTotalPrice = 0
   categories: CategoryModel[] = [
     {

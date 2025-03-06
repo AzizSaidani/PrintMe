@@ -14,7 +14,6 @@ import {ContactComponent} from "./components/contact/contact.component";
 import {AboutUsComponent} from "./components/about-us/about-us.component";
 import {FaqComponent} from "./components/faq/faq.component";
 import {HomeComponent} from "./components/home/home.component";
-import {BestSellingsComponent} from "./components/home/best-sellings/best-sellings.component";
 import {CartComponent} from "./components/cart/cart.component";
 import {OurServiceComponent} from "./components/our-service/our-service.component";
 import {LoginComponent} from "./components/auth_component/login/login.component";
@@ -33,7 +32,6 @@ import {ContainerComponent} from "./back-office/container/container.component";
     ImageCardComponent,
     ProductCardComponent,
     ToolbarComponent,
-    BestSellingsComponent,
     FooterComponent,
     ServiceSectionComponent,
     AboutUsSectionComponent,
