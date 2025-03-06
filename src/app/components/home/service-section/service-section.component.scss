@@ -9,7 +9,6 @@
   position: relative;
   font-family: "Kumbh Sans", sans-serif;
 
-
   .background-image {
     height: 100%;
     width: 100%;
@@ -25,8 +24,7 @@
   .container {
     height: 100%;
     width: 100%;
-    background-color: rgba(56, 29, 144, 0.95)
-  ;
+    background-color: rgba(56, 29, 144, 0.95);
     background-blend-mode: multiply;
     color: white;
     display: flex;
@@ -54,8 +52,8 @@
           padding: 4rem 20px;
           text-align: center;
           border-radius: 10px;
-          transition: transform 0.2s ease-in-out; // Add this line
-
+          transition: transform 0.2s ease-in-out;
+          flex-basis: calc(25% - 15px);
 
           .card-icon {
             padding: 2.5px 5px;
@@ -85,9 +83,41 @@
         font-weight: 500;
         padding-top: 15px;
       }
+    }
+  }
 
-
+  /* Responsive styles */
+  @media (max-width: 1430px) {
+    .container .content {
+      width: 90%;
     }
 
+    .container .content .card-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .container .content .card-container .card {
+      flex-basis: calc(50% - 20px);
+      max-width: 350px;
+      margin-bottom: 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container .content {
+      width: 95%;
+    }
+
+    .container .content .card-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container .content .card-container .card {
+      flex-basis: 100%;
+      width: 100%;
+      max-width: 400px;
+    }
   }
 }
