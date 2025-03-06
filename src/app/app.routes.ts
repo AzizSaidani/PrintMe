@@ -30,7 +30,7 @@ export const routes: Routes = [
   {path: 'forgetPassword', component: ForgetPasswordComponent, canActivate: [authGuardConnected]},
   {path: 'about', component: AboutUsComponent, canActivate: [authGuard]},
   {path: 'bill', component: FactureComponent, canActivate: [authGuard]},
-  {path: 'client/profile', component: SettingsComponent},
+  {path: 'client/profile', component: SettingsComponent,canActivate: [authGuardConnected]},
 
 
   //** Admin **//
