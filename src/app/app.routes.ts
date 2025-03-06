@@ -19,7 +19,7 @@ export const routes: Routes = [
   //** Client **//
 
   {path: '', component: HomeComponent},
-  {path: 'faq', component: FaqComponent, canActivate: [authGuard]},
+  {path: 'faq', component: FaqComponent,},
   {path: 'shop', component: ShopComponent, canActivate: [authGuard]},
   {path: 'details', component: ProductDetailedComponent, canActivate: [authGuard]},
   {path: 'ourServices', component: OurServiceComponent, canActivate: [authGuard]},
@@ -30,7 +30,7 @@ export const routes: Routes = [
   {path: 'forgetPassword', component: ForgetPasswordComponent, canActivate: [authGuardConnected]},
   {path: 'about', component: AboutUsComponent, canActivate: [authGuard]},
   {path: 'bill', component: FactureComponent, canActivate: [authGuard]},
-  {path: 'client/profile', component: SettingsComponent},
+  {path: 'client/profile', component: SettingsComponent,canActivate: [authGuard]},
 
 
   //** Admin **//

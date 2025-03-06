@@ -2,14 +2,12 @@
   width: 100%;
   font-family: "Kumbh Sans", sans-serif;
 
-
   .footer-container {
     width: 100%;
     background: #1e1e1e;
-    height: 20rem;
+    min-height: 20rem;
     padding-top: 5rem;
     padding-bottom: 2.5rem;
-
     color: white;
     display: flex;
     justify-content: center;
@@ -20,13 +18,15 @@
       display: flex;
       justify-content: space-around;
       flex-direction: row;
+      flex-wrap: wrap;
+      gap: 30px;
 
       .information {
-
+        margin-bottom: 20px;
 
         .links {
-
           p {
+            margin: 10px 0;
             &:hover {
               color: #df0074;
               cursor: pointer;
@@ -36,6 +36,7 @@
       }
 
       .contact {
+        margin-bottom: 20px;
 
         .info-section {
           display: flex;
@@ -45,8 +46,8 @@
           .info {
             display: flex;
             flex-direction: row;
-            align-items: baseline;
-            gap: 5px;
+            align-items: center;
+            gap: 10px;
 
             span {
               font-size: 16px;
@@ -77,7 +78,6 @@
 
             .icon2 {
               display: none;
-
             }
 
             &:hover {
@@ -91,53 +91,54 @@
                 display: block;
               }
             }
-
           }
         }
       }
-
 
       .newsletter {
         display: flex;
         align-items: flex-start;
         flex-direction: column;
         height: 100% !important;
+        margin-bottom: 20px;
 
         p {
           font-weight: 500;
           font-size: 18px;
+          max-width: 100%;
         }
-
 
         .newsletter-signup {
           position: relative;
           display: flex;
           flex-direction: row;
           align-items: center;
+          width: 100%;
+          max-width: 320px;
         }
 
         .email {
-          width: 320px;
+          width: 100%;
           height: 50px;
           border-radius: 30px;
-          padding-right: 4rem;
+          padding: 0 15px;
+          padding-right: 120px;
           border: none;
           font-size: 16px;
           font-weight: 500;
+          box-sizing: border-box;
 
           &:focus {
             outline: none;
           }
-
         }
 
-
         .button {
-          height: 55px;
-          width: 120px;
+          height: 45px;
+          width: 110px;
           border-radius: 30px;
           position: absolute;
-          right: 0;
+          right: 5px;
           top: 50%;
           transform: translateY(-50%);
           padding: 0 20px;
@@ -148,15 +149,70 @@
           font-weight: 500;
           font-size: 16px;
           transition: background-color 0.6s;
-        &:hover{
-          background-color: #46a9df;
-          transition: background-color 0.6s;
-        }
-        }
 
+          &:hover {
+            background-color: #46a9df;
+            transition: background-color 0.6s;
+          }
+        }
       }
     }
   }
 
-}
+  /* Responsive styles */
+  @media (max-width: 1200px) {
+    .footer-container .footer {
+      width: 90%;
+      justify-content: space-between;
+    }
+  }
 
+  @media (max-width: 992px) {
+    .footer-container .footer {
+      justify-content: flex-start;
+    }
+
+    .footer-container .footer .information,
+    .footer-container .footer .contact,
+    .footer-container .footer .newsletter {
+      flex-basis: calc(50% - 30px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-container {
+      height: auto;
+    }
+
+    .footer-container .footer {
+      width: 95%;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-container .footer .information,
+    .footer-container .footer .contact,
+    .footer-container .footer .newsletter {
+      flex-basis: 100%;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .footer-container .footer .contact .info-section .info {
+      justify-content: center;
+    }
+
+    .footer-container .footer .contact .social {
+      justify-content: center;
+    }
+
+    .footer-container .footer .newsletter {
+      align-items: center;
+    }
+
+    .footer-container .footer .newsletter p {
+      text-align: center;
+    }
+  }
+}
