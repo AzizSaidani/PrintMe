@@ -79,13 +79,54 @@
               background-image: url("https://printme-theme.myshopify.com/cdn/shop/files/home-gallery-6.jpg?v=1641446008");
             }
           }
-
         }
       }
+    }
+  }
 
-
-
+  /* Responsive styles */
+  @media (max-width: 1430px) {
+    .container .content {
+      width: 90%;
     }
 
+    .container .content .section-1 .project-exemple {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .container .content .section-1 .project-exemple .first-line,
+    .container .content .section-1 .project-exemple .second-line {
+      display: contents; /* This allows the child elements to be placed in the grid */
+    }
+
+    /* Make all images the same size and maintain their backgrounds */
+    .container .content .section-1 .project-exemple .first-line .image-1,
+    .container .content .section-1 .project-exemple .first-line .image-2,
+    .container .content .section-1 .project-exemple .first-line .image-3,
+    .container .content .section-1 .project-exemple .first-line .image-4,
+    .container .content .section-1 .project-exemple .second-line .image-1,
+    .container .content .section-1 .project-exemple .second-line .image-2 {
+      width: 100%;
+      height: 300px;
+      background-position: center;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .container .content .section-1 .project-exemple {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .container .content {
+      width: 95%;
+    }
+
+    .container .content .section-1 .project-exemple {
+      grid-template-columns: 1fr;
+    }
   }
 }
