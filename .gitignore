@@ -10186,3 +10186,4 @@ Thumbs.db
 /server/node_modules/underscore/underscore.js
 /server/node_modules/underscore/underscore-min.js
 /server/node_modules/base32.js/webpack.config.js
+.vercel

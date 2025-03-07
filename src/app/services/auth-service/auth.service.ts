@@ -7,7 +7,7 @@ import {ProfileModel} from "../../models/profile.model"; // Install the @auth0/a
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = 'https://printme-back.vercel.app/api/auth';
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   readonly TOKEN_KEY = 'auth_token';
 
