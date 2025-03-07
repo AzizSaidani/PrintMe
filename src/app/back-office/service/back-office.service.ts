@@ -9,7 +9,7 @@ import {CommandeModel} from "../../models/commande.model";
   providedIn: 'root'
 })
 export class BackOfficeService {
-  private apiUrl = 'https://printme-back.vercel.app/api/';
+  private apiUrl = 'http://localhost:3000/api';
 
 
   constructor(private http: HttpClient) {

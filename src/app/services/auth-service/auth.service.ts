@@ -1,17 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, tap} from "rxjs";
-import {JwtHelperService} from '@auth0/angular-jwt';
 import {ProfileModel} from "../../models/profile.model"; // Install the @auth0/angular-jwt package
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://printme-back.vercel.app/api/auth';
+  private apiUrl = 'http://localhost:3000/api/auth';
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   readonly TOKEN_KEY = 'auth_token';
-  private jwtHelper = new JwtHelperService();
 
 
   constructor(private http: HttpClient) {
@@ -36,7 +34,7 @@ export class AuthService {
   }
 
   forgotPassword(email: string) {
-    return this.http.post(`https://printme-back.vercel.app/api/auth/reset`, {email});
+    return this.http.post(`http://localhost:3000/api/auth/reset`, {email});
   }
 
   login(credentials: any, expectedRole: string): Observable<any> {

@@ -11,8 +11,7 @@ export class FactureService {
   constructor(private http: HttpClient) {
   }
 
-  private apiUrl = 'https://printme-back.vercel.app/api';
-
+  private apiUrl = 'http://localhost:3000/api';
   generateBill(cartItems: CartModel[]): Observable<Blob> {
     return this.http.post(`${this.apiUrl}/product/generateBill`, {products: cartItems}, {responseType: 'blob'});
   }

@@ -7,8 +7,7 @@ import {Observable} from "rxjs";
 })
 export class CommandeService {
 
-  private apiUrl = 'https://printme-back.vercel.app/api/';
-
+  private apiUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {
   }
