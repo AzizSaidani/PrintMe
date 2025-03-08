@@ -4,19 +4,20 @@ import {map, Observable} from "rxjs";
 import {Contact} from "../../models/reclamation.model";
 import {UserModel} from "../../models/user.model";
 import {CommandeModel} from "../../models/commande.model";
+import {environment} from "../../../environment/environment.prod";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackOfficeService {
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = environment.BACKEND_URL+'/api';
 
 
   constructor(private http: HttpClient) {
   }
 
   uploadImage(vals: any): Observable<any> {
-    return this.http.post('https://api.cloudinary.com/v1_1/dwkp2dnfs/upload', vals)
+    return this.http.post('https://api.cloudinary.com/v1_1/'+environment.CLOUDINARY_CLOUD_NAME+'/upload', vals)
   }
 
   addProduct(productData: any) {

@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, map, Observable, throwError} from "rxjs";
 import {ProductModel} from "../../models/product.model";
 import {CommentModel} from "../../models/comment.model";
+import {environment} from "../../../environment/environment.prod";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class ShopService {
   constructor(private http: HttpClient) {
   }
 
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = environment.BACKEND_URL + '/api';
+
   deleteCart(userId: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/product/cart/${userId}`)
       .pipe(
