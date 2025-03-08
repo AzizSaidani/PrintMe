@@ -8,6 +8,7 @@ import {CommandeService} from "../../services/commande/commande.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatButton} from "@angular/material/button";
 import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
+import {environment} from "../../../environment/environment.prod";
 
 @Component({
   selector: 'app-cart',
@@ -61,6 +62,7 @@ export class CartComponent implements AfterContentInit {
 
       const method = 'Paiement en espèce à la livraison'
       this.commande.addCommande(user, method).subscribe(() => {
+        console.log('azizfzoajfeozaejfopazjeofpazjp')
         this.service.deleteCart(user).subscribe(() => {
           this.openSnackBar('Commande envoyer', 'Fermer')
         })
@@ -75,7 +77,7 @@ export class CartComponent implements AfterContentInit {
 
     if (this.cartItemsTotalPrice > 0) {
       try {
-        const stripe = await loadStripe('pk_test_51Lyzt5GUzUAnKjP7GaetFbAkzNnUTx2ZOdcH1TqLtFhZJEZA59G6wfxp9Q7M70tRhCqjErdZeLN1dYxeyPFkRO9N007IOrrnzD');
+        const stripe = await loadStripe(environment.STRIPE);
         const response = await this.service.createCheckoutSession(amount).toPromise();
 
         if (response) {
