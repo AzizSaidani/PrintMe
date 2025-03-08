@@ -62,10 +62,19 @@ export class FactureComponent implements AfterContentInit {
     }, (error) => {
       console.error('Error generating bill:', error);
     });
+    this.deleteCart()
   }
 
   deleteCart() {
-    window.location.assign('shop')
+    const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
+    let user = ''
+    if (data) {
+      user = JSON.parse(data).id
+    }
+    this.shopService.deleteCart(user).subscribe(() => {
+    }, () => {
+      window.location.assign('shop')
+    })
   }
 
 
