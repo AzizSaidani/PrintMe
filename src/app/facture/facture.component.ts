@@ -41,6 +41,8 @@ export class FactureComponent implements AfterContentInit {
     const method = 'Paiement en ligne'
     this.commande.addCommande(user, method).subscribe(() => {
       this.shopService.deleteCart(user).subscribe(() => {
+        window.location.assign('shop')
+
       }, (error) => {
         console.error('Error ss bill:', error);
       })
