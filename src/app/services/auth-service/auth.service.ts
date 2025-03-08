@@ -7,7 +7,7 @@ import {ProfileModel} from "../../models/profile.model"; // Install the @auth0/a
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://printme-back.vercel.app/api/auth';
+  private apiUrl = 'https://printme-back.onrender.com/api/auth';
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   readonly TOKEN_KEY = 'auth_token';
 
