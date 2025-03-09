@@ -8,55 +8,31 @@
   </div>
 
   <div class="shop-item-container">
-
     <div class="filter-container">
       <div class="filter">
         <span class="title">Disponibilité</span>
         <hr>
-        <div class="filte-text"><input type="radio" name="availability"> En stock (8)</div>
-        <div class="filte-text"><input type="radio" name="availability"> En rupture de stock (0)</div>
+        <div class="filte-text">
+          <input type="radio" name="availability" [(ngModel)]="filters.availability" value="inStock" (change)="applyFilters()"> En stock ({{ (filteredProducts | async)?.length || 0 }})
+        </div>
+        <div class="filte-text">
+          <input type="radio" name="availability" [(ngModel)]="filters.availability" value="" (change)="applyFilters()"> Tous
+        </div>
         <div class="buttons">
-          <div class="btn">Effacer</div>
-          <div class="btn">Appliquer</div>
+          <div class="btn" (click)="clearFilter('availability')">Effacer</div>
+          <div class="btn" (click)="applyFilters()">Appliquer</div>
         </div>
       </div>
+
       <div class="filter">
         <span class="title">Prix</span>
         <hr>
         <p class="filte-text">Le prix le plus élevé est 750,00 €</p>
-        <div class="filte-text">De<br> <input type="text" placeholder="prix min"></div>
-        <div class="filte-text">À<br><input type="text" placeholder="prix max"></div>
+        <div class="filte-text">De<br> <input type="number" [(ngModel)]="filters.priceMin" placeholder="prix min" (ngModelChange)="applyFilters()"></div>
+        <div class="filte-text">À<br><input type="number" [(ngModel)]="filters.priceMax" placeholder="prix max" (ngModelChange)="applyFilters()"></div>
         <div class="buttons">
-          <div class="btn">Effacer</div>
-          <div class="btn">Appliquer</div>
-        </div>
-      </div>
-
-      <div class="filter">
-        <span class="title">Couleur</span>
-        <hr>
-        <div class="filte-text"><input type="checkbox" name="Black"> Noir (2)</div>
-        <div class="filte-text"><input type="checkbox" name="Blue"> Bleu (1)</div>
-        <div class="filte-text"><input type="checkbox" name="Grey"> Gris (2)</div>
-        <div class="filte-text"><input type="checkbox" name="Pink"> Rose (2)</div>
-        <div class="filte-text"><input type="checkbox" name="White"> Blanc (2)</div>
-        <div class="buttons">
-          <div class="btn">Effacer</div>
-          <div class="btn">Appliquer</div>
-        </div>
-      </div>
-
-      <div class="filter">
-        <span class="title">Matériau</span>
-        <hr>
-        <div class="filte-text"><input type="checkbox" name="Ceramic"> Céramique (1)</div>
-        <div class="filte-text"><input type="checkbox" name="Cotton"> Coton (2)</div>
-        <div class="filte-text"><input type="checkbox" name="Leather"> Cuir (1)</div>
-        <div class="filte-text"><input type="checkbox" name="Paper"> Papier (1)</div>
-        <div class="filte-text"><input type="checkbox" name="Plastic"> Plastique (1)</div>
-        <div class="buttons">
-          <div class="btn">Effacer</div>
-          <div class="btn">Appliquer</div>
+          <div class="btn" (click)="clearFilter('price')">Effacer</div>
+          <div class="btn" (click)="applyFilters()">Appliquer</div>
         </div>
       </div>
     </div>
@@ -67,21 +43,21 @@
           <div class="left-side"></div>
           <div class="right-side">
             Trier par
-            <select>
-              <option>En vedette</option>
-              <option>Meilleures ventes</option>
-              <option>Alphabétique A-Z</option>
-              <option>Alphabétique Z-A</option>
-              <option>Prix croissant</option>
-              <option>Prix décroissant</option>
-              <option>Date ancienne à récente</option>
-              <option>Date récente à ancienne</option>
+            <select [(ngModel)]="sortOption" (ngModelChange)="applySort()">
+              <option value="featured">En vedette</option>
+              <option value="bestSelling">Meilleures ventes</option>
+              <option value="alphaAsc">Alphabétique A-Z</option>
+              <option value="alphaDesc">Alphabétique Z-A</option>
+              <option value="priceAsc">Prix croissant</option>
+              <option value="priceDesc">Prix décroissant</option>
+              <option value="dateAsc">Date ancienne à récente</option>
+              <option value="dateDesc">Date récente à ancienne</option>
             </select>
           </div>
         </div>
 
         <div class="products">
-          @for (item of product; track item) {
+          @for (item of filteredProducts | async; track item._id) {
             @if (category === 'shop' || comparing(category, item.category)) {
               <app-product-card [imageDimentions]="[200,200]" [product]="item"
                                 (check)="saveSelectedItemToLocalStorage(item)"

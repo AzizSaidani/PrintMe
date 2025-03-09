@@ -19,7 +19,6 @@
     position: relative;
     font-family: "Kumbh Sans", sans-serif;
     width: 100%;
-    /* Override container constraints for full width */
     max-width: none !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -88,7 +87,7 @@
           align-items: center;
           gap: 0.5rem;
 
-          input[type="text"] {
+          input[type="text"], input[type="number"] {
             width: 100%;
             max-width: 200px;
           }
@@ -147,7 +146,6 @@
   }
 }
 
-// Responsive Design
 @media (max-width: 1024px) {
   .container {
     .shop-item-container {

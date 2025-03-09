@@ -1,18 +1,15 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, map, Observable, throwError} from "rxjs";
-import {ProductModel} from "../../models/product.model";
-import {CommentModel} from "../../models/comment.model";
-import {environment} from "../../../environment/environment.prod";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { catchError, map, Observable, throwError } from "rxjs";
+import { ProductModel } from "../../models/product.model";
+import { CommentModel } from "../../models/comment.model";
+import { environment } from "../../../environment/environment.prod";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
-
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   private apiUrl = environment.BACKEND_URL + '/api';
 
@@ -25,7 +22,6 @@ export class ShopService {
         })
       );
   }
-
 
   loadProduct(): Observable<ProductModel[]> {
     return this.http.get<any>(`${this.apiUrl}/product/load`)
@@ -46,7 +42,7 @@ export class ShopService {
   }
 
   addToCart(productId: string, flag: string, userId: string | null, amount?: number, filePath?: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/product/cart`, {productId, flag, userId, amount, filePath});
+    return this.http.post<any>(`${this.apiUrl}/product/cart`, { productId, flag, userId, amount, filePath });
   }
 
   getCartItems(userId: string): Observable<any> {
@@ -54,17 +50,14 @@ export class ShopService {
   }
 
   toggleFavourite(productId: string, userId: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/product/favourites/add`, {productId, userId});
+    return this.http.post<any>(`${this.apiUrl}/product/favourites/add`, { productId, userId });
   }
 
   getFavouriteItems(userId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/product/favourites/${userId}`);
   }
 
-
   createCheckoutSession(amount: number): Observable<{ sessionId: string }> {
-    return this.http.post<{ sessionId: string }>(`${this.apiUrl}/product/create-checkout-session`, {amount});
+    return this.http.post<{ sessionId: string }>(`${this.apiUrl}/product/create-checkout-session`, { amount });
   }
-
-
 }
