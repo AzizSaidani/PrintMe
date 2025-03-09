@@ -5,7 +5,7 @@ import { ProductCardComponent } from "../../widgets/product-card/product-card.co
 import { ProductModel } from "../../models/product.model";
 import { ShopService } from "../../services/shop-service/shop.service";
 import { ProductDetailedComponent } from "../product-detailed/product-detailed.component";
-import { CustomSnackbarComponent } from "../../custom-snackbar/custom-snackbar.component";
+import { CustomSnackbarComponent } from "../../widgets/custom-snackbar/custom-snackbar.component";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { FormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';

@@ -13,7 +13,7 @@ import {AboutUsComponent} from "./components/about-us/about-us.component";
 import {authGuard, authGuardConnected} from "./auth-guard/auth.guard";
 import {LoginAdminComponent} from "./back-office/login/login-admin/login-admin.component";
 import {ProductDetailedComponent} from "./components/product-detailed/product-detailed.component";
-import {FactureComponent} from "./facture/facture.component";
+import {FactureComponent} from "./widgets/facture/facture.component";
 
 export const routes: Routes = [
   //** Client **//

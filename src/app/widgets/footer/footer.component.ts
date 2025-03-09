@@ -3,7 +3,7 @@ import {SubFromFooterService} from '../../services/footer-service/sub-from-foote
 import {FormsModule} from '@angular/forms';
 import {NgOptimizedImage} from "@angular/common";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
+import {CustomSnackbarComponent} from "../custom-snackbar/custom-snackbar.component";
 
 @Component({
   selector: 'app-footer',

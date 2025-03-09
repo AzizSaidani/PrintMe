@@ -3,7 +3,7 @@ import {NgOptimizedImage} from "@angular/common";
 import {ContactService} from "../../services/contact-service/contact.service";
 import {FormsModule} from "@angular/forms";
 import {Contact} from "../../models/reclamation.model";
-import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
+import {CustomSnackbarComponent} from "../../widgets/custom-snackbar/custom-snackbar.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({

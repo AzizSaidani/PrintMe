@@ -1,9 +1,9 @@
 import {AfterContentInit, Component, Inject} from '@angular/core';
-import {CartModel} from "../models/cart.model";
-import {FactureService} from "../services/facture-service/facture.service";
-import {ShopService} from "../services/shop-service/shop.service";
+import {CartModel} from "../../models/cart.model";
+import {FactureService} from "../../services/facture-service/facture.service";
+import {ShopService} from "../../services/shop-service/shop.service";
 import {DOCUMENT, NgOptimizedImage} from "@angular/common";
-import {CommandeService} from "../services/commande/commande.service";
+import {CommandeService} from "../../services/commande/commande.service";
 
 @Component({
   selector: 'app-facture',

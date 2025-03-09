@@ -7,7 +7,7 @@ import {SettingService} from "../../services/settings-service/setting.service";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {ProfileModel} from "../../models/profile.model";
 import {FormsModule} from "@angular/forms";
-import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
+import {CustomSnackbarComponent} from "../../widgets/custom-snackbar/custom-snackbar.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CommandeService} from "../../services/commande/commande.service";
 import {CommandeModel} from "../../models/commande.model";

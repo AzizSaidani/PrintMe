@@ -8,7 +8,7 @@ import {BackOfficeService} from "../service/back-office.service";
 import {ShopService} from "../../services/shop-service/shop.service";
 import {ProductModel} from "../../models/product.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
+import {CustomSnackbarComponent} from "../../widgets/custom-snackbar/custom-snackbar.component";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {CommandeModel} from "../../models/commande.model";
 import {environment} from "../../../environment/environment.prod";

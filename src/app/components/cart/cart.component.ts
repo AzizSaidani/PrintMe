@@ -7,7 +7,7 @@ import {FormsModule} from "@angular/forms";
 import {CommandeService} from "../../services/commande/commande.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatButton} from "@angular/material/button";
-import {CustomSnackbarComponent} from "../../custom-snackbar/custom-snackbar.component";
+import {CustomSnackbarComponent} from "../../widgets/custom-snackbar/custom-snackbar.component";
 import {environment} from "../../../environment/environment.prod";
 
 @Component({
