@@ -1,4 +1,4 @@
-import {Component, Input, output, signal, Signal} from '@angular/core';
+import {Component, EventEmitter, Input, Output, signal, Signal} from '@angular/core';
 import {ImageCardComponent} from "../image-card/image-card.component";
 import {toSignal} from "../../utils/signals/signal.util";
 import {ProductModel} from "../../models/product.model";
@@ -19,9 +19,9 @@ export class ProductCardComponent {
   imageDimentions: Signal<number[]> = signal([360, 280])
   @Input({transform: toSignal})
   product!: Signal<ProductModel>
-  check = output<void>();
-  addTocart = output<void>();
-  addToWishes = output<void>();
+  @Output() check = new EventEmitter<void>();
+  @Output() addToCart = new EventEmitter<void>();
+  @Output() addToWishes = new EventEmitter<void>();
 
   hasOffer(): boolean {
     return parseInt(this.product().offer) > 0;

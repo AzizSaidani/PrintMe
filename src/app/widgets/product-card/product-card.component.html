@@ -1,8 +1,10 @@
 <div class="container">
   <div>
-    <app-image-card (addToWishes)="addToWishes.emit()" (addTocart)="addTocart.emit()" (check)="check.emit()"
-                    [imageDimentions]="imageDimentions()"
-                    [imagePath]=product().imagePath>
+    <app-image-card
+      (addToWishes)="addToWishes.emit()"
+      (addToCart)="addToCart.emit()" (check)="check.emit()"
+      [imageDimentions]="imageDimentions()"
+      [imagePath]=product().imagePath>
     </app-image-card>
   </div>
 
@@ -17,10 +19,10 @@
         <span class="price">${{ newPrice(product().price, product().offer) }}</span>
       }
     </div>
-<!--    <div class="circle">-->
-<!--      <img class="small-image" src="{{product().imagePath}}" alt="picture">-->
+    <!--    <div class="circle">-->
+    <!--      <img class="small-image" src="{{product().imagePath}}" alt="picture">-->
 
-<!--    </div>-->
+    <!--    </div>-->
 
   </div>
 

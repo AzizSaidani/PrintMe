@@ -1,4 +1,4 @@
-import {Component, Input, output, Signal} from '@angular/core';
+import {Component, EventEmitter, Input, Output, Signal} from '@angular/core';
 import {CardComponent} from "../card/card.component";
 import {NgOptimizedImage} from "@angular/common";
 import {toSignal} from "../../utils/signals/signal.util";
@@ -20,8 +20,8 @@ export class ImageCardComponent {
   @Input({transform: toSignal})
   imageDimentions!: Signal<number[]>
 
-  check = output<void>();
-  addTocart = output<void>();
-  addToWishes = output<void>();
+  @Output() check = new EventEmitter<void>();
+  @Output() addToCart = new EventEmitter<void>();
+  @Output() addToWishes = new EventEmitter<void>();
 
 }

@@ -61,7 +61,7 @@
             @if (category === 'shop' || comparing(category, item.category)) {
               <app-product-card [imageDimentions]="[200,200]" [product]="item"
                                 (check)="saveSelectedItemToLocalStorage(item)"
-                                (addTocart)="addToCart(item._id,'inc')"
+                                (addToCart)="addToCart(item._id,'inc')"
                                 (addToWishes)="toggleFavourite(item._id)">
               </app-product-card>
             }
