@@ -1,4 +1,31 @@
 body {
+  html {
+    font-size: 16px;
+  }
+
+  @media (max-width: 992px) {
+    .extra-large-title {
+      font-size: 1.8rem !important;
+    }
+
+    .large-title {
+      font-size: 1.5rem !important;
+    }
+
+    .medium-title {
+      font-size: 1.2rem !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .extra-large-title {
+      font-size: 1.5rem !important;
+    }
+
+    .large-title {
+      font-size: 1.3rem !important;
+    }
+  }
   .snackbar {
     position: fixed;
     background-color: transparent;

@@ -52,4 +52,53 @@ display: flex;
 
     }
   }
+
+  @media (max-width: 1430px) {
+    .why-us-section {
+      .container {
+        width: 90%;
+
+        .right-section {
+          width: 50vw;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .why-us-section {
+      .container {
+        justify-content: center;
+
+        .right-section {
+          width: 80vw;
+          background-color: rgba(0, 0, 0, 0.7);
+          padding: 2rem;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .why-us-section {
+      .container {
+        width: 95%;
+
+        .right-section {
+          width: 95vw;
+
+          .quality {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            .icon-container {
+              width: auto;
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -77,6 +77,16 @@
           }
         }
       }
+      @media (max-width: 600px) {
+        .card-container{
+
+          padding-top: 1.5rem;
+          padding-bottom: .75rem;
+          .card{
+            padding: 2rem 10px;
+          }
+        }
+      }
 
       .sub-title {
         font-size: 20px;
@@ -116,7 +126,7 @@
 
     .container .content .card-container .card {
       flex-basis: 100%;
-      width: 100%;
+      width: 95%;
       max-width: 400px;
     }
   }

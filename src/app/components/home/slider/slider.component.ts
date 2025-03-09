@@ -12,11 +12,7 @@ import {NgOptimizedImage} from "@angular/common";
 })
 export class SliderComponent {
   selectedSlide = true
-  // constructor() {
-  //   setInterval(() => {
-  //     this.selectedSlide = !this.selectedSlide;
-  //   }, 4000);
-  // }
+
 
   navigate(){
     window.location.assign('shop')

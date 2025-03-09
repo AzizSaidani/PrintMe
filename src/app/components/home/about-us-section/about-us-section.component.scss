@@ -35,4 +35,40 @@
       }
     }
   }
+
+  @media (max-width: 1430px) {
+    .about-us-section {
+      .about-us-container {
+        width: 90%;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-us-section {
+      .about-us-container {
+        width: 95%;
+        padding: 5rem 0;
+
+        .extra-large-title {
+          font-size: 1.8rem;
+        }
+
+        .grey {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .about-us-section {
+      .about-us-container {
+        .pl-24, .pr-24 {
+          padding-left: 10px !important;
+          padding-right: 10px !important;
+        }
+      }
+    }
+  }
 }

@@ -1,10 +1,9 @@
 <div class="tool-bar-container">
-  <div class="cart-overlay-bg" (click)="showCart = false" [ngClass]="{ 'show-bg': showCart }"></div>
-  <div class="cart-overlay-bg" (click)="showMobileMenu = false"
-       [ngClass]="{ 'show-bg': showMobileMenu }"></div>
+  <div class="cart-overlay-bg full-screen-overlay" (click)="showCart = false" [ngClass]="{ 'show-bg': showCart }"></div>
+  <div class="cart-overlay-bg full-screen-overlay" (click)="showMobileMenu = false" [ngClass]="{ 'show-bg': showMobileMenu }"></div>
+
   <div class="cart-overlay" [ngClass]="{ 'show-cart': showCart }">
     <div class="cart-content-container">
-
       <div class="cart-content">
         <div class="head">
           <h2>Votre Panier</h2>
@@ -23,69 +22,56 @@
                 <div class="item-description">{{ item.product.description }}</div>
                 <div>${{ item.product.price }}</div>
                 <div class="dec-inc-btn">
-                  <img alt="minus" ngSrc="assets/svg/minus-white.svg" height="14" width="14"
-                       (click)="addToCartFromToolBar(item.product._id,'dec')">
-                  <div class="number">
-                    {{ item.amount }}
-                  </div>
-                  <img alt="plus" ngSrc="assets/svg/plus-white.svg" height="14" width="14"
-                       (click)="addToCartFromToolBar(item.product._id,'inc')">
+                  <img alt="minus" ngSrc="assets/svg/minus-white.svg" height="14" width="14" (click)="addToCartFromToolBar(item.product._id,'dec')">
+                  <div class="number">{{ item.amount }}</div>
+                  <img alt="plus" ngSrc="assets/svg/plus-white.svg" height="14" width="14" (click)="addToCartFromToolBar(item.product._id,'inc')">
                 </div>
               </div>
             </div>
           }
         }
-
-
-        @if (!cart || cartItemsTotalPrice===0) {
+        @if (!cart || cartItemsTotalPrice === 0) {
           <div class="button" (click)="routing('shop')">
             <p>Continuer vos achats</p>
           </div>
         } @else {
-
           <div class="devider"></div>
           <div class="total">
             <div>Total</div>
             <div>${{ cartItemsTotalPrice }}</div>
           </div>
           <div class="devider"></div>
-
           <div class="button" (click)="showCart = false; routing('cart')">
             <p>Voir le Panier</p>
           </div>
-
         }
       </div>
     </div>
   </div>
 
   @if(showMobileMenu){
-
-  <div class="cart-overlay"  [ngClass]="{ 'links-overlay-on': showMobileMenu }" >
-    <div class="cart-overlay-link">
-
-      @if (userName()) {
-        <div class="actions" (click)="routing('client/profile')">
-        <span class="small-title">{{ userName() }}</span>
+    <div class="cart-overlay" [ngClass]="{ 'links-overlay-on': showMobileMenu }">
+      <div class="cart-overlay-link">
+        @if (userName()) {
+          <div class="actions" (click)="routing('client/profile')">
+            <span class="small-title">{{ userName() }}</span>
+          </div>
+        }
+        <p class="link-text" (click)="routing('')">Accueil</p>
+        <p class="link-text" (click)="saveCategoryToLocalStorage('shop')">Boutique</p>
+        <p class="link-text" (click)="routing('about')">A propos</p>
+        <p class="link-text" (click)="routing('ourServices')">Services</p>
+        <p class="link-text" (click)="routing('faq')">FAQ</p>
+        <p class="link-text" (click)="routing('contact')">Contact</p>
+        <p class="link-text" (click)="routing('cart')">Panier</p>
+        @if (!userName()) {
+          <p class="link-text" (click)="routing('login')">Login</p>
+        }
+        @if (userName()) {
+          <p class="link-text" (click)="logOut()">Déconnexion</p>
+        }
       </div>
-      }
-    <p class="link-text" (click)="routing('')" >Accueil</p>
-    <p class="link-text" (click)="saveCategoryToLocalStorage('shop')">Boutique</p>
-    <p class="link-text" (click)="routing('about')">A propos</p>
-    <p class="link-text" (click)="routing('ourServices')">Services</p>
-    <p class="link-text" (click)="routing('faq')">FAQ</p>
-    <p class="link-text" (click)="routing('contact')">Contact</p>
-    <p class="link-text" (click)="routing('cart')">Panier</p>
-      @if (!userName()) {
-        <p class="link-text" (click)="routing('login')">Login</p>
-      }
-      @if (userName()) {
-        <p class="link-text" (click)="logOut()">Déconnexion</p>
-      }
-
     </div>
-
-  </div>
   }
 
   <div class="nav-bar">
@@ -97,55 +83,35 @@
       </div>
       <div class="dropDown">
         <div class="drop-down-item">
-          <span class="small-title hovered" (click)="saveCategoryToLocalStorage('shop')">Boutique </span>
-          <img class="cursor" ngSrc="assets/svg/chevron-down.svg" height="12"
-               (click)="saveCategoryToLocalStorage('shop')" width="12" alt="chevron">
-          <img class="cursor-selected " (click)="saveCategoryToLocalStorage('shop')"
-               ngSrc="assets/svg/chevron-down-orange.svg" alt="chevron" height="12" width="12">
-          <div class="product-list">
+          <span class="small-title hovered" (click)="saveCategoryToLocalStorage('shop')">Boutique</span>
+          <img class="cursor" ngSrc="assets/svg/chevron-down.svg" height="12" width="12" alt="chevron">
+          <img class="cursor-selected" ngSrc="assets/svg/chevron-down-orange.svg" alt="chevron" height="12" width="12">
+          <div class="category-list">
             @for (category of categories; track category) {
-              <div class="category">
-                <div class="category-name">
-                  <a (click)="saveCategoryToLocalStorage(category.category)">
-                    {{ category.category }}
-                  </a>
-                </div>
-                <div class="category-items">
-                  @for (item of category.product; track item) {
-                    <div class="item">
-                      <a >{{ item }}</a>
-                    </div>
-                  }
-                </div>
+              <div class="category-item">
+                <a (click)="saveCategoryToLocalStorage(category.category)">
+                  {{ category.category }}
+                </a>
               </div>
             }
-            <div class="image-clip">
-              <img src="assets/animation%20.gif" alt="produit">
-            </div>
           </div>
         </div>
       </div>
       <div class="dropDown">
         <div class="drop-down-item">
-          <span class="small-title hovered">Pages </span> <img class="cursor" ngSrc="assets/svg/chevron-down.svg"
-                                                               alt="chevron" height="12" width="12">
-          <img class="cursor-selected" ngSrc="assets/svg/chevron-down-orange.svg" height="12" alt="chevron" width="12">
+          <span class="small-title hovered">Pages</span>
+          <img class="cursor" ngSrc="assets/svg/chevron-down.svg" alt="chevron" height="12" width="12">
+          <img class="cursor-selected" ngSrc="assets/svg/chevron-down-orange.svg" height="12" width="12" alt="chevron">
           <div class="drop-down-list">
-            <div class="link-item" (click)="routing('about')">
-              À propos
-            </div>
-            <div class="link-item" (click)="routing('ourServices')">
-              Services
-            </div>
-            <div class="link-item" (click)="routing('faq')">
-              FAQ
-            </div>
+            <div class="link-item" (click)="routing('about')">À propos</div>
+            <div class="link-item" (click)="routing('ourServices')">Services</div>
+            <div class="link-item" (click)="routing('faq')">FAQ</div>
           </div>
         </div>
       </div>
       <div class="dropDown" (click)="routing('contact')">
         <div class="drop-down-item">
-          <span class="small-title hovered">Contact </span>
+          <span class="small-title hovered">Contact</span>
         </div>
       </div>
     </div>
@@ -176,16 +142,8 @@
         </div>
       }
     </div>
-
-
-    <div class="list-button" (click)="showMobileMenu= true;">
-
-    <img class="cursor-selected "
-         ngSrc="assets/svg/toolbar-list.svg" alt="chevron" height="30" width="30">
+    <div class="list-button" (click)="showMobileMenu = true;">
+      <img class="cursor-selected" ngSrc="assets/svg/toolbar-list.svg" alt="chevron" height="30" width="30">
     </div>
-
   </div>
-
 </div>
-
-

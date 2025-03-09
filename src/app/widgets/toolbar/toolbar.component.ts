@@ -6,7 +6,6 @@ import {CategoryModel} from "../../models/category.model";
 import {RouterLink} from "@angular/router";
 import {toSignal} from "../../utils/signals/signal.util";
 import {CartModel} from "../../models/cart.model";
-import {ProductModel} from "../../models/product.model";
 import {ShopService} from "../../services/shop-service/shop.service";
 
 @Component({
@@ -24,57 +23,30 @@ import {ShopService} from "../../services/shop-service/shop.service";
 })
 export class ToolbarComponent implements AfterViewInit {
   @Input({transform: toSignal})
-  userName = signal('')
+  userName = signal('');
   logout = output<void>();
   showCart = false;
   showMobileMenu = false;
-  cartItemsTotalPrice = 0
+  cartItemsTotalPrice = 0;
   categories: CategoryModel[] = [
-    {
-      category: 'Impression Grandformat',
-      product: [
-        'Vinyle',
-        'Bache',
-        'Affiche',
-        'Callendrier',
-        'X-Banners',
-      ]
-    },
-    {
-      category: 'Conception Graphique',
-      product: [
-        'Création de logo',
-        'Carte visite',
-        'Papier-entête',
-        'Identité graphique',
-        'Conception catalogue',
-      ]
-    },
-    {
-      category: 'Marketing Digital',
-      product: [
-        'Community management',
-        'Sponsoring',
-        'Création sites E-commerce',
-        'Vitrine',
-      ]
-    }, {
-      category: 'Imperssion numerique', product: []
-    }
-  ]
-  cart!: CartModel[]
+    {category: 'Impression Grandformat', product: []},
+    {category: 'Conception Graphique', product: []},
+    {category: 'Marketing Digital', product: []},
+    {category: 'Imperssion numerique', product: []}
+  ];
+  cart!: CartModel[];
 
   routing(url: string) {
-    window.location.assign(url)
+    window.location.assign(url);
   }
 
   ngAfterViewInit() {
-    this.loadCartItems()
+    this.loadCartItems();
   }
 
   logOut() {
-    this.logout.emit()
-    window.location.assign('login')
+    this.logout.emit();
+    window.location.assign('login');
   }
 
   constructor(@Inject(DOCUMENT) private document: Document, private service: ShopService) {
@@ -83,21 +55,20 @@ export class ToolbarComponent implements AfterViewInit {
   saveCategoryToLocalStorage(item: string) {
     const category = JSON.stringify(item);
     this.document.defaultView?.localStorage.setItem('category', category);
-    window.location.assign('shop')
+    window.location.assign('shop');
   }
 
-
   loadCartItems() {
-    const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
-    let user = ''
+    const data = this.document.defaultView?.localStorage.getItem('auth_token');
+    let user = '';
     if (data) {
-      user = JSON.parse(data).id
+      user = JSON.parse(data).id;
     }
     this.service.getCartItems(user).subscribe(data => {
-      this.cart = data
-      this.calculateTotalPrice()
-    })
-    this.cartItemsTotalPrice = 0
+      this.cart = data;
+      this.calculateTotalPrice();
+    });
+    this.cartItemsTotalPrice = 0;
   }
 
   calculateTotalPrice() {
@@ -106,20 +77,15 @@ export class ToolbarComponent implements AfterViewInit {
     }, 0);
   }
 
-
   addToCartFromToolBar(productId: string | undefined, flag: string) {
-    const data = (this.document.defaultView?.localStorage.getItem('auth_token'));
-    let user = ''
+    const data = this.document.defaultView?.localStorage.getItem('auth_token');
+    let user = '';
     if (data) {
-      user = JSON.parse(data).id
+      user = JSON.parse(data).id;
     }
     if (productId)
       this.service.addToCart(productId, flag, user).subscribe(() => {
-        this.loadCartItems()
-
-      })
+        this.loadCartItems();
+      });
   }
-
-
 }
-
